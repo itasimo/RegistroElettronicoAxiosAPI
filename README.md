@@ -7,7 +7,7 @@ In un file `.mjs` importare l'API
 
 Per fare una chiamata all'API registro chiamare la funzione
 
-`RegistroAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)`
+`await RegistroAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)`
 
 L' API risponde con un JSON contenete le informazioni
 
