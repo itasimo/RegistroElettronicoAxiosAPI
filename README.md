@@ -25,6 +25,7 @@ L' API risponde con un JSON contenete le informazioni
 		- Materia
 		- Tipo di voto
 		- Voto
+  		- Fa media? 
 		- Data
 		- Eventuali commenti
 		- Professore
@@ -34,4 +35,11 @@ L' API risponde con un JSON contenete le informazioni
 		- Materia
 		- Data di consegna
 		- Compito
+		- Professore
+- **Verifiche**:
+	- La risposta contiene tutte le verifiche pubblicate fino al momento della chiamata;
+	- Risponde con informazioni riguardanti:
+		- Materia
+		- Data della verifica
+		- Argomenti della verifica
 		- Professore
