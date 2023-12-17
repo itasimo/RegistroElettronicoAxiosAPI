@@ -1,6 +1,5 @@
 # RegistroElettronicoAxiosAPI
 
-<<<<<<< HEAD
 Questa repository è un API progettata per il registro elettronico Axios.
 
 ## Come funziona
@@ -18,13 +17,6 @@ Per fare una chiamata all'API registro chiamare la funzione
 	let data = await RegistroElettronicoAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)
 })();
 ```
-=======
-`import {RegistroAxiosAPI} from './RegistroElettronicoAxiosAPI/axios.mjs'`
-
-Per fare una chiamata all'API registro chiamare la funzione
-
-`await RegistroAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)`
->>>>>>> f7e04d5a2bec947d110c5d40ba48d89bf906fe75
 
 L' API risponde con un JSON contenete le informazioni
 
@@ -47,7 +39,6 @@ L' API risponde con un JSON contenete le informazioni
     - Professore
 
 
-<<<<<<< HEAD
 - **Compiti**:
 
   - La risposta contiene tutti i compiti pubblicati fino al momento della chiamata;
@@ -78,29 +69,3 @@ L' API risponde con un JSON contenete le informazioni
 * [X] Rimovere moduli ES6
 * [X] Implementare l'API di Axios per ricavare i dati per le funzionalità base
 * [ ] Rimovere completamente Puppeteer dall'API
-=======
- - **Voti**: 
-	  - La risposta contiene tutti i voti pubblicati fino al momento della chiamata;
-	 - Risponde con informazioni riguardanti: 
-		- Materia
-		- Tipo di voto
-		- Voto
-  		- Fa media? 
-		- Data
-		- Eventuali commenti
-		- Professore
-- **Compiti**:
-	- La risposta contiene tutti i compiti pubblicati fino al momento della chiamata;
-	- Risponde con informazioni riguardanti:
-		- Materia
-		- Data di consegna
-		- Compito
-		- Professore
-- **Verifiche**:
-	- La risposta contiene tutte le verifiche pubblicate fino al momento della chiamata;
-	- Risponde con informazioni riguardanti:
-		- Materia
-		- Data della verifica
-		- Argomenti della verifica
-		- Professore
->>>>>>> f7e04d5a2bec947d110c5d40ba48d89bf906fe75
