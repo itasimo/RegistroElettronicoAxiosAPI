@@ -1,0 +1,86 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+
+  <div class='ui-btn-left'>
+    <a id='btnDialogBack' class='axios-link-dialog' data-role='button' href='#' title='Torna alla pagina precedente'>&#10094; Annulla</a>
+  </div>
+
+  <h2>Evento Calendario</h2>
+
+  <div class='ui-btn-right'>
+    <a id='btnDialogDelete' class='axios-link-dialog' data-role='button' href='#' title='Elimina Evento'>Elimina</a>
+    <!--&nbsp;
+    &nbsp;-->
+    <a id='btnDialogApply' class='axios-link-dialog' data-role='button' href='#' title='Applica le modifiche apportate'>Applica</a>
+  </div>
+</div>
+
+<div class='dialogContent' data-role='content'>
+
+  <form id='dialogForm' class='dialogForm' data-ajax="false">
+
+    <div class='ui-field-contain'>
+      <label id="lblTitoloPubl" for='name'>Titolo Pubblico:</label>
+      <input type='text' name='txtSummary' id='txtSummary' required>
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id="lblTitoloPriv" for='name'>Titolo Privato:</label>
+      <input type='text' name='txtSummaryPrivate' id='txtSummaryPrivate'>
+    </div>
+
+    <div id="fcAllDay" class='ui-field-contain'>
+      <fieldset data-role='controlgroup' data-mini='false'>
+        <legend id='lgdAllDay'>Tutto il Giorno</legend>
+        <select name='selAllDay' id='selAllDay' data-role='slider' data-mini='false'>
+          <option value='off'>No</option>
+          <option value='on'>Si</option>
+        </select>
+      </fieldset>
+    </div>
+
+    <div class='ui-field-contain'>
+      <fieldset data-role='controlgroup' data-type='horizontal'>
+        <legend id='lblFrom'>Dal:</legend>
+        <input type='date' name='dtDataFrom' id='dtDataFrom' value=''>
+        <input type='time' name='tmTimeFrom' id='tmTimeFrom' value=''>
+      </fieldset>
+    </div>
+
+    <div class='ui-field-contain'>
+      <fieldset data-role='controlgroup' data-type='horizontal'>
+        <legend id='lblTo'>Al:</legend>
+        <input type='date' name='dtDataTo' id='dtDataTo' value=''>
+        <input type='time' name='tmTimeTo' id='tmTimeTo' value=''>
+      </fieldset>
+    </div>
+
+    <!--
+        <div id="fcRip" class='ui-field-contain'>
+          <fieldset data-role='controlgroup' data-mini='false'>
+            <legend id='lgdRip'>Evento Ripetitivo</legend>
+            <select name='selRip' id='selRip' data-role='slider' data-mini='false' disabled="disabled">
+              <option value='off'>No</option>
+              <option value='on'>Si</option>
+            </select>
+          </fieldset>
+        </div>
+    -->
+
+    <div class='ui-field-contain'>
+      <label id='lblBadge' for='selBadge'>Tipo Calendario:</label>
+      <select name='selBadge' id='selBadge'>
+        <option value='#51b749'>Axios</option>
+        <option value='#dbadff'>Google</option>
+        <option value='#5484ed'>Google Utente</option>
+        <option value='#dc2127'>Festivi</option>
+        <option value='#7ae7bf'>Scuola</option> <!--appLocalizationVerbs.data.verbs.Titolo.capitalize();-->
+        <option value='#fbd75b'>SD Utente</option>
+        <option value='#ffb878'>SD Utente</option>
+        <option value='#ff887c'>SD Utente</option>
+      </select>
+    </div>
+
+  </form>
+
+</div>
+

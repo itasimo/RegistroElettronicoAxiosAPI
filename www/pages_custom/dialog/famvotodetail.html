@@ -1,0 +1,90 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <div class='btnDialogBackContainer'>
+    <div id='btnDialogBack'></div>
+  </div>
+</div>
+
+<div class='dialogContent votoDetailDialog' data-role='content'>
+  <div class="votoDetailScrollable">
+    <div class="votoDetailRow">
+      <div class="votoDetailContainer">
+        <div class="votoDetailValoreVoto mr-circle-50"></div>
+      </div>
+    </div>
+
+    <div class="votoDetailRow">
+      <div class="votoDetailTitoloContainer axios-theme">
+        <label id="lblVotoDetailTitolo">Materia</label>
+        <div class="votoDetailTitolo"> </div>
+      </div>
+
+      <div class="votoDetailDocenteContainer axios-theme">
+        <label id="lblVotoDetailDocente">Docente</label>
+        <div class="votoDetailDocente"> </div>
+      </div>
+    </div>
+
+    <div class="votoDetailRow">
+      <div class="votoDetailDataContainer axios-theme">
+        <label id="lblVotoDetailData">Data</label>
+        <div class="votoDetailData"> </div>
+      </div>
+
+      <div class="votoDetailTipologiaContainer axios-theme">
+        <label id="lblVotoDetailTipologia">Tipologia</label>
+        <div class="votoDetailTipologia"> </div>
+      </div>
+
+      <div class="votoDetailPesoContainer axios-theme">
+        <label id="lblVotoDetailPeso">Peso</label>
+        <div class="votoDetailPeso"> </div>
+      </div>
+    </div>
+
+    <div class="altreInfoSezione">
+      <div class="lblAltreInfo">Altre informazioni</div>
+      <div class="altreInfoContainer axios-theme">
+        <div class="altraInfoRow">
+          <div class="altraInfoRowLabel" id="lblVotoDetailProvaStrumento">Prova/Strumento</div>
+          <div class="votoDetailProvaStrumento"></div>
+        </div>
+        <div class="altraInfoRow">
+          <div class="altraInfoRowLabel" id="lblVotoDetailCommento">Osservazioni</div>
+          <div class="votoDetailCommento"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="obiettiviSezione">
+      <div class="lblObiettivi">Obiettivi</div>
+      <div class="obiettiviContainer axios-theme"></div>
+    </div>
+
+  </div>
+
+  <div class="votoDetailFixed">
+    <div class="vistoDaContainer">
+      <span>Visto da <span class="votoDetailVistoDa"></span> in data <span class="votoDetailDataVisto"></span>
+    </div>
+    <div class="btnDialogVistaContainer">
+      <button id="btnDialogVista">Visto voto</button>
+    </div>
+  </div>
+</div>
+
+<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+  <form id="frmPopup">
+    <div style='padding: 10px 20px;'>
+      <div class='ui-field-contain'>
+        <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+        <input type='text' name='numPIN' id='numPIN' value=''>
+      </div>
+      <div class='popupFrmButtonContainer'>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='0'>OK</button>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='2' data-cancel='true'>Annulla</button>
+      </div>
+    </div>
+  </form>
+</div>

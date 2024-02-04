@@ -1,0 +1,23 @@
+
+
+<div class='dialogContent cambioPswContent' data-role='content'>
+
+  <form id='dialogForm' class='dialogForm' data-ajax="false">
+
+    <input type='password' name='oldPsw' id='oldPsw' value='' placeholder="Password corrente" required>
+
+    <div class="newPswStrengthLabel">La password DEVE essere almeno di 10 caratteri e non superiore a 20, deve contenere sia numeri che lettere, sia minuscole che maiuscole ed almeno un carattere speciale (!@$#.)</div>
+    <input type='password' name='newPsw' id='newPsw' value='' placeholder="Nuova password" required>
+
+    <!-- https://stackoverflow.com/questions/42290719/custom-styling-progress-bar-in-css -->
+    <div class="pswStrengthProgressBar ui-body-inherit ui-corner-all ui-shadow-inset">
+      <div class="pswStrengthProgressIndicator"></div>
+    </div>
+
+    <input type='password' name='repeatNewPsw' id='repeatNewPsw' value='' placeholder="Ridigita nuova password" required disabled>
+
+    <button id='submitNewPsw' disabled>Invia</button>
+
+  </form>
+
+</div>

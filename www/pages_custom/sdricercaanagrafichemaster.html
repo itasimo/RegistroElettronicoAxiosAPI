@@ -1,0 +1,19 @@
+<div id="scrollContainer">
+    <div id="inputContainer">
+        <div class="ui-grid-a">
+            <span>Tipo anagrafica</span>
+            <select id="selectTipoAnagrafica"></select>
+        </div>
+        <label for="inputRicercaLibera">Ricerca libera</label>
+        <input type="text" name="inputRicercaLibera" id="inputRicercaLibera" value="">
+        <button class="searchAnagraficaBtn"></button>
+    </div>
+    <br />
+    <div id="bodyContainer">
+        <div class="listaAnagrafica">
+            <ul class='axios-ul' id='ulEvents-lazyloader' data-role='listview' data-inset='false' data-filter='false'
+                data-filter-placeholder=''></ul>
+        </div>
+        <div class="noAnagrafica" style="margin: 20px; text-align: center;"></div>
+    </div>
+</div>

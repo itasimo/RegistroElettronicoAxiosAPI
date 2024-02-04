@@ -1,0 +1,112 @@
+  [
+    {
+      "Id":  "0001",
+      "start":  "2017-11-11 00:00:00",
+      "end":  "2017-11-11 00:00:00",
+      "title":  "Tutti i Santi-1",
+      "fsTestoPrivato":  "",
+      "color":  "#dc2127",
+      "allDay":  "true",
+      "textColor": "#ffffff",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0002",
+      "start":  "2017-11-15 9:00:00",
+      "end":  "2017-11-15 18:00:00",
+      "title":  "Gita scolastica",
+      "fsTestoPrivato":  "",
+      "color":  "#7ae7bf",
+      "allDay":  "false",
+      "textColor":  "#000000",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0003",
+      "start":  "2017-11-20 00:00:00",
+      "end":  "2017-11-20 00:00:00",
+      "title":  "Primo appuntamento con Jennifer-1",
+      "fsTestoPrivato":  "Ammazza quanto \u00e8 bona!",
+      "color":  "#51b749",
+      "allDay":  "true",
+      "textColor":  "#ffffff",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0004",
+      "start":  "2017-11-29 11:00:00",
+      "end":  "2017-11-30 18:15:00",
+      "title":  "Meeting Centri Territoriali-1",
+      "fsTestoPrivato":  "",
+      "color":  "#7ae7bf",
+      "allDay":  "false",
+      "textColor":  "#000000",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0005",
+      "start":  "2017-12-11 00:00:00",
+      "end":  "2017-12-11 00:00:00",
+      "title":  "Tutti i Santi-2",
+      "fsTestoPrivato":  "",
+      "color":  "#dc2127",
+      "allDay":  "true",
+      "textColor":  "#ffffff",
+      "fbRipeti":  true
+    },
+    {
+      "Id":  "0006",
+      "start":  "2017-12-15 11:00:00",
+      "end":  "2017-12-15 12:00:00",
+      "title":  "Dentista in via Ottaviano 111-2",
+      "fsTestoPrivato":  "Speriamo che fa piano",
+      "color":  "#7ae7bf",
+      "allDay":  "false",
+      "textColor":  "#000000",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0007",
+      "start":  "2017-12-20 00:00:00",
+      "end":  "2017-12-20 00:00:00",
+      "title":  "Primo appuntamento con Jennifer-2",
+      "fsTestoPrivato":  "Ammazza quanto è bona!",
+      "color":  "#51b749",
+      "allDay":  "true",
+      "textColor":  "#ffffff",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0008",
+      "start":  "2017-12-29 11:00:00",
+      "end":  "2017-12-30 18:15:00",
+      "title":  "Meeting Centri Territoriali-2",
+      "fsTestoPrivato":  "",
+      "color":  "#7ae7bf",
+      "allDay":  "false",
+      "textColor":  "#000000",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0009",
+      "start":  "2017-10-20 00:00:00",
+      "end":  "2017-10-20 00:00:00",
+      "title":  "Primo appuntamento con Jennifer-3",
+      "fsTestoPrivato":  "Ammazza quanto è bona!",
+      "color":  "#51b749",
+      "allDay":  "true",
+      "textColor":  "#ffffff",
+      "fbRipeti":  "false"
+    },
+    {
+      "Id":  "0010",
+      "start":  "2017-10-29 11:00:00",
+      "end":  "2017-10-30 18:15:00",
+      "title":  "Meeting Centri Territoriali-3",
+      "fsTestoPrivato":  "",
+      "color":  "#7ae7bf",
+      "allDay":  "false",
+      "textColor":  "#000000",
+      "fbRipeti":  "false"
+    }
+  ]

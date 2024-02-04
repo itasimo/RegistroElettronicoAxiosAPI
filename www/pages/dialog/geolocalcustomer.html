@@ -1,0 +1,48 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <!-- REMOVE:
+  <a id='btnDialogBack' href='#' class='axios-icon-img ui-btn-left' data-icon='back' data-iconpos='notext'></a>
+  <h2>Ricerca con Geo Localizzazione</h2>
+  <a id='btnDialogApply' href='#' class='axios-dialog-button ui-btn-right' data-icon='upload'>Applica</a>
+  -->
+  <div class='btnDialogBackContainer'>
+    <div id='btnDialogBack'></div>
+  </div>
+</div>
+
+<div class='dialogContent searchCAPDialog' data-role='content'>
+
+  <form id='dialogForm' class='dialogForm' data-ajax="false">
+    <br />
+    <label id="lblSearch"> </label>
+
+    <!-- <div id='selCAPContainer'>
+      <div class='ui-field-contain'>
+        <fieldset data-role='controlgroup' data-type='horizontal'>
+          <input type='text' name='txtString' id='txtString' value='' placeholder='Inserisci dati scuola' class='ui-corner-all' data-clear-btn='false' data-wrapper-class="controlgroup-textinput ui-select" title='Digitare il CAP desiderato'>
+          <a id='btnDialogSearch' href='#' class='ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all axios-controlgroup-textinput' title=''>No Text</a>
+        </fieldset>
+      </div>
+    </div> -->
+
+    <div id='selCAPContainerFlex'>
+      <input type='text' name='txtString' id='txtString' value='' placeholder='Inserisci dati scuola' class='ui-corner-all' data-clear-btn='false' title='Digitare il CAP desiderato'>
+      <a id='btnDialogSearch' href='#' class='ui-btn ui-icon-search ui-btn-icon-notext ui-corner-all' ></a>
+    </div>
+
+    <div id='txtCustomerContainer'>
+      <div class='ui-field-contain'>
+        <fieldset data-role='controlgroup' id="customerFieldset">
+          <legend id='lgdAddCustomer'></legend>
+          <ul id='ulCustomer' data-role='listview' data-filter='true' data-filter-reveal='true' data-filter-placeholder='' data-inset='true' data-icon='false' data-clear-btn='false'></ul>
+        </fieldset>
+      </div>
+    </div>
+    <div id="noCustomerFound"></div>
+      <div id="nomeSel" style="display:none;"></div>
+    <!--<div id='map_canvas'>
+    </div>-->
+
+  </form>
+
+</div>
+

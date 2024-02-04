@@ -1,0 +1,9 @@
+{
+	"appVersion": "1.0.0",
+	"forceExit": "false",
+	"msgId": "",
+	"msgArgs": [],
+	"updURL": "http://www.axiositalia.com/app/",
+	"updates": [
+	]
+}

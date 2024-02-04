@@ -1,0 +1,744 @@
+[
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":" G. DI VITTORIO ",
+    "fsCF":"11111111111",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" CANNIZZARO ",
+    "fsCF":"22222222222",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico e Linguistico",
+    "fsNome":"ARISTOFANE",
+    "fsCF":"80228210581",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":"C. TACITO",
+    "fsCF":"80226930586",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":"BENEDETTO DA NORCIA",
+    "fsCF":"80221530589",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA BEATA MARIA DE MATTIAS",
+    "fsCF":"80200610584",
+    "fsCap":"00185",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":"TULLIO LEVI CIVITA",
+    "fsCF":"80216770588",
+    "fsCap":"00185",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"IST.PROF.SERVIZI ALBERGHIERI E RISTORAZI",
+    "fsNome":"ALESSANDRO FARNESE",
+    "fsCF":"90092830562",
+    "fsCap":"01032",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Direzione Didattica",
+    "fsNome":"LA ROMANINA 150 CIRCOLO",
+    "fsCF":"80422270589",
+    "fsCap":"00173",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"MILANI",
+    "fsCF":"80003800598",
+    "fsCap":"04019",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VERGA",
+    "fsCF":"80006850590",
+    "fsCap":"04014",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"NINO ROTA",
+    "fsCF":"97203090580",
+    "fsCap":"00149",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA DELLA TECNICA",
+    "fsCF":"97713590582",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"MACCARESE",
+    "fsCF":"97713820583",
+    "fsCap":"00054",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA TEDESCHI",
+    "fsCF":"97712730585",
+    "fsCap":"00159",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"CESARE BATTISTI",
+    "fsCF":"95017570581",
+    "fsCap":"00049",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"CARAVAGGIO",
+    "fsCF":"97567330580",
+    "fsCap":"00147",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"CAETANI ",
+    "fsCF":"80214090583",
+    "fsCap":"00195",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scient. Conv.Naz.",
+    "fsNome":"V. EMANUELE II",
+    "fsCF":"80195830585",
+    "fsCap":"00195",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Tec.Ind.Stat.",
+    "fsNome":"G.VALLAURI",
+    "fsCF":"87004020589",
+    "fsCap":"00049",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"CONVITTO NAZIONALE",
+    "fsNome":"V.EMANUELE II",
+    "fsCF":"80184350587",
+    "fsCap":"00195",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":"L. Da Vinci + Roccasecca Volsci",
+    "fsCF":"91067060599",
+    "fsCap":"04010",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":" L. DA VINCI ",
+    "fsCF":"80209490582",
+    "fsCap":"00057",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Tec.Ind.Stat.",
+    "fsNome":" FERMI ",
+    "fsCF":"80195290582",
+    "fsCap":"00136",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ORSA MAGGIORE",
+    "fsCF":"97389410586",
+    "fsCap":"00144",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":" DE SANCTIS ",
+    "fsCF":"90049340582",
+    "fsCap":"00045",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":"PIAZZA DELLA REPUBBLICA",
+    "fsCF":"94032580584",
+    "fsCap":"00169",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA N.M. NICOLAI",
+    "fsCF":"97712470588",
+    "fsCap":"00156",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA BAGNERA",
+    "fsCF":"97713450589",
+    "fsCap":"00146",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" A. MEUCCI ",
+    "fsCF":"80017270564",
+    "fsCap":"01037",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA S. FRANCESCO",
+    "fsCF":"80005100609",
+    "fsCap":"03016",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"SUPINO",
+    "fsCF":"92053060601",
+    "fsCap":"03013",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"A. VOLTA",
+    "fsCF":"92064690602",
+    "fsCap":"03100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":"GIOACCHINO PELLECCHIA ",
+    "fsCF":"81004020608",
+    "fsCap":"03043",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"CARDUCCI",
+    "fsCF":"90027900597",
+    "fsCap":"04024",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":" G. MATTEOTTI ",
+    "fsCF":"80006530598",
+    "fsCap":"04011",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ITRI",
+    "fsCF":"90048300595",
+    "fsCap":"04020",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO OMNICOMPRENSIVO",
+    "fsNome":"N� 1 CENCELLI",
+    "fsCF":"80006830592",
+    "fsCap":"04016",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"A. VOLTA ",
+    "fsCF":"80004790590",
+    "fsCap":"04100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"N.7 - VIA BACHELET",
+    "fsCF":"91124360594",
+    "fsCap":"04100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"TEODOSIO ROSSI",
+    "fsCF":"02000800595",
+    "fsCap":"04015",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":" SAN BENEDETTO ",
+    "fsCF":"80002170597",
+    "fsCap":"04100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"M.T. CICERONE - POLLIONE",
+    "fsCF":"90060380590",
+    "fsCap":"04023",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Prof.Comm.",
+    "fsNome":"ALESSANDRO FILOSI ",
+    "fsCF":"80004020592",
+    "fsCap":"04019",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":" MANNETTI ",
+    "fsCF":"80005870573",
+    "fsCap":"02013",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"V.LE ADRIATICO,140",
+    "fsCF":"97200050587",
+    "fsCap":"00141",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA S. FRANCESCO",
+    "fsCF":"97201070584",
+    "fsCap":"00061",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"TIVOLI II - TIVOLI CENTRO",
+    "fsCF":"86003970588",
+    "fsCap":"00019",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"PESTALOZZI",
+    "fsCF":"80257810582",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":"D. CAMBELLOTTI",
+    "fsCF":"92013800583",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ALBANO LOC.CECCHINA",
+    "fsCF":"90049380588",
+    "fsCap":"00041",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VELLETRI NORD",
+    "fsCF":"95036930584",
+    "fsCap":"00049",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"A. DE GASPERI",
+    "fsCF":"95037030582",
+    "fsCap":"00031",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"LADISPOLI III",
+    "fsCF":"91065210584",
+    "fsCap":"00055",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"IC L.GO DINO BUZZATI",
+    "fsCF":"97713510580",
+    "fsCap":"00144",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA STABILINI",
+    "fsCF":"97712510581",
+    "fsCap":"00173",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA DELLE SETTE CHIESE",
+    "fsCF":"97196890582",
+    "fsCap":"00147",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA ADIGE",
+    "fsCF":"91038370580",
+    "fsCap":"00053",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA ROMANA 11/13",
+    "fsCF":"90075190588",
+    "fsCap":"00043",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO SUPERIORE",
+    "fsNome":"VIA DI SAPONARA 150",
+    "fsCF":"96103940589",
+    "fsCap":"00125",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA ROMA, 298",
+    "fsCF":"94070400588",
+    "fsCap":"00012",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Scuola Media Statale",
+    "fsNome":"UMBERTO NOBILE",
+    "fsCF":"90049410583",
+    "fsCap":"00043",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":" VIRGILIO ",
+    "fsCF":"80201970581",
+    "fsCap":"00186",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":" EUGENIO MONTALE ",
+    "fsCF":"97021870585",
+    "fsCap":"00164",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":" JAMES JOYCE ",
+    "fsCF":"90049460588",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" FARNESINA ",
+    "fsCF":"05723890587",
+    "fsCap":"00194",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto d'Arte",
+    "fsNome":"POMEZIA",
+    "fsCF":"80238270583",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Tec.Comm.",
+    "fsNome":" ARANGIO RUIZ ",
+    "fsCF":"80218570580",
+    "fsCap":"00144",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Convitto Nazionale",
+    "fsNome":" A. SAVOIA DUCA D'AOSTA ",
+    "fsCF":"86000100585",
+    "fsCap":"00019",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIALE E. MONACI",
+    "fsCF":"90026050568",
+    "fsCap":"01038",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"VIA SALVINI, 24",
+    "fsCF":"97197430586",
+    "fsCap":"00197",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto d'Istruzione Superiore",
+    "fsNome":"SAN BENEDETTO",
+    "fsCF":"90012980604",
+    "fsCap":"03043",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"A. GRAMSCI",
+    "fsCF":"80015390596",
+    "fsCap":"04011",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO MAGISTRALE",
+    "fsNome":"E. PRINCIPESSA DI NAPOLI",
+    "fsCF":"80005030574",
+    "fsCap":"02100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"PADRE PIO",
+    "fsCF":"97197750587",
+    "fsCap":"00060",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":"GULLUNI",
+    "fsCF":"92013760589",
+    "fsCap":"00030",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"DON MILANI",
+    "fsCF":"84002090581",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"GIOVANNI CENA",
+    "fsCF":"83003510589",
+    "fsCap":"00052",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ALBANO",
+    "fsCF":"90075170580",
+    "fsCap":"00041",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"LEONARDO DA VINCI",
+    "fsCF":"90049400584",
+    "fsCap":"00043",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"ELIANO-LUZZATTI",
+    "fsCF":"93024610581",
+    "fsCap":"00036",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO ISTRUZIONE SUPERIORE",
+    "fsNome":"GUGLIELMO MARCONI ",
+    "fsCF":"80012420602",
+    "fsCap":"03012",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":" P. MATTEJ ",
+    "fsCF":"90028000595",
+    "fsCap":"04023",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ANZIO III",
+    "fsCF":"90000150582",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" CAVOUR ",
+    "fsCF":"80253350583",
+    "fsCap":"00184",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA P. SEMERIA",
+    "fsCF":"97712930581",
+    "fsCap":"00154",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" PEANO ",
+    "fsCF":"80197450580",
+    "fsCap":"00142",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" PRIMO LEVI ",
+    "fsCF":"96104100589",
+    "fsCap":"00142",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"GIULIO CESARE",
+    "fsCF":"80003870591",
+    "fsCap":"04016",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Classico",
+    "fsNome":" D. ALIGHIERI ",
+    "fsCF":"80008910590",
+    "fsCap":"04100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"VIA NIOBE",
+    "fsCF":"97028710586",
+    "fsCap":"00040",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":" VIA B. LESEN,2 ",
+    "fsCF":"97197660588",
+    "fsCap":"00063",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":"ROVERE",
+    "fsCF":"97198420586",
+    "fsCap":"00068",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"OCTAVIA",
+    "fsCF":"97713490585",
+    "fsCap":"00135",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Tec.Ind.Stat.",
+    "fsNome":" ENRICO FERMI ",
+    "fsCF":"80208490583",
+    "fsCap":"00044",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"BORGO FAITI",
+    "fsCF":"91124390591",
+    "fsCap":"04100",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"CAMPUS DEI LICEI \"MASSIMILIANO RAMADU'\"",
+    "fsCF":"91004900592",
+    "fsCap":"04012",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Istituto Comprensivo",
+    "fsNome":" M. RICCI ",
+    "fsCF":"97389090586",
+    "fsCap":"00144",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"ANZIO V",
+    "fsCF":"97713000582",
+    "fsCap":"00042",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"IC PARCO DELLA VITTORIA",
+    "fsCF":"97713920581",
+    "fsCap":"00136",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO D'ISTRUZIONE SUPERIORE",
+    "fsNome":"LEOPOLDO PIRELLI",
+    "fsCF":"80211390580",
+    "fsCap":"00179",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Liceo Scientifico",
+    "fsNome":" MORGAGNI ",
+    "fsCF":"80208110587",
+    "fsCap":"00152",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"DANIELE MANIN",
+    "fsCF":"97100420583",
+    "fsCap":"00184",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"PIAZZA GOLA",
+    "fsCF":"97712570585",
+    "fsCap":"00156",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"ISTITUTO COMPRENSIVO",
+    "fsNome":"IC VIA POSEIDONE",
+    "fsCF":"97713330583",
+    "fsCap":"00133",
+    "fsRegione":"LA"
+  },
+  {
+    "fsIntitolazione":"Ist.Tec.Comm.",
+    "fsNome":" LOMBARDO RADICE ",
+    "fsCF":"97020830580",
+    "fsCap":"00173",
+    "fsRegione":"LA"
+  }
+]

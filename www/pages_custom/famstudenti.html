@@ -1,0 +1,39 @@
+<div>
+  <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false' data-filter-placeholder=''></ul>
+  <button id="aggiungiStudenti">Aggiungi studenti</button>
+</div>
+
+<div data-role='popup' id='popupFormForeign' data-transition='pop' data-dismissible="false">
+  <form id="frmPopupForeign" style="width: 300px;">
+    <div style='padding: 10px 20px;'>
+      <div>
+        <select id="selectCodiceFiscaleForeign"> </select>
+      </div>
+      <div class='ui-field-contain' style="display: none;">
+        <input type='tel' name='cfForeign' id='cfForeign' value=''>
+      </div>
+      <div class='ui-field-contain'>
+        <label id='lblUsername' for='codiceUtenteForeign'>Codice utente:</label>
+        <input type='tel' name='codiceUtenteForeign' id='codiceUtenteForeign' value=''>
+      </div>
+      <div class='ui-field-contain'>
+        <label id='lblPasswordForeign' for='passwordForeign'>Password:</label>
+        <input type='password' name='passwordForeign' id='passwordForeign' value=''>
+      </div>
+      <!-- <div>
+        <label>
+          <input type="checkbox" name="rememberPwdForeign" id="rememberPwdForeign" /> Ricorda password
+        </label>
+      </div> -->
+      <div class="addForeignSchool" style="margin-top: 10px; margin-bottom: 10px;">
+        Se la scuola che vuoi aggiungere non è presente <u>aggiungila qui</u>
+      </div>
+      <div class='popupFrmButtonContainer'>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='2' data-cancel='true'>Annulla</button>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='0'>OK</button>
+      </div>
+    </div>
+  </form>
+</div>

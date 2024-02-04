@@ -1,0 +1,72 @@
+{
+  "type": "0",
+
+  "localization": [
+    {
+      "id": "it-IT",
+      "verbs": {
+        "Titolo": "scuola",
+        "TitoloPlur": "scuole",
+        "Preposizione": "della",
+        "Articolo": "la",
+        "ArticoloInd": "una",
+        "Pronome": "tua",
+        "Genere": "a",
+        "GenerePlur": "e"
+      }
+    },
+    {
+      "id": "en-EN",
+      "verbs": {
+        "Titolo": "school",
+        "TitoloPlur": "schools",
+        "Preposizione": "of",
+        "Articolo": "the",
+        "ArticoloInd": "a",
+        "Pronome": "your",
+        "Genere": "",
+        "GenerePlur": "s"
+      }
+    },
+    {
+      "id": "sp-SP",
+      "verbs": {
+        "Titolo": "escuela",
+        "TitoloPlur": "escuelas",
+        "Preposizione": "de la",
+        "Articolo": "la",
+        "ArticoloInd": "una",
+        "Pronome": "su",
+        "Genere": "a",
+        "GenerePlur": "s"
+      }
+    }
+  ],
+
+  "module": {
+    "login": "on",
+    "dashboard": "on",
+    "sidebar": "on",
+    "sidebarfw": "on",
+    "footer":  "off",
+
+    "support": "off",
+    "timeline": "on",
+    "message": "on",
+    "notify": "on",
+    "calendar": "on",
+    "synchro": "on",
+
+    "info": "on",
+    "userprofile": "on",
+
+    "push": "on",
+    "pushsenderid": "985365103724",
+
+    "geolocation": "on",
+    "geolocationurl": "https://maps.googleapis.com/maps/api/geocode/json?",
+    "geolocationapikey": "AIzaSyAjnrHR6gdDv66Neq4xrtoyiDwGR287epA",
+
+    "updURL": "http://www.axiositalia.com/app/"
+  }
+}

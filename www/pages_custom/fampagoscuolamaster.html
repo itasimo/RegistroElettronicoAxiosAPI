@@ -1,0 +1,42 @@
+<div class="pagoscuolaContainer">
+    <select id="selectStatoPagamenti">
+        <!-- <option value="T"> Tutti </option> -->
+        <!-- <option value="NP"> Non pagato </option>
+        <option value="P"> Pagato </option>
+        <option value="R"> Rimborsato </option>
+        <option value="A"> Annullato </option> -->
+    </select>
+    <div class="pagoscuolaListContainer">
+        <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+            data-filter-placeholder=''></ul>
+    </div>
+</div>
+<div class="noPagoscuolaGenerale">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noPagoscuolaGeneraleLabel"></div>
+</div>
+<div class="noPagoscuolaStato">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noPagoscuolaStatoLabel"></div>
+</div>
+
+<div data-role='popup' id='popupFormScuolaPay' data-transition='pop' data-dismissible="false">
+    <form id="frmPopupScuolaPay">
+      <div style='padding: 10px 20px;'>
+        I seguenti dati stanno per essere inviati al fornitore dei servizi:<br>
+        - PDF evento pagamento<br>
+        - Cognome e nome del pagatore<br>
+        NOTA: A questa email verrà inviata la conferma del pagamento effettuato.
+        <div class='ui-field-contain'>
+          <label id='lblIndirizzoEmail' for='indirizzoEmail'>Email del pagatore:</label>
+          <input type='text' name='indirizzoEmail' id='indirizzoEmail' value=''>
+        </div>
+        <div class='popupFrmButtonContainer'>
+          <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+            data-index='0'>Acconsento</button>
+          <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+            data-index='2' data-cancel='true'>Annulla</button>
+        </div>
+      </div>
+    </form>
+  </div>

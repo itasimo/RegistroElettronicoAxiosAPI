@@ -1,0 +1,172 @@
+@charset "utf-8";
+/* AXIOS: 
+  Le modifiche apportate con il tag AXIOS: sono fatte direttamente qui perchè le variazioni apportate sono cosi significative
+  che non ha più senso pensare a questo oggetto come re-importabile dal produttore in futuro.
+*/
+
+/* CSS Document */
+.jq-calendar-wrapper {
+  padding: 0;
+  margin: -15px -15px 0 -15px;
+  display: block;
+}
+
+  .jq-calendar-wrapper table {
+    margin: 0;
+    width: 100%;
+    color: #333;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .jq-calendar-wrapper .ui-listview {
+    margin: 0;
+  }
+
+  .jq-calendar-wrapper th {
+    padding: .2em 0;
+    text-align: center;
+  }
+
+  .jq-calendar-wrapper th.header {
+    line-height: 33px;
+  }
+
+  /*.jq-calendar-wrapper .previous-btn { float: left; margin: .2em .5em; }*/
+  /*AXIOS:*/
+  .jq-calendar-wrapper .previous-btn {
+    float: left;
+    margin: .2em .5em;
+    background-color: transparent !important;
+    color: orange !important;
+    border: none !important;
+    box-shadow: 0 0 0 !important;
+    /*font-size: 22px !important;*/
+    font-size: 28px !important;
+    padding: 0 !important;
+  }
+
+  /*.jq-calendar-wrapper .next-btn { float: right; margin: .2em .5em; }*/
+  /*AXIOS:*/
+  .jq-calendar-wrapper .next-btn {
+    float: right;
+    margin: .2em .5em;
+    background-color: transparent !important;
+    color: orange !important;
+    border: none !important;
+    box-shadow: 0 0 0 !important;
+    /*font-size: 22px !important;*/
+    font-size: 28px !important;
+    padding: 0 !important;
+  }
+
+  .jq-calendar-wrapper td {
+    text-align: center;
+    padding: 0;
+  }
+
+  .jq-calendar-wrapper td.darker, .jq-calendar-wrapper span.darker {
+    opacity: 0.3;
+  }
+
+  .jq-calendar-wrapper th.darker, .jq-calendar-wrapper span.darker {
+    opacity: 1.0;
+  }
+  /*AXIOS:*/
+  .jq-calendar-wrapper td a, .jq-calendar-wrapper td button {
+    padding: .5em 0;
+    margin: 0;
+    border: 0;
+  }
+
+  .jq-calendar-wrapper td span {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .jq-calendar-wrapper .importance-1:not(.ui-btn-active) {
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #FFFFc7 ), to( #d3c190 ));
+    background-image: -webkit-linear-gradient( #FFFFc7, #d3c190 );
+    background-image: -moz-linear-gradient( #FFFFc7, #d3c190 );
+    background-image: -ms-linear-gradient( #FFFFc7, #d3c190 );
+    background-image: -o-linear-gradient( #FFFFc7, #d3c190 );
+    background-image: linear-gradient( #FFFFc7, #d3c190 );
+  }
+
+  .jq-calendar-wrapper .importance-2:not(.ui-btn-active) {
+    background-image: -webkit-gradient(linear, left top, left bottom, from( #FFd4a2), to( #e0ad85));
+    background-image: -webkit-linear-gradient( #FFd4a2, #e0ad85);
+    background-image: -moz-linear-gradient( #FFd4a2, #e0ad85);
+    background-image: -ms-linear-gradient( #FFd4a2, #e0ad85);
+    background-image: -o-linear-gradient( #FFd4a2, #e0ad85);
+    background-image: linear-gradient( #FFd4a2, #e0ad85);
+  }
+  /*.jq-calendar-wrapper .ui-btn-today { background-image: -webkit-gradient(linear, left top, left bottom, from( #fd8255), to( #d46d46)); background-image: -webkit-linear-gradient( #fd8255, #d46d46); background-image: -moz-linear-gradient( #fd8255, #d46d46); background-image: -ms-linear-gradient( #fd8255, #d46d46); background-image: -o-linear-gradient( #fd8255, #d46d46); background-image: linear-gradient( #fd8255, #d46d46); color: #fff; text-shadow: 0 1px 0 #000; }*/
+  /*AXIOS:*/
+  .jq-calendar-wrapper .ui-btn-today.ui-btn-active {
+    border: solid 2px red !important;
+    padding: 6px !important;
+  }
+
+  .jq-calendar-wrapper .ui-btn-today {
+    border: solid 2px red !important;
+    padding: 6px !important;
+  }
+
+  .jq-calendar-wrapper .ui-btn-active {
+    border: solid 2px blue !important;
+    padding: 6px !important;
+    background-color: #c6c6c6 !important;
+  }
+
+  /* Badge Calendari SD AXIOS:*/
+  .jq-calendar-wrapper .class_51b749 {
+    background-image: linear-gradient( #51b749, #51b749);
+    color: #fff !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_dbadff {
+    background-image: linear-gradient( #dbadff, #dbadff);
+    color: #fff !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_5484ed {
+    background-image: linear-gradient( #5484ed, #5484ed);
+    color: #fff !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_dc2127 {
+    background-image: linear-gradient( #dc2127, #dc2127);
+    color: #fff !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_7ae7bf {
+    background-image: linear-gradient( #7ae7bf, #7ae7bf);
+    color: #000 !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_fbd75b {
+    background-image: linear-gradient( #fbd75b, #fbd75b);
+    color: #000 !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_ffb878 {
+    background-image: linear-gradient( #ffb878, #ffb878);
+    color: #000 !important;
+    text-shadow: 0 0px 0 #000;
+  }
+
+  .jq-calendar-wrapper .class_ff887c {
+    background-image: linear-gradient( #ff887c, #ff887c);
+    color: #fff !important;
+    text-shadow: 0 0px 0 #000;
+  }

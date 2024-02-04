@@ -1,0 +1,85 @@
+[
+  {
+    "idAlunno": "0001",
+    "today": [
+      {
+        "type": "C",
+        "data": "07/04/2017",
+        "subType": "",
+        "ora": "09:00",
+        "oralez": "",
+        "desc": {
+          "title": "",
+          "subtitle": "Esercitazione evacuazione",
+          "notes": ""
+        }
+      },
+      {
+        "type": "A",
+        "data": "07/04/2017",
+        "subType": "R",
+        "ora": "09:00",
+        "oralez": "1",
+        "desc": {
+          "title": "",
+          "subtitle": "",
+          "notes": ""
+        }
+      },
+      {
+        "type": "V",
+        "data": "07/04/2017",
+        "subType": "O",
+        "ora": "12:00",
+        "oralez": "4",
+        "desc": {
+          "title": "MATEMATICA",
+          "subtitle": "6+",
+          "notes": "Niente male la prima interrogazione"
+        }
+      },
+      {
+        "type": "N",
+        "data": "07/04/2017",
+        "subType": "C",
+        "ora": "11:00",
+        "oralez": "3",
+        "desc": {
+          "title": "",
+          "subtitle": "La classe \u00e8 rumorosa e impedisce lo svolgimento della lezione.",
+          "notes": "ITALIANO (Rossi Mario)"
+        }
+      },
+      {
+        "type": "L",
+        "data": "07/04/2017",
+        "subType": "",
+        "ora": "13:00",
+        "oralez": "5",
+        "desc": {
+          "title": "",
+          "subtitle": "ITALIANO",
+          "notes": "La letteratura del 900 parte 1. Pag. 201-210"
+        }
+      },
+      {
+        "type": "L",
+        "data": "07/04/2017",
+        "subType": "",
+        "ora": "10:00",
+        "oralez": "2",
+        "desc": {
+          "title": "",
+          "subtitle": "MATEMATICA",
+          "notes": "Polinomi di primo grado e operazioni sui medesimi"
+        }
+      }
+    ]
+  },
+
+  {
+    "idAlunno": "0002",
+    "today": [
+    ]
+  }
+]

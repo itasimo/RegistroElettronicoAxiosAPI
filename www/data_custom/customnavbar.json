@@ -1,0 +1,108 @@
+[
+  {
+    "id": "REG",
+    "title": "REGISTRO",
+    "idImage": "li-navbar-img-none",
+    "dashboardFunction": "DASHREGISTRO.showDash",
+    "default": "true",
+    "sidebar": [
+      {
+        "id": "liStudente",
+        "image": "images_custom/Student Male Filled-100.png",
+        "title": "Studenti",
+        "subTitle": "Nome Studente",
+        "idCounter": "",
+        "function": "STUDENTI.showStudenti"
+      },
+      {
+        "id": "liVoti",
+        "image": "images_custom/Test Failed Filled-100.png",
+        "title": "Voti",
+        "subTitle": "Valutazioni",
+        "idCounter": "",
+        "function": "VOTIDETAIL.showVotiDetail"
+      },
+      {
+        "id": "liAssenze",
+        "image": "images_custom/Being Sick Filled-100.png",
+        "title": "Assenze",
+        "subTitle": "Gestione Assenze",
+        "idCounter": "",
+        "function": "ASSENZEMASTER.showAssenzeMaster"
+      },
+      {
+        "id": "liNote",
+        "image": "images_custom/Note Filled-100.png",
+        "title": "Note",
+        "subTitle": "Provvedimenti disciplinari",
+        "idCounter": "",
+        "function": "NOTEMASTER.showNoteMaster"
+      },
+      {
+        "id": "liCompiti",
+        "image": "images_custom/Class Filled-100.png",
+        "title": "Compiti (RE/Collabora)",
+        "subTitle": "Compiti Assegnati",
+        "idCounter": "",
+        "function": "COMPITIMASTER.showCompitiMaster"
+      },
+      {
+        "id": "liArgomenti",
+        "image": "images_custom/Classroom Filled-100.png",
+        "title": "Lezioni (RE/Collabora)",
+        "subTitle": "Argomenti Lezioni",
+        "idCounter": "",
+        "function": "ARGOMENTIMASTER.showArgomentiMaster"
+      },     
+      {
+        "id": "liComunicazioni",
+        "image": "images_custom/PDF Filled-100.png",
+        "title": "Comunicazioni",
+        "subTitle": "Comunicazioni",
+        "idCounter": "countComunicazioni",
+        "function": "COMMASTER.showComunicazioniMaster"
+      },
+      {
+        "id": "liColloqui",
+        "image": "images_custom/Meeting Filled-100.png",
+        "title": "Colloqui",
+        "subTitle": "Docenti-Familiari",
+        "idCounter": "",
+        "function": "COLLOQUIMASTER.showColloquiMaster"
+      },
+      {
+        "id": "liPagella",
+        "image": "images_custom/Page Overview 2 Filled-100.png",
+        "title": "Pagella",
+        "subTitle": "Pagella",
+        "idCounter": "",
+        "function": "PAGELLAMASTER.showPagellaMaster"
+      },
+      {
+        "id": "liCurriculum",
+        "image": "images_custom/Diploma 1 Filled-100.png",
+        "title": "Curriculum",
+        "subTitle": "Curriculum Scolastico",
+        "idCounter": "",
+        "function": "CURRICULUMMASTER.showCurriculumMaster"
+      },
+      {
+        "id": "liAutorizzazioni",
+        "image": "images_custom/Auth-100.png",
+        "title": "Autorizzazioni",
+        "subTitle": "Autorizzazioni Scolastiche",
+        "idCounter": "",
+        "function": "AUTORIZZAZIONIMASTER.showAutorizzazioniMaster"
+      },
+      {
+        "id": "liMaterialeDidattico",
+        "image": "images_custom/MaterialeDidattico-100.png",
+        "title": "Materiale Didattico",
+        "subTitle": "Materiale Didattico",
+        "idCounter": "",
+        "function": "MATERIALEDIDATTICOMASTER.showMaterialeDidatticoMaster"
+      }
+    ]
+  }
+  
+]

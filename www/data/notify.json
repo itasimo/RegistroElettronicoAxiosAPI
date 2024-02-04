@@ -1,0 +1,26 @@
+  [
+    {
+      "Id": "0002",
+      "fdData": "20/11/2017",
+      "fsTesto": "Aggiornamento effettuato correttamente!",
+      "fsAuthor": "PRG",
+      "fsBadge": "S",
+      "fbLetto": "False"
+    },
+    {
+      "Id": "0003",
+      "fdData": "21/11/2017",
+      "fsTesto": "La nuova versione dell'app sarà disponibile a breve!",
+      "fsAuthor": "SYS",
+      "fsBadge": "W",
+      "fbLetto": "False"
+    },
+    {
+      "Id": "0004",
+      "fdData": "24/11/2017",
+      "fsTesto": "Manutenzione server.",
+      "fsAuthor": "AXS",
+      "fsBadge": "D",
+      "fbLetto": "False"
+    }
+  ]

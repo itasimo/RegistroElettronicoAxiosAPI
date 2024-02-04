@@ -1,0 +1,102 @@
+[
+  {
+    "idAlunno": "0001",
+    "descMat": "ITALIANO, STORIA",
+    "idDocente": "0001",
+    "descDoc": "Rossi Mario",
+    "colloqui": [
+      {
+        "descSede": "Centrale",
+        "giorno": "Martedi",
+        "oraInizio": "14:00",
+        "oraFine": "19:00",
+        "descNota": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla. Maecenas mauris nunc, placerat nec suscipit in, finibus quis elit.",
+        "date": [
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "20/03/2017",
+            "posti": "111101",
+            "prenotazione": "5",
+            "idSostit": "1001",
+            "descSostit": "Rossi Mario 2"
+          },
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "27/03/2017",
+            "posti": "11111",
+            "prenotazione": "",
+            "idSostit": "",
+            "descSostit": ""
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idAlunno": "0001",
+    "descMat": "MATEMATICA",
+    "idDocente": "0003",
+    "descDoc": "De Curlis Francesca",
+    "idSostit": "",
+    "descSostit": "",
+    "colloqui": [
+      {
+        "descSede": "Centrale",
+        "giorno": "Martedi",
+        "oraInizio": "14:00",
+        "oraFine": "18:00",
+        "descNota": "",
+        "date": [
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "20/03/2017",
+            "posti": "011111",
+            "prenotazione": "1",
+            "idSostit": "",
+            "descSostit": ""
+          },
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "27/03/2017",
+            "posti": "111",
+            "prenotazione": "",
+            "idSostit": "",
+            "descSostit": ""
+          }
+        ]
+      },
+      {
+        "idPeriodo": "0002",
+        "descSede": "Succursale",
+        "giorno": "Giovedi",
+        "oraInizio": "15:00",
+        "oraFine": "17:00",
+        "descNota": "Consegna pagellino",
+        "date": [
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "19/03/2017",
+            "posti": "000",
+            "prenotazione": "",
+            "idSostit": "",
+            "descSostit": ""
+          },
+          {
+            "idPeriodo": "0001",
+            "idPrenotazione": "",
+            "data": "26/03/2017",
+            "posti": "1111",
+            "prenotazione": "",
+            "idSostit": "",
+            "descSostit": ""
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+<div class="invalsiPageContainer">
+    <div class="notaInformativa">
+        <div><b>Nota informativa per lo studente</b></div>
+        <br>
+        <div>Premendo il pulsante Invia, il Registro Elettronico invierà all'INVALSI il codice SIDI dello studente associato a questa utenza.
+        L'invio è finalizzato unicamente alla ricezione da parte dello studente di una personale Username e Password di primo accesso che l'INVALSI ha predisposto per la registrazione al proprio sito.
+        Il Registro Elettronico non terrà memoria alcuna delle informazioni ricevute.
+        Premendo il tasto Invia l’utente esprime il consenso dell'invio all'INVALSI del codice SIDI associato a questa utenza.	
+        Questa funzionalità rimarrà attiva fino al 30 settembre 2023.</div>
+    </div>
+    <button id="confirmNotaInformativaBtn">Invia</button>
+</div>
+
+<div data-role='popup' id='popupInvalsiForm' class='popupInvalsi axios-theme' data-transition='pop' data-dismissible="false" style="min-width: 250px;">
+    <div class='ui-field-contain' style="padding: 15px;">
+        <div class="invalsiMsgContainer" style="padding: 10px 0px;"></div>
+        <div class="invalsiCredentialsContainer" style="display: flex; flex-flow: column nowrap; padding: 10px 0px;">
+            <span class="invalsiUser"></span>
+            <span class="invalsiPsw"></span>
+        </div>
+        <div class="popupFrmButtonContainer">
+            <button type='button' id='btnPopupClose'
+            class='axios-popup-button ui-btn ui-btn-inline ui-corner-all dashboardCalendarButton'
+            data-index='2' data-cancel='true'>OK</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width, height=device-height, viewport-fit=cover">
+
+    <!-- Personalizzare, se necessario, i criteri di sicurezza del contenuto nel tag META seguente. Aggiungere 'unsafe-inline' a default-src per abilitare JavaScript inline.
+         Per dettagli, vedere http://go.microsoft.com/fwlink/?LinkID=617521  -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src: 'self' 'unsafe-inline' 'unsafe-eval'">-->
+    <meta http-equiv="Content-Security-Policy">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; connect-src *">-->
+    <title>SD_APP</title>
+
+    <!-- ------------------------------------------------- CSS ------------------------------------------------- -->
+    <!-- TODO: min per tutti-->
+    <link href="css/jqm-icon-pack-fa.css" rel="stylesheet" />
+    <link href="css/jquery.mobile-1.4.5.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css_custom/custom.css" rel="stylesheet" />
+    <link href="css/jw-jqm-cal.css" rel="stylesheet" />
+    <link href="css/smart_wizard.css" rel="stylesheet" />
+    <link href="css/jquery.jqplot.css" rel="stylesheet" />
+    <link href="css/jquery-mobile-datepicker-wrapper-master/jquery.mobile.datepicker.css" rel="stylesheet" />
+    <link href="css/jquery-mobile-datepicker-wrapper-master/jquery.mobile.datepicker.theme.css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <!-- ------------------------------------------------- Home Page ------------------------------------------------- -->
+    <div id="homePage" data-role="page" class="ui-responsive-panel">
+
+      <!-- Sidebar -->
+      <div id="divSideBar">
+      </div>
+
+      <!-- Header -->
+      <div id="pageHeader">
+      </div>
+
+      <!--Content-->
+      <div id="pageContent" data-role="content" class="scrollable"> <!-- NB Deve essere cosi -->
+      </div>
+
+      <!-- Footer -->
+      <div id="pageFooter">
+      </div>
+
+      <!--Popup-->
+      <div data-role='popup' id='popupActions' data-transition='pop' data-dismissible="false">
+        <form id="frmActionsPopup"></form>
+      </div>
+
+    </div>
+
+    <!-- ------------------------------------------------- Dialog Page ------------------------------------------------- -->
+    <div id="dialogPage1" data-role="dialog" data-close-btn="none">
+    </div>
+
+    <div id="dialogPage2" data-role="dialog" data-close-btn="none">
+    </div>
+
+    <div id="dialogPage3" data-role="dialog" data-close-btn="none">
+    </div>
+
+    <div id="dialogPage4" data-role="dialog" data-close-btn="none">
+    </div>
+
+    <div id="dialogPage5" data-role="dialog" data-close-btn="none">
+    </div>
+
+    <!-- ------------------------------------------------- JS ------------------------------------------------- -->
+    <!-- TODO: min per tutti-->
+    <script src="cordova.js"></script>
+
+    <script src="scripts/system/platformOverrides.js"></script>
+    <!-- <script src="scripts/system/jquery-1.11.3.js"></script> -->
+    <script src="scripts/system/jquery-2.1.4.min.js"></script>
+  	<script src="scripts/system/jquery.mobile-1.4.5.js"></script>
+    <script src="scripts/jquery-mobile-datepicker-wrapper-master/external/jquery-ui/datepicker.js"></script>
+    <script src="scripts/jquery-mobile-datepicker-wrapper-master/jquery.mobile.datepicker.js"></script>
+    <script src="scripts/jquery-mobile-datepicker-wrapper-master/external/jquery-ui/jquery.ui.datepicker-it.js"></script>
+    <script src="scripts/system/moment.min.js"></script>
+    <script src="scripts/system/es6-promise.min.js"></script>
+    <script src="scripts/system/es6-promise.auto.min.js"></script>
+
+    <!-- <script src="scripts/app/index.js"></script>
+    <script src="scripts/app/app.js"></script>
+    <script src="scripts/app/data.js"></script>
+    <script src="scripts/app/utl.js"></script>
+    <script src="scripts/app/plugin.js"></script>
+    <script src="scripts/app/ws.js"></script>
+    <script src="scripts/app/rws.js"></script> -->
+    <script src="scripts/plugin/axios-plugin.js"></script>
+    <script src="data/localize.js"></script>
+    <script src="data_custom/localize.js"></script>
+    <script src="data/navbars.js"></script>
+    <script src="data_custom/warningMessages.js"></script>
+    <script src="data/notificationActions.js"></script>
+
+    <script src="dist/main.min.js"></script>
+
+    <script src="scripts/plugin/underscore-min.js"></script>
+    <script src="scripts/plugin/jquery.validate.min.js"></script>
+    <script src="scripts/plugin/jw-jqm-cal.js"></script>
+    <script src="scripts/plugin/jquery.smartWizard.js"></script>
+
+    <script src="scripts/plugin/jquery.jqplot.js"></script>
+    <!--<script src="scripts/plugin/jqplot.logAxisRenderer.js"></script>--> <!--Assi con inclinazioni-->
+    <script src="scripts/plugin/jqplot.canvasTextRenderer.js"></script>
+    <!--<script src="scripts/plugin/jqplot.canvasAxisLabelRenderer.js"></script>--> <!--Label-->
+    <!--<script src="scripts/plugin/jqplot.canvasAxisTickRenderer.js"></script>--> <!--Tick-->
+    <script src="scripts/plugin/jqplot.canvasOverlay.js"></script>
+    <!--<script src="scripts/plugin/jqplot.dateAxisRenderer.js"></script>--> <!--Assi con Date-->
+    <script src="scripts/plugin/jqplot.categoryAxisRenderer.js"></script>
+    <script src="scripts/plugin/jqplot.barRenderer.js"></script> <!--Istogrammi-->
+    <script src="scripts/plugin/jqplot.pointLabels.js"></script>
+
+    <script src="scripts/msc/sha.js"></script>
+    <script src="scripts/msc/md5.js"></script>
+    
+    <div class="customersActionsBackground axios-theme" style="display: none;"></div>
+  </body>
+
+</html>

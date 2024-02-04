@@ -1,0 +1,1443 @@
+{
+  "navbar": [
+    {
+      "id": "dashboard",
+      "title": "ESCUELA DIGITAL",
+      "sidebar": [
+		{
+          "id": "liStudente",
+          "title": "Studente",
+          "subTitle": "Nome Studente"
+        },
+        {
+          "id": "liVoti",
+          "title": "Voti",
+          "subTitle": "Valutazioni"
+        },
+        {
+          "id": "liAssenze",
+          "title": "Assenze",
+          "subTitle": "Gestione Assenze"
+        },
+        {
+          "id": "liNote",
+          "title": "Note",
+          "subTitle": "Provvedimenti disciplinari"
+        },
+        {
+          "id": "liCompiti",
+          "title": "Compiti (RE/Collabora)",
+          "subTitle": "Compiti Assegnati"
+        },
+        {
+          "id": "liArgomenti",
+          "title": "Lezioni (RE/Collabora)",
+          "subTitle": "Argomenti Lezioni"
+        },
+        {
+          "id": "liOrario",
+          "title": "Orario",
+          "subTitle": "Orario Lezioni"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liColloqui",
+          "title": "Colloqui",
+          "subTitle": "Docenti-Familiari"
+        },
+        {
+          "id": "liAutorizzazioni",
+          "title": "Autorizzazioni",
+          "subTitle": "Autorizzazioni Scolastiche"
+        },
+        {
+          "id": "liMaterialeDidattico",
+          "title": "Materiale Didattico",
+          "subTitle": "Materiale Didattico"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liPagella",
+          "title": "Pagella",
+          "subTitle": "Pagella"
+        },
+        {
+          "id": "liCurriculum",
+          "title": "Curriculum",
+          "subTitle": "Curriculum Scolastico"
+        },
+        {
+          "id": "liMessaggi",
+          "title": "Mensajes",
+          "subTitle": "Gestión del correo"
+        },
+        {
+          "id": "liCalendario",
+          "title": "Calendario",
+          "subTitle": "Gestión de eventos"
+        },
+        {
+          "id": "liNotifiche",
+          "title": "Notificaciones",
+          "subTitle": "Gestión de notificaciones"
+        },
+        {
+          "id": "liSynchro",
+          "title": "Sincronizaciones",
+          "subTitle": "Gestión de sincronización"
+        },
+        {
+          "id": "liUserProfile",
+          "title": "Usuario",
+          "subTitle": "Perfil y opciones"
+        },
+        {
+          "id": "liSupport",
+          "title": "Asistencia",
+          "subTitle": "Apoyo y asistencia"
+        },
+        {
+          "id": "liInfo",
+          "title": "Información",
+          "subTitle": "Datos en el dispositivo"
+        }
+      ]
+    }
+  ],
+
+
+  "forms": [
+    {
+      "id": "APP",
+
+      "items": [
+        {
+          "id": "btnBack",
+          "title": "Volver a la página anterior",
+          "html": "&#10094; Menu"
+        },
+        {
+          "id": "btnApply",
+          "title": "Aplicar los cambios",
+          "html": "Aplicar"
+        },
+        {
+          "id": "btnExit",
+          "title": "Salir de APP",
+          "html": "Esci"
+        },
+        {
+          "id": "UTLLoadigWait",
+          "text": "Esperar..."
+        },
+        {
+          "id": "UTLDateFrom",
+          "text": "Desde "
+        },
+        {
+          "id": "UTLDateTo",
+          "text": " Hasta "
+        },
+        {
+          "id": "UTLDateHours",
+          "text": " Horas "
+        },
+        {
+          "id": "UTLDateHoursFrom",
+          "text": " Desde las "
+        },
+        {
+          "id": "UTLDateHoursTo",
+          "text": " Hasta las "
+        },
+        {
+          "id": "UPDLoadingWait",
+          "text": "Comprobación de actualización en curso, espere..."
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Precaución",
+          "text": "La batería es al límite crítico, a partir de ahora es posible trabajar solo offline. (si la APP lo prevé). De todos modos guarda cualquier cambio de datos y conecta el dispositivo a un cargador. Nivel actual: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Precaución",
+          "text": "El dispositivo està en carga, ahora ya puedes trabajar otra vez en línea. Nivel actual: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Precaución",
+          "text": "La batería se está agotando. Guarda todos los datos modificados y conecta el dispositivo al cargador. Nivel actual: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg4",
+          "title": "Precaución",
+          "text": "El dispositivo está desconectado, de todas formas la APP ofrece la oportunidad de trabajar offline",
+          "buttons": "Salir, Continúa"
+        },
+        {
+          "id": "msg5",
+          "title": "Precaución",
+          "text": "El dispositivo está desconectado, la APP no offrece la posibilidad de trabajar offline",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg6",
+          "title": "Precaución",
+          "text": "El servidor no responde, podría ser un problema temporal lo intente más tarde. O, si previamente ha realizado por lo menos un acceso en línea, puedes trabajar sin conexión.",
+          "buttons": "Salir, Continúa"  
+        },
+        {
+          "id": "msg7",
+          "title": "Precaución",
+          "text": "La APP no ha sido inicializada, antes de trabajar sin conexión, hacer por lo menos una conexión en línea.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg8",
+          "title": "Información",
+          "text": "Hay datos que se han cambiado en esta página. Seleccionando 'Si' se anularán los cambios realizados, de lo contrario seleccione 'No', guardar los datos modificados (Aplicar) y volver a intentarlo.",
+          "buttons": "Si,No"
+        },
+        {
+          "id": "msg9",
+          "title": "Información",
+          "text": "Hay datos que se han cambiado, quieres salir sin guardar los cambios?",
+          "buttons": "Si,No"
+        },
+        {
+          "id": "msg10",
+          "title": "Precaución",
+          "text": "El servidor no responde, podría ser un problema temporal vuelve a intentarlo más tarde",
+          "buttons": "OK"  
+        },
+        {
+          "id": "msg11",
+          "title": "Precaución",
+          "text": "Se ha producido un error durante la actualización, salir y volver a abrir la aplicación.\nCódigo de error: {0} durante la Fase: {1}.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg12",
+          "title": "Precaución",
+          "text": "Debe realizar una actualización, ir a la tienda de referencia y descargar la nueva versión de la aplicación.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg13",
+          "title": "Precaución",
+          "text": "Estamos llevando a cabo una actualización que tomará alrededor de {0} hora/s.\nPor favor, espere hasta que el período indicado y luego intente de nuevo para abrir la aplicación.\nSe sentimos por cualquier inconveniente.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg14",
+          "title": "Precaución",
+          "text": "{0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg15",
+          "title": "Precaución",
+          "text": "Confermi uscita dall'APP?",
+          "buttons": "Si,No"
+        },
+        {
+          "id": "msg16",
+          "title": "Precaución",
+          "text": "El servidor no responde. Puede haber un error o el servidor puede estar demasiado ocupado.\nPor favor, intente nuevamente en unos segundos.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg1",
+          "title": "Error",
+          "text": "Se produjo un error",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg2",
+          "title": "Info",
+          "text": "{0} grados desde el Norte",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg3",
+          "title": "Error",
+          "text": "Detección de dirección no soportado",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg4",
+          "title": "Error",
+          "text": "Error interno del detector de dirección",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg5",
+          "title": "Info",
+          "text": "Error {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg6",
+          "text": "La aplicación no está autorizada a la adquisición de la posición actual"
+        },
+        {
+          "id": "PImsg7",
+          "text": "No está disponible la busqueda de la posición actual"
+        },
+        {
+          "id": "PImsg8",
+          "text": "No fue posible detectar la posición actual (tiempo límite), compruebe si el dispositivo está habilitado para conocer su ubicación actual."
+        },
+        {
+          "id": "PImsg9",
+          "text": "Error indefinido"
+        },
+        {
+          "id": "PImsg10",
+          "title": "Info",
+          "text": "Scanning abortado por el usuario.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg11",
+          "title": "Error",
+          "text": "Error en el Análisis. Errore: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg12",
+          "title": "Error",
+          "text": "Error reportado: {0} - Mensaje: Archivo no encontrado",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg13",
+          "title": "Error",
+          "text": "Error reportado: {0} - Mensaje: Error indefinido",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg14",
+          "title": "Error",
+          "text": "Este plugin no está disponible en el simulador.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg15",
+          "title": "Error",
+          "text": "Se produjo un error al copiar el archivo.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg16",
+          "title": "Error",
+          "text": "Se produjo un error durante la manipulación de una notificación Push: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg17",
+          "title": "Error",
+          "text": "se producìo un error, el servidor de Axios no pudo encontrar el identificador de notificaciones Push: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg18",
+          "title": "Notificación enviada por el servidor",
+          "text": "Atención se ha recibido una notificación de: {0} inherente:\n '{1}'.\nPara visualizarla es necesario efectuar el login a: {0}.\nPulse 'Continuar' para el login.\nSi pulsa 'Cancelar' no será posible ver la notificación.",
+          "buttons": "Continuar, Cancelar"
+        }
+      ]
+    },
+
+    {
+      "id": "PUSH",
+
+      "items": [
+      ],
+
+      "messages": [
+        {
+          "id": "msg0",
+          "title": "",
+          "text": "{0}",
+          "buttons": "Cierre"
+        },
+        {
+          "id": "msg1",
+          "title": "Precaución",
+          "text": "El estudiante Rossi Mario está ausente en la primera hora. Por otras información o para justificar la ausencia seleccione 'continuar'.",
+          "buttons": "Continuar, Cancelar"
+        },
+        {
+          "id": "msg2",
+          "title": "Precaución",
+          "text": "Te lo dico Sorcio Secco sei quasi licenziato.",
+          "buttons": "OK"  
+        }
+
+      ]
+    },
+
+
+    {
+      "id": "Login",
+      "items": [
+        {
+          "id": "btnDialogTrouble",
+          "title": "",
+          "html": "Guida"
+        },
+        {
+          "id": "btnDialogLogin",
+          "title": "",
+          "html": "Login"
+        },
+        {
+          "id": "h2",
+          "title": "",
+          "html": "Login"
+        },
+        {
+          "id": "lblHelp",
+          "title": "",
+          "html1": "Introduzca el código fiscal {0} nuev{1} {2} no presente en la lista",
+          "html2": "Seleccione {0} {1} {2} o añadir el código fiscal de {3} nuev{4} {5} no presente en la lista pulsando el botón (+)"
+        },
+        {
+          "id": "lblCustomer",
+          "title": "",
+          "html": "Seleccione {0} {1} {2}"
+        },
+        {
+          "id": "warningCustomer",
+          "title": "",
+          "html": "Attenzione: stai per aggiungere una nuova scuola. Effettua il login per confermare il salvataggio."
+        },
+        {
+          "id": "btnDialogToggle",
+          "title": "Añadir el código fiscal de {0} nuev{1} {2} no presente en la lista",
+          "html": ""
+        },
+        {
+          "id": "lgdAddCustomer",
+          "title": "",
+          "html": "Código fiscal {0}"
+        },
+        {
+          "id": "selCustomer",
+          "title": "Seleccione el elemento que te interesa",
+          "html": ""
+        },
+        {
+          "id": "txtCustomer",
+          "title": "Código fiscal",
+          "html": ""
+        },
+        {
+          "id": "txtUser",
+          "title": "Introduzca su código de usuario",
+          "html": ""
+        },
+        {
+          "id": "txtPassword",
+          "title": "Introduzca su Contraseña",
+          "html": ""
+        },
+        {
+          "id": "lblUser",
+          "title": "",
+          "html": "Correo electronico o código de usuario"
+        },
+        {
+          "id": "lblPassword",
+          "title": "",
+          "html": "Contraseña"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Información",
+          "text": "Esta operación es posible solo si el dispositivo està conectado.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Información",
+          "text": "Si no consigues acceder controla la digitación correcta en mayúscula/minúsculas de tus credenciales.\nSi has olvidado tu contraseña o deseas cambiarla Presiona 'Contraseña'.",
+          "buttons": "OK,Contraseña"
+        },
+        {
+          "id": "msg3",
+          "title": "Precaución",
+          "text": "El primer acceso de un nuevo usuario debe ser llevado a cabo con el dispositivo en línea, compruebe su conexión y vuelva a intentarlo.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg4",
+          "title": "Error",
+          "text": "Error interno. Código de error = 666. Salida forzada por la aplicación.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg5",
+          "title": "Error",
+          "text": "Ha sido detectada una inconsistencia de los datos debido a una salida incorrecta de la aplicación. Es necesario ejecutar un reajuste con los datos presentes en el servidor cloud, que debe ser llevado a cabo con el dispositivo en línea, compruebe su conexión y vuelva a intentarlo.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg6",
+          "title": "Acceso denegado",
+          "text": "Compruebe ID de usuario y / o contraseña y vuelva a intentarlo.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg7",
+          "title": "Solicitud de consentimiento",
+          "text": "Para ayudarle en su búsqueda {0} {1} {2} Necesito saber su ubicación, permitir?",
+          "buttons": "Si,No"
+        },
+        {
+          "id": "msg8",
+          "title": "Accesso negato",
+          "text": "Para entrar la autenticacion debe ser efectuada en: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg9",
+          "title": "Acceso denegado",
+          "text": "Se ha producido un error durante Login: {0}",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+
+    {
+      "id": "LoginInfo",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Vuelve a la página anterior",
+          "html": "\u276e Login"
+        },
+        {
+          "id": "swButtons",
+          "title": "",
+          "htmlprev": "Anterior",
+          "htmlnext": "Siguiente",
+          "htmlfinish": "Final"
+        },
+        {
+          "id": "swStep1",
+          "htmlnumber": "1",
+          "htmldesc": "Fase 1<br /><small>Acceso</small>"
+        },
+        {
+          "id": "swStepContent1",
+          "htmltitle": "Acceso",
+          "htmlcontent": "connectarse a la pagina web de axiositalia.com y pulse 'Acceso'."
+        },
+        {
+          "id": "swStep2",
+          "htmlnumber": "2",
+          "htmldesc": "Fase 2<br /><small>Acceso</small>"
+        },
+        {
+          "id": "swStepContent2",
+          "htmltitle": "Login",
+          "htmlcontent": "Si ha olvidado tu contraseña, introduzca su ID de usuario y pulse 'aqui', o si desea cambiar su contraseña, efectue el login al sistema y continue con las fases 3 e 4."
+        },
+        {
+          "id": "swStep3",
+          "htmlnumber": "3",
+          "htmldesc": "Fase 3<br /><small>Perfil de usuario</small>"
+        },
+        {
+          "id": "swStepContent3",
+          "htmltitle": "Perfil de usuario",
+          "htmlcontent": "Pulse en el Avatar del usuario y seleccione 'Perfil'."
+        },
+        {
+          "id": "swStep4",
+          "htmlnumber": "4",
+          "htmldesc": "Fase 4<br /><small>Cambiar Contraseña</small>"
+        },
+        {
+          "id": "swStepContent4",
+          "htmltitle": "Cambiar Contraseña",
+          "htmlcontent": "Seleccione 'Cambiar contraseña' y introduzca los datos solicitados, Cuando ha terminado pulse 'Guardar'."
+        }
+      ],
+
+      "messages": [
+      ]
+    },
+
+
+    {
+      "id": "Geolocalcustomer",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "A Resumen",
+          "html": "\u276e"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Aplicar los cambios",
+          "html": "Aplicar"
+        },
+        {
+          "id": "h2",
+          "title": "",
+          "html": "Búsqueda con Geo-localización"
+        },
+        {
+          "id": "lblSearch",
+          "title": "",
+          "html": "La búsqueda (si está permitido) con geo-localización està basado en el CÓDIGO POSTAL de su ubicación,el CÓDIGO POSTAL puede ser modificado para realizar una nueva búsqueda o en el caso de que el còdigo postal propuesto en automático no proporcione resultados."
+        },
+        {
+          "id": "lblCAP",
+          "title": "",
+          "html": "Código postal deseado"
+        },
+        {
+          "id": "txtCAP",
+          "title": "Escriba el CÓDIGO POSTAL deseado",
+          "html": ""
+        },
+        {
+          "id": "ulCustomer",
+          "placeholder1": "No he encontrado {0} en su proximidades (Código postal) ingrese el Código Tributario {1} {2} {3}...",
+          "placeholder2": "No he encontrado{0} {1} alrededor de (Código postal), escriba parte del nombre o ingrese el Código Tributario {2} {3} {4}...",
+          "placeholder3": "No he encontrado{0} {1} {2} alrededor de (Código postal), escriba parte del nombre o introduzca el Código Tributario {3} {4} {5}..."
+        },
+        {
+          "id": "lgdAddCustomer",
+          "title": "",
+          "html": "Seleccionar {0} {1} que se añadirá"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "text": "Geo localización en marcha..."
+        },
+        {
+          "id": "msg2",
+          "title": "Precaución",
+          "text": "El Código Tributario introducido manualmente debe constar de 11 caracteres numéricos.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Error",
+          "text": "Código de error: {0} - Mensaje de error: {1}",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "Dashboard",
+
+      "items": [
+        {
+          "id": "noEvents",
+          "html": "No hay actividades programadas para hoy."
+        },
+        {
+          "id": "today",
+          "html": "Hacer hoy:"
+        }
+      ],
+
+      "messages": [
+      ]
+
+    },
+
+    
+    {
+      "id": "Message",
+
+      "items": [
+        {
+          "id": "ulMsgEvent",
+          "placeholder1": "Escriba algún texto para buscar...",
+          "placeholder2": "Ningún elemento"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Interna",
+          "html2": "Externo"
+        },
+        {
+          "id": "from",
+          "html": "De:"
+        },
+        {
+          "id": "when REMOVE:",
+          "html": "recibido en"
+        },
+        {
+          "id": "to",
+          "html": "A:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Objeto:"
+        }
+      ]
+    },
+
+    {
+      "id": "MessageRead",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Volver a la página anterior",
+          "html": "\u276e  Mensajes"
+        },
+        {
+          "id": "btnDialogOther",
+          "title": "Otras opciones de",
+          "html": "Altro"
+        },
+        {
+          "id": "btnDialogReply",
+          "title": "Responder al mensaje",
+          "html": "Responder"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Interna",
+          "html2": "Externo"
+        },
+        {
+          "id": "h2",
+          "html": "Mensaje"
+        },
+        {
+          "id": "from",
+          "html": "De:"
+        },
+        {
+          "id": "when",
+          "html": "recibido en"
+        },
+        {
+          "id": "to",
+          "html": "A:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Objeto:"
+        },
+        {
+          "id": "popupToggleReaded",
+          "html1": "Marcar como no leído",
+          "html2": "Marcar como leído"
+        },
+        {
+          "id": "popupDelete",
+          "html": "Eliminar mensaje"
+        },
+        {
+          "id": "popupReplyAll",
+          "html": "Responder a todos"
+        },
+        {
+          "id": "popupForward",
+          "html": "Remite"
+        },
+        {
+          "id": "popupExit",
+          "html": "Cerrar"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Precaución",
+          "text": "Confirmar la eliminación?",
+          "buttons": "Si,No"
+        }
+      ]
+
+    },
+
+    {
+      "id": "MessageReply",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Volver a la página anterior",
+          "html": "\u276e Cancelar"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Enviar mensaje",
+          "html": "Enviar"
+        },
+        {
+          "id": "h2",
+          "html": "Escribir un mensaje"
+        },
+        {
+          "id": "from",
+          "html": "De:"
+        },
+        {
+          "id": "when",
+          "html": "recibido en"
+        },
+        {
+          "id": "to",
+          "html": "A:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Objeto:"
+        },
+        {
+          "id": "validateEmails",
+          "text": "Por lo menos una de las direcciones de correo electrónico especificada no es válida"
+        },
+        {
+          "id": "validateEmpty",
+          "html": "Por lo menos una de las direcciones de correo electrónico especificada no es válida o está vacìa"
+        }
+      ]
+    },
+
+
+    {
+      "id": "Calendar",
+
+      "items": [
+        {
+          "id": "title",
+          "subTitle": "Listados de eventos"
+        },
+        {
+          "id": "ulCalEvent",
+          "placeholder1": "Escriba algún texto para buscar...",
+          "placeholder2": "Ningún elemento"
+        },
+        {
+          "id": "backColor",
+          "html1": "Axios",
+          "html2": "Google",
+          "html3": "Google Usuario",
+          "html4": "Días festivos",
+          "html5": "SD Usuario",
+          "html6": "SD Usuario",
+          "html7": "SD Usuario"
+        }
+      ]
+    },
+
+    {
+      "id": "CalendarMese",
+
+      "items": [
+        {
+          "id": "title",
+          "subTitle": "Gestión de eventos"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "El servidor no responde, asegúrese de que el dispositivo esté conectado. Error {0}",
+          "text": "",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Esta operación es posible solo con el dispositivo conectado",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "CalendarEvent",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Volver a la página anterior",
+          "html": "\u276e Cancelar"
+        },
+        {
+          "id": "btnDialogDelete",
+          "title": "Eliminar Evento",
+          "html": "Eliminar"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Aplicar los cambios",
+          "html": "Aplicar"
+        },
+        {
+          "id": "h2",
+          "html": "Calendario de eventos"
+        },
+        {
+          "id": "lblTitoloPubl",
+          "html": "Título público:"
+        },
+        {
+          "id": "lblTitoloPriv",
+          "html": "Título privada:"
+        },
+        {
+          "id": "lgdAllDay",
+          "html": "Todo el día:"
+        },
+        {
+          "id": "lblFrom",
+          "html": "Desde:"
+        },
+        {
+          "id": "lblTo",
+          "html": "A:"
+        },
+        {
+          "id": "lgdRip",
+          "html": "Evento repetido:"
+        },
+        {
+          "id": "lblBadge",
+          "html": "Tipo de calendario:"
+        },
+        {
+          "id": "OptSidebarNo",
+          "title": "",
+          "html": "No"
+        },
+        {
+          "id": "OptSidebarSi",
+          "title": "",
+          "html": "Si"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Actualmente no se pueden eliminar los eventos repetitivos de la aplicación. Acceder, con las mismas credenciales, a la plataforma web y eliminar el evento desde allì.",
+          "text": "Información",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Precaución",
+          "text": "¿Está seguro de que desea eliminar este evento?",
+          "buttons": "Si,No"
+        }
+      ]
+    },
+
+    {
+      "id": "Notify",
+
+      "items": [
+        {
+          "id": "ulNotEvent",
+          "placeholder1": "Escriba algún texto para buscar...",
+          "placeholder2": "Ningún elemento"
+        },
+        {
+          "id": "authorName",
+          "html1": "Usuario",
+          "html2": "Aplicación",
+          "html3": "Sistema de",
+          "html4": "Axios"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Información",
+          "html2": "Acción",
+          "html3": "Advertencia",
+          "html4": "Problema"
+        },
+        {
+          "id": "aEvent",
+          "title": "Pulse para marcar como leído"
+        },
+        {
+          "id": "liNotEventRead",
+          "title": "Flag ya leído"
+        },
+
+        {
+          "id": "from",
+          "html": "De:"
+        },
+        {
+          "id": "when REMOVE:",
+          "html": "recibido en"
+        }
+      ]
+    },
+
+    {
+      "id": "Synchro",
+
+      "items": [
+        {
+          "id": "lblSend",
+          "html": "Listo para el envio"
+        },
+        {
+          "id": "lblSent",
+          "html": "Enviados"
+        },
+        {
+          "id": "lblError",
+          "html": "Con errores"
+        },
+        {
+          "id": "ulEventSend",
+          "html": "Intentos realizados: "
+        },
+        {
+          "id": "ulEventSent",
+          "html": "Intentos realizados: "
+        },
+        {
+          "id": "ulEventError",
+          "html1": "Código de error: ",
+          "html2": "Descripción del error: ",
+          "html3": "Intentos realizados: "
+        },
+        {
+          "id": "badgeText",
+          "html1": "Sistema de",
+          "html2": "Aplicación"
+        }
+      ]
+    },
+
+    {
+      "id": "Support",
+
+      "items": [
+        {
+          "id": "ulSupportEvent",
+          "placeholder1": "Escriba parte del texto para buscar...",
+          "placeholder2": "Ningún elemento"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Abierto",
+          "html2": "Cerrado",
+          "html3": "Vuelve a abrir",
+          "html4": "Toma en cargo"
+        },
+        {
+          "id": "liDelete",
+          "html": "Eliminar"
+        },
+        {
+          "id": "liFlag",
+          "html1": "Selecc.",
+          "html2": "Desmarques."
+        },
+        {
+          "id": "liOther",
+          "html": "Otros"
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Precaución",
+          "text": "¿Confirmar eliminación?",
+          "buttons": "Si,No"
+        },
+        {
+          "id": "msg2",
+          "title": "Precaución",
+          "text": "No se pueden eliminar expedientes cerrados o ya tomados en cargo.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "SupportTicket",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Volver a la página anterior",
+          "html1": "\u276e Apoyo",
+          "html2": "\u276e Ticket"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Enviar",
+          "html": "Enviar"
+        },
+        {
+          "id": "btnDialogReopen",
+          "title": "Abrir el Ticket",
+          "html": "Reabrir"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Abierto",
+          "html2": "Cerrado",
+          "html3": "Reabierto",
+          "html4": "Toma en carga"
+        },
+        {
+          "id": "h2",
+          "html": "Ticket"
+        },
+        {
+          "id": "id",
+          "html1": "Ticket:",
+          "html2": "Expediente de referencia:"
+        },
+        {
+          "id": "date",
+          "html": "Fecha:"
+        },
+        {
+          "id": "userId",
+          "html": "Id de usuario:"
+        },
+        {
+          "id": "customerId",
+          "html": "Id del cliente:"
+        },
+        {
+          "id": "appId",
+          "html": "Aplicación:"
+        },
+        {
+          "id": "appVersion",
+          "html": "Versión:"
+        },
+        {
+          "id": "deviceId",
+          "html": "UUID de Dispositivo:"
+        },
+        {
+          "id": "deviceModel",
+          "html": "Modelo:"
+        },
+        {
+          "id": "deviceOS",
+          "html": "Sistema Operativo:"
+        },
+        {
+          "id": "lblProblem",
+          "html": "Problema:"
+        },
+        {
+          "id": "lblAnswer",
+          "html": "Solución:"
+        },
+        {
+          "id": "lblContact",
+          "html": "Contacto:"
+        },
+        {
+          "id": "lblEmail",
+          "html": "Correo electronico:"
+        },
+        {
+          "id": "lblPhone",
+          "html": "Teléfono:"
+        },
+        {
+          "id": "lgdSatisf",
+          "html": "Si lo desea puede indicar un grado de satisfacción de 0 a 5 donde 0 significa 'no expresado', 1' no bueno ', 5' muy buena'"
+        },
+        {
+          "id": "lblSatisf",
+          "html": "Satisfacción:"
+        },
+        {
+          "id": "lblComment",
+          "html": "Comentario:"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Precaución",
+          "text": "xxxx",
+          "buttons": "Si,No"
+        }
+      ]
+
+    },
+
+    {
+      "id": "Info",
+
+      "items": [
+        {
+          "id": "h2Device",
+          "html": "Dispositivo"
+        },
+        {
+          "id": "h2SO",
+          "html": "Sistema operativo"
+        },
+        {
+          "id": "h2Cordova",
+          "html": "Cordova"
+        },
+        {
+          "id": "h2JQuery",
+          "html": "JQuery"
+        },
+        {
+          "id": "h2JQueryMobile",
+          "html": "JQueryMobile"
+        },
+        {
+          "id": "h2App",
+          "html": "Aplicación"
+        },
+        {
+          "id": "lblmanufacturer",
+          "html": "MARCA "
+        },
+        {
+          "id": "lblModel",
+          "html": "MODELO "
+        },
+        {
+          "id": "lblUUID",
+          "html": "UUID "
+        },
+        {
+          "id": "lblScreen",
+          "html": "PANTALLA (LxA) "
+        },
+        {
+          "id": "lblSOPlatform",
+          "html": "TIPO "
+        },
+        {
+          "id": "lblSOVersion",
+          "html": "VERSIÓN "
+        },
+        {
+          "id": "lblCordovaVersion",
+          "html": "VERSIÓN "
+        },
+        {
+          "id": "lblJQueryVersion",
+          "html": "VERSIÓN "
+        },
+        {
+          "id": "lblJQueryMobileVersion",
+          "html": "VERSIÓN "
+        },
+        {
+          "id": "lblAppName",
+          "html": "NOMBRE "
+        },
+        {
+          "id": "lblAppVersion",
+          "html": "VERSIÓN "
+        }
+
+      ]
+    },
+
+    {
+      "id": "UserProfile",
+
+      "items": [
+        {
+          "id": "btnBack",
+          "title": "Volver a la página anterior",
+          "html": "\u276e"
+        },
+        {
+          "id": "btnApply",
+          "title": "Aplicar los cambios",
+          "html": "Aplicar"
+        },
+        {
+          "id": "lblName",
+          "title": "",
+          "html": "Apellido y nombre:"
+        },
+        {
+          "id": "h3Options",
+          "title": "",
+          "html": "Opciones de perfil"
+        },
+        {
+          "id": "lgdThemes",
+          "title": "",
+          "html": "Colores del tema:"
+        },
+        {
+          "id": "lblThemeA",
+          "title": "",
+          "html": "Estándar clara"
+        },
+        {
+          "id": "lblThemeB",
+          "title": "",
+          "html": "Norma oscura"
+        },
+        {
+          "id": "lblThemeC",
+          "title": "",
+          "html": "Verde Axios"
+        },
+        {
+          "id": "lblThemeD",
+          "title": "",
+          "html": "Azul Escuela Digital"
+        },
+        {
+          "id": "lgdSidebarPosition",
+          "title": "",
+          "html": "Posición del menú:"
+        },
+        {
+          "id": "lblsSidebarPositionLeft",
+          "title": "",
+          "html": "Izquierda"
+        },
+        {
+          "id": "lblsSidebarPositionRight",
+          "title": "",
+          "html": "Derecho"
+        },
+        {
+          "id": "lgdSidebarDisplay",
+          "title": "",
+          "html": "Tipo de abertura menú:"
+        },
+        {
+          "id": "lblsSidebarDisplayReveal",
+          "title": "",
+          "html": "Revelado"
+        },
+        {
+          "id": "lblsSidebarDisplayOverlay",
+          "title": "",
+          "html": "Sobrepuesto"
+        },
+        {
+          "id": "lgdSidebarAutoOpen",
+          "title": "",
+          "html": "Abertura automática del menù:"
+        },
+        {
+          "id": "OptSidebarNo",
+          "title": "",
+          "html": "No"
+        },
+        {
+          "id": "OptSidebarSi",
+          "title": "",
+          "html": "Si"
+        },
+        {
+          "id": "lgdimgEvent",
+          "title": "",
+          "html": "Imágenes del evento:"
+        },
+        {
+          "id": "lgdallowGEO",
+          "title": "",
+          "html": "Permitir Geo Localización:"
+        },
+        {
+          "id": "lgdallowCamera",
+          "title": "",
+          "html": "Permitir el uso de la cámara:"
+        },
+        {
+          "id": "lgdEventEvery",
+          "title": "",
+          "html": "Sincronizar eventos cada:"
+        },
+        {
+          "id": "lblEventNever",
+          "title": "",
+          "html": "Nunca"
+        },
+        {
+          "id": "lblEvent10",
+          "title": "",
+          "html": "10 minutos"
+        },
+        {
+          "id": "lblEvent30",
+          "title": "",
+          "html": "30 minutos"
+        },
+        {
+          "id": "lblEvent60",
+          "title": "",
+          "html": "60 minutos"
+        }
+
+      ],
+
+      "messages": [
+      ]
+    }
+
+  ]
+
+}

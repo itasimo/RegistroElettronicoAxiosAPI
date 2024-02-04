@@ -1,0 +1,228 @@
+[
+  {
+    "idAlunno": "0001",
+    "orario": [
+      {
+        "giorno": "G1",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "ITALIANO",
+            "descDoc": "Rossi Mario"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "ITALIANO",
+            "descDoc": "Rossi Mario"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "SCIENZE",
+            "descDoc": "Pitagorico Archimede"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "MATEMATICA",
+            "descDoc": "De Curlis Francesca"
+          },
+          {
+            "ora": "4",
+            "da": "12:30",
+            "a": "13:30",
+            "descMat": "ED. FISICA",
+            "descDoc": "Verdi Antonio"
+          }
+        ]
+      },
+      {
+        "giorno": "G2",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "MATEMATICA",
+            "descDoc": "De Curlis Francesca"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "MATEMATICA",
+            "descDoc": "De Curlis Francesca"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "LATINO",
+            "descDoc": "Curiazi Orazio"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "ED. FISICA",
+            "descDoc": "Verdi Antonio"
+          }
+        ]
+      },
+      {
+        "giorno": "G3",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "LATINO",
+            "descDoc": "Curiazi Orazio"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "STORIA",
+            "descDoc": "De Paperis Arnoldo"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "STORIA",
+            "descDoc": "De Paperis Arnoldo"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "SCIENZE",
+            "descDoc": "Pitagorico Archimede"
+          },
+          {
+            "ora": "5",
+            "da": "12:30",
+            "a": "13:30",
+            "descMat": "SCIENZE",
+            "descDoc": "Pitagorico Archimede"
+          },
+          {
+            "ora": "6",
+            "da": "13:30",
+            "a": "14:30",
+            "descMat": "GEOGRAFIA",
+            "descDoc": "Mappa Giacomo"
+          }
+
+        ]
+      },
+      {
+        "giorno": "G4",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "ITALIANO",
+            "descDoc": "Rossi Mario"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "STORIA",
+            "descDoc": "De Paperis Arnoldo"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "MATEMATICA",
+            "descDoc": "De Curlis Francesca"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "CHIMICA",
+            "descDoc": "Intruglis Alberto"
+          }
+        ]
+      },
+      {
+        "giorno": "G5",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "LATINO",
+            "descDoc": "Curiazi Orazio"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "LATINO",
+            "descDoc": "Curiazi Orazio"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "CHIMICA",
+            "descDoc": "Intruglis Alberto"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "ED. FISICA",
+            "descDoc": "Verdi Antonio"
+          }
+        ]
+      },
+      {
+        "giorno": "G6",
+        "materie": [
+          {
+            "ora": "1",
+            "da": "8:30",
+            "a": "9:30",
+            "descMat": "ITALIANO",
+            "descDoc": "Rossi Mario"
+          },
+          {
+            "ora": "2",
+            "da": "9:30",
+            "a": "10:30",
+            "descMat": "ITALIANO",
+            "descDoc": "Rossi Mario"
+          },
+          {
+            "ora": "3",
+            "da": "10:30",
+            "a": "11:30",
+            "descMat": "GEOGRAFIA",
+            "descDoc": "Mappa Giacomo"
+          },
+          {
+            "ora": "4",
+            "da": "11:30",
+            "a": "12:30",
+            "descMat": "FILOSOFIA",
+            "descDoc": "Kant Eva"
+          }
+        ]
+      }
+
+    ]
+  }
+]

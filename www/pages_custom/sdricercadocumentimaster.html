@@ -1,0 +1,72 @@
+<div id="inputContainer">
+    <form>
+        <label for="inputRicercaLibera">Ricerca libera</label>
+        <input type="text" name="inputRicercaLibera" id="inputRicercaLibera" value="">
+        <fieldset data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <legend>Filtro data</legend>
+            <label for="selAnno">Anno</label>
+            <select name="selAnno" id="selAnno">
+            </select>
+            <div class="rigaData">
+                <div>
+                    <label for="inputDataInizio">Data inizio</label>
+                    <input id="inputDataInizio" type="date" data-role="date">
+                </div>
+                <div>
+                    <label for="inputDataFine">Data Fine</label>
+                    <input id="inputDataFine" type="date" data-role="date">
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <legend>Filtro protocollo</legend>
+            <label for="selTitolario">Titolario</label>
+            <select name="selTitolario" id="selTitolario">
+            </select>
+            <label for="selTipoProtocollo">Tipo protocollo</label>
+            <select name="selTipoProtocollo" id="selTipoProtocollo">
+            </select>
+            <label for="inputNumeroProtocollo">Numero prot.</label>
+            <input type="text" name="inputNumeroProtocollo" id="inputNumeroProtocollo" value="">
+        </fieldset>
+
+        <fieldset data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <legend>Filtro documento</legend>
+            <label for="selTipoDocumento">Tipo documento</label>
+            <select name="selTipoDocumento" id="selTipoDocumento">
+            </select>
+            <label for="selStatoDocumento">Stato documento</label>
+            <select name="selStatoDocumento" id="selStatoDocumento">
+            </select>
+            <label for="selDocDaFirmare">Documento firmato?</label>
+            <select name="selDocDaFirmare" id="selDocDaFirmare">
+            </select>
+            <label for="inputIdDocumento">ID documento</label>
+            <input type="text" name="inputIdDocumento" id="inputIdDocumento" value="">
+        </fieldset>
+
+        <fieldset data-role="collapsible" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+            <legend>Filtro anagrafica</legend>
+            <label for="selArchivio">Archivio</label>
+            <select name="selArchivio" id="selArchivio">
+            </select>
+            <label for="selTipoAnagrafica">Tipo anagrafica</label>
+            <select name="selTipoAnagrafica" id="selTipoAnagrafica">
+            </select>
+            <label for="inputNome">Nome</label>
+            <div class="ricercaAnagraficaRow">
+                <div class="inputNomeContainer">
+                    <input type="text" name="inputNome" id="inputNome" class="inputNome" value="" placeholder="Minimo 3 caratteri">
+                </div>
+                <div class="searchDeleteAnagraficaContainer">                    
+                    <button type="button" class="searchAnagraficaBtn ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-b ui-btn-icon-notext"></button>
+                    <button type="button" class="deleteAnagraficaBtn ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-b ui-btn-icon-notext"></button>
+                </div>
+            </div>
+            <input type="hidden" id="idAnagraficaSelezionata">
+            </select>
+        </fieldset>
+    </form>
+    <button class="searchDocumentiBtn"></button>
+</div>

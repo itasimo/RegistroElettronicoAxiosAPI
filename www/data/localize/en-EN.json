@@ -1,0 +1,1443 @@
+{
+  "navbar": [
+    {
+      "id": "dashboard",
+      "title": "DASHBOARD",
+      "sidebar": [
+		{
+          "id": "liStudente",
+          "title": "Studente",
+          "subTitle": "Nome Studente"
+        },
+        {
+          "id": "liVoti",
+          "title": "Voti",
+          "subTitle": "Valutazioni"
+        },
+        {
+          "id": "liAssenze",
+          "title": "Assenze",
+          "subTitle": "Gestione Assenze"
+        },
+        {
+          "id": "liNote",
+          "title": "Note",
+          "subTitle": "Provvedimenti disciplinari"
+        },
+        {
+          "id": "liCompiti",
+          "title": "Compiti (RE/Collabora)",
+          "subTitle": "Compiti Assegnati"
+        },
+        {
+          "id": "liArgomenti",
+          "title": "Lezioni (RE/Collabora)",
+          "subTitle": "Argomenti Lezioni"
+        },
+        {
+          "id": "liOrario",
+          "title": "Orario",
+          "subTitle": "Orario Lezioni"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liColloqui",
+          "title": "Colloqui",
+          "subTitle": "Docenti-Familiari"
+        },
+        {
+          "id": "liAutorizzazioni",
+          "title": "Autorizzazioni",
+          "subTitle": "Autorizzazioni Scolastiche"
+        },
+        {
+          "id": "liMaterialeDidattico",
+          "title": "Materiale Didattico",
+          "subTitle": "Materiale Didattico"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liPagella",
+          "title": "Pagella",
+          "subTitle": "Pagella"
+        },
+        {
+          "id": "liCurriculum",
+          "title": "Curriculum",
+          "subTitle": "Curriculum Scolastico"
+        },
+        {
+          "id": "liMessaggi",
+          "title": "Messages",
+          "subTitle": "Mails management"
+        },
+        {
+          "id": "liCalendario",
+          "title": "Calendar",
+          "subTitle": "Events management"
+        },
+        {
+          "id": "liNotifiche",
+          "title": "Notifications",
+          "subTitle": "Notifications management"
+        },
+        {
+          "id": "liSynchro",
+          "title": "Synchronizations",
+          "subTitle": "Synchronizations management"
+        },
+        {
+          "id": "liUserProfile",
+          "title": "User",
+          "subTitle": "Profile and customizations"
+        },
+        {
+          "id": "liSupport",
+          "title": "Support",
+          "subTitle": "Support and Assistance"
+        },
+        {
+          "id": "liInfo",
+          "title": "Informations",
+          "subTitle": "Device informations"
+        }
+      ]
+    }
+  ],
+
+
+  "forms": [
+    {
+      "id": "APP",
+
+      "items": [
+        {
+          "id": "btnBack",
+          "title": "Back to previous page",
+          "html": "&#10094; Menu"
+        },
+        {
+          "id": "btnApply",
+          "title": "Apply the changes",
+          "html": "Apply"
+        },
+        {
+          "id": "btnExit",
+          "title": "Esci dall'APP",
+          "html": "Esci"
+        },
+        {
+          "id": "UTLLoadingWait",
+          "text": "Waiting..."
+        },
+        {
+          "id": "UTLDateFrom",
+          "text": "From "
+        },
+        {
+          "id": "UTLDateTo",
+          "text": " till "
+        },
+        {
+          "id": "UTLDateHours",
+          "text": " at "
+        },
+        {
+          "id": "UTLDateHoursFrom",
+          "text": " at "
+        },
+        {
+          "id": "UTLDateHoursTo",
+          "text": " to "
+        },
+        {
+          "id": "UPDLoadingWait",
+          "text": "Ongoing update check, please wait..."
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Warning",
+          "text": "Battery charge is at a critical level, from this moment you can only work offline (if the APP so provides). Save anyway any changed data and connect the device to a charger. Current level: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Warning",
+          "text": "The device was placed in charge, from this moment you can again work online. Current level: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Warning",
+          "text": "The battery power is running low. Save any changed data and connect the device to a charger. Current level: {0}%",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg4",
+          "title": "Warning",
+          "text": "The device is offline, the APP still provides the opportunity to work in this mode.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg5",
+          "title": "Warning",
+          "text": "The device is offline, the APP does not expect the opportunity to work in this mode.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg6",
+          "title": "Warning",
+          "text": "The server does not respond, it could be a temporary problem try again later. Or, if you have previously made at least one online access, work offline.",
+          "buttons": "Exit,Continue"
+        },
+        {
+          "id": "msg7",
+          "title": "Warning",
+          "text": "The app has never been initialized. Before working offline, make at least one online connection.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg8",
+          "title": "Information",
+          "text": "There are modified data on this page. Select 'Yes' to undo the changes made. Otherwise select 'No', save the edited data (Apply) and try again.",
+          "buttons": "Yes,No"
+        },
+        {
+          "id": "msg9",
+          "title": "Information",
+          "text": "There are edited data, you want to exit losing modified?",
+          "buttons": "Yes,No"
+        },
+        {
+          "id": "msg10",
+          "title": "Warning",
+          "text": "The server does not respond, it could be a temporary problem try again later.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg11",
+          "title": "Warning",
+          "text": "There was an error while updating, exit and re-open the APP.\nError code: {0} during: {1}.",
+          "buttons": "OK"  
+        },
+        {
+          "id": "msg12",
+          "title": "Warning",
+          "text": "It is necessary to make an update, go on the reference store and download the new version of the APP.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg13",
+          "title": "Warning",
+          "text": "We are carrying out an update that will take about {0} hour/s.\nWait the indicated period and then try again to open the APP.\nWe apologize for the inconvenience.",
+          "buttons": "OK"  
+        },
+        {
+          "id": "msg14",
+          "title": "Warning",
+          "text": "{0}",
+          "buttons": "OK"  
+        },
+        {
+          "id": "msg15",
+          "title": "Warning",
+          "text": "Confirm exit from APP?",
+          "buttons": "Yes,No"
+        },
+        {
+          "id": "msg16",
+          "title": "Warning",
+          "text": "The server does not respond. There may be an error or the server may be too busy.\nPlease try again in a few seconds.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg1",
+          "title": "Error",
+          "text": "There was an error.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg2",
+          "title": "Info",
+          "text": "{0} degrees from North",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg3",
+          "title": "Error",
+          "text": "Direction detection not supported",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg4",
+          "title": "Errore",
+          "text": "Internal error in the direction detector",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg5",
+          "title": "Info",
+          "text": "Error {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg6",
+          "text": "The application is not authorized to acquire the current position"
+        },
+        {
+          "id": "PImsg7",
+          "text": "The current position detection is not available"
+        },
+        {
+          "id": "PImsg8",
+          "text": "It was not possible to detect the current position (timeout), check whether the device is enabled to know his position."
+        },
+        {
+          "id": "PImsg9",
+          "text": "Undefined error"
+        },
+        {
+          "id": "PImsg10",
+          "title": "Info",
+          "text": "Scanning aborted by the User",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg11",
+          "title": "Error",
+          "text": "Scanning failed. Error: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg12",
+          "title": "Error",
+          "text": "Found error: {0} - Message: File Not Found",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg13",
+          "title": "Error",
+          "text": "Found error: {0} - Message: Undefined Error",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg14",
+          "title": "Error",
+          "text": "This plugin is not available in the simulator.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg15",
+          "title": "Error",
+          "text": "Error occurred while copying the file.",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg16",
+          "title": "Error",
+          "text": "There was an error when handling a Push Notification: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg17",
+          "title": "Error",
+          "text": "An error has occurred, the Axios server failed to enter the identifier for Push Notifications: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "PImsg18",
+          "title": "Notification provided by the Server",
+          "text": "Warning received a notification from: {0} inherent:\n '{1}'.\nTo view it you need to log in to: {0}.\nPress 'Continue' to login.\nIf you press 'Cancel' you will not see the notification.",
+          "buttons": "Continua,Annulla"
+        }
+      ]
+    },
+
+    {
+      "id": "PUSH",
+
+      "items": [
+      ],
+
+      "messages": [
+        {
+          "id": "msg0",
+          "title": "",
+          "text": "{0}",
+          "buttons": "Close"
+        },
+        {
+          "id": "msg1",
+          "title": "Warning",
+          "text": "The {0} {1} student is absent at the first hour. For more information or to justify select 'Continue'.",
+          "buttons": "Continue,Cancel"
+        },
+        {
+          "id": "msg2",
+          "title": "Warning",
+          "text": "Please respond to the survey of Axios, your opinion is important to us.",
+          "buttons": "OK"  
+        }
+
+      ]
+    },
+
+
+    {
+      "id": "Login",
+      "items": [
+        {
+          "id": "btnDialogTrouble",
+          "title": "",
+          "html": "Guida"
+        },
+        {
+          "id": "btnDialogLogin",
+          "title": "",
+          "html": "Login"
+        },
+        {
+          "id": "h2",
+          "title": "",
+          "html": "Login"
+        },
+        {
+          "id": "lblHelp",
+          "title": "",
+          "html1": "Add the tax code of {0} new{1} {2} not in the list",
+          "html2": "Select {0} {1} {2} or add the tax code of {3} new{4} {5} not present in the list by pressing the button (+)"
+        },
+        {
+          "id": "lblCustomer",
+          "title": "",
+          "html": "Select {0} {1} {2}"
+        },
+        {
+          "id": "warningCustomer",
+          "title": "",
+          "html": "Attenzione: stai per aggiungere una nuova scuola. Effettua il login per confermare il salvataggio."
+        },
+        {
+          "id": "btnDialogToggle",
+          "title": "Add the tax code of {0} new{1} {2} not in the list",
+          "html": ""
+        },
+        {
+          "id": "lgdAddCustomer",
+          "title": "",
+          "html": "Tax Code {0}"
+        },
+        {
+          "id": "selCustomer",
+          "title": "Select the item that interests you",
+          "html": ""
+        },
+        {
+          "id": "txtCustomer",
+          "title": "Tax Code",
+          "html": ""
+        },
+        {
+          "id": "txtUser",
+          "title": "Type your User Code",
+          "html": ""
+        },
+        {
+          "id": "txtPassword",
+          "title": "Type your Password",
+          "html": ""
+        },
+        {
+          "id": "lblUser",
+          "title": "",
+          "html": "Email or User Code"
+        },
+        {
+          "id": "lblPassword",
+          "title": "",
+          "html": "Password"
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Information",
+          "text": "This operation is only possible with the device online.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Information",
+          "text": "If you can not sign checks the proper typing in upper/lower case of your credentials.\nIf you have forgotten your password or want to change it press 'Password'.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Warning",
+          "text": "The first access to a new user must be made with the device online, check the connection and try again.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg4",
+          "title": "Error",
+          "text": "There was an internal error. Error code = 666. Force Quit from the application.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg5",
+          "title": "Error",
+          "text": "It was detected inconsistency of data due to an incorrect output from your application. You must perform an alignment with the data on the cloud server, which must be made with the device online, check the connection and try again.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg6",
+          "title": "Access denied",
+          "text": "Check User Code and/or password and try again.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg7",
+          "title": "Request for consent",
+          "text": "To help you in the search {0} {1} {2} this APP must know your position, allow?",
+          "buttons": "Yes,No"
+        },
+        {
+          "id": "msg8",
+          "title": "Access denied",
+          "text": "To log authentication must be carried out on: {0}",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg9",
+          "title": "Access denied",
+          "text": "There was an error during Login: {0}",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+
+    {
+      "id": "LoginInfo",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html": "\u276e Login"
+        },
+        {
+          "id": "swButtons",
+          "title": "",
+          "htmlprev": "Previous",
+          "htmlnext": "Next",
+          "htmlfinish": "Finish"
+        },
+        {
+          "id": "swStep1",
+          "htmlnumber": "1",
+          "htmldesc": "Step 1<br /><small>Access</small>"
+        },
+        {
+          "id": "swStepContent1",
+          "htmltitle": "Access",
+          "htmlcontent": "Go to axiositalia.com site and click on 'Accesso'."
+        },
+        {
+          "id": "swStep2",
+          "htmlnumber": "2",
+          "htmldesc": "Step 2<br /><small>Login</small>"
+        },
+        {
+          "id": "swStepContent2",
+          "htmltitle": "Login",
+          "htmlcontent": "If you have forgotten your password, enter your User ID and click on 'qui', otherwise if you want to change your password please login and continue with steps 3 and 4."
+        },
+        {
+          "id": "swStep3",
+          "htmlnumber": "3",
+          "htmldesc": "Step 3<br /><small>User Profile</small>"
+        },
+        {
+          "id": "swStepContent3",
+          "htmltitle": "User Profile",
+          "htmlcontent": "Click on the avatar of the User and select 'Profilo'."
+        },
+        {
+          "id": "swStep4",
+          "htmlnumber": "4",
+          "htmldesc": "Step 4<br /><small>Change Password</small>"
+        },
+        {
+          "id": "swStepContent4",
+          "htmltitle": "Change Password",
+          "htmlcontent": "Select 'Cambia Password' and enter the required data, at the end click on 'Salva'."
+        }
+      ],
+
+      "messages": [
+      ]
+    },
+
+
+    {
+      "id": "Geolocalcustomer",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html": "\u276e"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Apply the changes",
+          "html": "Apply"
+        },
+        {
+          "id": "h2",
+          "title": "",
+          "html": "Geolocation Search"
+        },
+        {
+          "id": "lblSearch",
+          "title": "",
+          "html": "The search is based (if allowed) on the geolocation of your position on the ZIP code, the ZIP code can still be modified to perform a new search or in the event of a failed search for the ZIP code proposed automatically."
+        },
+        {
+          "id": "lblCAP",
+          "title": "",
+          "html": "ZIP code desired"
+        },
+        {
+          "id": "txtCAP",
+          "title": "Type the desired ZIP code",
+          "html": ""
+        },
+        {
+          "id": "ulCustomer",
+          "placeholder1": "I did not find {0} in your vicinity (ZIP code) type the Tax Code {1} {2} {3}...",
+          "placeholder2": "Found one {1} in the surrounding area (ZIP code), type part of the name or enter the Tax Code {2} {3} {4}...",
+          "placeholder3": "Found {1} {2} in the surrounding area (ZIP code), type part of the name or enter the Tax Code {3} {4} {5}..."
+        },
+        {
+          "id": "lgdAddCustomer",
+          "title": "",
+          "html": "Select {0} {1} to be added"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "text": "Geolocation is running..."
+        },
+        {
+          "id": "msg2",
+          "title": "Warning!",
+          "text": "The Tax Code entered manually should consist of 11 numeric characters.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Error",
+          "text": "Error Code: {0} - Error Message: {1}",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+
+    {
+      "id": "Dashboard",
+
+      "items": [
+        {
+          "id": "noEvents",
+          "html": "There are no activities planned for today."
+        },
+        {
+          "id": "today",
+          "html": "To do today:"
+        }
+      ],
+
+      "messages": [
+      ]
+
+    },
+
+
+    {
+      "id": "Message",
+
+      "items": [
+        {
+          "id": "ulMsgEvent",
+          "placeholder1": "Type a part of the text to be searched ...",
+          "placeholder2": "No element found"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Internal",
+          "html2": "External"
+        },
+        {
+          "id": "from",
+          "html": "From:"
+        },
+        {
+          "id": "when REMOVE:",
+          "html": "received on"
+        },
+        {
+          "id": "to",
+          "html": "To:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Subject:"
+        }
+      ]
+    },
+
+    {
+      "id": "MessageRead",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html": "\u276e Messages"
+        },
+        {
+          "id": "btnDialogOther",
+          "title": "Other Options",
+          "html": "Options"
+        },
+        {
+          "id": "btnDialogReply",
+          "title": "Reply to the message",
+          "html": "Reply"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Internal",
+          "html2": "External"
+        },
+        {
+          "id": "h2",
+          "html": "Message"
+        },
+        {
+          "id": "from",
+          "html": "From:"
+        },
+        {
+          "id": "when",
+          "html": "received on"
+        },
+        {
+          "id": "to",
+          "html": "To:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Subject:"
+        },
+        {
+          "id": "popupToggleReaded",
+          "html1": "Mark as Unread",
+          "html2": "Mark as Read"
+        },
+        {
+          "id": "popupDelete",
+          "html": "Delete Message"
+        },
+        {
+          "id": "popupReplyAll",
+          "html": "Reply All"
+        },
+        {
+          "id": "popupForward",
+          "html": "Forward"
+        },
+        {
+          "id": "popupExit",
+          "html": "Close"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Warning",
+          "text": "Are you sure you want to delete this message?",
+          "buttons": "Yes,No"
+        }
+      ]
+
+    },
+
+    {
+      "id": "MessageReply",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html": "\u276e Cancel"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Send message",
+          "html": "Send"
+        },
+        {
+          "id": "h2",
+          "html": "Write a Message"
+        },
+        {
+          "id": "from",
+          "html": "From:"
+        },
+        {
+          "id": "when",
+          "html": "received on"
+        },
+        {
+          "id": "to",
+          "html": "To:"
+        },
+        {
+          "id": "CC",
+          "html": "CC:"
+        },
+        {
+          "id": "subject",
+          "html": "Subject:"
+        },
+        {
+          "id": "validateEmails",
+          "text": "Almeno uno degli indirizzi mail specificati non è valido"
+        },
+        {
+          "id": "validateEmpty",
+          "html": "At least one of the specified email address is not valid or is empty"
+        }
+      ]
+    },
+
+
+    {
+      "id": "Calendar",
+
+      "items": [
+        {
+          "id": "title",
+          "subTitle": "Events list"
+        },
+        {
+          "id": "ulCalEvent",
+          "placeholder1": "Type a part of the text to be searched ...",
+          "placeholder2": "No element found"
+        },
+        {
+          "id": "backColor",
+          "html1": "Axios",
+          "html2": "Google",
+          "html3": "Google User",
+          "html4": "Holidays",
+          "html5": "SD User",
+          "html6": "SD User",
+          "html7": "SD User"
+        }
+      ]
+    },
+
+    {
+      "id": "CalendarMese",
+
+      "items": [
+        {
+          "id": "title",
+          "subTitle": "Events management"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "The server does not respond, make sure that your device is online. Error {0}",
+          "text": "",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "This operation is possible only if the device is connected online",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "CalendarEvent",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html": "\u276e Cancel"
+        },
+        {
+          "id": "btnDialogDelete",
+          "title": "Delete Event",
+          "html": "Delete"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Apply the changes",
+          "html": "Apply"
+        },
+        {
+          "id": "h2",
+          "html": "Calendar Event"
+        },
+        {
+          "id": "lblTitoloPubl",
+          "html": "Public Title:"
+        },
+        {
+          "id": "lblTitoloPriv",
+          "html": "Private Title:"
+        },
+        {
+          "id": "lgdAllDay",
+          "html": "All Day:"
+        },
+        {
+          "id": "lblFrom",
+          "html": "Begin:"
+        },
+        {
+          "id": "lblTo",
+          "html": "End:"
+        },
+        {
+          "id": "lgdRip",
+          "html": "Repeat event:"
+        },
+        {
+          "id": "lblBadge",
+          "html": "Calendar type:"
+        },
+        {
+          "id": "OptSidebarNo",
+          "title": "",
+          "html": "No"
+        },
+        {
+          "id": "OptSidebarSi",
+          "title": "",
+          "html": "Yes"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Currently the Repetitive events can not be eliminated by the APP. Access, with the same credentials, to the web platform and eliminate the event there.",
+          "text": "Information",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Warning",
+          "text": "Are you sure you want to delete this event?",
+          "buttons": "Yes,No"
+        }
+      ]
+    },
+
+    {
+      "id": "Notify",
+
+      "items": [
+        {
+          "id": "ulNotEvent",
+          "placeholder1": "Type a part of the text to be searched ...",
+          "placeholder2": "No element found"
+        },
+        {
+          "id": "authorName",
+          "html1": "User",
+          "html2": "Application",
+          "html3": "System",
+          "html4": "Axios"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Information",
+          "html2": "Action",
+          "html3": "Warning",
+          "html4": "Trouble"
+        },
+        {
+          "id": "aEvent",
+          "title": "Click to mark as read"
+        },
+        {
+          "id": "liNotEventRead",
+          "title": "Flag already read"
+        },
+
+        {
+          "id": "from",
+          "html": "From:"
+        },
+        {
+          "id": "when REMOVE:",
+          "html": "received on"
+        }
+      ]
+    },
+
+    {
+      "id": "Synchro",
+
+      "items": [
+        {
+          "id": "lblSend",
+          "html": "To send"
+        },
+        {
+          "id": "lblSent",
+          "html": "Sent"
+        },
+        {
+          "id": "lblError",
+          "html": "With errors"
+        },
+        {
+          "id": "ulEventSend",
+          "html": "Attempts: "
+        },
+        {
+          "id": "ulEventSent",
+          "html": "Attempts: "
+        },
+        {
+          "id": "ulEventError",
+          "html1": "Error code: ",
+          "html2": "Error description: ",
+          "html3": "Attempts: "
+        },
+        {
+          "id": "badgeText",
+          "html1": "System",
+          "html2": "Application"
+        }
+      ]
+    },
+
+    {
+      "id": "Support",
+
+      "items": [
+        {
+          "id": "ulSupportEvent",
+          "placeholder1": "Type a part of the text to be searched ...",
+          "placeholder2": "No element found"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Open",
+          "html2": "Close",
+          "html3": "Reopen",
+          "html4": "Assigned"
+        },
+        {
+          "id": "liDelete",
+          "html": "Delete"
+        },
+        {
+          "id": "liFlag",
+          "html1": "Flag",
+          "html2": "Unflag."
+        },
+        {
+          "id": "liOther",
+          "html": "Other options"
+        }
+      ],
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Warning",
+          "text": "Are you sure you want to delete this ticket?",
+          "buttons": "Yes,No"
+        },
+        {
+          "id": "msg2",
+          "title": "Warning",
+          "text": "You can't delete closed or assigned tickets.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "SupportTicket",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Back to previous page",
+          "html1": "\u276e Support",
+          "html2": "\u276e Ticket"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Send",
+          "html": "Send"
+        },
+        {
+          "id": "btnDialogReopen",
+          "title": "Reopen Ticket",
+          "html": "Reopen"
+        },
+        {
+          "id": "badgeText",
+          "html1": "Open",
+          "html2": "Close",
+          "html3": "Reopen",
+          "html4": "Assigned"
+        },
+        {
+          "id": "h2",
+          "html": "Ticket"
+        },
+        {
+          "id": "id",
+          "html1": "Ticket:",
+          "html2": "Ticket Referenced:"
+        },
+        {
+          "id": "date",
+          "html": "Date:"
+        },
+        {
+          "id": "userId",
+          "html": "User Id:"
+        },
+        {
+          "id": "customerId",
+          "html": "Customer Id:"
+        },
+        {
+          "id": "appId",
+          "html": "Application:"
+        },
+        {
+          "id": "appVersion",
+          "html": "Version:"
+        },
+        {
+          "id": "deviceId",
+          "html": "Device UUID:"
+        },
+        {
+          "id": "deviceModel",
+          "html": "Device Model:"
+        },
+        {
+          "id": "deviceOS",
+          "html": "Operating System:"
+        },
+        {
+          "id": "lblProblem",
+          "html": "Problem:"
+        },
+        {
+          "id": "lblAnswer",
+          "html": "Answer:"
+        },
+        {
+          "id": "lblContact",
+          "html": "Contact:"
+        },
+        {
+          "id": "lblEmail",
+          "html": "Email:"
+        },
+        {
+          "id": "lblPhone",
+          "html": "Phone:"
+        },
+        {
+          "id": "lgdSatisf",
+          "html": "If desired, you can specify a degree of satisfaction from 0 to 5 where 0 means 'not stated', 1 'not good', 5 'very good'"
+        },
+        {
+          "id": "lblSatisf",
+          "html": "Satisfaction:"
+        },
+        {
+          "id": "lblComment",
+          "html": "Comment:"
+        }
+      
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "xxx",
+          "text": "xxxx",
+          "buttons": "Yes,No"
+        }
+      ]
+
+    },
+
+    {
+      "id": "Info",
+
+      "items": [
+        {
+          "id": "h2Device",
+          "html": "Device"
+        },
+        {
+          "id": "h2SO",
+          "html": "Operating System"
+        },
+        {
+          "id": "h2Cordova",
+          "html": "Cordova"
+        },
+        {
+          "id": "h2JQuery",
+          "html": "JQuery"
+        },
+        {
+          "id": "h2JQueryMobile",
+          "html": "JQueryMobile"
+        },
+        {
+          "id": "h2App",
+          "html": "Application"
+        },
+        {
+          "id": "lblmanufacturer",
+          "html": "MANUFACTURER "
+        },
+        {
+          "id": "lblModel",
+          "html": "MODEL "
+        },
+        {
+          "id": "lblUUID",
+          "html": "UUID "
+        },
+        {
+          "id": "lblScreen",
+          "html": "SCREEN (WxH) "
+        },
+        {
+          "id": "lblSOPlatform",
+          "html": "TYPE "
+        },
+        {
+          "id": "lblSOVersion",
+          "html": "VERSION "
+        },
+        {
+          "id": "lblCordovaVersion",
+          "html": "VERSION "
+        },
+        {
+          "id": "lblJQueryVersion",
+          "html": "VERSION "
+        },
+        {
+          "id": "lblJQueryMobileVersion",
+          "html": "VERSION "
+        },
+        {
+          "id": "lblAppName",
+          "html": "NAME "
+        },
+        {
+          "id": "lblAppVersion",
+          "html": "VERSION "
+        }
+
+      ]
+    },
+
+    {
+      "id": "UserProfile",
+
+      "items": [
+        {
+          "id": "btnBack",
+          "title": "Back to previous page",
+          "html": "\u276e"
+        },
+        {
+          "id": "btnApply",
+          "title": "Apply the changes",
+          "html": "Apply"
+        },
+        {
+          "id": "lblName",
+          "title": "",
+          "html": "Surname and Name:"
+        },
+        {
+          "id": "h3Options",
+          "title": "",
+          "html": "Profile options"
+        },
+        {
+          "id": "lgdThemes",
+          "title": "",
+          "html": "Theme Colors:"
+        },
+        {
+          "id": "lblThemeA",
+          "title": "",
+          "html": "Standard Light"
+        },
+        {
+          "id": "lblThemeB",
+          "title": "",
+          "html": "Standard Dark"
+        },
+        {
+          "id": "lblThemeC",
+          "title": "",
+          "html": "Green Axios"
+        },
+        {
+          "id": "lblThemeD",
+          "title": "",
+          "html": "Blue Digital School"
+        },
+        {
+          "id": "lgdSidebarPosition",
+          "title": "",
+          "html": "Position of the Sidebar:"
+        },
+        {
+          "id": "lblsSidebarPositionLeft",
+          "title": "",
+          "html": "Left"
+        },
+        {
+          "id": "lblsSidebarPositionRight",
+          "title": "",
+          "html": "Right"
+        },
+        {
+          "id": "lgdSidebarDisplay",
+          "title": "",
+          "html": "Sidebar opening mode:"
+        },
+        {
+          "id": "lblsSidebarDisplayReveal",
+          "title": "",
+          "html": "Reveal"
+        },
+        {
+          "id": "lblsSidebarDisplayOverlay",
+          "title": "",
+          "html": "Overlay"
+        },
+        {
+          "id": "lgdSidebarAutoOpen",
+          "title": "",
+          "html": "Automatic opening Sidebar:"
+        },
+        {
+          "id": "OptSidebarNo",
+          "title": "",
+          "html": "No"
+        },
+        {
+          "id": "OptSidebarSi",
+          "title": "",
+          "html": "Yes"
+        },
+        {
+          "id": "lgdimgEvent",
+          "title": "",
+          "html": "Images in Events:"
+        },
+        {
+          "id": "lgdallowGEO",
+          "title": "",
+          "html": "Allow Geo Localization:"
+        },
+        {
+          "id": "lgdallowCamera",
+          "title": "",
+          "html": "Allow use Camera:"
+        },
+        {
+          "id": "lgdEventEvery",
+          "title": "",
+          "html": "Synchronize events each:"
+        },
+        {
+          "id": "lblEventNever",
+          "title": "",
+          "html": "Never"
+        },
+        {
+          "id": "lblEvent10",
+          "title": "",
+          "html": "10 minutes"
+        },
+        {
+          "id": "lblEvent30",
+          "title": "",
+          "html": "30 minutes"
+        },
+        {
+          "id": "lblEvent60",
+          "title": "",
+          "html": "60 minutes"
+        }
+
+      ],
+
+      "messages": [
+      ]
+    }
+
+  ]
+
+}

@@ -1,0 +1,37 @@
+[
+  {
+    "idAlunno":  "0001",
+    "compiti": [
+      {
+        "data":  "26/12/2016 00:00:00",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "descCompiti": "Promessi Sposi da pag 2 a pag 22"
+      },
+      {
+        "data":  "26/12/2016 00:00:00",
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "descCompiti": "La discesa di Napoleone in Italia"
+      },
+      {
+        "data":  "27/12/2016 00:00:00",
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "descCompiti": "Trigonometria seno e coseno"
+      },
+      {
+        "data":  "03/01/2017 00:00:00",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "descCompiti": "I verbi intransitivi e la loro relazione con gli avverbi"
+      },
+      {
+        "data":  "04/01/2017 00:00:00",
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "descCompiti": "Trigonometria tangente e cotangente"
+      }
+    ]
+  }
+]

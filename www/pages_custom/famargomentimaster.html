@@ -1,0 +1,54 @@
+<div class="argomentiContainer">
+    <div class="selectTabArgomentiContainer">
+        <div class="tabArgomenti" id="tabArgomentiMaterie">
+            Materie
+        </div>
+        <div class="tabArgomenti" id="tabArgomentiGiorni">
+            Giorni
+        </div>
+    </div>
+
+    <!-- <div class="ui-grid-a"> -->
+    <select id="selectStatoCollaboraArgMaster">
+        <option value="T">Tutti</option>
+        <option value="0">Da seguire COLLABORA</option>
+        <option value="1">Seguite COLLABORA</option>
+    </select>
+    <!-- </div> -->
+
+    <!-- <div class="ui-grid-a">
+    <div class="ui-block-a">
+        <center><strong>Periodo</strong></center>
+        <select id="selectPeriodo">
+            <option value="O">Oggi</option>
+        </select>
+    </div>
+    <div class="ui-block-b">
+        <center><strong>Materia</strong></center>
+        <select id="selectMateria">
+            <option value="T">Tutte</option>
+        </select>
+    </div>
+</div> -->
+
+    <div class="argomentiListContainer">
+        <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+            data-filter-placeholder='' style='margin-top: 0;'></ul>
+    </div>
+
+    <div class="ft-prog-container">
+        <progress max="100" value="0" class="ft-prog"></progress>
+        <h1>Attendere...</h1>
+      </div>
+
+</div>
+
+<div class="noArgomentiGenerale">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noArgomentiGeneraleLabel"></div>
+</div>
+
+<div class="noArgomentiSezione">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noArgomentiSezioneLabel"></div>
+</div>

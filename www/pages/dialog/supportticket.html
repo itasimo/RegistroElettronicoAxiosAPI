@@ -1,0 +1,69 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+
+  <div class='ui-btn-left'>
+    <a id='btnDialogBack' class='axios-link-dialog' data-role='button' href='#' title='Torna alla pagina precedente'>&#10094; Supporto</a>
+  </div>
+
+  <h2>Ticket</h2>
+
+  <div class='ui-btn-right'>
+    <a id='btnDialogReopen' class='axios-link-dialog' data-role='button' href='#' title='Riapri Ticket'>Riapri</a>
+    <a id='btnDialogApply' class='axios-link-dialog' data-role='button' href='#' title='Applica'>Applica</a>
+  </div>
+</div>
+
+<div class='dialogContent' data-role='content'>
+
+  <div>
+    <ul class='axios-ul' id='ulTicketEvent' data-role='listview' data-inset='false' >
+    </ul>
+  </div>
+
+  <form id='dialogForm' class='dialogForm' data-ajax="false" >
+
+    <div class='ui-field-contain'>
+      <label id='lblProblem' for="txtProblem">Problema:</label>
+      <textarea name="txtProblem" id="txtProblem" rows="5" required></textarea> 
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblAnswer' for="txtAnswer">Soluzione:</label>
+      <textarea name="txtAnswer" id="txtAnswer" rows="5" style="font-weight: bold;"></textarea>
+    </div>
+
+    <fieldset id="cgRefer" data-role="controlgroup">
+      <div class='ui-field-contain'>
+        <label id='lblContact' for='txtContact'>Contatto:</label>
+        <input type='text' name='txtContact' id='txtContact'>
+      </div>
+
+      <div class='ui-field-contain'>
+        <label id='lblEmail' for='txtEmail'>Email:</label>
+        <input type='text' name='txtEmail' id='txtEmail'>
+      </div>
+
+      <div class='ui-field-contain'>
+        <label id='lblPhone' for='txtPhone'>Telefono:</label>
+        <input type='text' name='txtPhone' id='txtPhone'>
+      </div>
+    </fieldset>
+
+    <fieldset id="cgSatisf" data-role="controlgroup">
+      <!--meglio se c'è ma funziona anche senza-->
+      <legend id="lgdSatisf">Se lo si desidera è possibile indicare un grado di sodisfazione da 0 a 5 dove 0 significa "non indicato", 1 "non buono", 5 "molto buono"</legend>
+
+      <div class="ui-field-contain">
+        <label id="lblSatisf" for="sldSatisf">Grado soddisfazione:</label>
+        <input type="range" name="sldSatisf" id="sldSatisf" min="0" max="5" value="0" data-highlight='true'>
+      </div>
+
+      <div class='ui-field-contain'>
+        <label id='lblComment' for='txtComment'>Commento:</label>
+        <input type='text' name='txtComment' id='txtComment'>
+      </div>
+    </fieldset>
+
+</form>
+
+</div>
+

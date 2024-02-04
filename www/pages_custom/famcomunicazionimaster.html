@@ -1,0 +1,50 @@
+<div class="avvisoComObbligatorie">Ci sono delle comunicazioni obbligatorie da leggere.</div>
+<div class='searchTxtComContainer'>
+  <input type='text' name='search' id='searchTxtCom' placeholder="Cerca per titolo">
+  <button id='searchTxtComBtn' class="ui-btn ui-shadow ui-corner-all ui-btn-icon-notext ui-icon-search"></button>
+</div>
+<div class="comunicazioniContainer">
+  <div>
+    <ul class='axios-ul ulFlex' id='ulEvents' data-icon="false" data-role='listview' data-inset='false' data-filter='false'
+      data-filter-placeholder=''></ul>
+  </div>
+
+  <div class="ft-prog-container">
+    <progress max="100" value="0" class="ft-prog"></progress>
+    <h1>Attendere...</h1>
+  </div>
+
+  <div data-role='popup' id='popupComunicazioneDetailForm' data-transition='pop' data-dismissible="false">
+    <form id="frmPopup">
+      <div style='padding: 10px 20px;'>
+        <div class='ui-field-contain'>
+          <label id='lblSelectRisposta' for='selectRisposta'>Risposta:</label>
+          <select id="selectRisposta" class="popupFormElement">
+          </select>
+        </div>
+        <div class='ui-field-contain'>
+          <label id='lblTestoRisposta' for='testoRisposta'>Testo risposta:</label>
+          <input type='text' name='testoRisposta' id='testoRisposta' class="popupFormElement" value=''>
+        </div>
+        <div class='ui-field-contain'>
+          <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+          <input type='text' name='numPIN' id='numPIN' class="popupFormElement" value=''>
+        </div>
+        <div class='popupFrmButtonContainer'>
+          <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+            data-index='0'>OK</button>
+          <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+            data-index='2' data-cancel='true'>Annulla</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="noComunicazioniGenerale">
+  <div class="axios-theme noDataIcon"></div>
+  <div class="noComunicazioniGeneraleLabel"></div>
+</div>
+<div class="noComunicazioniRicerca">
+  <div class="axios-theme noDataIcon"></div>
+  <div class="noComunicazioniRicercaLabel"></div>
+</div>

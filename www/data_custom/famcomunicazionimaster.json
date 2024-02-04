@@ -1,0 +1,63 @@
+[
+  {
+    "idAlunno": "0001",
+    "comunicazioni": [
+      {
+        "id": "0001",
+        "data": "11/11/2016",
+        "tipo":  "D",
+        "titolo": "Comunicazione 1",
+        "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla. Maecenas mauris nunc, placerat nec suscipit in, finibus quis elit. Nunc non tortor in odio rhoncus vulputate sit amet vel ipsum.",
+        "letta": "N",
+        "allegati": [
+          {
+            "desc": "Allegato 1",
+            "URL": "https://scdemo.axioscloud.it/Pages/COMMON/COMMON_Check_Digital_Stamp.aspx?s=xbLrxZoT0QGhDFC%2bow%2f6AKE98T72odaTNf%2blLqbS9ZIZYw7Ne7XB3UuBurMdFl0PZv%2bxtnpuhrh0eFOGjRZ1phQ88WwT5jojDpduoLColhu2sjH%2b"
+          },
+          {
+            "desc": "Allegato 2",
+            "URL": "https://scdemo.axioscloud.it/Customers/00000000003/SC/Folders/Files/6d3ef848-0b73-4676-8654-32eb8509e641.pdf"
+          }
+        ]
+      },
+      {
+        "id": "0002",
+        "data": "10/01/2017",
+        "tipo":  "S",
+        "titolo": "Comunicazione 2",
+        "desc": "In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla.",
+        "letta": "S",
+        "allegati": [ ]
+      },
+      {
+        "id": "0003",
+        "data": "15/01/2017",
+        "tipo":  "C",
+        "titolo": "Comunicazione 3",
+        "desc": "Nunc non tortor in odio rhoncus vulputate sit amet vel ipsum.",
+        "letta": "N",
+        "allegati": [ ]
+      },
+      {
+        "id": "0003",
+        "data": "24/01/2017",
+        "tipo":  "A",
+        "titolo": "Comunicazione 4",
+        "desc": "Maecenas mauris nunc, placerat nec suscipit in, finibus quis elit.",
+        "letta": "S",
+        "allegati": [
+          {
+            "desc": "Relazione Consiglio Istituto",
+            "URL": "https://scdemo.axioscloud.it/Pages/COMMON/COMMON_Check_Digital_Stamp.aspx?s=xbLrxZoT0QGhDFC%2bow%2f6AKE98T72odaTNf%2blLqbS9ZIZYw7Ne7XB3UuBurMdFl0PZv%2bxtnpuhrh0eFOGjRZ1phQ88WwT5jojDpduoLColhu2sjH%2b"
+          }
+        ]
+      }
+
+    ]
+  },
+  {
+    "idAlunno": "0002",
+    "comunicazioni": [ ]
+  }
+
+]

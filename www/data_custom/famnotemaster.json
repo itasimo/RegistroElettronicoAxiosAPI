@@ -1,0 +1,49 @@
+[
+  {
+    "idAlunno": "0001",
+    "idFrazione": "0001",
+    "descFrazione": "Primo quadrimestre",
+    "note": [
+      {
+        "data": "11/11/2016",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "descDoc": "Rossi Mario",
+        "tipo": "C",
+        "descNota": "La classe \u00e8 rumorosa e impedisce lo svolgimento della lezione."
+      },
+      {
+        "data": "11/11/2016",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "descDoc": "Rossi Mario",
+        "tipo": "S",
+        "descNota": "Il ragazzo fuma in classe disturbando la lezione."
+      },
+      {
+        "data": "26/12/2016",
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "descDoc": "De Curlis Francesca",
+        "tipo": "S",
+        "descNota": "Il ragazzo usa il cellulare distraendo se stesso e i compagni. Il ripetersi di tale comportamento non potra' non incidere negativamente sul profitto. Si fa presente ai genitori che un loro intervento, volto a sensibilizzare il giovane sul rispetto verso l'importanza della lezione, sarebbe gradito."
+      }
+    ]
+  },
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0002",
+    "descFrazione": "Secondo quadrimestre",
+    "note": [
+      {
+        "data":  "11/02/2017",
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "descDoc": "De Paperis Arnoldo",
+        "tipo": "S",
+        "descNota": "Il ragazzo risponde male al docente mancandogli totalmente di rispetto."
+      }
+    ]
+  }
+
+]

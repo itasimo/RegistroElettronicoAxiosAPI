@@ -1,0 +1,54 @@
+<div data-role='header' class="homeHeader" data-position='fixed'>
+
+	<!--Navbar-->
+	<div id="nbHeader" data-role="navbar" data-iconpos="left">
+		<!--ul creata dinamicamente-->
+	</div>
+
+	<!--Header-->
+	<div id="iconbar">
+		<!-- <div class="leftSide" style="float:left"> -->
+		<div class="leftSide" style="margin-left: 5px;">
+		<!--<a id='btnBack' class='axios-header axios-link' data-role='button' href='#' title='Torna alla pagina precedente'>&#10094;&nbsp;&nbsp;&nbsp;</a>-->
+			<!--8635 Era cosi 128259 ma hanno cambiato carattere! -->
+			<!--<a id='btnRefresh' class='axios-header axios-link' data-role='button' href='#' title='Aggiorna'>&#8635;&nbsp;&nbsp;</a>-->
+
+			<a href='#pnlSideBar' title="Menu"><img class="axios-icon axios-theme svgIconNavbar btnMenu" /></a>	
+			<a href="#" title="Esci"><img class="axios-icon axios-theme axios-logout svgIconNavbar logout" /></a>		
+			<a href='#' title="Torna indietro"><img class="axios-icon axios-theme svgIconNavbar" id="btnBack" /></a>
+            <a href='#' title="Torna alla pagina principale"><img class="axios-icon axios-theme svgIconNavbar" id="btnHome" /></a>
+            <a href='#' title="Cancella tutto"><img class="axios-icon svgIconNavbar axios-theme" id="btnTrash" /></a>
+            <a href='#' title="Applica"><img class="axios-icon svgIconNavbar axios-theme" id="btnApply" /></a>
+			<!--<a href='#'><img src="images_custom/download-26.png" class="axios-icon" id="btnDownload" /></a>-->
+			<a href='#' title="Ricarica"><img class="axios-icon axios-theme svgIconNavbar" id="btnRefresh" /></a>
+
+			<!--Attenzione per ripristinare l'immagine dell'avatar utente cliccabile attivare le righe seguenti (ref. showAvatarOnHeader)-->
+			<!--<span href="#">
+			  <img id='imgUserProfile' class='axios-header axios-img-user' src='' />
+			</span>-->
+			<img id='imgSynchro' aria-hidden="true" class='axios-icon svgIconNavbar' src='images/Empty-25.png' style="display: none;" />
+		</div>
+
+		<div class="schoolYearContainer">
+			<div id="schoolYearLbl" style="font-size: 14px;"></div>
+		</div>
+
+		<!-- <div class="rightSide" style="float: right"> -->
+		<div class="rightSide">
+			
+			<!-- Il margine qui serve ad allontanare il blocco Profile+Synchro+Connession dal counter-->
+			<!--<img id='imgConnession' class='axios-header axios-img axios-theme' style="margin-right:40px" />-->
+			<img id='imgConnession' class='axios-header axios-icon axios-theme svgIconNavbar' style="margin-right:40px" />
+			<span id='countAll' class='axios-header'></span>
+			<a href="#" title="Esci"><img class="axios-icon axios-theme axios-logout svgIconNavbar logout" /></a>
+			<a href='#pnlSideBar' title="Menu"><img class="axios-icon axios-theme svgIconNavbar btnMenu" /></a>	
+			<!--9776 più grande ma nero sul device. 8801 è più piccolo ma colore ok-->
+			<!--<a id='btnMenu' class='axios-header axios-link' data-role='button' href='#pnlSideBar' title='Apre la barra barra laterale con il Menù' >&#8801;</a>-->
+		</div>
+	</div>
+
+	<div id="pageTitle">
+	</div>
+
+</div>
+

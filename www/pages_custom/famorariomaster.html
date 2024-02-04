@@ -1,0 +1,38 @@
+<div class="orarioContainer">
+    <div class="divOrario">
+        <!-- la classe ui-grid-x viene aggiunta dinamicamente -->
+    </div>
+    <div class="divOrarioAdvice">Fare tap su un elemento della tabella per visualizzare maggiori informazioni.</div>
+</div>
+<!-- <div class="divOrarioAdvice">Per una migliore visualizzazione dei dati si prega di ruotare lo schermo.</div> -->
+<div class="noOrarioGenerale">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noOrarioGeneraleLabel"></div>
+</div>
+<div data-role='popup' id='popupOrarioForm' class='popupOrario' data-transition='pop' data-dismissible="false" style="min-width: 250px;">
+    <div class='ui-field-contain'>
+        <div name='divOrarioTitolo' id='divOrarioTitolo'></div>
+        <div name='divOrarioMessaggio' id='divOrarioMessaggio'>
+            <span id="materia1"></span>
+            <br>
+            <span id="docente1"></span>
+            <br>
+            <span id="daA1"></span>
+            <div id="secondaMateriaContainer">
+                <hr>
+                <span id="materia2"></span>
+                <br>
+                <span id="docente2"></span>
+                <br>
+                <span id="daA2"></span>
+            </div>
+        </div>
+        <div id="orarioButtonRow">
+            <button type='button' id='btnPopupClose'
+                class='axios-popup-button ui-btn ui-btn-inline ui-corner-all' data-index='2'
+                data-cancel='true' style="margin: 6px;">Chiudi</button>
+        </div>
+    </div>
+    <!-- </form> -->
+  </div>
+

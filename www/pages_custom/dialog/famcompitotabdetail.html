@@ -1,0 +1,31 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+    <div class='btnDialogBackContainer'>
+        <div id='btnDialogBack'></div>
+    </div>
+</div>
+
+<div class='dialogContent famCompitoTabDetail' data-role='content'>
+    <div class="nomeMateriaCompito"></div>
+    <!-- <div class="ui-grid-a" style="padding: 0px 1em;"> -->
+        <select id="selectStatoCollaboraCompitiTabDetail" class="no-shadow">
+            <option value="T">Tutti</option>
+            <option value="0">Da svolgere COLLABORA</option>
+            <option value="1">Svolti COLLABORA</option>
+            <option value="2">Compiti RE</option>
+        </select>
+    <!-- </div> -->
+    <div class="compitiTabDetailList">
+        <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+            data-filter-placeholder=''></ul>
+    </div> 
+
+    <div class="ft-prog-container">
+        <progress max="100" value="0" class="ft-prog"></progress>
+        <h1>Attendere...</h1>
+    </div>
+    <!-- <div class="noDati" style="margin: 20px; text-align: center;"></div> -->
+    <div class="noCompitiTabDetailFrazione">
+        <div class="axios-theme noDataIcon"></div>
+        <div class="noCompitiTabDetailFrazioneLabel"></div>
+    </div>
+</div>

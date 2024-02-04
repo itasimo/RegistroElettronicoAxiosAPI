@@ -1,0 +1,96 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <div class='btnDialogBackContainer'>
+    <div id='btnDialogBack'></div>
+  </div>
+</div>
+
+<div class='dialogContent colloquioUpdateDialog' data-role='content'>
+
+  <!-- <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false' data-filter-placeholder=''></ul> -->
+
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailDocenteContainer">
+      <label id="lblColloquioUpdateDetailDocente">Docente</label>
+      <div class="colloquioUpdateDetailDocente"> </div>
+    </div>
+  </div>
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailSostituitoDaContainer">
+      <label id="lblColloquioUpdateDetailSostituitoDa">Sostituito da</label>
+      <div class="colloquioUpdateDetailSostituitoDa"> </div>
+    </div>
+  </div>
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailMateriaContainer">
+      <label id="lblColloquioUpdateDetailMateria">Materia</label>
+      <div class="colloquioUpdateDetailMateria"> </div>
+    </div>
+  </div>
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailDataContainer">
+      <label id="lblColloquioUpdateDetailData">Data</label>
+      <div class="colloquioUpdateDetailData"> </div>
+    </div>
+  </div>
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailPostoPrenotatoContainer">
+      <label id="lblColloquioUpdateDetailPostoPrenotato">Posto prenotato</label>
+      <div class="colloquioUpdateDetailPostoPrenotato"> </div>
+    </div>
+  </div>
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailPostiDisponibiliContainer">
+      <label id="lblColloquioUpdateDetailPostiDisponibili">Posti disponibili</label>
+      <div class="colloquioUpdateDetailPostiDisponibili"> </div>
+    </div>
+  </div>
+
+  <div class="colloquioUpdateDetailRow">
+    <div class="colloquioUpdateDetailTipoColloquioContainer">
+      <label id="lblColloquioUpdateDetailTipoColloquio">Tipo colloquio</label>
+      <div class="colloquioUpdateDetailTipoColloquio"> </div>
+    </div>
+  </div>
+
+  <!-- <form id='dialogForm' class='dialogForm' data-ajax="false"> -->
+
+    <!--<div class='ui-field-contain'>
+      <label id='lblMateria' for='txtMateria'>Materia</label>
+      <input type='text' name='txtMateria' id='txtMateria' > 
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblData' for='txtData'>Data</label>
+      <input type='text' name='txtData' id='txtData' >
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblPrenotato' for='txtPrenotato'>Posto prenotato:</label>
+      <input type='text' name='txtPrenotato' id='txtPrenotato' style='color:#e74c3c; font-weight:bold;'>
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblPostiDisp' for='txtPostiDisp'>Posti Disponili:</label>
+      <input type='text' name='txtPostiDisp' id='txtPostiDisp' >
+    </div>-->
+
+    <!-- <div class='ui-field-contain'>
+      <label id='lblScegliPosto' for='selScegliPosto'>Scegli Posto:</label>
+      <select name='selScegliPosto' id='selScegliPosto'>
+      </select>
+    </div> -->
+    <select id="selScegliModalita"> 
+      <option value="0" selected>In presenza</option>
+      <option value="1">In videochiamata</option>
+    </select>
+    
+    <select id="selScegliPosto"> </select>
+
+    <div class="btnDialogPrenotaColloquioContainer">
+      <button id="btnDialogPrenotaColloquio">Conferma prenotazione</button>
+    </div>
+
+  <!-- </form> -->
+
+</div>
+

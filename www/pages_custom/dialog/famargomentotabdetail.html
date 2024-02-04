@@ -1,0 +1,28 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+    <div class='btnDialogBackContainer'>
+        <div id='btnDialogBack'></div>
+    </div>
+</div>
+
+<div class='dialogContent famArgomentoTabDetail' data-role='content'>
+    <div class="nomeMateriaArgomento"></div>
+    <select id="selectStatoCollaboraArgTabDetail">
+        <option value="T">Tutti</option>
+        <option value="0">Da seguire COLLABORA</option>
+        <option value="1">Seguite COLLABORA</option>
+    </select>
+    <div class="argomentiTabDetailList">
+        <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+            data-filter-placeholder=''></ul>
+    </div>
+
+    <div class="ft-prog-container">
+        <progress max="100" value="0" class="ft-prog"></progress>
+        <h1>Attendere...</h1>
+    </div>
+    <!-- <div class="noDati" style="margin: 20px; text-align: center;"></div> -->
+    <div class="noArgomentiTabDetailFrazione">
+        <div class="axios-theme noDataIcon"></div>
+        <div class="noArgomentiTabDetailFrazioneLabel"></div>
+    </div>
+</div>

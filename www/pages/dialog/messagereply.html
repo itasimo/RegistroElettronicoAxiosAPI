@@ -1,0 +1,54 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+
+  <div class='ui-btn-left'>
+    <a id='btnDialogBack' class='axios-link-dialog' data-role='button' href='#' title='Torna alla pagina precedente'>&#10094; Annulla</a>
+  </div>
+
+  <h2>Rispondi/Inoltra</h2>
+
+  <div class='ui-btn-right'>
+    <a id='btnDialogApply' class='axios-link-dialog' data-role='button' href='#' title='Invia Messaggio'>Invia</a>
+  </div>
+</div>
+
+<div class='dialogContent' data-role='content'>
+
+  <form id='dialogForm' class='dialogForm' data-ajax="false">
+
+    <!--<div class='ui-field-contain'> 
+      <label for='txtFrom'>Da:</label>
+      <input type='text' name='txtFrom' id='txtFrom' readonly="readonly">
+    </div>-->
+
+    <div class='ui-field-contain'>
+      <label id='lblFrom' for='selMailbox' class='select'>Da:</label>
+      <select name='selMailbox' id='selMailbox' title=''></select>
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblTo' for='txtTo'>A:</label>
+      <input type='text' name='txtTo' id='txtTo' required> <!-- Obbligatorio e controllato da validator -->
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblCC' for='txtCC'>CC:</label>
+      <input type='text' name='txtCC' id='txtCC' > <!-- Non obbligatorio ma controllato da validator -->
+    </div>
+
+    <div class='ui-field-contain'>
+      <label id='lblSubject' for='txtSubject'>Oggetto:</label>
+      <input type='text' name='txtSubject' id='txtSubject'>
+    </div>
+
+    <div class='ui-field-contain'>
+      <!--<label for="txtText">Testo:</label>-->
+      <textarea name="txtText" id="txtText" rows="10"></textarea>
+    </div>
+
+    <div id='divText'>
+    </div>
+
+</form>
+
+</div>
+

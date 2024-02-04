@@ -1,0 +1,42 @@
+[
+  {
+    "idAlunno":  "0001",
+    "argomenti": [
+      {
+        "data":  "07/02/2017 00:00:00",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "oreLezione":  "1",
+        "descArgomenti": "La letteratura italiana del primo 600 - Parte 1"
+      },
+      {
+        "data":  "08/02/2017 00:00:00",
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "oreLezione":  "1-2",
+        "descArgomenti": "La situazione politica europea alla vigilia della 1a guerra mondiale - Parte 1"
+      },
+      {
+        "data":  "07/02/2017 00:00:00",
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "oreLezione":  "4",
+        "descArgomenti": "Le equazioni di primo grado discussione e risoluzione"
+      },
+      {
+        "data":  "08/02/2017 00:00:00",
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "oreLezione":  "5",
+        "descArgomenti": "La letteratura italiana del primo 600 - Parte 2"
+      },
+      {
+        "data":  "08/02/2017 00:00:00",
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "oreLezione":  "3-4",
+        "descArgomenti": "Le disequazioni di primo grado discussione e risoluzione"
+      }
+    ]
+  }
+]

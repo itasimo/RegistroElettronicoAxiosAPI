@@ -1,0 +1,131 @@
+{
+  "tipoVoti": [
+    {
+      "idPlesso": "0001",
+      "displayVotiMsg": "I voti visualizzati sono quelli inseriti entro il 30 aprile",
+      "tipi": [
+        {
+          "tipo": "T",
+          "codice": "",
+          "desc": "Tutti"
+        },
+        {
+          "tipo": "S",
+          "codice": "S",
+          "desc": "Scritto"
+        },
+        {
+          "tipo": "G",
+          "codice": "G",
+          "desc": "Grafico"
+        },
+        {
+          "tipo": "O",
+          "codice": "O",
+          "desc": "Orale"
+        },
+        {
+          "tipo": "P",
+          "codice": "P",
+          "desc": "Pratico"
+        },
+        {
+          "tipo": "A",
+          "codice": "A",
+          "desc": "Altro/Unico"
+        }
+      ]
+    },
+    {
+      "idPlesso": "0002",
+      "displayVotiMsg": "I voti visualizzati sono quelli inseriti entro il 30 aprile",
+      "tipi": [
+        {
+          "tipo": "A",
+          "codice": "",
+          "desc": "Altro"
+        }
+      ]
+    }
+  ],
+
+  "tipoAssenze": [
+    {
+      "tipo": "T",
+      "desc": "Tutti"
+    },
+    {
+      "tipo": "A",
+      "desc": "Assenze"
+    },
+    {
+      "tipo": "R",
+      "desc": "Ritardo"
+    },
+    {
+      "tipo": "U",
+      "desc": "Uscita"
+    },
+    {
+      "tipo": "E",
+      "desc": "Rientro"
+    }
+  ],
+
+  "tipoGiustificazione": [
+    {
+      "tipo": "1",
+      "desc": "Tutore"
+    },
+    {
+      "tipo": "2",
+      "desc": "Docente"
+    },
+    {
+      "tipo": "3",
+      "desc": "Permanente"
+    },
+    {
+      "tipo": "4",
+      "desc": "Periodica"
+    }
+  ],
+
+  "frazioniTemporali": [
+    {
+      "idPlesso": "0001",
+      "frazioni": [
+        {
+          "idFrazione": "0001",
+          "descFrazione": "Primo quadrimestre",
+          "dataInizio": "10/09/2016",
+          "dataFine": "31/12/2016"
+        },
+        {
+          "idFrazione": "0002",
+          "descFrazione": "Secondo quadrimestre",
+          "dataInizio": "01/01/2017",
+          "dataFine": "10/06/2017"
+        }
+      ]
+    },
+    {
+      "idPlesso": "0002",
+      "frazioni": [
+        {
+          "idFrazione": "0001",
+          "descFrazione": "Primo quadrimestre",
+          "dataInizio": "10/09/2016",
+          "dataFine": "31/12/2016"
+        },
+        {
+          "idFrazione": "0002",
+          "descFrazione": "Secondo quadrimestre",
+          "dataInizio": "01/01/2017",
+          "dataFine": "10/06/2017"
+        }
+      ]
+    }
+  ]
+
+}

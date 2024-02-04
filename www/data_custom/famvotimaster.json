@@ -1,0 +1,95 @@
+[
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0001",
+    "descFrazione": "Primo quadrimestre",
+    "materie": [
+      {
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "mediaVoti": "5.92"
+      },
+      {
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "mediaVoti": "7.25"
+      },
+      {
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "mediaVoti": "0"
+      },
+      {
+        "idMat": "0006",
+        "descMat": "LATINO",
+        "mediaVoti": "0"
+      },
+      {
+        "idMat": "0007",
+        "descMat": "CHIMICA",
+        "mediaVoti": "0"
+      }
+    ]
+  },
+  {
+    "idAlunno": "0001",
+    "idFrazione": "0002",
+    "descFrazione": "Secondo quadrimestre",
+    "materie": [
+      {
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "mediaVoti": "6.42"
+      },
+      {
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "mediaVoti": "0"
+      },
+      {
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "mediaVoti": "0"
+      },
+      {
+        "idMat": "0009",
+        "descMat": "EDUCAZIONE FISICA E MOTORIA",
+        "mediaVoti": "7"
+      }
+
+    ]
+  },
+  {
+    "idAlunno":  "0002",
+    "idFrazione": "0001",
+    "descFrazione": "Primo quadrimestre",
+    "materie": [
+      {
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "mediaVoti": "6.92"
+      },
+      {
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "mediaVoti": "6.25"
+      },
+      {
+        "idMat": "0004",
+        "descMat": "SCIENZE",
+        "mediaVoti": "6"
+      },
+      {
+        "idMat": "0005",
+        "descMat": "GEOGRAFIA",
+        "mediaVoti": "5.5"
+      },
+      {
+        "idMat": "0008",
+        "descMat": "FILOSOFIA",
+        "mediaVoti": "6"
+      }
+    ]
+  }
+
+]

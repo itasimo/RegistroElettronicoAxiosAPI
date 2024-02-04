@@ -1,0 +1,53 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <div class='btnDialogBackContainer'>
+    <div id='btnDialogBack'></div>
+  </div>
+</div>
+
+<div class='dialogContent' data-role='content'>
+
+  <!-- <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false' data-filter-placeholder=''></ul> -->
+  <div class='divAssenzaDetailContainer'></div>
+  <div class="giustificaAssenzaContainer">
+    <button class="call-giustifica"></button>
+  </div>
+</div>
+
+
+<!--<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+  <form id="frmPopup">
+    <div style='padding: 10px 20px;'>
+      <div class='ui-field-contain'>
+        <label id='lblOTP' for='numOTP'>Codice OTP:</label>
+        <input type='text' name='numOTP' id='numOTP' pattern='[0-9]*' value='' maxlength='6'>
+      </div>
+      <hr />
+      <div>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-check' data-index='0'>OK</button>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-btn-icon-left ui-icon-delete' data-index='2' data-cancel='true'>Annulla</button>
+      </div>
+    </div>
+  </form>
+</div>-->
+
+<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+    <form id="frmPopup">
+        <div style='padding: 10px 20px;'>
+            <div class='ui-field-contain'>
+                <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+                <input type='text' name='numPIN' id='numPIN' value=''>
+            </div>
+            <div class='ui-field-contain'>
+              <label id='lblSelectMotivo' for='selectMotivo'>Motivo:</label>
+              <select id="selectMotivo">
+              </select>
+            </div>
+            <div class='popupFrmButtonContainer'>
+              <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+                data-index='0'>OK</button>
+              <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+                data-index='2' data-cancel='true'>Annulla</button>
+            </div>
+        </div>
+    </form>
+</div>

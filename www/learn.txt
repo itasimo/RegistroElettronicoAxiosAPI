@@ -1,0 +1,80 @@
+-----------------------------------------------------------------------------------------------------------------------------
+CHART
+-----------------------------------------------------------------------------------------------------------------------------
+Bar "stacked" una sopra l'altra
+
+
+        var s1 = [2, 6, 7, 10];
+        var s2 = [7, 5, 3, 4];
+        var s3 = [14, 9, 3, 8];
+
+        setTimeout(function () { // Serve per dare il tempo alla dialog sopra questa di chiudersi e far si che jqplot veda il canvas su cui plottare
+          // Chart
+          //ASSENZEMASTER.plot = $.jqplot('chartAssenze', [series], {
+          ASSENZEMASTER.plot = $.jqplot('chartAssenze', [s1, s2, s3], {
+            // http://www.jqplot.com/docs/index/Properties.html
+            stackSeries: true, // Più serie sullo stesso bar
+            grid: { // Griglia definizione
+              //gridLineWidth: 1.5,
+              //gridLineColor: 'rgb(235,235,235)',
+              //drawGridlines: true,
+              shadow: false
+            },
+            title: title,
+            //series: [{ renderer: $.jqplot.BarRenderer }], // Istogramma
+            series: [
+                { label: 'Assenze' },
+                { label: 'Ritardi' },
+                { label: 'Uscite' }
+            ],
+            //seriesColors: ['#3498db'], // No se si usa vary sotto o stackSeries
+            seriesDefaults: {
+              renderer: $.jqplot.BarRenderer,
+              //showMarker:false, // Marcatore di serie
+              pointLabels: {
+                show: true,
+                //labels: labels, // Senza usa i valori
+                //location:'se', 
+                formatString: '%s' // Per le stringhe, per altro: http://perldoc.perl.org/functions/sprintf.html
+              },
+              rendererOptions: {
+                barDirection: 'vertical', // horizontal o vertical
+                // Se varyBarColor = true usa un differente colore per ogni bar
+                //varyBarColor: true,
+                shadow: false
+              }
+            },
+            axes: { // Assi
+              xaxis: {
+                renderer: $.jqplot.CategoryAxisRenderer,
+                label: '',
+                //labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                //tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                //tickOptions: {
+                //  angle: 30
+                //}
+              },
+              yaxis: {
+                autoscale: true,
+                label: '',
+                //labelRenderer: $.jqplot.CanvasAxisLabelRenderer,
+                //tickRenderer: $.jqplot.CanvasAxisTickRenderer,
+                //tickOptions: {
+                //  angle: 30
+                //}
+              }
+            },
+            legend: {
+              show: true,
+              location: 's',
+              placement: 'inside' // inside o outside
+            }
+
+          });
+
+          // Il grafico viene plottato di nuovo per pulire il canvas da quello precedente
+          ASSENZEMASTER.plot.redraw(true);
+
+        }, 50);
+
+      }

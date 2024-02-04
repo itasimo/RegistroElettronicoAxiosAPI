@@ -1,0 +1,71 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <div class='btnDialogBackContainer'>
+    <div id="btnDialogBackAuth" class='btnDialogBack'></div>
+  </div>
+</div>
+<form id='authForm' class='divAutorizzazioneForm'>
+  <div class="rigaData">
+    <div>
+      Data
+    </div>
+    <div>
+      <input id="inputData" type="date" required>
+    </div>
+  </div>
+  <div class="rigaOrario">
+    <div>
+      Orario
+    </div>
+    <div>
+      <input type='time' name='inputOrario' id='inputOrario' value='' data-clear-btn='true' title='' required>
+    </div>
+  </div>
+  <div class="rigaOra">
+    <div>
+      Ora lezione
+    </div>
+    <div>
+      <input type='number' name='inputOra' id='inputOra' value='' data-clear-btn='true' title='' class="ignore">
+    </div>
+  </div>
+  <div class="rigaTipologia">
+    <div>
+      Tipologia
+    </div>
+    <div>
+      <select name='selTipoAutorizzazione' class="selTipoAutorizzazione" id='selTipoAutorizzazione'>
+        <option value="E"> Ritardo/Entrata </option>
+        <option value="U"> Uscita </option>
+        <option value="A"> Assenza </option>
+      </select>
+    </div>
+  </div>
+  <div class="rigaMotivo">
+    <div>
+      Motivo
+    </div>
+    <div>
+      <div>
+        <textarea data-mini="true" cols="40" rows="8" name="inputMotivo" id="inputMotivo" required></textarea>
+      </div>
+    </div>
+  </div>
+  <button id="saveAuth"></button>
+</form>
+
+<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+  <form id="frmPopup">
+    <div style='padding: 10px 20px;'>
+      <div class='ui-field-contain'>
+        <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+        <input type='text' name='numPIN' id='numPIN' value=''>
+      </div>
+      <div class='popupFrmButtonContainer'>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='0'>OK</button>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='2' data-cancel='true'>Annulla</button>
+      </div>
+    </div>
+  </form>
+</div>

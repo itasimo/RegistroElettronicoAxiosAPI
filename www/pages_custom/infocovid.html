@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Info Covid</title>
+</head>
+
+<body>
+    <div class="mobileInfoCovid">
+        <div class="infoCovidTitle">Informativa Covid</div>
+        <br>
+        <div class="fam_text"></div>
+        <a href="" id="downloadInfoCovid">
+            <span> Clicca qui per scaricare l'informativa. </span>
+        </a>
+        <br>
+        <br>
+        <label>
+            <input type="checkbox" name="readConfirm" id="readConfirm" value="1" />
+            <strong> Dichiaro di aver letto e compreso la seguente informativa </strong>
+        </label>
+        <button id="confirmBtnCovid">
+            <span> Continua </span>
+        </button>
+    </div>
+
+
+    <div data-role='popup' id='popupInfoCovidForm' data-transition='pop' data-dismissible="false">
+        <form id="frmInfoCovidPopup">
+            <div style='padding: 10px 20px;'>
+                <div class='ui-field-contain'>
+                    <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+                    <input type='text' name='numPIN' id='numPIN' value=''>
+                </div>
+                <hr />
+                <div>
+                    <button type='button' id='btnPopupOK'
+                        class='axios-popup-button ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-check'
+                        data-index='0'>OK</button>
+                    <button type='button' id='btnPopupCancel'
+                        class='axios-popup-button ui-btn ui-btn-inline ui-btn-icon-left ui-icon-delete' data-index='2'
+                        data-cancel='true'>Annulla</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+<style>
+    .mobileInfoCovid {
+        padding: 10px;
+    }
+
+    .infoCovidTitle {
+        font-size: 20px;
+    }
+</style>
+
+</html>

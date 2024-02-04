@@ -1,0 +1,101 @@
+[
+    {
+      "id": "dashboard",
+      "title": "SCUOLA DIGITALE",
+      "idImage": "li-navbar-img-none",
+      "dashboardFunction": "APP.showSDDashboard",
+      "default": "true",
+      "sidebar": [
+        {
+          "id": "liSDAttivita",
+          "image": "images_custom/Auth-100.png",
+          "title": "Attività da fare",
+          "subTitle": "Attività da fare",
+          "idCounter": "",
+          "function": "SDATTIVITAMASTER.showSDAttivitaMaster"
+        },
+        {
+          "id": "liSDBacheca",
+          "image": "images_custom/Auth-100.png",
+          "title": "Bacheca",
+          "subTitle": "Bacheca",
+          "idCounter": "",
+          "function": "SDBACHECAMASTER.showSDBachecaMaster"
+        },
+        {
+          "id": "liSDComunicazioni",
+          "image": "images_custom/Auth-100.png",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni",
+          "idCounter": "",
+          "function": "SDCOMUNICAZIONIMASTER.showSDComunicazioniMaster"
+        },
+        {
+          "id": "liSDMaterialeDidattico",
+          "image": "images_custom/Auth-100.png",
+          "title": "Materiale Didattico",
+          "subTitle": "Materiale Didattico",
+          "idCounter": "",
+          "function": "SDMATERIALEDIDATTICOMASTER.showSDMaterialeDidatticoMaster"
+        },
+        {
+          "id": "liSDRicercaAnagrafiche",
+          "image": "images_custom/Auth-100.png",
+          "title": "Ricerca Anagrafiche",
+          "subTitle": "Ricerca Anagrafiche",
+          "idCounter": "",
+          "function": "SDRICERCAANAGRAFICHEMASTER.showSDRicercaAnagraficheMaster"
+        },
+        {
+          "id": "liSDRicercaDocumenti",
+          "image": "images_custom/Auth-100.png",
+          "title": "Ricerca Documenti",
+          "subTitle": "Ricerca Documenti",
+          "idCounter": "",
+          "function": "SDRICERCADOCUMENTIMASTER.showSDRicercaDocumentiMaster"
+        },
+        {
+          "id": "liSDRicercaFascicoli",
+          "image": "images_custom/Auth-100.png",
+          "title": "Ricerca Fascicoli",
+          "subTitle": "Ricerca Fascicoli",
+          "idCounter": "",
+          "function": "SDRICERCAFASCICOLIMASTER.showSDRicercaFascicoliMaster"
+        },
+        {
+          "id": "liSDRicercaProtocolli",
+          "image": "images_custom/Auth-100.png",
+          "title": "Ricerca Protocolli",
+          "subTitle": "Ricerca Protocolli",
+          "idCounter": "",
+          "function": "SDRICERCAPROTOCOLLIMASTER.showSDRicercaProtocolliMaster"
+        },
+        {
+          "id": "liSDAssenze",
+          "image": "images_custom/Auth-100.png",
+          "title": "Gestione Assenze",
+          "subTitle": "Gestione Assenze",
+          "idCounter": "",
+          "function": "SDASSENZEMASTER.showSDRicercaAssenzeMaster"
+        },
+        {
+          "id": "liSDCurriculum",
+          "image": "images_custom/Auth-100.png",
+          "title": "Gestione Curriculum",
+          "subTitle": "Gestione Curriculum",
+          "idCounter": "",
+          "function": "SDCURRICULUMMASTER.showSDRicercaCurriculumMaster"
+        },
+        {
+          "id": "liInfo",
+          "image": "images/Info-100.png",
+          "title": "Informazioni",
+          "subTitle": "Dati sul dispositivo",
+          "idCounter": "",
+          "function": "APP.showInfo"
+        }
+      ]
+    }
+  
+  ]
+  

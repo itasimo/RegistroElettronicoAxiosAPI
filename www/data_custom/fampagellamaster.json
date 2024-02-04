@@ -1,0 +1,201 @@
+[
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0001",
+    "descFrazione": "Primo quadrimestre",
+    "esito": "",
+    "giudizio": "L'alunno \u00e8 presente e segue le lezioni, il rendimento \u00e8 mediamente buono.",
+    "URL": "https://scdemo.axioscloud.it/Pages/COMMON/COMMON_Check_Digital_Stamp.aspx?s=xbLrxZoT0QGhDFC%2bow%2f6AKE98T72odaTNf%2blLqbS9ZIZYw7Ne7XB3UuBurMdFl0PZv%2bxtnpuhrh0eFOGjRZ1phQ88WwT5jojDpduoLColhu2sjH%2b",
+    "letta": "N",
+    "materie": [
+      {
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "assenze": "3",
+        "mediaVoti": "6.5",
+        "giudizio":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla. Maecenas mauris nunc, placerat nec suscipit in, finibus quis elit. Nunc non tortor in odio rhoncus vulputate sit amet vel ipsum.",
+        "detail": [
+          {
+            "tipo": "O",
+            "voto": "6",
+            "votoValore": "6"
+          },
+          {
+            "tipo": "S",
+            "voto": "7",
+            "votoValore": "7"
+          }
+        ]
+      },
+      {
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "assenze": "2",
+        "mediaVoti": "7",
+        "detail": [
+          {
+            "tipo": "O",
+            "voto": "7",
+            "votoValore": "7"
+          }
+        ]
+      },
+      {
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "assenze": "4",
+        "mediaVoti": "5.5",
+        "detail": [
+          {
+            "tipo": "O",
+            "voto": "6",
+            "votoValore": "6"
+          },
+          {
+            "tipo": "S",
+            "voto": "5",
+            "votoValore": "5"
+          }
+        ]
+      },
+      {
+        "idMat": "0006",
+        "descMat": "LATINO",
+        "assenze": "1",
+        "mediaVoti": "5",
+        "giudizio":  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla.",
+        "recupero" : "Corsi sostegno organizzati Istituto",
+        "detail": [
+          {
+            "tipo": "O",
+            "voto": "5",
+            "votoValore": "5"
+          },
+          {
+            "tipo": "S",
+            "voto": "5",
+            "votoValore": "5"
+          }
+        ]
+      },
+      {
+        "idMat": "0007",
+        "descMat": "CHIMICA",
+        "assenze": "0",
+        "mediaVoti": "7",
+        "detail": [
+          {
+            "tipo": "O",
+            "voto": "7",
+            "votoValore": "7"
+          }
+        ]
+      },
+      {
+        "idMat": "0009",
+        "descMat": "EDUCAZIONE FISICA E MOTORIA",
+        "assenze": "0",
+        "mediaVoti": "8",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "8",
+            "votoValore": "8"
+          }
+        ]
+      },
+      {
+        "idMat": "0010",
+        "descMat": "CONDOTTA",
+        "assenze": "",
+        "mediaVoti": "8",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "8",
+            "votoValore": "8"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "idAlunno": "0001",
+    "idFrazione": "0002",
+    "descFrazione": "Secondo quadrimestre",
+    "esito": "Promosso",
+    "giudizio": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In dictum aliquet vehicula. Nunc quis elit aliquam, tempus risus eget, faucibus nulla. Maecenas mauris nunc, placerat nec suscipit in, finibus quis elit. Nunc non tortor in odio rhoncus vulputate sit amet vel ipsum. Vivamus laoreet elit eu risus viverra maximus. Aliquam erat volutpat. Etiam sed nisl dolor. Vestibulum consequat lacus eu dui vulputate auctor. Aenean eu lectus blandit, convallis mauris et, mattis nulla. Sed mi mi, efficitur ac finibus quis, tempus volutpat urna. Cras elementum, lorem non aliquam posuere, arcu nisi convallis lacus, at posuere ex odio nec purus. Donec sed quam eros. Mauris nec turpis nulla. Maecenas in urna vestibulum, maximus mi ut, pulvinar tortor. Pellentesque sollicitudin viverra varius.",
+    "URL": "",
+    "letta": "N",
+    "materie": [
+      {
+        "idMat": "0001",
+        "descMat": "ITALIANO",
+        "assenze": "4",
+        "mediaVoti": "6",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "6",
+            "votoValore": "6"
+          }
+        ]
+      },
+      {
+        "idMat": "0002",
+        "descMat": "STORIA",
+        "assenze": "1",
+        "mediaVoti": "5",
+        "recupero" :  "Studio individuale",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "5",
+            "votoValore": "5"
+          }
+        ]
+      },
+      {
+        "idMat": "0003",
+        "descMat": "MATEMATICA",
+        "assenze": "2",
+        "mediaVoti": "4",
+        "recupero" :  "Corsi sostegno organizzati Istituto",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "4",
+            "votoValore": "4"
+          }
+        ]
+      },
+      {
+        "idMat": "0009",
+        "descMat": "EDUCAZIONE FISICA E MOTORIA",
+        "assenze": "0",
+        "mediaVoti": "7",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "7",
+            "votoValore": "7"
+          }
+        ]
+      },
+      {
+        "idMat": "0010",
+        "descMat": "CONDOTTA",
+        "assenze": "",
+        "mediaVoti": "9",
+        "detail": [
+          {
+            "tipo": "A",
+            "voto": "9",
+            "votoValore": "9"
+          }
+        ]          
+      }
+    ]
+  }
+
+]

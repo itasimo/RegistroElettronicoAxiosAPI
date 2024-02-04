@@ -1,0 +1,58 @@
+<div class="compitiContainer">
+
+    <div class="selectTabCompitiContainer">
+        <div class="tabCompiti" id="tabCompitiMaterie">
+            Materie
+        </div>
+        <div class="tabCompiti" id="tabCompitiGiorni">
+            Giorni
+        </div>
+    </div>
+    <!-- <div class="ui-grid-a"> -->
+        <select id="selectStatoCollaboraCompitiMaster">
+            <option value="T">Tutti</option>
+            <option value="0">Da svolgere COLLABORA</option>
+            <option value="1">Svolti COLLABORA</option>
+            <option value="2">Compiti RE</option>
+        </select>
+    <!-- </div> -->
+    <!-- <div class="ui-grid-a">
+    <center><strong>Ordina per</strong></center>
+    <select id="selectOrdinamento">
+        <option value="1">Data di scadenza</option>
+    </select>
+</div> -->
+<!-- </div> -->
+<!-- <div class="ui-grid-a">
+    <div class="ui-block-a">
+        <center><strong>Periodo</strong></center>
+        <select id="selectPeriodo">
+            <option value="D">Domani</option>
+        </select>
+    </div>
+    <div class="ui-block-b">
+        <center><strong>Materia</strong></center>
+        <select id="selectMateria">
+            <option value="T">Tutte</option>
+        </select>
+    </div>
+</div> -->
+
+    <div class="compitiListContainer">
+        <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+            style='margin-top: 0;' data-filter-placeholder=''></ul>
+    </div>
+
+    <div class="ft-prog-container">
+        <progress max="100" value="0" class="ft-prog"></progress>
+        <h1>Attendere...</h1>
+    </div>
+</div>
+<div class="noCompitiGenerale">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noCompitiGeneraleLabel"></div>
+</div>
+<div class="noCompitiSezione">
+    <div class="axios-theme noDataIcon"></div>
+    <div class="noCompitiSezioneLabel"></div>
+</div>

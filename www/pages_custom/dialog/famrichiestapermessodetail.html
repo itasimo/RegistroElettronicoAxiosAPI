@@ -1,0 +1,35 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+  <div class='btnDialogBackContainer'>
+    <div id='btnDialogBack2' class="btnDialogBack"></div>
+  </div>
+</div>
+
+<div class='dialogContent' data-role='content'>
+  <!-- <ul class='axios-ul' id='ulEvents' data-role='listview' data-inset='false' data-filter='false'
+    data-filter-placeholder=''></ul> -->
+  <div class='divRichiestaPermesso'></div>
+  <div class="authPermessoButtonContainer">
+    <button class="authPermessoButton"></button>
+  </div>
+  <div class="editDeleteButtonsContainer">
+    <button class="editRichiestaButton"></button>
+    <button class="deleteRichiestaButton"></button>
+  </div>
+</div>
+
+<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+  <form id="frmPopup">
+    <div style='padding: 10px 20px;'>
+      <div class='ui-field-contain'>
+        <label id='lblPIN' for='numPIN'>Codice PIN:</label>
+        <input type='text' name='numPIN' id='numPIN' value=''>
+      </div>
+      <div class='popupFrmButtonContainer'>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='0'>OK</button>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='2' data-cancel='true'>Annulla</button>
+      </div>
+    </div>
+  </form>
+</div>

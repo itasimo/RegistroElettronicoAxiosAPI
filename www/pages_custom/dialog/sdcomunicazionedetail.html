@@ -1,0 +1,47 @@
+<div class='dialogHeader' data-role='header' data-position='fixed'>
+    <div class='ui-btn-left'>
+        <a id='btnDialogBack' class='axios-link-dialog' data-role='button' href='#'
+            title='Torna alla pagina precedente'></a>
+    </div>
+
+    <h2></h2>
+
+    <div class='ui-btn-right'>
+    </div>
+</div>
+<form class='formContainer comunicazioneForm' class='divAutorizzazioneForm'>
+    <label for="selInviataDa" class="select">Inviata da</label>
+    <select name="selInviataDa" id="selInviataDa">
+    </select>
+    <fieldset class="daySelectorComunicazione" data-role="controlgroup" data-mini="true" data-type="horizontal">
+        <legend>Visibile nei giorni</legend>
+        <input type="checkbox" id="checkbox-lun">
+        <label for="checkbox-lun" class="weekDayLabel">Lun</label>
+        <input type="checkbox" id="checkbox-mar">
+        <label for="checkbox-mar" class="weekDayLabel">Mar</label>
+        <input type="checkbox" id="checkbox-mer">
+        <label for="checkbox-mer" class="weekDayLabel">Mer</label>
+        <input type="checkbox" id="checkbox-gio">
+        <label for="checkbox-gio" class="weekDayLabel">Gio</label>
+        <input type="checkbox" id="checkbox-ven">
+        <label for="checkbox-ven" class="weekDayLabel">Ven</label>
+        <input type="checkbox" id="checkbox-sab">
+        <label for="checkbox-sab" class="weekDayLabel">Sab</label>
+        <input type="checkbox" id="checkbox-dom">
+        <label for="checkbox-dom" class="weekDayLabel">Dom</label>
+    </fieldset>
+    <label for="inputURL">URL esterno</label>
+    <input type="text" name="inputURL" id="inputURL" value="">
+    <label for="Titolo">Titolo</label>
+    <input type="text" name="Titolo" id="Titolo" value="">
+    <label for="inputTesto">Testo</label>
+    <textarea cols="40" rows="8" name="inputTesto" id="inputTesto"></textarea>
+    <fieldset data-role="controlgroup">
+        <legend>Visibile nelle classi</legend>
+        <input type="checkbox" name="tmp" id="tmp">
+        <label for="tmp">Mancano i servizi</label>
+    </fieldset>
+    <button id="saveComunicazione"></button>
+    <button id="deleteComunicazione"></button>
+        
+</form>

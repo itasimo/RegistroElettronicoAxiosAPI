@@ -1,0 +1,148 @@
+[
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0001",
+    "descFrazione": "Primo quadrimestre",
+    "assenze": [
+      {
+        "id": "0001",
+        "iddocente": "0001",
+        "data": "15/09/2017",
+        "tipo": "A",
+        "datagiust": "16/09/2017",
+        "tipogiust": "1",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      },
+      {
+        "id": "0002",
+        "iddocente": "0001",
+        "data": "11/09/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      },
+      {
+        "id": "0003",
+        "iddocente": "0001",
+        "data": "12/10/2017",
+        "tipo": "R",
+        "datagiust": "15/10/2017",
+        "tipogiust": "1",
+        "motivo": "Autobus",
+        "calcolo": "1",
+        "ora": "09:00",
+        "oralez": "2"
+      },
+      {
+        "id": "0004",
+        "iddocente": "0001",
+        "data": "09/11/2017",
+        "tipo": "U",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Visita medica",
+        "calcolo": "1",
+        "ora": "11:00",
+        "oralez": "4"
+      },
+      {
+        "id": "0041",
+        "iddocente": "0001",
+        "data": "07/11/2017",
+        "tipo": "E",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Rientro volontario",
+        "calcolo": "1",
+        "ora": "13:00",
+        "oralez": "6"
+      },
+      {
+        "id": "0005",
+        "iddocente": "0001",
+        "data": "17/11/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      },
+      {
+        "id": "0006",
+        "iddocente": "0001",
+        "data": "10/12/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Familiare",
+        "calcolo": "1"
+      }
+    ]
+  },
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0002",
+    "descFrazione": "Secondo quadrimestre",
+    "assenze": [
+      {
+        "id": "0001",
+        "iddocente": "0001",
+        "data": "24/01/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      },
+      {
+        "id": "0002",
+        "iddocente": "0001",
+        "data": "07/02/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      },
+      {
+        "id": "0003",
+        "iddocente": "0001",
+        "data": "17/02/2017",
+        "tipo": "R",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Autobus",
+        "calcolo": "1",
+        "ora": "09:00",
+        "oralez": "2"
+      },
+      {
+        "id": "0004",
+        "iddocente": "0001",
+        "data": "12/03/2017",
+        "tipo": "U",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Visita medica",
+        "calcolo": "1",
+        "ora": "12:00",
+        "oralez": "5"
+      },
+      {
+        "id": "0005",
+        "iddocente": "0001",
+        "data": "07/04/2017",
+        "tipo": "A",
+        "datagiust": "",
+        "tipogiust": "0",
+        "motivo": "Malattia",
+        "calcolo": "1"
+      }
+    ]
+
+  }
+
+]

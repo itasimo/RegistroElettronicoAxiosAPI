@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="video.svg"
+   xml:space="preserve"
+   viewBox="0 0 506.58967 571.77466"
+   y="0px"
+   x="0px"
+   id="Layer_1"
+   version="1.1"
+   inkscape:export-filename="C:\Users\etamburini\Desktop\icone Barlo\video.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   width="506.58966"
+   height="571.77466"><metadata
+   id="metadata13"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title>video-glyph</dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs11" /><sodipodi:namedview
+   inkscape:current-layer="Layer_1"
+   inkscape:window-maximized="1"
+   inkscape:window-y="-8"
+   inkscape:window-x="-8"
+   inkscape:cy="217.93308"
+   inkscape:cx="204.8"
+   inkscape:zoom="1.0507812"
+   showgrid="false"
+   id="namedview9"
+   inkscape:window-height="1017"
+   inkscape:window-width="1920"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0"
+   guidetolerance="10"
+   gridtolerance="10"
+   objecttolerance="10"
+   borderopacity="1"
+   bordercolor="#666666"
+   pagecolor="#ffffff"
+   inkscape:document-rotation="0" />
+<style
+   id="style2"
+   type="text/css">
+	.st0{fill:#1554E1;}
+</style>
+<title
+   id="title4">video-glyph</title>
+<path
+   style="fill:#00b592;fill-opacity:1"
+   id="path6"
+   d="M 275.2,268.8 H 134.4 c -3.5,0 -6.4,2.9 -6.4,6.4 v 115.2 c 0,3.5 2.9,6.4 6.4,6.4 h 140.8 c 3.5,0 6.4,-2.9 6.4,-6.4 V 275.2 c 0,-3.5 -2.9,-6.4 -6.4,-6.4 z m -48.1,69.3 -39.3,19.7 c -3,1.5 -6.6,0.2 -8,-2.8 -0.4,-0.8 -0.6,-1.7 -0.6,-2.6 v -39.3 c 0,-3.3 2.7,-6 6.1,-5.9 0.9,0 1.8,0.2 2.6,0.6 l 39.3,19.6 c 2.9,1.5 4.1,5.1 2.6,8.1 -0.7,1.2 -1.6,2.1 -2.7,2.6 z M 256.1,0 H 64 C 28.7,0 0,28.7 0,64 v 384 c 0,35.3 28.7,64 64,64 h 281.6 c 35.3,0 64,-28.7 64,-64 V 153.6 Z m 51.1,390.4 c 0,17.7 -14.3,32 -32,32 H 134.4 c -17.7,0 -32,-14.3 -32,-32 V 275.2 c 0,-17.7 14.3,-32 32,-32 h 140.8 c 17.7,0 32,14.3 32,32 z m 0,-224 c -35.3,0 -64,-28.7 -64,-64 V 25.6 L 384,166.4 Z"
+   class="st0" />
+<path
+   id="path832"
+   d="m 181.63151,356.08863 c -1.37008,-1.51392 -1.57501,-4.60668 -1.57501,-23.76988 v -22.02952 l 2.4762,-1.62247 c 2.45601,-1.60924 2.65413,-1.53379 24.30777,9.25688 30.28671,15.09278 30.25624,14.40419 1.29039,29.15409 -11.51525,5.86375 -21.834,10.68159 -22.93058,10.70632 -1.09657,0.0247 -2.70252,-0.73822 -3.56877,-1.69542 z"
+   style="fill:#ffffff;stroke:#ffffff;stroke-width:0.999999;paint-order:fill markers stroke" /><path
+   id="path834"
+   d="m 125.81115,420.71213 c -8.66925,-2.68663 -17.45987,-10.67162 -20.53955,-18.65715 -1.73476,-4.49818 -1.82476,-7.9469 -1.82476,-69.92115 v -65.1896 l 2.82389,-5.57326 c 3.15583,-6.22838 8.79576,-11.68963 15.52783,-15.03587 l 4.48843,-2.23102 H 204.8 283.31301 l 4.75837,2.3488 c 6.09943,3.01076 12.76426,9.67123 15.74331,15.73299 l 2.33847,4.75836 v 65.1896 c 0,61.97425 -0.09,65.42297 -1.82476,69.92115 -2.28751,5.93145 -9.04629,13.24364 -15.2865,16.53814 l -4.77721,2.52213 -78.03718,0.1671 c -42.92045,0.0919 -79.10781,-0.1647 -80.41636,-0.57022 z m 154.59289,-25.97965 c 1.30295,-1.86022 1.48147,-9.37149 1.48147,-62.33457 0,-58.95058 -0.0401,-60.25958 -1.90335,-62.12282 -1.87039,-1.87039 -3.17224,-1.90335 -75.18216,-1.90335 -72.00992,0 -73.31177,0.033 -75.18216,1.90335 -1.86324,1.86324 -1.90335,3.17224 -1.90335,62.12282 0,52.96308 0.17852,60.47435 1.48148,62.33457 l 1.48147,2.11511 H 204.8 278.92256 Z"
+   style="fill:#ffffff;stroke:#ffffff;stroke-width:0.999999;paint-order:fill markers stroke" /><path
+   id="path836"
+   d="m 292.00985,164.08223 c -17.7825,-4.30441 -33.69888,-17.45549 -41.94123,-34.65438 -6.03768,-12.59852 -6.33381,-15.59746 -6.03822,-61.148129 l 0.26403,-40.686811 68.99382,68.99908 68.99383,68.99908 -42.34699,-0.0793 c -33.09158,-0.062 -43.56617,-0.37441 -47.92524,-1.42956 z"
+   style="fill:#ffffff;stroke:#ffffff;stroke-width:0.999999;paint-order:fill markers stroke" /></svg>

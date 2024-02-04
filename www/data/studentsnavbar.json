@@ -1,0 +1,156 @@
+[
+  {
+    "id": "dashboard",
+    "title": "SCUOLA DIGITALE",
+    "idImage": "li-navbar-img-none",
+    "dashboardFunction": "APP.showDashboard",
+    "default": "true",
+    "sidebar": [
+      {
+        "id": "liCompiti",
+        "image": "images_custom/Class Filled-100.png",
+        "title": "Compiti (RE/Collabora)",
+        "subTitle": "Compiti Assegnati",
+        "idCounter": "",
+        "function": "COMPITIMASTER.showCompitiMaster"
+      },
+      {
+        "id": "liMaterialeDidattico",
+        "image": "images_custom/MaterialeDidattico-100.png",
+        "title": "Materiale Didattico",
+        "subTitle": "Materiale Didattico",
+        "idCounter": "",
+        "function": "MATERIALEDIDATTICOMASTER.showMaterialeDidatticoMaster"
+      },
+      {
+        "id": "liArgomenti",
+        "image": "images_custom/Classroom Filled-100.png",
+        "title": "Lezioni (RE/Collabora)",
+        "subTitle": "Argomenti Lezioni",
+        "idCounter": "",
+        "function": "ARGOMENTIMASTER.showArgomentiMaster"
+      },
+      {
+        "id": "liComunicazioni",
+        "image": "images_custom/PDF Filled-100.png",
+        "title": "Comunicazioni",
+        "subTitle": "Comunicazioni",
+        "idCounter": "countComunicazioni",
+        "function": "COMMASTER.showComunicazioniMaster"
+      },    
+      {
+        "id": "liCentroNotifiche",
+        "image": "images_custom/notification-logo-100-red.png",
+        "title": "Notifiche",
+        "subTitle": "Notifiche Push",
+        "idCounter": "countNotifiche",
+        "function": "NOTIFICHEMASTER.showNotificheMaster"
+      },
+      {
+        "id": "liVoti",
+        "image": "images_custom/Test Failed Filled-100.png",
+        "title": "Voti",
+        "subTitle": "Valutazioni",
+        "idCounter": "",
+        "function": "VOTIDETAIL.showVotiDetail"
+      },
+      {
+        "id": "liAssenze",
+        "image": "images_custom/Being Sick Filled-100.png",
+        "title": "Assenze",
+        "subTitle": "Gestione Assenze",
+        "idCounter": "",
+        "function": "ASSENZEMASTER.showAssenzeMaster"
+      },
+      {
+        "id": "liNote",
+        "image": "images_custom/Note Filled-100.png",
+        "title": "Note",
+        "subTitle": "Provvedimenti disciplinari",
+        "idCounter": "",
+        "function": "NOTEMASTER.showNoteMaster"
+      },
+      {
+        "id": "liAutorizzazioni",
+        "image": "images_custom/Auth-100.png",
+        "title": "Autorizzazioni",
+        "subTitle": "Autorizzazioni Scolastiche",
+        "idCounter": "",
+        "function": "AUTORIZZAZIONIMASTER.showAutorizzazioniMaster"
+      },
+      {
+        "id": "liPagella",
+        "image": "images_custom/Page Overview 2 Filled-100.png",
+        "title": "Pagella",
+        "subTitle": "Pagella",
+        "idCounter": "",
+        "function": "PAGELLAMASTER.showPagellaMaster"
+      },
+      {
+        "id": "liCurriculum",
+        "image": "images_custom/Diploma 1 Filled-100.png",
+        "title": "Curriculum",
+        "subTitle": "Curriculum Scolastico",
+        "idCounter": "",
+        "function": "CURRICULUMMASTER.showCurriculumMaster"
+      },
+      {
+        "id": "liMessaggi",
+        "image": "images/Message-100.png",
+        "title": "Messaggi",
+        "subTitle": "Gestione posta",
+        "idCounter": "countMessaggi",
+        "function": "APP.showMessaggi"
+      },
+      {
+        "id": "liCalendario",
+        "image": "images/Calendar-100.png",
+        "title": "Calendario",
+        "subTitle": "Gestione Eventi",
+        "idCounter": "countCalendario",
+        "function": "APP.showCalendarioMese"
+      },
+      {
+        "id": "liNotifiche",
+        "image": "images/Notify-100.png",
+        "title": "Notifiche",
+        "subTitle": "Gestione Notifiche",
+        "idCounter": "countNotifiche",
+        "function": "APP.showNotifiche"
+      },
+      {
+        "id": "liSynchro",
+        "image": "images/Synchronize-100.png",
+        "title": "Sincronizzazioni",
+        "subTitle": "Gestione Sincronizzazioni",
+        "idCounter": "countSynchro",
+        "function": "APP.showSynchro"
+      },
+      {
+        "id": "liUserProfile",
+        "image": "images/User-100.png",
+        "title": "Utente",
+        "subTitle": "Profilo e Opzioni",
+        "idCounter": "",
+        "function": "APP.showUserProfile"
+      },
+      {
+        "id": "liSupport",
+        "image": "images/Support-100.png",
+        "title": "Assistenza",
+        "subTitle": "Supporto e Assistenza",
+        "idCounter": "",
+        "function": "APP.showSupport"
+      },
+      {
+        "id": "liInfo",
+        "image": "images/Info-100.png",
+        "title": "Informazioni",
+        "subTitle": "Dati sul dispositivo",
+        "idCounter": "",
+        "function": "APP.showInfo"
+      }
+    ]
+  }
+
+]

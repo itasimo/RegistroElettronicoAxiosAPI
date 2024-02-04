@@ -1,0 +1,995 @@
+{
+  "navbar": [
+    {
+      "id": "REG",
+      "title": "REGISTRO",
+
+      "sidebar": [
+        {
+          "id": "liStudente",
+          "title": "Studente",
+          "subTitle": "Nome Studente"
+        },
+        {
+          "id": "liVoti",
+          "title": "Voti",
+          "subTitle": "Valutazioni"
+        },
+        {
+          "id": "liAssenze",
+          "title": "Assenze",
+          "subTitle": "Gestione Assenze"
+        },
+        {
+          "id": "liNote",
+          "title": "Note",
+          "subTitle": "Provvedimenti disciplinari"
+        },
+        {
+          "id": "liCompiti",
+          "title": "Compiti (RE/Collabora)",
+          "subTitle": "Compiti Assegnati"
+        },
+        {
+          "id": "liArgomenti",
+          "title": "Lezioni (RE/Collabora)",
+          "subTitle": "Argomenti Lezioni"
+        },
+        {
+          "id": "liOrario",
+          "title": "Orario",
+          "subTitle": "Orario Lezioni"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liColloqui",
+          "title": "Colloqui",
+          "subTitle": "Docenti-Familiari"
+        },
+        {
+          "id": "liComunicazioni",
+          "title": "Comunicazioni",
+          "subTitle": "Comunicazioni"
+        },
+        {
+          "id": "liPagella",
+          "title": "Pagella",
+          "subTitle": "Pagella"
+        },
+        {
+          "id": "liCurriculum",
+          "title": "Curriculum",
+          "subTitle": "Curriculum Scolastico"
+        },
+        {
+          "id": "liAutorizzazioni",
+          "title": "Autorizzazioni",
+          "subTitle": "Autorizzazioni Scolastiche"
+        },
+        {
+          "id": "liMaterialeDidattico",
+          "title": "Materiale Didattico",
+          "subTitle": "Materiale Didattico"
+        }
+      ]
+    }
+
+  ],
+
+  "forms": [
+    {
+      "id": "CustomAPP",
+
+      "items": [
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Non sono presenti i dati Strutturali.\nQuesta \u00e8 una condizione anomala, l'APP non pu\u00f2 funzionare, contattare il centro assistenza Axios.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Attenzione",
+          "text": "Non sono presenti Studenti associati all'Utente.\nQuesta \u00e8 una condizione anomala, l'APP non pu\u00f2 funzionare, contattare il centro assistenza Axios.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Chiusura applicazione",
+          "text": "Uscire dall'applicazione?",
+          "buttons": "Si, No"
+        }
+      ]
+    },
+
+    {
+      "id": "DashRegistro",
+
+      "items": [
+        {
+          "id": "noEvents",
+          "html": "Non ci sono eventi per oggi."
+        },
+        {
+          "id": "today",
+          "html": "E' successo oggi:"
+        },
+        {
+          "id": "tipoEvento",
+          "html1": "Voto",
+          "html2": "Assenza",
+          "html3": "Nota",
+          "html4": "Comunicazione",
+          "html5": "Argomento svolto",
+          "html6": "Compito"
+        },
+        {
+          "id": "tipoAssenzeDesc",
+          "html1": "Assenza",
+          "html2": "Ritardo",
+          "html3": "Uscita",
+          "html4": "Rientro"
+        },
+        {
+          "id": "tipoDettaglio",
+          "html1": "Entra alle: ",
+          "html2": "Esce alle: ",
+          "html3": "Ora di lezione: "
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Errore",
+          "text": "Riscontrato errore: {0} - Messaggio: File non trovato.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Errore",
+          "text": "Riscontrato errore: {0} - Messaggio: Errore indefinito.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "DashFamiglia",
+
+      "items": [
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "Studenti",
+
+      "items": [
+        {
+          "id": "ulEvents",
+          "html": "Non sono presenti dati per questa pagina."
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "VotiMaster",
+
+      "items": [
+        {
+          "id": "sideMedia",
+          "html": "Media: "
+        },
+        {
+          "id": "noMaterie",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noVotiStudente",
+          "html": "Non ci sono Voti per questo Studente."
+        },
+        {
+          "id": "noVotiFrazione",
+          "html": "Non ci sono materie con voti per questa frazione."
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "VotiDetail",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Materie"
+        },
+        {
+          "id": "h2",
+          "html": "Elenco Voti"
+        },
+        {
+          "id": "sideMedia",
+          "html": "Media: "
+        },
+        {
+          "id": "summaryTitle",
+          "html": "Riepilogo"
+        },
+        {
+          "id": "chartTitle",
+          "html": "Grafico Voti REMOVE:"
+        },
+        {
+          "id": "noVotiMaterie",
+          "html": "Non ci sono voti per nessuna materia."
+        },
+        {
+          "id": "noVotiFrazione",
+          "html": "Non ci sono materie con voti per questa frazione."
+        },
+        {
+          "id": "noVotiGenere",
+          "html": "Non ci sono voti per questo genere."
+        },
+        {
+          "id": "summaryPhrases",
+          "text1": "Puoi alzare la media a <strong>{0}</strong> prendendo {1} o pi\u00fa.",
+          "text2": "Puoi abbassare la media a <strong>{0}</strong> prendendo {1} o meno.",
+          "text3": "Non puoi alzare la media a <strong>{0}</strong> con l'aggiunta di un solo voto.",
+          "text4": "Non puoi abbassare la media a <strong>{0}</strong> con l'aggiunta di un solo voto.",
+          "text5": "La media aritmetica dei voti di questa materia \u00E8 pari a ",
+          "text6": "La media ponderata dei voti di questa materia \u00E8 pari a "
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "VotoDetail",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Voti"
+        },
+        {
+          "id": "btnDialogVista",
+          "title": "Visto Voto",
+          "html": "Visto"
+        },
+        {
+          "id": "frmPopupLabels",
+          "html1": "Codice PIN:"
+        },
+        {
+          "id": "frmPopupButtons",
+          "html1": "OK",
+          "html2": "Cancella"
+        },
+        {
+          "id": "h2",
+          "html": "Dettaglio Voto"
+        },
+        {
+          "id": "noComment",
+          "html": "Nessun commento al voto"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Attenzione",
+          "text": "Il codice PIN deve essere di 6 caratteri alfanumerici.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg3",
+          "title": "Attenzione",
+          "text": "Codice PIN errato!",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "AssenzeMaster",
+
+      "items": [
+        {
+          "id": "noAssenze",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noAssenzeStudente",
+          "html": "Non ci sono assenze per questo Studente."
+        },
+        {
+          "id": "noAssenzeFrazione",
+          "html": "Non ci sono assenze per questa frazione."
+        },
+        {
+          "id": "summaryTitle",
+          "html": "Riepilogo Assenze"
+        },
+        {
+          "id": "countBygiustificate",
+          "html1": "NON GIUSTIFICATE",
+          "html2": "GIUSTIFICATE"
+        },
+        {
+          "id": "tipoAssenzeDesc",
+          "html1": "Assenze",
+          "html2": "Ritardi",
+          "html3": "Uscite",
+          "html4": "Rientri"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "AssenzeDetail",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Assenze"
+        },
+        {
+          "id": "h2",
+          "html": "Elenco Assenze"
+        },
+        {
+          "id": "noAssenze",
+          "html": "Non ci sono assenze."
+        },
+        {
+          "id": "noAssenzeFrazione",
+          "html": "Non ci sono assenze per questa frazione."
+        },
+        {
+          "id": "noAssenzeNonGiustificate",
+          "html": "Non ci sono assenze non giustificate per questa frazione."
+        },
+        {
+          "id": "noAssenzeGiustificate",
+          "html": "Non ci sono assenze giustificate per questa frazione."
+        },
+        {
+          "id": "noAssenzeGenere",
+          "html": "Non ci sono assenze del genere selezionato."
+        },
+        {
+          "id": "badgeText",
+          "html1": "Non giustificato",
+          "html2": "Giustificato"
+        },
+        {
+          "id": "tipoDettaglio",
+          "html1": "Entra alle: ",
+          "html2": "Esce alle: ",
+          "html3": "Ora di lezione: "
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "AssenzaDetail",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Lista Assenze"
+        },
+        {
+          "id": "h2",
+          "html": "Dettaglio Assenza"
+        },
+        {
+          "id": "tipoDettaglio",
+          "html1": "Entra alle: ",
+          "html2": "Esce alle: ",
+          "html3": "Ora di lezione: "
+        },
+        {
+          "id": "giustificaLabels",
+          "html1": "Tipo: ",
+          "html2": "Data: ",
+          "html3": "Dettagli: ",
+          "html4": "Concorre al Calcolo: ",
+          "html5": "<strong>NON GIUSTIFICATA </strong>",
+          "html6": "Data Giustificazione: ",
+          "html7": "Giustificato da/tipo:",
+          "html8": "Motivazione:"
+        },
+        {
+          "id": "giustificaFields",
+          "text4a": "Si",
+          "text4b": "No",
+          "text5a": "Tocca qui per giustificare",
+          "text5b": ""
+        },
+        {
+          "id": "frmPopupLabels",
+          "html1": "Codice PIN:"
+        },
+        {
+          "id": "frmPopupButtons",
+          "html1": "OK",
+          "html2": "Cancella"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Il codice PIN deve essere di 6 caratteri alfanumerici.",
+          "buttons": "OK"
+        },
+        {
+          "id": "msg2",
+          "title": "Attenzione",
+          "text": "Codice PIN errato!",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+
+    {
+      "id": "CompitiMaster",
+
+      "items": [
+        {
+          "id": "noCompiti",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noCompitiStudente",
+          "html": "Non ci sono Compiti per questo Studente."
+        },
+        {
+          "id": "noCompitiPeriodo",
+          "html": "Non ci sono Compiti per il periodo o la materia indicati."
+        },
+        {
+          "id": "periodi",
+          "html1": "Oggi",
+          "html2": "Domani",
+          "html3": "Tutti"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "ArgomentiMaster",
+
+      "items": [
+        {
+          "id": "noArgomenti",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noArgomentiStudente",
+          "html": "Non ci sono Argomenti per questo Studente."
+        },
+        {
+          "id": "noArgomentiPeriodo",
+          "html": "Non ci sono Argomenti per il periodo o la materia indicati."
+        },
+        {
+          "id": "periodi",
+          "html1": "Ieri",
+          "html2": "Oggi",
+          "html3": "Tutti"
+        },
+        {
+          "id": "oreLezione",
+          "html": "Ora Lezione: "
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "NoteMaster",
+
+      "items": [
+        {
+          "id": "noNote",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noNoteStudente",
+          "html": "Non ci sono Note per questo Studente."
+        },
+        {
+          "id": "noNoteFrazione",
+          "html": "Non ci sono Note per la Frazione indicata."
+        },
+        {
+          "id": "badgeText",
+          "html1": "Studente",
+          "html2": "Classe"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "OrarioMaster",
+
+      "items": [
+        {
+          "id": "noOrario",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noOrarioGiorni",
+          "html": "L'Orario deve essere strutturato su almeno 5 giorni e 6 al massimo."
+        },
+        {
+          "id": "noOrarioStudente",
+          "html": "Non ci sono dati per questo Studente."
+        },
+        {
+          "id": "giorniSettimana",
+          "G0": "ORE",
+          "G1": "LUNEDI",
+          "G2": "MARTEDI",
+          "G3": "MERCOLEDI",
+          "G4": "GIOVEDI",
+          "G5": "VENERDI",
+          "G6": "SABATO"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "PagellaMaster",
+
+      "items": [
+        {
+          "id": "btnDownload",
+          "title": "Scarica Pagella",
+          "html": "Scarica"
+        },
+        {
+          "id": "summaryTitle",
+          "html": "Riepilogo"
+        },
+        {
+          "id": "judgmentTitle",
+          "html": "Giudizio"
+        },
+        {
+          "id": "noVoti",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noVotiStudente",
+          "html": "Non ci sono dati per questo Studente."
+        },
+        {
+          "id": "noVotiFrazione",
+          "html": "Non ci sono dati per questa frazione."
+        },
+        {
+          "id": "pagellaNonDisponibile",
+          "html": "La visualizzazione della pagella sar\u00E0 disponibile a partire dal giorno "
+        },
+        {
+          "id": "votoLabel",
+          "html1": "Media: ",
+          "html2": "Voto: "
+        },
+        {
+          "id": "summaryLabels",
+          "html1": "Media: ",
+          "html2": "Totale Assenze: ",
+          "html3": "Esito: ",
+          "html4": "Recuperi: "
+        },
+        {
+          "id": "summaryFields",
+          "text4": "Nessuno"
+        },
+        {
+          "id": "detailLabels",
+          "html1": "Tipo: ",
+          "html2": "Voto: ",
+          "html3": "Assenze: ",
+          "html4": "Giudizio: ",
+          "html5": "Recupero: "
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "La pagella non � scaricabile in questo momento.\nIl motivo potrebbe essere che non � stato ancora terminato lo scrutinio della Frazione indicata.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "ComunicazioniMaster",
+
+      "items": [
+        {
+          "id": "noComunicazioni",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noComStudente",
+          "html": "Non ci sono Comunicazioni per questo Studente."
+        },
+        {
+          "id": "badgeText",
+          "html1": "Dirigente",
+          "html2": "Segreteria",
+          "html3": "Collegio Doc.",
+          "html4": "Altro",
+          "html5": "Docente"
+        }
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Questa operazione \u00e8 possibile solo con il dispositivo on-line.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "VotiChart",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Lista Voti"
+        },
+        {
+          "id": "h2",
+          "html": "Grafico Voti"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Questa operazione \u00e8 possibile solo con il dispositivo on-line.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "AssenzeChart",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Assenze"
+        },
+        {
+          "id": "h2",
+          "html": "Grafico Assenze"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+
+    {
+      "id": "ColloquiMaster",
+
+      "items": [
+        {
+          "id": "noColloqui",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noColloquiStudente",
+          "html": "Non ci sono Colloqui per questo Studente."
+        },
+        {
+          "id": "summaryTitle",
+          "html": "Riepilogo Colloqui Prenotati"
+        },
+        {
+          "id": "summaryLabels",
+          "html1": "Materia",
+          "html2": "Sede",
+          "html3": "Data",
+          "html4": "Posto"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Questa operazione \u00e8 possibile solo con il dispositivo on-line.",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "ColloquiDetail",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Materie"
+        },
+        {
+          "id": "h2",
+          "html": "Elenco Sedi"
+        },
+        {
+          "id": "noColloquiMateria",
+          "html": "Non ci sono Colloqui prenotabili per questa materia."
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "ColloquioDate",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Sedi"
+        },
+        {
+          "id": "h2",
+          "html": "Elenco Date"
+        },
+        {
+          "id": "noColloquioDate",
+          "html": "Non ci sono date prenotabili per questa materia."
+        },
+        {
+          "id": "badgeText",
+          "html1": "Prenotato posto: ",
+          "html2": "Non prenotato"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    },
+
+    {
+      "id": "ColloquioUpdate",
+
+      "items": [
+        {
+          "id": "btnDialogBack",
+          "title": "Torna alla pagina precedente",
+          "html": "\u276e Annulla"
+        },
+        {
+          "id": "h2",
+          "html": "Gestione Prenotazione"
+        },
+        {
+          "id": "btnDialogDelete",
+          "title": "Elimina Prenotazione",
+          "html": "Elimina"
+        },
+        {
+          "id": "btnDialogApply",
+          "title": "Salva Modifiche",
+          "html": "Salva"
+        },
+        {
+          "id": "formLabels",
+          "html0": "Docente: ",
+          "html0a": "Sostituito da : ",
+          "html1": "Materia: ",
+          "html2": "Data: ",
+          "html3": "Posto prenotato: ",
+          "html4": "Posti disponibili: ",
+          "html5a": "Scegli posto",
+          "html5b": "Cambia posto"
+        },
+        {
+          "id": "formFields",
+          "html3": "Nessuno",
+          "html5a": "Nessuno",
+          "html5b": "Scegli"
+        },
+
+        {
+          "id": "badgeText",
+          "html1": "Prenotato posto: ",
+          "html2": "Non prenotato"
+        }
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "Confermi eliminazione?",
+          "buttons": "Si,No"
+        }
+      ]
+    },
+
+    {
+      "id": "CurriculumMaster",
+
+      "items": [
+        {
+          "id": "noCurriculum",
+          "html": "Non sono presenti dati per questa pagina."
+        },
+        {
+          "id": "noCurriculumStudente",
+          "html": "Non ci sono Curriculum per questo Studente."
+        },
+        {
+          "id": "credito",
+          "html": "Credito: "
+        }
+
+
+      ],
+
+      "messages": [
+        {
+          "id": "msg1",
+          "title": "Attenzione",
+          "text": "",
+          "buttons": "OK"
+        }
+      ]
+    }
+  ]
+}

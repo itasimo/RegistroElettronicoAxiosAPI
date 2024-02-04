@@ -1,0 +1,1965 @@
+/*
+  Se si desidera aggiungere altri temi, utilizare http://themeroller.jquerymobile.com/ e includere il tema alla fine di questo file.
+  Arrows HTML Code and Unicode Hexadecimal: http://character-code.com/arrows-html-codes.php
+  NB alla fine del file le direttive @media.
+*/
+
+@font-face {
+  font-family: "custom-Roboto";
+  src: url("../fonts/Roboto-Regular.ttf");
+}
+
+#ulEvents {
+  -webkit-transform: translate3d(0px, 0px, 0px);
+}
+
+/* Link
+-----------------------------------------------------------------------------------------------------------*/
+
+.axios-link {
+  background-color: transparent !important;
+  color: orange !important;
+  border: none !important;
+  box-shadow: 0 0 0 !important;
+  font-size: 28px !important;
+  padding: 0 !important;
+  margin-right: 5px !important;
+  margin-top: 42px !important;
+  margin-left: 5px !important;
+}
+
+.axios-link-footer {
+  background-color: transparent !important;
+  color: orange !important;
+  border: none !important;
+  box-shadow: 0 0 0 !important;
+  font-size: 28px !important;
+  padding: 0 !important;
+  margin-right: 5px !important;
+  margin-top: 0px !important;
+  margin-left: 5px !important;
+}
+
+.axios-link-dialog {
+  background-color: transparent !important;
+  color: orange !important;
+  border: none !important;
+  box-shadow: 0 0 0 !important;
+  font-size: 28px !important;
+  padding: 0 !important;
+  margin-top: 3px !important;
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.axios-link-inner {
+  background-color: transparent !important;
+  color: orange !important;
+  border: none !important;
+  box-shadow: 0 0 0 !important;
+  font-size: 28px !important;
+  padding: 0 !important;
+  text-align: right !important;
+  margin-top: 0px !important;
+  margin-left: 5px !important;
+  margin-bottom: 0px !important;
+}
+
+.axios-link-char {
+  /* Solo carattere */
+  font-size: 36px !important;
+  font-weight: bold !important;
+}
+
+.axios-link-dialog-char {
+  /* Solo carattere */
+  font-size: 36px !important;
+  font-weight: bold !important;
+  margin-top: 0px !important;
+  margin-left: 30px !important;
+}
+
+/* Navbar
+-----------------------------------------------------------------------------------------------------------*/
+
+.axios-navbar-img .ui-btn .ui-btn-inner {
+  /*padding-top: 40px !important;*/
+}
+
+.axios-navbar-img .ui-btn .ui-icon {
+  width: 35px!important;
+  height: 35px!important;
+  margin-left: -15px !important;
+  box-shadow: none!important;
+  -moz-box-shadow: none!important;
+  -webkit-box-shadow: none!important;
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Custom Icon */
+
+#li-navbar-img-0:after {
+  background-image: url(../images/Internal-25.png);
+  background-size: 25px 25px;
+  background-color: transparent !important;
+}
+
+.ui-navbar li .ui-btn {
+  font-weight: bold !important;
+  font-size: 16px;
+  padding: 7px !important;
+}
+
+.ui-navbar li .ui-btn.ui-btn-active {
+  /*font-weight: bold !important;
+	font-size: 16px;
+  padding: 7px !important;*/
+  color: orange !important;
+}
+
+/* Panel 
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Reveal panel shadow on top of the listview menu (only to be used if you don't use fixed toolbars) */
+
+#homePage .ui-panel-display-reveal {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+#homePage .ui-panel-page-content-position-left {
+  -webkit-box-shadow: -3px 0px 0px rgba(0, 0, 0, .35);
+  -moz-box-shadow: -3px 0px 0px rgba(0, 0, 0, .35);
+  box-shadow: -3px 0px 0px rgba(0, 0, 0, .35);
+}
+
+#homePage .ui-panel-page-content-position-right {
+  -webkit-box-shadow: 3px 0px 0px rgba(0, 0, 0, .35);
+  -moz-box-shadow: 3px 0px 0px rgba(0, 0, 0, .35);
+  box-shadow: 3px 0px 0px rgba(0, 0, 0, .35);
+}
+
+/*.axios-li-dash-logo { DEPRECATED: ora dinamico in APP.start()
+  height: 95px !important; 
+}*/
+
+/*.axios-li-dash-a-first { DEPRECATED: 
+  height: 62px !important;
+}
+.axios-li-dash-a-first-nonav {
+  height: 29px !important;
+  max-height: 29px !important;
+  min-height: 29px !important;
+}*/
+
+.axios-li-dash-img-first {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: 10em;
+  height: 3em;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  margin: auto;
+}
+
+.axios-li-dash-img-first-nonav {
+  max-width: 15em !important;
+  padding-left: 60px !important;
+  padding-top: 0px !important;
+}
+
+/* Axios li-swipe  
+  Alcune proprietà sono implementate dinamicamente nel codice (ref. axios-plug-in.js)
+*/
+
+.ui-listview>li.axios-li-swipe {
+  /*display: table;*/
+  width: 100%;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.ui-listview>li.axios-li-swipe>a.ui-btn {
+  /*overflow: initial;*/
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 0;
+  /*-webkit-transition: -webkit-transform 400ms ease-out;
+  -moz-transition: -moz-transform 400ms ease-out;
+  -o-transition: -o-transform 400ms ease-out;
+  transition: transform 400ms ease-out ;*/
+}
+
+.ui-listview>li.axios-li-swipe>span {
+  z-index: auto;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /*height: 43px;*/
+  width: 0;
+  float: right;
+  /*display: table-cell;*/
+  /* Di seguito le disposizioni di transazione basate sulla dimensione (width) */
+  -webkit-transition: width 380ms ease-out;
+  -moz-transition: width 380ms ease-out;
+  -o-transition: width 380ms ease-out;
+  transition: width 380ms ease-out;
+}
+
+.ui-listview>li.axios-li-swipe>span.show {
+  /*width: 50px;*/
+  cursor: pointer;
+}
+
+.ui-listview>li.axios-li-swipe>span.btn {
+  text-align: center;
+  vertical-align: middle !important;
+  font-size: 1.0em;
+  text-shadow: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  text-rendering: optimizeLegibility;
+  text-overflow: clip;
+  padding-top: 5px;
+}
+
+.ui-listview>li.axios-li-swipe>span.delete {
+  background-color: #FF3B30;
+}
+
+.ui-listview>li.axios-li-swipe>span.flag {
+  background-color: #FF9500;
+}
+
+.ui-listview>li.axios-li-swipe>span.other {
+  background-color: #D6CEC3;
+}
+
+.ui-listview>li.axios-li-swipe>.ui-btn span.flagged {
+  padding: 0;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto 35px auto auto;
+  background-image: url(../images/Checked-20.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+/* Font e Text
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Senza ombra per il testo nei paragrafi.*/
+
+p {
+  text-shadow: none;
+}
+
+.axios-no-shadow {
+  text-shadow: none;
+}
+
+.axios-controlgroup-textinput {
+  height: 13px !important;
+}
+
+textarea.ui-input-text {
+  height: inherit !important;
+}
+
+/* Label
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-btn, label.ui-btn {
+  font-weight: normal !important;
+}
+
+.axios-large-label {
+  width: auto !important;
+}
+
+/* Icons
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Icona a destra nel campo di input*/
+
+.axios-input-icon-right {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin: -22px .3125em 0;
+  border: 0;
+  background-color: transparent;
+}
+
+/* Header e Footer
+-----------------------------------------------------------------------------------------------------------*/
+
+#homePage #pageHeader #iconbar {
+  height: 40px;
+  /* line-height: 40px; */
+  /* font: 0/0 a; */
+  margin-left: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#homePage #pageHeader #pageTitle {
+  text-align: center;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 10px;
+  width: 100%;
+  border-top: 1px solid #DCDCDC;
+  padding: 3px;
+  font-size: 14px;
+  height: 16px;
+  text-transform: capitalize;
+}
+
+/* Bottoni icona */
+
+#homePage #pageHeader #iconbar .leftSide,
+#homePage #pageHeader #iconbar .rightSide {
+  display: flex;
+  flex-flow: row nowrap;
+  flex: 0 0 115px;
+}
+
+#homePage #pageHeader #iconbar .rightSide {
+  justify-content: end;
+}
+
+#homePage #pageHeader #iconbar .axios-icon {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 5px !important;
+  margin-right: 7px;
+  /* Non usare !important qui*/
+  margin-top: 15px;
+}
+
+#homePage #pageHeader #iconbar #countAll {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 5px !important;
+  margin-right: 15px;
+  /* Non usare !important qui*/
+  top: 43px;
+}
+
+#homePage #pageHeader #iconbar .logout {
+  vertical-align: middle;
+  display: inline-block;
+  margin-left: 6px !important;
+  margin-right: 15px;
+  /* Non usare !important qui*/
+  top: 43px;
+}
+
+/* Se non cè la navbar */
+
+#homePage #pageHeader .axios-icon-img.axios-nonavbar {
+  margin-top: 7px !important;
+}
+
+#homePage #pageHeader .axios-img.axios-nonavbar {
+  margin-top: 7px !important;
+}
+
+#homePage #pageHeader .axios-nonavbar {
+  margin-top: -17px !important;
+}
+
+#homePage #pageHeader .ui-li-count.axios-nonavbar {
+  margin-top: -10px !important;
+}
+
+.axios-dialog-button {
+  margin-top: 5px !important;
+  margin-right: 2px !important;
+  height: 12px !important;
+}
+
+.axios-dialog-icon-img {
+  margin-top: 7px !important;
+}
+
+/* Loader */
+
+html.ui-loading .ui-loader.ui-loader-verbose {
+  display: flex;
+  vertical-align: middle;
+  flex-flow: column nowrap;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0.4;
+}
+
+html.ui-loading .ui-mobile-viewport.ui-overlay-b .ui-loader.ui-loader-verbose {
+  background-color: black;
+}
+
+.ui-loader > .ui-icon-loading {
+  /* background: url(../images/ajax-loader.gif); */
+  background: url(../images/ajax-loader-v2.gif); /* sostituita gif loader con una trasparente */
+  background-size: 2.875em 2.875em;
+}
+
+.ui-loader.ui-loader-verbose > h1 {
+  display: none;
+}
+
+/* Count bubble
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Tondi */
+
+.ui-li-count {
+  -webkit-border-radius: 1em/*{global-radii-buttons}*/
+  ;
+  border-radius: 1em/*{global-radii-buttons}*/
+  ;
+  font-weight: normal !important;
+  border-width: 0;
+  /*Il bordo attorno ai counter non è bello*/
+}
+
+/* Grandi in dash e header */
+
+#homePage #ulSideBar .ui-li-count, #homePage #pageHeader .ui-li-count, #homePage .ui-li-count {
+  font-size: 14px;
+  color: #ffffff;
+  /* background-color: #ff0000; */
+  background-color: hsl(0deg 80% 60%);
+}
+
+/* Solo per l'header */
+
+#homePage #pageHeader .ui-li-count {
+  /*margin-right: 25px !important; da quando btnBack e btnMenu sono alternati*/
+}
+
+#homePage #pageHeader #btnRefresh {
+  /*margin-left: 30px!important; Distanziato da bottone back */
+}
+
+.svgIconNavbar{
+  width: 25px;
+}
+
+.svgIconAttachment{
+  width: 30px;
+}
+
+.svgIconAttachmentSmall{
+  width: 25px;
+}
+
+.axios-icon.axios-theme-dipendent-a.btnMenu {
+  /* content: url(../images_custom/svg/Menu.svg); */
+  content: url(../images_custom/svg/menu-v2-a.svg);
+  /* content: url(../images_custom/menu-26.png); */
+}
+
+.axios-icon.axios-theme-dipendent-b.btnMenu {
+  /* content: url(../images_custom/svg/Menu.svg); */
+  content: url(../images_custom/svg/menu-v2-b.svg);
+  /* content: url(../images_custom/menu-26.png); */
+}
+
+#btnBack {
+  content: url(../images_custom/svg/Back.svg);
+  /* content: url(../images_custom/back-26.png); */
+}
+
+.axios-icon.axios-theme-dipendent-a#btnHome {
+  content: url(../images_custom/svg/Home-v2-a.svg);
+}
+
+.axios-icon.axios-theme-dipendent-b#btnHome {
+  content: url(../images_custom/svg/Home-v2-b.svg);
+}
+
+.axios-icon.axios-theme-dipendent-a#btnApply {
+  content: url(../images_custom/svg/checkicon-a.svg) !important;
+  /* content: url(../images_custom/svg/Apply.svg); */
+  /* content: url(../images_custom/apply-26.png); */
+}
+
+.axios-icon.axios-theme-dipendent-b#btnApply {
+  content: url(../images_custom/svg/checkicon-b.svg) !important;
+}
+
+.axios-icon.axios-theme-dipendent-a#btnTrash {
+  content: url(../images_custom/svg/trash_v2-a.svg);
+}
+
+.axios-icon.axios-theme-dipendent-b#btnTrash {
+  content: url(../images_custom/svg/trash_v2-b.svg);
+}
+
+.axios-icon.axios-theme-dipendent-a#btnRefresh {
+  /* content: url(../images_custom/svg/Refresh.svg); */
+  content: url(../images_custom/svg/refresh-v2-a.svg);
+  /* content: url(../images_custom/refresh-26.png); */
+}
+
+.axios-icon.axios-theme-dipendent-b#btnRefresh {
+  /* content: url(../images_custom/svg/Refresh.svg); */
+  content: url(../images_custom/svg/refresh-v2-b.svg);
+  /* content: url(../images_custom/refresh-26.png); */
+}
+
+/* Per collapsible */
+
+.axios-count {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 0.2em 0.5em;
+  float: right;
+  color: #ffffff;
+  background-color: #ff0000;
+  text-shadow: none;
+  -webkit-border-radius: 1em/*{global-radii-buttons}*/
+  ;
+  border-radius: 1em/*{global-radii-buttons}*/
+  ;
+}
+
+/* Main Page
+-----------------------------------------------------------------------------------------------------------*/
+
+.axios-splash {
+  padding: 10px;
+}
+
+.axios-splash>p {
+  font-size: 12px;
+  text-align: center;
+}
+
+.axios-splash-left-small {
+  text-align: center;
+  margin-top: 20px;
+  float: left;
+  width: 35%;
+}
+
+.axios-splash-right-big {
+  float: right;
+  width: 65%;
+}
+
+.axios-splash-left-big {
+  float: left;
+  width: 80%;
+}
+
+.axios-splash-right-small {
+  float: right;
+  width: 20%;
+}
+
+.axios-home-contain {
+  padding-left: 3px;
+}
+
+.axios-ui-field-contain-no-margin-top {
+  margin-top: 0px !important;
+}
+
+.axios-ui-field-contain-min-margin-top {
+  margin-top: 5px !important;
+}
+
+.axios-ui-field-contain-max-margin-top {
+  margin-top: 15px !important;
+}
+
+/* Dialog Page
+-----------------------------------------------------------------------------------------------------------*/
+
+.ui-dialog-contain {
+  margin: 1em auto 1em auto;
+}
+
+.dialogContent {
+  /*I margini sono trasferiti in dialogForm*/
+  /*margin-left: 3px;
+  margin-right: 3px;*/
+}
+
+.dialogForm {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.dialogCollapsible {
+  margin-left: 0px;
+}
+
+/* Grid
+-----------------------------------------------------------------------------------------------------------*/
+
+/* brutto retaggio della vecchia splash REMOVE: anche sotto
+  #homePage #pageContent .ui-block-a {
+  text-align:left;
+}
+#homePage #pageContent .ui-block-b {
+  text-align:right;
+}
+#homePage #pageContent .ui-grid-solo {
+  text-align:center;
+}*/
+
+/*.ui-block-a,
+.ui-block-b,
+.ui-block-c,
+.ui-block-d,
+.ui-block-e {
+	padding: 0 5px; 
+}*/
+
+.divDashboard.ui-grid-solo {
+  text-align: center !important;
+  white-space: normal;
+}
+
+.divDashboard.ui-grid-a>.ui-block-a {
+  text-align: center !important;
+  white-space: normal;
+}
+
+.divDashboard.ui-grid-a>.ui-block-b {
+  text-align: center !important;
+  white-space: normal;
+}
+
+/* Grid aggiunte e, f */
+
+.ui-grid-e, .ui-grid-f {
+  overflow: hidden;
+}
+
+.ui-block-f, .ui-block-g {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  float: left;
+  min-height: 1px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ul.ui-grid-e, ul.ui-grid-f, li.ui-block-f, li.ui-block-g {
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-grid-e>.ui-block-a, .ui-grid-e>.ui-block-b, .ui-grid-e>.ui-block-c, .ui-grid-e>.ui-block-d, .ui-grid-e>.ui-block-e, .ui-grid-e>.ui-block-f {
+  width: 16.666%;
+}
+
+/*.ui-grid-f {
+	overflow: hidden;
+}
+.ui-block-g {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	float: left;
+	min-height: 1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}*/
+
+/*ul.ui-grid-f,
+li.ui-block-g {
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+	list-style: none;
+}*/
+
+.ui-grid-f>.ui-block-a, .ui-grid-f>.ui-block-b, .ui-grid-f>.ui-block-c, .ui-grid-f>.ui-block-d, .ui-grid-f>.ui-block-e, .ui-grid-f>.ui-block-f, .ui-grid-f>.ui-block-g {
+  width: 14.285%;
+}
+
+/* 
+  Listview
+-----------------------------------------------------------------------------------------------------------*/
+
+.axios-ul {}
+
+.axios-collapsible {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+.axios-li {
+  padding-right: 10px !important;
+}
+
+.axios-li-img {
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  height: 50px;
+  width: auto;
+}
+
+.axios-avatar-img {
+  margin-left: 10px;
+  margin-top: 10px;
+  height: 65px;
+  width: 65px;
+  background-size: cover;
+  background-position: center;
+  /*border-radius: 50%!important; REMOVE: vedi sotto
+  -webkit-border-radius: 50%!important;*/
+  border-radius: 10%!important;
+  -webkit-border-radius: 10%!important;
+}
+
+/*.axios-avatar-sidebar-img { DEPRECATED: ora il radius è 10 per default nella classe axios-avatar-img 
+  border-radius: 10%!important;
+  -webkit-border-radius: 10%!important;
+}*/
+
+.axios-li-avatar-img {
+  margin-left: 0px;
+  margin-top: 3px;
+  height: 45px;
+  width: 45px;
+}
+
+.axios-li-lside-100 {
+  font-size: 2.00em !important;
+  position: absolute;
+  top: 0.75em;
+  left: 0.25em;
+  margin: 0;
+  text-align: left;
+}
+
+/*TODO: da definire bene*/
+
+.axios-li-lside-50 {
+  font-size: 1.00em !important;
+  position: absolute;
+  top: 0.25em;
+  left: 0.25em;
+  margin: 0;
+  text-align: left;
+}
+
+/* Questa consente di tenere un immagine allineata a sinistra e middle (H=50px), se si usano immagini a H=100px allora l'immagine rimarrà a sinistra in alto */
+
+.axios-li-has-thumb {
+  min-height: 1.600em !important;
+  padding-left: 4.00em !important;
+  padding-top: 15px !important;
+}
+
+.axios-circle-50 {
+  position: absolute;
+  left: 0.25em;
+  font-size: 40px;
+  text-align: center !important;
+  border-radius: 50%;
+  width: 50px !important;
+  height: 50px !important;
+  color: #ffffff;
+}
+
+/* Tiene il contenuto aside molto vicino al bordo destro (utile per piccole icone come l'attach nei messaggi)*/
+
+.axios-li-aside-near-right {
+  right: 0.75em !important;
+}
+
+/* Consente di tenere allineato middle il contenuto del testo in modo da combaciare con il carat-r per immagini H=50px e 100px */
+
+.axios-li-aside-50 {
+  font-size: 1.00em !important;
+  position: absolute;
+  top: 0.25em;
+  right: 3.333em;
+  margin: 0;
+  text-align: right;
+}
+
+/* Consente di tenere allineato middle il contenuto del testo in modo da combaciare con il carat-r per immagini H=100px */
+
+.axios-li-aside-100 {
+  font-size: 1.00em !important;
+  position: absolute;
+  top: 1.50em;
+  right: 3.333em;
+  margin: 0;
+  text-align: right;
+}
+
+/* Listview with collapsible list items. */
+
+.ui-listview>li .ui-collapsible-heading {
+  margin: 0;
+}
+
+.ui-collapsible.ui-li-static {
+  padding: 0;
+  border: none !important;
+}
+
+.ui-collapsible+.ui-collapsible>.ui-collapsible-heading>.ui-btn {
+  border-top: none !important;
+}
+
+/* Nested list button colors */
+
+.ui-listview .ui-listview .ui-btn {
+  background: #fff;
+}
+
+.ui-listview .ui-listview .ui-btn:hover {
+  background: #f5f5f5;
+}
+
+.ui-listview .ui-listview .ui-btn:active {
+  background: #f1f1f1;
+}
+
+.ui-listview>.ui-li-divider {
+  font-weight: normal !important;
+  font-size: smaller !important;
+  padding: .1em 1.143em !important;
+}
+
+/* Forse un po' più raffinato ma meno visibile
+.ui-listview > li h1,
+.ui-listview > li h2,
+.ui-listview > li h3,
+.ui-listview > li h4,
+.ui-listview > li h5,
+.ui-listview > li h6 {
+	font-weight: normal;
+}
+*/
+
+/* Elementi in li senza ellipsis nel testo*/
+
+.ui-listview>li p.axios-overflow {
+  text-overflow: unset !important;
+  overflow: visible !important;
+  white-space: pre-wrap !important;
+  overflow-wrap: break-word;
+}
+
+.ui-listview>li p.axios-ellipsis, .ui-listview>li span.axios-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ui-listview>li p.axios-text-limitate, .ui-listview>li span.axios-text-limitate {
+  margin-top: 0px !important;
+  width: 70% !important;
+}
+
+.ui-listview>li p.axios-text-full, .ui-listview>li span.axios-text-full {
+  margin-top: 0px !important;
+}
+
+input.ui-slider-input {
+  font-weight: normal !important;
+}
+
+/* Validation
+-----------------------------------------------------------------------------------------------------------*/
+
+.error {
+  color: #ff0000;
+}
+
+.axios-valid {
+  border-color: #00ff00;
+}
+
+/* JQPLOT
+-----------------------------------------------------------------------------------------------------------*/
+
+.jqplot-target {
+  text-shadow: 0 0px 0 #000;
+}
+
+/* 
+  TimeLine
+-----------------------------------------------------------------------------------------------------------*/
+
+.tm-header {
+  color: #ffffff;
+  position: relative;
+}
+
+.tm-color-overlay {
+  padding-left: 1em;
+  box-sizing: border-box;
+  background: #d35400;
+}
+
+.tm-day-today {
+  padding-top: 10px;
+  font-size: 16px;
+}
+
+.tm-day-number {
+  font-size: 4em;
+  display: inline-block;
+  margin-right: 15px;
+}
+
+.tm-date-right {
+  display: inline-block;
+}
+
+.tm-day-name {
+  font-size: 1.6em;
+}
+
+.tm-month {
+  text-transform: uppercase;
+  font-weight: 300;
+  font-size: 0.6em;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+/* .tm-timeline ul:before {
+  content: ' ';
+  height: 100%;
+  width: 1px;
+  background-color: #c0c0c0;
+  position: absolute;
+  top: 0;*/
+  /*left: 2.8em; /*NB deve essere: 2.5 + (tm-bullet widht - 1.0 / 2)*/
+  /* z-index: -1; /*Cosi la linea passa sotto ai bullet*/
+/* } */
+
+.tm-timeline ul {
+  padding: 1em 0 0 2em;
+  margin: 0;
+  list-style: none;
+  position: relative;
+}
+
+.tm-timeline li div {
+  display: inline-block;
+  margin: 1em 0;
+  vertical-align: top;
+}
+
+.tm-bullet {
+  width: 1.6em;
+  height: 1.6em;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #FFFFFF;
+  text-align: center;
+  line-height: 1.6em;
+  /*z-index: 1;*/
+}
+
+.tm-time {
+  width: 15%;
+  font-size: 0.9em;
+  padding-top: 0.4em;
+  padding-left: 0.2em;
+  margin-top: 0.30em !important;
+  margin-left: 0.25em !important;
+}
+
+.tm-desc {
+  width: 65%;
+  margin-top: 0.50em !important;
+}
+
+.tm-title {
+  font-size: 1.1em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.tm-subtitle {
+  margin: 0;
+  font-size: 1.0em;
+  font-weight: 400;
+  color: #808080;
+}
+
+.tm-notes {
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: 400;
+  /* color: #202020; commentato perchè fa override del colore del theme*/
+}
+
+.tm-action {
+  float: right;
+  margin-right: 10px;
+  margin-top: 25px;
+  width: 25px;
+  height: 25px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background: #b0b0b0;
+  background-image: url(../images/icons-png/carat-r-white.png);
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+  cursor: pointer;
+}
+
+.tm-people img {
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  border-radius: 15%;
+}
+
+/* Video 
+-----------------------------------------------------------------------------------------------------------*/
+
+.video-container {
+  position: relative;
+  padding-bottom: 60%;
+  padding-top: 0px;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*era 0*/
+  width: 100%;
+  /*era 100*/
+  height: 100%;
+}
+
+@media screen and (orientation:landscape) {
+  .video-container {
+    padding-bottom: 50%;
+    width: 92%;
+    margin-left: 4%;
+  }
+}
+
+/* MISC
+-----------------------------------------------------------------------------------------------------------*/
+
+.scrollable {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  /*MAKES OVERFLOWN OBJECTS HAVE INERTIA SCROLLING*/
+}
+
+#homePage {
+  touch-action: none;
+}
+
+/* Swatches A e B modificato solo text-shadow*/
+
+/* A
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Axios */
+
+.ui-dialog.ui-page-theme-a {
+  background-color: #f9f9f9 !important;
+}
+
+.axios-icon.axios-theme-dipendent-a.axios-offline {
+  /* content: url(../images_custom/svg/offline.svg); */
+  content: url(../images_custom/svg/offline-v2-a.svg);
+  /* content: url("../images/Offline-25.png"); */
+}
+
+.axios-icon.axios-theme-dipendent-b.axios-offline {
+  content: url(../images_custom/svg/offline-v2-b.svg);
+}
+
+.axios-icon.axios-theme-dipendent-a.axios-online {
+  display: none !important;
+  content: url(../images_custom/svg/online-a.svg);
+  /* content: url(../images/Online-a-25.png); */
+}
+
+.axios-icon.axios-theme-dipendent-a.axios-logout {
+  /* content: url(../images_custom/svg/Logout-a.svg); */
+  content: url(../images_custom/svg/Logout-v2-a.svg);
+  /* content: url("../images/Logout-a-26.png"); */
+}
+
+.axios-icon.axios-theme-dipendent-b.axios-logout {
+  content: url(../images_custom/svg/Logout-v2-b.svg);
+}
+
+/* Bar: Toolbars, dividers, slider track */
+
+.ui-bar-a, .ui-page-theme-a .ui-bar-inherit, html .ui-bar-a .ui-bar-inherit, html .ui-body-a .ui-bar-inherit, html body .ui-group-theme-a .ui-bar-inherit {
+  text-shadow: 0/*{a-bar-shadow-x}*/
+  0px/*{a-bar-shadow-y}*/
+  0/*{a-bar-shadow-radius}*/
+  #000/*{a-bar-shadow-color}*/
+  ;
+  font-weight: normal !important;
+}
+
+/* Page and overlay */
+
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+  text-shadow: 0/*{a-page-shadow-x}*/
+  0px/*{a-page-shadow-y}*/
+  0/*{a-page-shadow-radius}*/
+  #f3f3f3/*{a-page-shadow-color}*/
+  ;
+}
+
+/* Body: Read-only lists, text inputs, collapsible content */
+
+.ui-body-a, .ui-page-theme-a .ui-body-inherit, html .ui-bar-a .ui-body-inherit, html .ui-body-a .ui-body-inherit, html body .ui-group-theme-a .ui-body-inherit, html .ui-panel-page-container-a {
+  text-shadow: 0/*{a-body-shadow-x}*/
+  0px/*{a-body-shadow-y}*/
+  0/*{a-body-shadow-radius}*/
+  #f3f3f3/*{a-body-shadow-color}*/
+  ;
+}
+
+/* Button up */
+
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn, html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a,
+/* Button visited */
+
+.ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited, html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited {
+  text-shadow: 0/*{a-bup-shadow-x}*/
+  0px/*{a-bup-shadow-y}*/
+  0/*{a-bup-shadow-radius}*/
+  #f3f3f3/*{a-bup-shadow-color}*/
+  ;
+}
+
+/* Button hover */
+
+.ui-page-theme-a .ui-btn:hover, html .ui-bar-a .ui-btn:hover, html .ui-body-a .ui-btn:hover, html body .ui-group-theme-a .ui-btn:hover, html head+body .ui-btn .ui-btn-a:hover {
+  text-shadow: 0/*{a-bhover-shadow-x}*/
+  0px/*{a-bhover-shadow-y}*/
+  0/*{a-bhover-shadow-radius}*/
+  #f3f3f3/*{a-bhover-shadow-color}*/
+  ;
+}
+
+/* li:hover */
+
+.ui-page-theme-a .noHighlight .ui-btn:hover {
+  background-color: #f6f6f6;
+}
+
+/* Button down */
+
+.ui-page-theme-a .ui-btn:active, html .ui-bar-a .ui-btn:active, html .ui-body-a .ui-btn:active, html body .ui-group-theme-a .ui-btn:active, html head+body .ui-btn.ui-btn-a:active {
+  text-shadow: 0/*{a-bdown-shadow-x}*/
+  0px/*{a-bdown-shadow-y}*/
+  0/*{a-bdown-shadow-radius}*/
+  #f3f3f3/*{a-bdown-shadow-color}*/
+  ;
+}
+
+/* Active button */
+
+.ui-page-theme-a .ui-btn.ui-btn-active, html .ui-bar-a .ui-btn.ui-btn-active, html .ui-body-a .ui-btn.ui-btn-active, html body .ui-group-theme-a .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-a.ui-btn-active,
+/* Active checkbox icon */
+
+.ui-page-theme-a .ui-checkbox-on:after, html .ui-bar-a .ui-checkbox-on:after, html .ui-body-a .ui-checkbox-on:after, html body .ui-group-theme-a .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-a:after,
+/* Active flipswitch background */
+
+.ui-page-theme-a .ui-flipswitch-active, html .ui-bar-a .ui-flipswitch-active, html .ui-body-a .ui-flipswitch-active, html body .ui-group-theme-a .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-a.ui-flipswitch-active,
+/* Active slider track */
+
+.ui-page-theme-a .ui-slider-track .ui-btn-active, html .ui-bar-a .ui-slider-track .ui-btn-active, html .ui-body-a .ui-slider-track .ui-btn-active, html body .ui-group-theme-a .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-a .ui-btn-active {
+  text-shadow: 0/*{a-active-shadow-x}*/
+  0px/*{a-active-shadow-y}*/
+  0/*{a-active-shadow-radius}*/
+  #005599/*{a-active-shadow-color}*/
+  ;
+}
+
+/* B
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Axios */
+
+.ui-dialog.ui-page-theme-b {
+  background-color: #252525 !important;
+}
+
+.ui-body-b, .ui-page-theme-b .ui-body-inherit, html .ui-bar-b .ui-body-inherit, html .ui-body-b .ui-body-inherit, html body .ui-group-theme-b .ui-body-inherit, html .ui-panel-page-container-b {  
+  color: hsl(0deg 0% 90%);
+}
+
+.ui-bar-b, .ui-page-theme-b .ui-bar-inherit, html .ui-bar-b .ui-bar-inherit, html .ui-body-b .ui-bar-inherit, html body .ui-group-theme-b .ui-bar-inherit { 
+  color: hsl(0deg 0% 90%);
+}
+
+.ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper { 
+  color: hsl(0deg 0% 90%);
+}
+
+.axios-icon.axios-theme-dipendent-b.axios-offline {
+  content: url(../images_custom/svg/offline.svg);
+  /* content: url("../images/Offline-25.png"); */
+}
+
+.axios-icon.axios-theme-dipendent-b.axios-online {
+  display: none !important;
+  content: url(../images_custom/svg/online-b.svg);
+  /* content: url(../images/Online-b-25.png); */
+}
+
+.axios-icon.axios-theme-dipendent-b.axios-logout {
+  content: url(../images_custom/svg/Logout-v2-b.svg);
+  /* content: url("../images/Logout-b-26.png"); */
+}
+
+.axios-theme-dipendent-b.innerPanelContainer {
+  background-color: #1d1d1d;
+}
+
+/* Bar: Toolbars, dividers, slider track */
+
+.ui-bar-b, .ui-page-theme-b .ui-bar-inherit, html .ui-bar-b .ui-bar-inherit, html .ui-body-b .ui-bar-inherit, html body .ui-group-theme-b .ui-bar-inherit {
+  text-shadow: 0/*{a-bar-shadow-x}*/
+  0px/*{a-bar-shadow-y}*/
+  0/*{a-bar-shadow-radius}*/
+  #000/*{a-bar-shadow-color}*/
+  ;
+  font-weight: normal !important;
+}
+
+/* Page and overlay */
+
+.ui-overlay-b, .ui-page-theme-b, .ui-page-theme-b .ui-panel-wrapper {
+  text-shadow: 0/*{b-page-shadow-x}*/
+  0px/*{b-page-shadow-y}*/
+  0/*{b-page-shadow-radius}*/
+  #111/*{b-page-shadow-color}*/
+  ;
+}
+
+/* Body: Read-only lists, text inputs, collapsible content */
+
+.ui-body-b, .ui-page-theme-b .ui-body-inherit, html .ui-bar-b .ui-body-inherit, html .ui-body-b .ui-body-inherit, html body .ui-group-theme-b .ui-body-inherit, html .ui-panel-page-container-b {
+  text-shadow: 0/*{b-body-shadow-x}*/
+  0px/*{b-body-shadow-y}*/
+  0/*{b-body-shadow-radius}*/
+  #111/*{b-body-shadow-color}*/
+  ;
+}
+
+/* Button up */
+
+.ui-page-theme-b .ui-btn, html .ui-bar-b .ui-btn, html .ui-body-b .ui-btn, html body .ui-group-theme-b .ui-btn, html head+body .ui-btn.ui-btn-b,
+/* Button visited */
+
+.ui-page-theme-b .ui-btn:visited, html .ui-bar-b .ui-btn:visited, html .ui-body-b .ui-btn:visited, html body .ui-group-theme-b .ui-btn:visited, html head+body .ui-btn.ui-btn-b:visited {
+  text-shadow: 0/*{b-bup-shadow-x}*/
+  0px/*{b-bup-shadow-y}*/
+  0/*{b-bup-shadow-radius}*/
+  #111/*{b-bup-shadow-color}*/
+  ;
+}
+
+/* Button hover */
+
+.ui-page-theme-b .ui-btn:hover, html .ui-bar-b .ui-btn:hover, html .ui-body-b .ui-btn:hover, html body .ui-group-theme-b .ui-btn:hover, html head+body .ui-btn.ui-btn-b:hover {
+  text-shadow: 0/*{b-bhover-shadow-x}*/
+  0px/*{b-bhover-shadow-y}*/
+  0/*{b-bhover-shadow-radius}*/
+  #111/*{b-bhover-shadow-color}*/
+  ;
+}
+
+/* li:hover */
+
+.ui-page-theme-b .noHighlight .ui-btn:hover {
+  background-color: #333;
+}
+
+/* Button down */
+
+.ui-page-theme-b .ui-btn:active, html .ui-bar-b .ui-btn:active, html .ui-body-b .ui-btn:active, html body .ui-group-theme-b .ui-btn:active, html head+body .ui-btn.ui-btn-b:active {
+  text-shadow: 0/*{b-bdown-shadow-x}*/
+  0px/*{b-bdown-shadow-y}*/
+  0/*{b-bdown-shadow-radius}*/
+  #111/*{b-bdown-shadow-color}*/
+  ;
+}
+
+/* Active button */
+
+.ui-page-theme-b .ui-btn.ui-btn-active, html .ui-bar-b .ui-btn.ui-btn-active, html .ui-body-b .ui-btn.ui-btn-active, html body .ui-group-theme-b .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-b.ui-btn-active,
+/* Active checkbox icon */
+
+.ui-page-theme-b .ui-checkbox-on:after, html .ui-bar-b .ui-checkbox-on:after, html .ui-body-b .ui-checkbox-on:after, html body .ui-group-theme-b .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-b:after,
+/* Active flipswitch background */
+
+.ui-page-theme-b .ui-flipswitch-active, html .ui-bar-b .ui-flipswitch-active, html .ui-body-b .ui-flipswitch-active, html body .ui-group-theme-b .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-b.ui-flipswitch-active,
+/* Active slider track */
+
+.ui-page-theme-b .ui-slider-track .ui-btn-active, html .ui-bar-b .ui-slider-track .ui-btn-active, html .ui-body-b .ui-slider-track .ui-btn-active, html body .ui-group-theme-b .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-b .ui-btn-active {
+  text-shadow: 0/*{b-active-shadow-x}*/
+  0px/*{b-active-shadow-y}*/
+  0/*{b-active-shadow-radius}*/
+  #0088bb/*{b-active-shadow-color}*/
+  ;
+}
+
+/* C
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Axios */
+
+.axios-icon.axios-theme-dipendent-c.axios-offline {
+  content: url(../images_custom/svg/offline.svg);
+  /* content: url("../images/Offline-25.png"); */
+}
+
+.axios-icon.axios-theme-dipendent-c.axios-online {
+  content: url(../images_custom/svg/online-c.svg);
+  /* content: url(../images/Online-c-25.png); */
+}
+
+.axios-icon.axios-theme-dipendent-c.axios-logout {
+  content: url(../images_custom/svg/Logout-c.svg);
+  /* content: url("../images/Logout-c-26.png"); */
+}
+
+/* Bar: Toolbars, dividers, slider track */
+
+.ui-bar-c, .ui-page-theme-c .ui-bar-inherit, html .ui-bar-c .ui-bar-inherit, html .ui-body-c .ui-bar-inherit, html body .ui-group-theme-c .ui-bar-inherit {
+  background-color: #b9d4a0/*{c-bar-background-color}*/
+  ;
+  border-color: #dddddd/*{c-bar-border}*/
+  ;
+  color: #3b7236/*{c-bar-color}*/
+  ;
+  text-shadow: 0/*{a-bar-shadow-x}*/
+  0px/*{a-bar-shadow-y}*/
+  0/*{a-bar-shadow-radius}*/
+  #000/*{a-bar-shadow-color}*/
+  ;
+  font-weight: normal !important;
+}
+
+.ui-bar-c {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Page and overlay */
+
+.ui-overlay-c, .ui-page-theme-c, .ui-page-theme-c .ui-panel-wrapper {
+  background-color: #f9f9f9/*{c-page-background-color}*/
+  ;
+  border-color: #bbbbbb/*{c-page-border}*/
+  ;
+  color: #333333/*{c-page-color}*/
+  ;
+  text-shadow: 0/*{c-page-shadow-x}*/
+  0px/*{c-page-shadow-y}*/
+  0/*{c-page-shadow-radius}*/
+  #f3f3f3/*{c-page-shadow-color}*/
+  ;
+}
+
+/* Body: Read-only lists, text inputs, collapsible content */
+
+.ui-body-c, .ui-page-theme-c .ui-body-inherit, html .ui-bar-c .ui-body-inherit, html .ui-body-c .ui-body-inherit, html body .ui-group-theme-c .ui-body-inherit, html .ui-panel-page-container-c {
+  background-color: #ffffff/*{c-body-background-color}*/
+  ;
+  border-color: #dddddd/*{c-body-border}*/
+  ;
+  color: #3b7236/*{c-body-color}*/
+  ;
+  text-shadow: 0/*{c-body-shadow-x}*/
+  0px/*{c-body-shadow-y}*/
+  0/*{c-body-shadow-radius}*/
+  #f3f3f3/*{c-body-shadow-color}*/
+  ;
+}
+
+.ui-body-c {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Links */
+
+.ui-page-theme-c a, html .ui-bar-c a, html .ui-body-c a, html body .ui-group-theme-c a {
+  color: #3388cc/*{c-link-color}*/
+  ;
+  font-weight: bold;
+}
+
+.ui-page-theme-c a:visited, html .ui-bar-c a:visited, html .ui-body-c a:visited, html body .ui-group-theme-c a:visited {
+  color: #3388cc/*{c-link-visited}*/
+  ;
+  background-color: #ffffff/*{c-body-background-color}*/
+  ;
+}
+
+.ui-page-theme-c a:hover, html .ui-bar-c a:hover, html .ui-body-c a:hover, html body .ui-group-theme-c a:hover {
+  color: #005599/*{c-link-hover}*/
+  ;
+}
+
+/* li:hover */
+
+.ui-page-theme-c .noHighlight .ui-btn:hover {
+  background-color: #f6f6f6;
+}
+
+.ui-page-theme-c a:active, html .ui-bar-c a:active, html .ui-body-c a:active, html body .ui-group-theme-c a:active {
+  color: #005599/*{c-link-active}*/
+  ;
+}
+
+/* Button up */
+
+.ui-page-theme-c .ui-btn, html .ui-bar-c .ui-btn, html .ui-body-c .ui-btn, html body .ui-group-theme-c .ui-btn, html head+body .ui-btn.ui-btn-c,
+/* Button visited */
+
+.ui-page-theme-c .ui-btn:visited, html .ui-bar-c .ui-btn:visited, html .ui-body-c .ui-btn:visited, html body .ui-group-theme-c .ui-btn:visited, html head+body .ui-btn.ui-btn-c:visited {
+  background-color: #f6f6f6/*{c-bup-background-color}*/
+  ;
+  border-color: #dddddd/*{c-bup-border}*/
+  ;
+  color: #3d663e/*{c-bup-color}*/
+  ;
+  text-shadow: 0/*{c-bup-shadow-x}*/
+  0px/*{c-bup-shadow-y}*/
+  0/*{c-bup-shadow-radius}*/
+  #f3f3f3/*{c-bup-shadow-color}*/
+  ;
+}
+
+/* Button hover */
+
+.ui-page-theme-c .ui-btn:hover, html .ui-bar-c .ui-btn:hover, html .ui-body-c .ui-btn:hover, html body .ui-group-theme-c .ui-btn:hover, html head+body .ui-btn.ui-btn-c:hover {
+  background-color: #ededed/*{c-bhover-background-color}*/
+  ;
+  border-color: #dddddd/*{c-bhover-border}*/
+  ;
+  color: #333333/*{c-bhover-color} */
+  ;
+  text-shadow: 0/*{c-bhover-shadow-x}*/
+  0px/*{c-bhover-shadow-y}*/
+  0/*{c-bhover-shadow-radius}*/
+  #f3f3f3/*{c-bhover-shadow-color}*/
+  ;
+}
+
+/* Button down */
+
+.ui-page-theme-c .ui-btn:active, html .ui-bar-c .ui-btn:active, html .ui-body-c .ui-btn:active, html body .ui-group-theme-c .ui-btn:active, html head+body .ui-btn.ui-btn-c:active {
+  background-color: #e8e8e8/*{c-bdown-background-color}*/
+  ;
+  border-color: #dddddd/*{c-bdown-border}*/
+  ;
+  color: #333333/*{c-bdown-color}*/
+  ;
+  text-shadow: 0/*{c-bdown-shadow-x}*/
+  0px/*{c-bdown-shadow-y}*/
+  0/*{c-bdown-shadow-radius}*/
+  #f3f3f3/*{c-bdown-shadow-color}*/
+  ;
+}
+
+/* Active button */
+
+.ui-page-theme-c .ui-btn.ui-btn-active, html .ui-bar-c .ui-btn.ui-btn-active, html .ui-body-c .ui-btn.ui-btn-active, html body .ui-group-theme-c .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-c.ui-btn-active,
+/* Active checkbox icon */
+
+.ui-page-theme-c .ui-checkbox-on:after, html .ui-bar-c .ui-checkbox-on:after, html .ui-body-c .ui-checkbox-on:after, html body .ui-group-theme-c .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-c:after,
+/* Active flipswitch background */
+
+.ui-page-theme-c .ui-flipswitch-active, html .ui-bar-c .ui-flipswitch-active, html .ui-body-c .ui-flipswitch-active, html body .ui-group-theme-c .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-c.ui-flipswitch-active,
+/* Active slider track */
+
+.ui-page-theme-c .ui-slider-track .ui-btn-active, html .ui-bar-c .ui-slider-track .ui-btn-active, html .ui-body-c .ui-slider-track .ui-btn-active, html body .ui-group-theme-c .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-c .ui-btn-active {
+  background-color: #3b7236/*{c-active-background-color}*/
+  ;
+  border-color: #60af61/*{c-active-border}*/
+  ;
+  color: #ffffff/*{c-active-color}*/
+  ;
+  text-shadow: 0/*{c-active-shadow-x}*/
+  0px/*{c-active-shadow-y}*/
+  0/*{c-active-shadow-radius}*/
+  #005599/*{c-active-shadow-color}*/
+  ;
+}
+
+/* Active radio button icon */
+
+.ui-page-theme-c .ui-radio-on:after, html .ui-bar-c .ui-radio-on:after, html .ui-body-c .ui-radio-on:after, html body .ui-group-theme-c .ui-radio-on:after, .ui-btn.ui-radio-on.ui-btn-c:after {
+  border-color: #b9d4a0/*{c-active-background-color}*/
+  ;
+}
+
+/* Focus */
+
+.ui-page-theme-c .ui-btn:focus, html .ui-bar-c .ui-btn:focus, html .ui-body-c .ui-btn:focus, html body .ui-group-theme-c .ui-btn:focus, html head+body .ui-btn.ui-btn-c:focus,
+/* Focus buttons and text inputs with div wrap */
+
+.ui-page-theme-c .ui-focus, html .ui-bar-c .ui-focus, html .ui-body-c .ui-focus, html body .ui-group-theme-c .ui-focus, html head+body .ui-btn-c.ui-focus, html head+body .ui-body-c.ui-focus {
+  -webkit-box-shadow: 0 0 12px #b9d4a0/*{c-active-background-color}*/
+  ;
+  -moz-box-shadow: 0 0 12px #b9d4a0/*{c-active-background-color}*/
+  ;
+  box-shadow: 0 0 12px #b9d4a0/*{c-active-background-color}*/
+  ;
+}
+
+/* D
+-----------------------------------------------------------------------------------------------------------*/
+
+/* Axios */
+
+.axios-icon.axios-theme-dipendent-d.axios-offline {
+  content: url(../images_custom/svg/offline.svg);
+  /* content: url("../images/Offline-25.png"); */
+}
+
+.axios-icon.axios-theme-dipendent-d.axios-online {
+  content: url(../images_custom/svg/online-d.svg);
+  /* content: url(../images/Online-d-25.png); */
+}
+
+.axios-icon.axios-theme-dipendent-d.axios-logout {
+  content: url(../images_custom/svg/Logout-d.svg);
+  /* content: url("../images/Logout-d-26.png"); */
+}
+
+/* Bar: Toolbars, dividers, slider track */
+
+.ui-bar-d, .ui-page-theme-d .ui-bar-inherit, html .ui-bar-d .ui-bar-inherit, html .ui-body-d .ui-bar-inherit, html body .ui-group-theme-d .ui-bar-inherit {
+  background-color: #3388cc/*{d-bar-background-color}*/
+  ;
+  border-color: #dddddd/*{d-bar-border}*/
+  ;
+  color: #ffffff/*{d-bar-color}*/
+  ;
+  text-shadow: 0/*{a-bar-shadow-x}*/
+  0px/*{a-bar-shadow-y}*/
+  0/*{a-bar-shadow-radius}*/
+  #000/*{a-bar-shadow-color}*/
+  ;
+  font-weight: normal !important;
+}
+
+.ui-bar-d {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Page and overlay */
+
+.ui-overlay-d, .ui-page-theme-d, .ui-page-theme-d .ui-panel-wrapper {
+  background-color: #f9f9f9/*{d-page-background-color}*/
+  ;
+  border-color: #bbbbbb/*{d-page-border}*/
+  ;
+  color: #333333/*{d-page-color}*/
+  ;
+  text-shadow: 0/*{d-page-shadow-x}*/
+  0px/*{d-page-shadow-y}*/
+  0/*{d-page-shadow-radius}*/
+  #f3f3f3/*{d-page-shadow-color}*/
+  ;
+}
+
+/* Body: Read-only lists, text inputs, collapsible content */
+
+.ui-body-d, .ui-page-theme-d .ui-body-inherit, html .ui-bar-d .ui-body-inherit, html .ui-body-d .ui-body-inherit, html body .ui-group-theme-d .ui-body-inherit, html .ui-panel-page-container-d {
+  background-color: #ffffff/*{d-body-background-color}*/
+  ;
+  border-color: #dddddd/*{d-body-border}*/
+  ;
+  color: #333333/*{d-body-color}*/
+  ;
+  text-shadow: 0/*{d-body-shadow-x}*/
+  0px/*{d-body-shadow-y}*/
+  0/*{d-body-shadow-radius}*/
+  #f3f3f3/*{d-body-shadow-color}*/
+  ;
+}
+
+.ui-body-d {
+  border-width: 1px;
+  border-style: solid;
+}
+
+/* Links */
+
+.ui-page-theme-d a, html .ui-bar-d a, html .ui-body-d a, html body .ui-group-theme-d a {
+  color: #3388cc/*{d-link-color}*/
+  ;
+  font-weight: bold;
+}
+
+.ui-page-theme-d a:visited, html .ui-bar-d a:visited, html .ui-body-d a:visited, html body .ui-group-theme-d a:visited {
+  color: #3388cc/*{d-link-visited}*/
+  ;
+}
+
+.ui-page-theme-d a:hover, html .ui-bar-d a:hover, html .ui-body-d a:hover, html body .ui-group-theme-d a:hover {
+  color: #005599/*{d-link-hover}*/
+  ;
+}
+
+/* li:hover */
+
+.ui-page-theme-d .noHighlight .ui-btn:hover {
+  background-color: #f6f6f6;
+}
+
+.ui-page-theme-d a:active, html .ui-bar-d a:active, html .ui-body-d a:active, html body .ui-group-theme-d a:active {
+  color: #005599/*{d-link-active}*/
+  ;
+}
+
+/* Button up */
+
+.ui-page-theme-d .ui-btn, html .ui-bar-d .ui-btn, html .ui-body-d .ui-btn, html body .ui-group-theme-d .ui-btn, html head+body .ui-btn.ui-btn-d,
+/* Button visited */
+
+.ui-page-theme-d .ui-btn:visited, html .ui-bar-d .ui-btn:visited, html .ui-body-d .ui-btn:visited, html body .ui-group-theme-d .ui-btn:visited, html head+body .ui-btn.ui-btn-d:visited {
+  background-color: #f6f6f6/*{d-bup-background-color}*/
+  ;
+  border-color: #dddddd/*{d-bup-border}*/
+  ;
+  color: #333333/*{d-bup-color}*/
+  ;
+  text-shadow: 0/*{d-bup-shadow-x}*/
+  0px/*{d-bup-shadow-y}*/
+  0/*{d-bup-shadow-radius}*/
+  #333333/*{d-bup-shadow-color}*/
+  ;
+}
+
+/* Button hover */
+
+.ui-page-theme-d .ui-btn:hover, html .ui-bar-d .ui-btn:hover, html .ui-body-d .ui-btn:hover, html body .ui-group-theme-d .ui-btn:hover, html head+body .ui-btn.ui-btn-d:hover {
+  background-color: #ededed/*{d-bhover-background-color}*/
+  ;
+  border-color: #dddddd/*{d-bhover-border}*/
+  ;
+  color: #333333/*{d-bhover-color}*/
+  ;
+  text-shadow: 0/*{d-bhover-shadow-x}*/
+  0px/*{d-bhover-shadow-y}*/
+  0/*{d-bhover-shadow-radius}*/
+  #333333/*{d-bhover-shadow-color}*/
+  ;
+}
+
+/* Button down */
+
+.ui-page-theme-d .ui-btn:active, html .ui-bar-d .ui-btn:active, html .ui-body-d .ui-btn:active, html body .ui-group-theme-d .ui-btn:active, html head+body .ui-btn.ui-btn-d:active {
+  background-color: #0071bc/*{d-bdown-background-color}*/
+  ;
+  border-color: #dddddd/*{d-bdown-border}*/
+  ;
+  color: #333333/*{d-bdown-color}*/
+  ;
+  text-shadow: 0/*{d-bdown-shadow-x}*/
+  0px/*{d-bdown-shadow-y}*/
+  0/*{d-bdown-shadow-radius}*/
+  #333333/*{d-bdown-shadow-color}*/
+  ;
+}
+
+/* Active button */
+
+.ui-page-theme-d .ui-btn.ui-btn-active, html .ui-bar-d .ui-btn.ui-btn-active, html .ui-body-d .ui-btn.ui-btn-active, html body .ui-group-theme-d .ui-btn.ui-btn-active, html head+body .ui-btn.ui-btn-d.ui-btn-active,
+/* Active checkbox icon */
+
+.ui-page-theme-d .ui-checkbox-on:after, html .ui-bar-d .ui-checkbox-on:after, html .ui-body-d .ui-checkbox-on:after, html body .ui-group-theme-d .ui-checkbox-on:after, .ui-btn.ui-checkbox-on.ui-btn-d:after,
+/* Active flipswitch background */
+
+.ui-page-theme-d .ui-flipswitch-active, html .ui-bar-d .ui-flipswitch-active, html .ui-body-d .ui-flipswitch-active, html body .ui-group-theme-d .ui-flipswitch-active, html body .ui-flipswitch.ui-bar-d.ui-flipswitch-active,
+/* Active slider track */
+
+.ui-page-theme-d .ui-slider-track .ui-btn-active, html .ui-bar-d .ui-slider-track .ui-btn-active, html .ui-body-d .ui-slider-track .ui-btn-active, html body .ui-group-theme-d .ui-slider-track .ui-btn-active, html body div.ui-slider-track.ui-body-d .ui-btn-active {
+  background-color: #355a9d/*#005599*/
+  /*{d-active-background-color}*/
+  ;
+  border-color: #829fd4/*{d-active-border}*/
+  ;
+  color: #ffffff/*{d-active-color}*/
+  ;
+  text-shadow: 0/*{d-active-shadow-x}*/
+  0px/*{d-active-shadow-y}*/
+  0/*{d-active-shadow-radius}*/
+  #005599/*{d-active-shadow-color}*/
+  ;
+}
+
+/* Active radio button icon */
+
+.ui-page-theme-d .ui-radio-on:after, html .ui-bar-d .ui-radio-on:after, html .ui-body-d .ui-radio-on:after, html body .ui-group-theme-d .ui-radio-on:after, .ui-btn.ui-radio-on.ui-btn-d:after {
+  border-color: #0071bc/*{d-active-background-color}*/
+  ;
+}
+
+/* Focus */
+
+.ui-page-theme-d .ui-btn:focus, html .ui-bar-d .ui-btn:focus, html .ui-body-d .ui-btn:focus, html body .ui-group-theme-d .ui-btn:focus, html head+body .ui-btn.ui-btn-d:focus,
+/* Focus buttons and text inputs with div wrap */
+
+.ui-page-theme-d .ui-focus, html .ui-bar-d .ui-focus, html .ui-body-d .ui-focus, html body .ui-group-theme-d .ui-focus, html head+body .ui-btn-d.ui-focus, html head+body .ui-body-d.ui-focus {
+  -webkit-box-shadow: 0 0 12px #0071bc/*{d-active-background-color}*/
+  ;
+  -moz-box-shadow: 0 0 12px #0071bc/*{d-active-background-color}*/
+  ;
+  box-shadow: 0 0 12px #0071bc/*{d-active-background-color}*/
+  ;
+}
+
+/*Eventualmente manda a capo la data e il testo dell'errore se sono troppo lunghi*/
+
+#ulEventError>li>a>h2, p {
+  white-space: normal !important;
+}
+
+/* Media MIN
+-----------------------------------------------------------------------------------------------------------*/
+
+/*1 at 320px (20em x 16px)*/
+
+@media screen and (min-width: 20em) {
+  .axios-input-icon-right {
+    margin: -10px .3125em 0;
+  }
+}
+
+/* Show priority 2 at 480px (30em x 16px) */
+
+@media screen and (min-width: 30em) {
+  .axios-input-icon-right {
+    margin: -28px .3125em 0;
+  }
+  /* Responsive Panel */
+  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-left {
+    margin-right: 17em;
+  }
+  .ui-responsive-panel .ui-panel-page-content-open.ui-panel-page-content-position-right {
+    margin-left: 17em;
+  }
+  .ui-responsive-panel .ui-panel-page-content-open {
+    width: auto;
+  }
+  .ui-responsive-panel .ui-panel-dismiss-display-push, .ui-responsive-panel.ui-page-active~.ui-panel-dismiss-display-push {
+    display: none;
+  }
+}
+
+/* Show priority 3 at 640px (40em x 16px) */
+
+@media screen and (min-width: 40em) {}
+
+/* Show priority 4 at 800px (50em x 16px) */
+
+@media screen and (min-width: 50em) {
+  /* Aumenta i font in tutta l'app se il dispositivo ha un display confacente. NB esclude la sidebar con il not 
+     La scelta tra le due opzioni sotto indicate è puramente estetica (io preferisco la prima), ai poster l'hardware sentenza :-)
+  */
+  /*body:not(.axios-li-dash-a), .ui-btn:not(.axios-li-dash-a) {*/
+  /* La sidebar diventa un po' più larga, non un problema ma bruttina */
+  /*body:not(.ui-panel-page-container), .ui-btn:not(.axios-li-dash-a) {*/
+  /* Fa aumentare i font nelle ul con un leggero ritardo che lo fa apparire come un'animazione ed inoltre provoca qualche problemino sull'allineamento della sidebar*/
+  body:not(.axios-li-dash-a), body:not(#divSideBar) {
+    font-size: 1.20em;
+  }
+}
+
+/* Show priority 5 at 960px (60em x 16px) */
+
+@media screen and (min-width: 60em) {
+  .axios-input-icon-right {
+    margin: -22px .3125em 0;
+  }
+  .axios-dialog-button {
+    margin-top: 2px !important;
+    margin-right: 2px !important;
+  }
+  .axios-dialog-icon-img {
+    margin-top: 5px !important;
+  }
+}
+
+/* Show priority 6 at 1,120px (70em x 16px) */
+
+@media screen and (min-width: 70em) {}
+
+/* Media MAX
+-----------------------------------------------------------------------------------------------------------*/
+
+/*1 at 320px (20em x 16px)*/
+
+@media screen and (max-width: 20em) {}
+
+/* Show priority 2 at 480px (30em x 16px) */
+
+@media screen and (max-width: 30em) {
+  /* Riduce distanza tra immagini sull'header in caso di dispositivo con ampiezza limitata */
+  #homePage #pageHeader .axios-img {
+    margin-left: 0px !important;
+    margin-right: 0px;
+  }
+  #homePage #pageHeader .axios-icon-img {
+    margin-left: 0px !important;
+    margin-right: 5px !important;
+  }
+  #homePage #pageHeader .axios-button {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+  }
+  #homePage #pageHeader .axios-img-user {
+    margin-left: 10px !important;
+    margin-right: 5px !important;
+  }
+  .axios-li-dash-img-first {
+    padding-top: 5px!important;
+  }
+}
+
+/* Show priority 3 at 640px (40em x 16px) */
+
+@media screen and (max-width: 40em) {
+  .axios-link-dialog {
+    margin-top: 8px !important;
+  }
+  .axios-link-dialog-footer {
+    margin-top: 0px !important;
+  }
+  /* Riduce in altezza gli elementi della dash  */
+  /*.axios-li-dash-logo { DEPRECATED: ora dinamico in APP.start()
+    height: 85px !important;
+  }*/
+  .axios-ul-dash {
+    overflow: hidden;
+  }
+  .axios-li-dash {
+    height: 55px;
+    padding-bottom: 5px!important;
+  }
+  .axios-li-dash-a {
+    padding-left: 4.25em !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 55px;
+  }
+  .axios-li-dash-img {
+    padding-top: 5px!important;
+    height: 50px;
+  }
+  .ui-li-divider {
+    font-size: 12px !important;
+    font-weight: normal !important;
+  }
+  .axios-li-dash-img-first {
+    padding-top: 5px!important;
+  }
+  .axios-avatar-img {
+    margin-left: 5px;
+    margin-top: 5px;
+    height: 40px;
+    width: 40px;
+  }
+  /* portrait-specific styles */
+  @media screen and (orientation:portrait) {
+    /* Rende invisibile il titolo delle pagine per non sovrapporlo ai link laterali */
+    .homeHeader h3 {
+      visibility: hidden;
+    }
+    .dialogHeader h2 {
+      visibility: hidden;
+    }
+    .homeFooter h4 {
+      visibility: hidden;
+    }
+    .dialogFooter h2 {
+      visibility: hidden;
+    }
+    /* Riduce il font dei link laterali */
+    .axios-link {
+      font-size: 24px !important;
+    }
+    .axios-link-dialog {
+      /* font-size: 24px !important; */
+      font-size: 22px !important;
+    }
+    .axios-link-inner {
+      font-size: 24px !important;
+    }
+    .axios-link-char {
+      /* Solo carattere */
+      font-size: 30px !important;
+      font-weight: bold !important;
+    }
+    .axios-link-dialog-char {
+      /* Solo carattere */
+      font-size: 30px !important;
+      font-weight: bold !important;
+      margin-top: 0px !important;
+      max-height: 32px;
+      margin-left: 15px !important;
+    }
+  }
+}
+
+/* Show priority 4 at 800px (50em x 16px) */
+
+@media screen and (max-width: 50em) {}
+
+/* Show priority 5 at 960px (60em x 16px) */
+
+@media screen and (max-width: 60em) {}
+
+/* Show priority 6 at 1,120px (70em x 16px) */
+
+@media screen and (max-width: 70em) {}

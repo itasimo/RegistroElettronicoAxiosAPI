@@ -1,0 +1,202 @@
+[
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0001",
+    "idMat": "0001",
+    "voti": [
+      {
+        "idVoto": "0001",
+        "data": "10/10/2017",
+        "tipo": "O",
+        "voto": "6",
+        "votoValore": "6",
+        "commento": "Niente male la prima interrogazione"
+      },
+      {
+        "idVoto": "0002",
+        "data": "20/10/2017",
+        "tipo": "O",
+        "voto": "7",
+        "votoValore": "7"
+      },
+      {
+        "idVoto": "0003",
+        "data": "30/10/2017",
+        "tipo": "O",
+        "voto": "8",
+        "votoValore": "8"
+      },
+      {
+        "idVoto": "0004",
+        "data": "07/11/2017",
+        "tipo": "S",
+        "voto": "9",
+        "votoValore": "9"
+      },
+      {
+        "idVoto": "0005",
+        "data": "14/11/2017",
+        "tipo": "S",
+        "voto": "8",
+        "votoValore": "8"
+      },
+      {
+        "idVoto": "0006",
+        "data": "10/12/2017",
+        "tipo": "S",
+        "voto": "7",
+        "votoValore": "7",
+        "commento": "Il ragazzo ha recuperato"
+      },
+      {
+        "idVoto": "0007",
+        "data": "21/12/2017",
+        "tipo": "S",
+        "voto": "4",
+        "votoValore": "4",
+        "commento": "Il ragazzo aveva recuperato!"
+      },
+      {
+        "idVoto": "0008",
+        "data": "29/12/2017",
+        "tipo": "O",
+        "voto": "6.5",
+        "votoValore": "6.5"
+      },
+      {
+        "idVoto": "0005",
+        "data": "14/11/2017",
+        "tipo": "S",
+        "voto": "4",
+        "votoValore": "4"
+      },
+      {
+        "idVoto": "0006",
+        "data": "10/12/2017",
+        "tipo": "S",
+        "voto": "9",
+        "votoValore": "9",
+        "commento": "Il ragazzo ha recuperato"
+      },
+      {
+        "idVoto": "0007",
+        "data": "21/12/2017",
+        "tipo": "S",
+        "voto": "8",
+        "votoValore": "8",
+        "commento": ""
+      },
+      {
+        "idVoto": "0008",
+        "data": "29/12/2017",
+        "tipo": "O",
+        "voto": "7",
+        "votoValore": "7"
+      }
+    ]
+  },
+
+  {
+    "idAlunno":  "0001",
+    "idFrazione": "0001",
+    "idMat": "0002",
+    "voti": [
+      {
+        "idVoto": "0001",
+        "data": "11/10/2017",
+        "tipo": "O",
+        "voto": "7",
+        "votoValore": "7"
+      },
+      {
+        "idVoto": "0002",
+        "data": "13/11/2017",
+        "tipo": "O",
+        "voto": "7.5",
+        "votoValore": "7.5"
+      }
+    ]
+  },
+
+  {
+    "idAlunno": "0001",
+    "idFrazione": "0002",
+    "idMat": "0001",
+    "voti": [
+      {
+        "idVoto": "0001",
+        "data": "17/10/2017",
+        "tipo": "O",
+        "voto": "6.5",
+        "votoValore": "6.5"
+      },
+      {
+        "idVoto": "0002",
+        "data": "12/11/2017",
+        "tipo": "S",
+        "voto": "7.5",
+        "votoValore": "7.5"
+      },
+      {
+        "idVoto": "0002",
+        "data": "01/12/2017",
+        "tipo": "S",
+        "voto": "5+",
+        "votoValore": "5.25"
+      }
+    ]
+  },
+
+  {
+    "idAlunno":  "0002",
+    "idFrazione": "0001",
+    "idMat": "0001",
+    "voti": [
+      {
+        "idVoto": "0001",
+        "data": "11/10/2017",
+        "tipo": "O",
+        "voto": "6+",
+        "votoValore": "6.25",
+        "commento": "Primo voto 2do alunno"
+      },
+      {
+        "idVoto": "0002",
+        "data": "21/10/2017",
+        "tipo": "O",
+        "voto": "5+",
+        "votoValore": "5.25"
+      },
+      {
+        "idVoto": "0003",
+        "data": "31/10/2017",
+        "tipo": "O",
+        "voto": "7",
+        "votoValore": "7"
+      },
+      {
+        "idVoto": "0004",
+        "data": "08/11/2017",
+        "tipo": "S",
+        "voto": "6+",
+        "votoValore": "6.25"
+      },
+      {
+        "idVoto": "0005",
+        "data": "15/11/2017",
+        "tipo": "S",
+        "voto": "3",
+        "votoValore": "3"
+      },
+      {
+        "idVoto": "0006",
+        "data": "11/12/2017",
+        "tipo": "S",
+        "voto": "7-",
+        "votoValore": "6.75",
+        "commento": ""
+      }
+    ]
+  }
+
+]

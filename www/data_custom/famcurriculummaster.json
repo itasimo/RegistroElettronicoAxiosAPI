@@ -1,0 +1,49 @@
+[
+  {
+    "idAlunno": "0001",
+    "curriculum": [
+      {
+        "annoScolastico": "2015/2016",
+        "descScuola": "ISTITUTO SUPERIORE MATTEI",
+        "descCorso": "LICEO LINGUISTICO",
+        "sezione": "L",
+        "classe": "3",
+        "descEsito": "Ammesso",
+        "credito": "",
+        "tipoEsito": "1"
+
+      },
+      {
+        "annoScolastico": "2014/2015",
+        "descScuola": "ISTITUTO SUPERIORE MATTEI",
+        "descCorso": "LICEO LINGUISTICO",
+        "sezione": "L",
+        "classe": "2",
+        "descEsito": "Ammesso",
+        "credito": "1",
+        "tipoEsito": "1"
+      },
+      {
+        "annoScolastico": "2013/2014",
+        "descScuola": "ISTITUTO SUPERIORE MATTEI",
+        "descCorso": "LICEO LINGUISTICO",
+        "sezione": "L",
+        "classe": "1",
+        "descEsito": "Ammesso",
+        "credito": "",
+        "tipoEsito": "1"
+      },
+      {
+        "annoScolastico": "2012/2013",
+        "descScuola": "ISTITUTO SUPERIORE MATTEI",
+        "descCorso": "LICEO LINGUISTICO",
+        "sezione": "L",
+        "classe": "1",
+        "descEsito": "Non Ammesso",
+        "credito": "",
+        "tipoEsito": "-1"
+      }
+    ]
+  }
+
+]

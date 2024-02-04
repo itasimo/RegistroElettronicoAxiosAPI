@@ -1,0 +1,78 @@
+<div class="switchThemeContainer switchThemeContainerLogin theme-switcher" role="button"
+  aria-label="Alterna tra tema chiaro e tema scuro"></div>
+<div class='dialogContent loginContent' data-role='content'>
+  <form id='dialogForm' class='dialogForm' data-ajax="false">
+    <div class="customLoginMessage" style="display: none;"> </div>
+    <div class="loginAxiosLogoContainer">
+      <img src='images/axios/Logo_Axios_100.png' aria-hidden="true" alt='Axios' />
+    </div>
+
+    <div id='selCustomerContainer' class="loginFormElement">
+      <select name='selCustomer' id='selCustomer' title=''></select>
+      <div id='btnDialogToggle' href='#' class='ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all'></div>
+      <div class="customersActionsContainer axios-theme">
+        <div class="customersActionsCaret axios-theme"></div>
+        <div class="customersActions">
+          <div class="customersAction" data-action="add">Aggiungi scuola</div>
+          <div class="customersAction" data-action="remove">Elimina scuola</div>
+        </div>
+      </div>
+    </div>
+
+    <div id='txtCustomerContainer' class="loginFormElement">
+      <input type='tel' name='txtCustomer' id='txtCustomer' value='' title=''
+        placeholder="Inserisci codice fiscale scuola" required>
+    </div>
+
+    <div id="userContainer" class="loginFormElement">
+      <input type='text' name='txtUser' id='txtUser' value='' data-clear-btn='true' title=''
+        placeholder="Inserisci codice utente" required>
+    </div>
+    <div id="pswContainer" class="loginFormElement">
+      <input type='password' name='txtPassword' id='txtPassword' value='' data-clear-btn='true' title=''
+        placeholder="Inserisci password" required>
+      <img id='showPswIcon' src='images_custom/showPswIcon.png' style="display:none;">
+    </div>
+    <div id="btnDialogLoginContainer">
+      <button type='button' id='btnDialogLogin' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'> Accedi
+      </button>
+    </div>
+    <label>
+      <input type="checkbox" name="rememberPwd" id="rememberPwd" /> Ricorda password
+    </label>
+    <label>
+      <input type="checkbox" name="keepSession" id="keepSession" /> Mantieni sessione
+    </label>
+
+    <div class="loginLinksContainer">
+      <span id="loginTroubleshoot"> Problemi di accesso? </span>
+      <span id="resetPsw"> Password dimenticata? </span>
+      <span id="goToGuide"> Vai alla guida </span>
+    </div>
+  </form>
+</div>
+
+<div data-role='popup' id='popupForm' data-transition='pop' data-dismissible="false">
+  <form id="frmPopup">
+    <div style='padding: 10px 20px;'>
+      <div class='ui-field-contain'>
+        <label id='lblCF' for='codiceFiscale'>Codice fiscale:</label>
+        <input type='email' name='codiceFiscale' id='codiceFiscale' value=''>
+      </div>
+      <div class='ui-field-contain'>
+        <label id='lblUsername' for='codiceUtente'>Codice utente:</label>
+        <input type='email' name='codiceUtente' id='codiceUtente' value=''>
+      </div>
+      <div class='ui-field-contain'>
+        <label id='lblEmail' for='indirizzoEmail'>Email:</label>
+        <input type='email' name='indirizzoEmail' id='indirizzoEmail' value=''>
+      </div>
+      <div class='popupFrmButtonContainer'>
+        <button type='button' id='btnPopupOK' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='0'>OK</button>
+        <button type='button' id='btnPopupCancel' class='axios-popup-button ui-btn ui-btn-inline ui-corner-all'
+          data-index='2' data-cancel='true'>Annulla</button>
+      </div>
+    </div>
+  </form>
+</div>

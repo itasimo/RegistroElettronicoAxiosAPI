@@ -1,0 +1,548 @@
+[
+  {
+    "Id": "0001",
+    "type": "CAL",
+    "data": "10/11/2015",
+    "badge": "",
+    "begin": "10:00",
+    "end": "10:00",
+    "desc": {
+      "title": "Assemblea di classe",
+      "subtitle": "Ordine del giorno: organizzazione gita",
+      "notes": "",
+      "people": [
+      ]
+    },
+    "actions": {
+      "executed": "false",
+      "form": [
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": "",
+          "other": "style='padding: 10px 20px;'"
+        },
+
+        {
+          "tag": "h3",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Dialog automatica per gestione Action",
+          "checked": "",
+          "placeholder": ""
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "un",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Username:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "id": "un",
+          "name": "user",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": "username",
+          "required": "required"
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "pw",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Password:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "id": "pw",
+          "name": "pass",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": "password"
+        },
+
+        {
+          "tag": "h4",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Campi vari",
+          "checked": "",
+          "placeholder": ""
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "num",
+          "name": "",
+          "class": "",
+          "html": "Numeri da 0-9:"
+        },
+        {
+          "tag": "input",
+          "type": "number",
+          "id": "num",
+          "name": "num",
+          "class": "",
+          "value": "",
+          "html": "",
+          "placeholder": "",
+          "other": "pattern='[0-9]*'"
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "date",
+          "name": "",
+          "class": "",
+          "html": "Data:"
+        },
+        {
+          "tag": "input",
+          "type": "date",
+          "id": "date",
+          "name": "date",
+          "class": "",
+          "value": "",
+          "html": "",
+          "placeholder": "",
+          "other": ""
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "time",
+          "name": "",
+          "class": "",
+          "html": "Tempo:"
+        },
+        {
+          "tag": "input",
+          "type": "time",
+          "id": "time",
+          "name": "time",
+          "class": "",
+          "value": "",
+          "html": "",
+          "placeholder": "",
+          "other": "",
+          "required": ""
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "ta",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Commento:",
+          "checked": "",
+          "placeholder": "",
+          "other": "rows='2'"
+        },
+        {
+          "tag": "textarea",
+          "type": "",
+          "id": "ta",
+          "name": "ta",
+          "class": "",
+          "value": "",
+          "html": "testo di prova per textarea",
+          "checked": "",
+          "placeholder": ""
+        },
+
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": "ui-checkbox"
+        },
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "cb",
+          "name": "",
+          "class": "ui-btn ui-btn-inherit ui-btn-icon-left ui-checkbox-off",
+          "value": "",
+          "html": "Selezionami:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "type": "checkbox",
+          "id": "cb",
+          "name": "cb",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "checked",
+          "placeholder": "",
+          "other": "data-corners='false' data-enhanced='true'"
+        },
+        {
+          "tag": "/div"
+        },
+
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": "ui-field-contain"
+        },
+        {
+          "tag": "fieldset",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": "",
+          "other": "data-role='controlgroup'"
+        },
+        {
+          "tag": "legend",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Scegliere:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": "ui-radio"
+        },
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "rb1",
+          "name": "",
+          "class": "ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off",
+          "value": "",
+          "html": "Uno",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "id": "rb1",
+          "name": "rb",
+          "class": "",
+          "value": "on",
+          "html": "",
+          "checked": "checked",
+          "placeholder": "",
+          "other": "data-enhanced='true'"
+        },
+        {
+          "tag": "/div"
+        },
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": "ui-radio"
+        },
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "rb2",
+          "name": "",
+          "class": "ui-btn ui-corner-all ui-btn-inherit ui-btn-icon-left ui-radio-off",
+          "value": "",
+          "html": "Due",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "input",
+          "type": "radio",
+          "id": "rb2",
+          "name": "rb",
+          "class": "",
+          "value": "on",
+          "html": "",
+          "checked": "",
+          "placeholder": "",
+          "other": "data-enhanced='true'"
+        },
+        {
+          "tag": "/div"
+        },
+        {
+          "tag": "/fieldset",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "/div"
+        },
+
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "sel",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Selezione:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "select",
+          "type": "",
+          "id": "sel",
+          "name": "sel",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "option",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "1",
+          "html": "1a Opzione",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "option",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "2",
+          "html": "2a Opzione",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "option",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "3",
+          "html": "3a Opzione",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "/select",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "label",
+          "type": "for",
+          "id": "flip",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "Flip toggle switch:",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "select",
+          "type": "slider",
+          "id": "flip",
+          "name": "flip",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "option",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "off",
+          "html": "No",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "option",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "on",
+          "html": "Si",
+          "checked": "",
+          "placeholder": ""
+        },
+        {
+          "tag": "/select",
+          "type": "",
+          "id": "",
+          "name": "",
+          "class": "",
+          "value": "",
+          "html": "",
+          "checked": "",
+          "placeholder": ""
+        },
+
+        {
+          "tag": "hr"
+        },
+
+        {
+          "tag": "div",
+          "id": "",
+          "name": "",
+          "class": ""
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "btnPopupOK",
+          "name": "",
+          "class": "axios-popup-button ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-check",
+          "html": "Applica",
+          "other": "data-index='0'"
+        },
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "btnPopupMaybe",
+          "name": "",
+          "class": "axios-popup-button ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left ui-icon-edit",
+          "html": "Forse",
+          "other": "data-index='1'"
+        },
+
+        {
+          "tag": "button",
+          "type": "button",
+          "id": "btnPopupCancel",
+          "name": "",
+          "class": "axios-popup-button ui-btn ui-btn-inline ui-btn-icon-left ui-icon-delete",
+          "html": "Annulla",
+          "other": "data-index='2' data-cancel='true'"
+        },
+        {
+          "tag": "/div"
+        },
+        {
+          "tag": "/div"
+        }
+      ]
+    }
+  },
+  {
+    "Id": "0002",
+    "type": "CAL",
+    "data": "10/11/2015",
+    "badge": "#33e8d4",
+    "begin": "18:00",
+    "end": "19:00",
+    "desc": {
+      "title": "Riunione assemblea d'istituto",
+      "subtitle": "Discussione alternanza scuola-lavoro",
+      "notes": "",
+      "people": [
+        { "src": "https://s3.amazonaws.com/uifaces/faces/twitter/ashleyford/128.jpg" },
+        { "src": "https://s3.amazonaws.com/uifaces/faces/twitter/kfriedson/128.jpg" },
+        { "src": "https://s3.amazonaws.com/uifaces/faces/twitter/mattsince87/128.jpg" }
+      ]
+    },
+    "actions": {
+    }
+  },
+  {
+    "Id": "0003",
+    "type": "MSG",
+    "data": "10/11/2015",
+    "badge": "",
+    "begin": "20:00",
+    "end": "22:00",
+    "desc": {
+      "title": "Cena",
+      "subtitle": "",
+      "notes": "Cena con i professori",
+      "people": [
+      ]
+    },
+    "actions": {
+    }
+  },
+
+  {
+    "Id": "0005",
+    "type": "ATT",
+    "data": "10/11/2015",
+    "badge": "",
+    "begin": "21:30",
+    "end": "22:00",
+    "desc": {
+      "title": "Firmare documento",
+      "subtitle": "E' urgente!",
+      "notes": "",
+      "people": [
+      ]
+    },
+    "actions": {
+    }
+  }
+]
