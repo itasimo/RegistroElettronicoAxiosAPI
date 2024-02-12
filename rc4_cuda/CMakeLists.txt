@@ -1,0 +1,1 @@
+add_executable(rc4_crack kernel.cu)
