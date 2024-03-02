@@ -17,6 +17,7 @@ Per fare una chiamata all'API registro chiamare la funzione
 	let data = await RegistroElettronicoAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)
 })();
 ```
+<<<<<<< HEAD
 
 =======
 `import {RegistroAxiosAPI} from './RegistroElettronicoAxiosAPI/axios.mjs'`
@@ -25,6 +26,8 @@ Per fare una chiamata all'API registro chiamare la funzione
 
 `await RegistroAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione)`
 
+=======
+>>>>>>> 760bab5ad1722b0b41b6f5ff4acf4bebd6283ce6
 
 L' API risponde con un JSON contenete le informazioni
 
@@ -76,6 +79,7 @@ L' API risponde con un JSON contenete le informazioni
 * [X] Rimovere moduli ES6
 * [X] Implementare l'API di Axios per ricavare i dati per le funzionalità base
 * [ ] Rimovere completamente Puppeteer dall'API
+<<<<<<< HEAD
   =============================================
 
 - **Voti**:
@@ -102,3 +106,5 @@ L' API risponde con un JSON contenete le informazioni
     - Data della verifica
     - Argomenti della verifica
     - Professore
+=======
+>>>>>>> 760bab5ad1722b0b41b6f5ff4acf4bebd6283ce6
