@@ -1,11 +1,14 @@
 
 const modules = {
-    GetSessionID: require("./GetSessionID.js"),
+    GetUserSession: require("./GetUserSession.js"),
     parseCompiti: require("./Parse/parseCompiti.js"),
     parseVoti: require("./Parse/parseVoti.js"),
-    parseVerifiche: require("./Parse/parseVerifiche.js")
+    parseVerifiche: require("./Parse/parseVerifiche.js"),
+    AxiosEncode: require('./utils/Axios/encode.js'),
+    AxiosDecode: require('./utils/Axios/decode.js')
 }
 
+const VendorToken = require('./utils/Axios/axios.json').VendorToken;
 
 let SessionId
 
@@ -19,34 +22,35 @@ let SessionId
  * @returns JSON non analizzato contenete la risposta
  */
 
-async function AxiosAPI(Action, Cookies, body) {
+async function AxiosAPI(Action, StudentInfo, Application) {
     var raw_JSON
 
-    var myHeaders = new Headers();
-    myHeaders.append("sec-ch-ua", "\"Not_A Brand\";v=\"8\", \"Chromium\";v=\"120\", \"Google Chrome\";v=\"120\"");
-    myHeaders.append("RVT", "QUI5QUU0N0Q0NzkzQzg4MjZEM0IxQjJDQUI5NkUxNjQ=");
-    myHeaders.append("sec-ch-ua-mobile", "?0");
-    myHeaders.append("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36");
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-    myHeaders.append("Accept", "application/json, text/javascript, */*; q=0.01");
-    myHeaders.append("X-Requested-With", "XMLHttpRequest");
-    myHeaders.append("sec-ch-ua-platform", "\"Windows\"");
-    myHeaders.append("host", "registrofamiglie.axioscloud.it");
-    myHeaders.append("Cookie", Cookies);
-
-    var requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: body,
-      redirect: 'follow'
+    const myHeaders = new Headers();
+    myHeaders.append("X-Requested-With", "com.axiositalia.re.students");
+    myHeaders.append("Cookie", "ASP.NET_SessionId=YOUR_ASPNET_SESSION_ID_HERE");
+    
+    const requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow"
     };
 
-    await fetch("https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=" + Action, requestOptions) //Endpoint
-      .then(response => response.text())
-      .then(result => raw_JSON  = result)
-      .catch(error => console.log('error', error));
+    requestInfo = {
+        sCodiceFiscale: StudentInfo.CodiceFiscale,
+        sSessionGuid: StudentInfo.SessionGuid,
+        sCommandJSON: {
+            sApplication: Application,
+            sService: Action
+        },
+        sVendorToken: StudentInfo.VendorToken
+    }
 
-    return raw_JSON
+    await fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/RetrieveDataInformation?json=" + modules.AxiosEncode(requestInfo), requestOptions) //Endpoint
+            .then(response => response.text())
+            .then(result => raw_JSON  = result)
+            .catch(error => console.log('error', error));
+
+    return JSON.stringify(modules.AxiosDecode(raw_JSON).response)
 }
 
 /**
@@ -63,12 +67,16 @@ async function AxiosAPI(Action, Cookies, body) {
 
 module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione) {
 
-    SessionId = await modules.GetSessionID(CodiceFiscale, CodiceUtente, Password)
+    SessionId = await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 
     const Compiti = {
-        Action: 'FAMILY_REGISTRO_CLASSE_COMPITI_LISTA',
-        Cookies: "ASP.NET_SessionId="+ SessionId + "; Path=/; Secure; HttpOnly;",
-        body: "{\"draw\":1,\"columns\":{},\"order\":[],\"start\":0,\"length\":-1,\"search\":{\"value\":\"\",\"regex\":false},\"iMatId\":\"\"}" // "length": -1 restituisce tutti i dati
+        Action: 'GET_COMPITI_MASTER',
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
     }
     const Verifiche = {
         Action: 'FAMILY_REGISTRO_CLASSE_COMPITI_LISTA',
@@ -83,7 +91,7 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
 
     switch (Azione) {
         case 'Compiti':
-            return modules.parseCompiti(await AxiosAPI(Compiti.Action, Compiti.Cookies, Compiti.body))
+            return JSON.parse(await AxiosAPI(Compiti.Action, Compiti.StudentInfo, Compiti.Application))[0].compiti
         case 'Voti':
             return modules.parseVoti(await AxiosAPI(Voti.Action, Voti.Cookies, Voti.body))
         case 'Verifiche':
