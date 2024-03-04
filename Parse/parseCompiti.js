@@ -8,16 +8,35 @@
  */
 
 module.exports = function parseCompiti(rawData) {
-    var result = '{'
-    var sub = 0
-    rawData = JSON.parse(rawData);
-    for (let i = 0; i < Object.keys(rawData.data).length; i++) {
-        if (rawData.data[i].testo !== '') {
-            result = result + '"' + (i - sub) +'": {"Materia": "' + rawData.data[i].materia  + '", "Data": "' + rawData.data[i].giorno + '", "Compito": "' + rawData.data[i].testo.replace(/(?:\r\n|\r|\n)/g, '\\n ') + '", "Prof": "'+ rawData.data[i].inserito.split('<br>')[0] + '"},'
-        } else {
-            sub++
+    var result = []
+
+
+    for (
+            let i = 0;
+
+            i < rawData.findIndex(obj => obj.tipo_nota == '6'); // Trova l'indice del prima verifica
+
+            i++
+
+        ) {
+
+
+        var compito = {
+            materia: rawData[i].descMat,
+            compito: rawData[i].descCompiti,
+            dataConsegna: [
+                rawData[i].data.split(' ')[0],
+                rawData[i].data.split(' ')[1]
+            ],
+            pubblicato: [
+                rawData[i].data_pubblicazione.split(' ')[0],
+                rawData[i].data_pubblicazione.split(' ')[1]
+            ],
         }
+
+        result.push(compito)
+
     }
-    result = result.slice(0, -1) + '}'
-    return JSON.parse(result)
+
+    return result
 }

@@ -70,7 +70,7 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
     SessionId = await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 
     const Compiti = {
-        Action: 'GET_COMPITI_MASTER',
+        Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
             CodiceFiscale: CodiceFiscale,
             SessionGuid: SessionId,
@@ -78,24 +78,44 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
         },
         Application: "FAM"
     }
-    const Verifiche = {
-        Action: 'FAMILY_REGISTRO_CLASSE_COMPITI_LISTA',
-        Cookies: "ASP.NET_SessionId="+ SessionId + "; Path=/; Secure; HttpOnly;",
-        body: "{\"draw\":1,\"columns\":{},\"order\":[],\"start\":0,\"length\":-1,\"search\":{\"value\":\"\",\"regex\":false},\"iMatId\":\"\"}"
+    const Verifiche = {                         // Uguale a Compiti, poiché vengono retituiti sia compiti che verifiche, l'ho messo per chiarezza
+        Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
     }
     const Voti = {
-        Action: 'FAMILY_VOTI_ELENCO_LISTA',
-        Cookies: "ASP.NET_SessionId="+ SessionId + "; Path=/; Secure; HttpOnly;",
-        body: "{\"draw\":1,\"columns\":{},\"order\":[],\"start\":0,\"length\":-1,\"search\":{\"value\":\"\",\"regex\":false},\"iMatId\":\"\",\"frazione\":\"uPiKweV3jQncViK72kP+QpJf+DWCv5XeTYnULt+zgqtncwKHJMfOnj7Sx/IWAVZDGJjSugVF/4AIMFPN9z4H6G4ZjWk=\"}"
+        Action: 'GET_VOTI_LIST_DETAIL',
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
     }
 
     switch (Azione) {
         case 'Compiti':
-            return JSON.parse(await AxiosAPI(Compiti.Action, Compiti.StudentInfo, Compiti.Application))[0].compiti
+            
+            var compitiRaw = JSON.parse(await AxiosAPI(Compiti.Action, Compiti.StudentInfo, Compiti.Application))[0].compiti
+
+            return  modules.parseCompiti(compitiRaw)
+
         case 'Voti':
+
+
+
             return modules.parseVoti(await AxiosAPI(Voti.Action, Voti.Cookies, Voti.body))
+
         case 'Verifiche':
-            return modules.parseVerifiche(await AxiosAPI(Verifiche.Action, Verifiche.Cookies, Verifiche.body))
+
+            var verificheRaw = JSON.parse(await AxiosAPI(Verifiche.Action, Verifiche.StudentInfo, Verifiche.Application))[0].compiti
+
+            return  modules.parseVerifiche(verificheRaw)
+
         default:
             throw new Error("Azione non supportata")
     }
