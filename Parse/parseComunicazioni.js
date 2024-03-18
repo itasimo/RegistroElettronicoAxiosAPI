@@ -16,6 +16,22 @@ module.exports = function parseComunicazioni(rawData) {
     var result = []
 
     for (let i = 0; i < rawData.length; i++) {
+
+        var allegatiCircolare = []
+
+        for (let j = 0; j < rawData[i].allegati.length; j++) {
+
+            var allegato = {
+                nome: rawData[i].allegati[j].sourceName,
+                desc: rawData[i].allegati[j].desc,
+                downloadLink: rawData[i].allegati[j].URL
+            }
+
+            allegatiCircolare.push(allegato)
+        }
+
+
+
         var Comunicazione = {
             data: rawData[i].data,
             titolo: rawData[i].titolo,
@@ -23,7 +39,7 @@ module.exports = function parseComunicazioni(rawData) {
             id: rawData[i].id,
             tipo: tipoStr[ tipoNum.indexOf( rawData[i].tipo ) ], // Converte la lettera in un tipo di voto leggibile
             letta: rawData[i].letta == "S"? true : false,
-            allegati: rawData[i].allegati,
+            allegati: allegatiCircolare,
             prevedeRisposta: rawData[i].tipo_risposta == "0"? false : true,
             opzioniRisposta: rawData[i].opzioni.split('|'),
         }
