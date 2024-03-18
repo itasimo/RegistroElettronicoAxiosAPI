@@ -13,8 +13,7 @@ module.exports = async function GetUserSession(CF, CU, PWD){
 
     let studenteInfo = {};
 
-    // JSON con le credenziali
-    // TODO: Prendere automaticamnte il VendorToken
+    //  JSON con le credenziali per il login
     const jsonCredenziali = {
         "sCodiceFiscale": CF,
         "sUserName": CU,
@@ -30,9 +29,9 @@ module.exports = async function GetUserSession(CF, CU, PWD){
     myHeaders.append("X-Requested-With", "com.axiositalia.re.students");
 
     const requestOptions = {
-		method: "GET",
-		headers: myHeaders,
-		redirect: "follow"
+		  method: "GET",
+		  headers: myHeaders,
+		  redirect: "follow"
     };
 
     await fetch(url, requestOptions)
