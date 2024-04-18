@@ -83,6 +83,7 @@ module.exports = function parseCompiti(rawData) {
     }
 
 
+    
     // *Permessi Non Autorizzate*
 
     for (let i = 0; i < rawData.permessiDaAutorizzare.length; i++) {
