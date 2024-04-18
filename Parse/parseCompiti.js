@@ -21,10 +21,10 @@ module.exports = function parseCompiti(rawData) {
         ) {
 
 
-        var compito = {
+        let compito = {
             materia: rawData[i].descMat,
             compito: rawData[i].descCompiti,
-            dataConsegna: [
+            giorno: [
                 rawData[i].data.split(' ')[0],
                 rawData[i].data.split(' ')[1]
             ],

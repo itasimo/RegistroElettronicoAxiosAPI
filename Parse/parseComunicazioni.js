@@ -17,11 +17,11 @@ module.exports = function parseComunicazioni(rawData) {
 
     for (let i = 0; i < rawData.length; i++) {
 
-        var allegatiCircolare = []
+        let allegatiCircolare = []
 
         for (let j = 0; j < rawData[i].allegati.length; j++) {
 
-            var allegato = {
+            let allegato = {
                 nome: rawData[i].allegati[j].sourceName,
                 desc: rawData[i].allegati[j].desc,
                 downloadLink: rawData[i].allegati[j].URL

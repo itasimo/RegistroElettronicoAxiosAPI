@@ -21,10 +21,10 @@ module.exports = function parseCompiti(rawData) {
         ) {
 
 
-            var verifica = {
+            let verifica = {
                 materia: rawData[i].descMat,
                 verifica: rawData[i].descCompiti.split('</b>')[1].trim(),
-                dataConsegna: [
+                giorno: [
                     rawData[i].data.split(' ')[0],
                     rawData[i].data.split(' ')[1]
                 ],

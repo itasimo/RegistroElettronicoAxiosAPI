@@ -20,7 +20,7 @@ module.exports = function parseVoti(rawData) {
 
         for (let j = 0; j < rawData[i].voti.length; j++) {
 
-            var Voto = {
+            let voto = {
                 materia: rawData[i].voti[j].descMat,
                 tipoVoto: tipoVotoDesc[ tipoVotoLettere.indexOf( rawData[i].voti[j].tipo ) ], // Converte la lettera in un tipo di voto leggibile
                 voto: rawData[i].voti[j].voto,
@@ -30,7 +30,7 @@ module.exports = function parseVoti(rawData) {
                 professore: rawData[i].voti[j].docente
             }
 
-            result.push(Voto)
+            result.push(voto)
         }
 
     }

@@ -5,6 +5,7 @@ const modules = {
     parseVoti: require("./Parse/parseVoti.js"),
     parseVerifiche: require("./Parse/parseVerifiche.js"),
     parseComunicazioni: require("./Parse/parseComunicazioni.js"),
+    parsePermessi: require("./Parse/parsePermessi.js"),
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
 }
@@ -51,7 +52,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
             .then(result => raw_JSON  = result)
             .catch(error => console.log('error', error));
 
-    return JSON.stringify(modules.AxiosDecode(raw_JSON).response)
+    return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
 }
 
 /**
@@ -97,9 +98,17 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
         },
         Application: "FAM"
     }
-
     const Comunicazioni = {
         Action: 'GET_COMUNICAZIONI_MASTER',
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
+    const Permessi = {
+        Action: 'GET_AUTORIZZAZIONI_MASTER',
         StudentInfo: {
             CodiceFiscale: CodiceFiscale,
             SessionGuid: SessionId,
@@ -132,6 +141,12 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
             var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0].comunicazioni  // Restituisce le comunicazioni del quadrimestre corrente
 
             return  modules.parseComunicazioni(comunicazioniRaw)
+        
+        case 'Permessi':
+
+            var PermessiRaw = JSON.parse(await AxiosAPI(Permessi.Action, Permessi.StudentInfo, Permessi.Application))[0]
+
+            return  modules.parsePermessi(PermessiRaw)
 
         default:
             throw new Error("Azione non supportata")
