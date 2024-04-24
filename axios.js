@@ -6,6 +6,8 @@ const modules = {
     parseVerifiche: require("./Parse/parseVerifiche.js"),
     parseComunicazioni: require("./Parse/parseComunicazioni.js"),
     parsePermessi: require("./Parse/parsePermessi.js"),
+    parseOrario: require("./Parse/parseOrario.js"),
+    parseArgomenti: require("./Parse/parseArgomenti.js"),
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
 }
@@ -116,37 +118,67 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
         },
         Application: "FAM"
     }
+    const Orario = {
+        Action: 'GET_ORARIO_MASTER',
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
+    const Argomenti = {
+        Action: 'GET_ARGOMENTI_MASTER',
+        StudentInfo: {
+            CodiceFiscale: CodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
 
     switch (Azione) {
-        case 'Compiti':
+        case 'compiti':
             
             var compitiRaw = JSON.parse(await AxiosAPI(Compiti.Action, Compiti.StudentInfo, Compiti.Application))[0].compiti
 
             return  modules.parseCompiti(compitiRaw)
 
-        case 'Voti':
+        case 'voti':
 
             var VotiRaw = JSON.parse(await AxiosAPI(Voti.Action, Voti.StudentInfo, Voti.Application))       // Restituisce i voti del 1° e del 2° quadrimestre
 
             return  modules.parseVoti(VotiRaw)
 
-        case 'Verifiche':
+        case 'verifiche':
 
             var verificheRaw = JSON.parse(await AxiosAPI(Verifiche.Action, Verifiche.StudentInfo, Verifiche.Application))[0].compiti
 
             return  modules.parseVerifiche(verificheRaw)
 
-        case 'Comunicazioni':
+        case 'comunicazioni':
 
             var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0].comunicazioni  // Restituisce le comunicazioni del quadrimestre corrente
 
             return  modules.parseComunicazioni(comunicazioniRaw)
         
-        case 'Permessi':
+        case 'permessi':
 
             var PermessiRaw = JSON.parse(await AxiosAPI(Permessi.Action, Permessi.StudentInfo, Permessi.Application))[0]
 
             return  modules.parsePermessi(PermessiRaw)
+
+        case 'orario':
+
+            var OrarioRaw = JSON.parse(await AxiosAPI(Orario.Action, Orario.StudentInfo, Orario.Application))[0].orario
+
+            return  modules.parseOrario(OrarioRaw)
+        
+        case 'argomenti':
+
+            var ArgomentiRaw = JSON.parse(await AxiosAPI(Argomenti.Action, Argomenti.StudentInfo, Argomenti.Application))[0].argomenti
+
+            return  modules.parseArgomenti(ArgomentiRaw)
 
         default:
             throw new Error("Azione non supportata")

@@ -20,14 +20,16 @@ module.exports = function parseVoti(rawData) {
 
         for (let j = 0; j < rawData[i].voti.length; j++) {
 
+            let defPath = rawData[i].voti[j]
+
             let voto = {
-                materia: rawData[i].voti[j].descMat,
-                tipoVoto: tipoVotoDesc[ tipoVotoLettere.indexOf( rawData[i].voti[j].tipo ) ], // Converte la lettera in un tipo di voto leggibile
-                voto: rawData[i].voti[j].voto,
-                peso: rawData[i].voti[j].peso,
-                data: rawData[i].voti[j].data,
-                commento: rawData[i].voti[j].commento,
-                professore: rawData[i].voti[j].docente
+                materia: defPath.descMat,
+                tipoVoto: tipoVotoDesc[ tipoVotoLettere.indexOf( defPath.tipo ) ], // Converte la lettera in un tipo di voto leggibile
+                voto: defPath.voto,
+                peso: defPath.peso,
+                data: defPath.data,
+                commento: defPath.commento,
+                professore: defPath.docente
             }
 
             result.push(voto)

@@ -21,10 +21,12 @@ module.exports = function parseComunicazioni(rawData) {
 
         for (let j = 0; j < rawData[i].allegati.length; j++) {
 
+            let defPath = rawData[i].allegati[j]
+
             let allegato = {
-                nome: rawData[i].allegati[j].sourceName,
-                desc: rawData[i].allegati[j].desc,
-                downloadLink: rawData[i].allegati[j].URL
+                nome: defPath.sourceName,
+                desc: defPath.desc,
+                downloadLink: defPath.URL
             }
 
             allegatiCircolare.push(allegato)
