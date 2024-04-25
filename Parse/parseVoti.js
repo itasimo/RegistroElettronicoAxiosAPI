@@ -13,7 +13,7 @@ module.exports = function parseVoti(rawData) {
 
     var result = []
 
-    const tipoVotoLettere = ['T', 'S', 'G', 'O', 'P', 'A']
+    const tipoVotoLettere = ['T', 'S', 'G', 'O', 'P', 'A']                              // Axios usa un formato di merda per i tipi di voto, quindi li converto in qualcosa di leggibile
     const tipoVotoDesc = ['Tutti', 'Scritto', 'Grafico', 'Orale', 'Pratico', 'Altro']
 
     for (let i = 0; i < rawData.length; i++) {               // Lo so che è brutto, ma è solo per i due quadrimestri, quindi non dovrebbe causare problemi
@@ -22,7 +22,7 @@ module.exports = function parseVoti(rawData) {
 
             let defPath = rawData[i].voti[j]
 
-            let voto = {
+            let struct = {
                 materia: defPath.descMat,
                 tipoVoto: tipoVotoDesc[ tipoVotoLettere.indexOf( defPath.tipo ) ], // Converte la lettera in un tipo di voto leggibile
                 voto: defPath.voto,
@@ -32,7 +32,7 @@ module.exports = function parseVoti(rawData) {
                 professore: defPath.docente
             }
 
-            result.push(voto)
+            result.push(struct)
         }
 
     }

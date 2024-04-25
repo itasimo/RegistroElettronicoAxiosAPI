@@ -1,4 +1,3 @@
-
 const modules = {
     GetUserSession: require("./GetUserSession.js"),
     parseCompiti: require("./Parse/parseCompiti.js"),
@@ -13,8 +12,8 @@ const modules = {
 }
 
 const VendorToken = require('./utils/Axios/axios.json').VendorToken;
+let CodiceFiscale;
 
-let SessionId
 
 /**
  * 
@@ -58,10 +57,8 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 }
 
 /**
- * 
- * @param {String} CodiceFiscale Codice Fiscale della Scuola
- * @param {String} CodiceUtente Codice dell' Utente
- * @param {String} Password Password dell'utente
+ * Funzione per effettuare chiamate all'API di Axios
+ * @param {String} SessionId SessionID dell'utente
  * @param {String} Azione Azione che si vuole effettuare:
  *                          - **"Compiti"**: contiene tutti i compiti pubblicati fino al momento della chiamata e informazioni riguardanti: materia, data di consegna, compito, professore;
  *                          - **"Verifiche"**: contiene tutte le verifiche pubblicate fino al momento della chiamata e informazioni riguardanti: materia, data della verifica, argomenti della verifica, professore;
@@ -69,9 +66,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
  * @returns {JSON} JSON contenete la risposta
  */
 
-module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, CodiceUtente, Password, Azione) {
-
-    SessionId = await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
+module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azione) {
 
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
@@ -137,6 +132,8 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
         Application: "FAM"
     }
 
+    Azione = Azione.toLowerCase()
+
     switch (Azione) {
         case 'compiti':
             
@@ -185,3 +182,20 @@ module.exports = async function RegistroElettronicoAxiosAPI(CodiceFiscale, Codic
     }
 }
 
+
+
+
+
+/**
+ * Funzione per effettuare il login all'API di Axios
+ * @param {String} paramCodiceFiscale Codice Fiscale della Scuola
+ * @param {String} paramCodiceUtente Codice dell' Utente
+ * @param {String} paramPassword Password dell'utente
+ * 
+ * @returns {String} SessionID necessario per effettuare le chiamate all'API
+ */
+
+module.exports.RegistroElettronicoAxiosAPI_Login = async function(paramCodiceFiscale, paramCodiceUtente, paramPassword) {
+    CodiceFiscale = paramCodiceFiscale
+    return await modules.GetUserSession(paramCodiceFiscale, paramCodiceUtente, paramPassword)
+}

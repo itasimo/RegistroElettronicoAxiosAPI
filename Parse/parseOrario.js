@@ -7,13 +7,11 @@
  * 
  */
 
-const path = require("path")
-
-module.exports = function parseCompiti(rawData) {
+module.exports = function parseOrario(rawData) {
 
     let result = []
 
-    const giornoLett = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6']
+    const giornoLett = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6']                                 // Axios usa un formato di merda per GIORNI ( ** TF, WHY ** ), quindi li converto in qualcosa di leggibile
     const giornoStr = ['Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato']
 
 
@@ -25,25 +23,25 @@ module.exports = function parseCompiti(rawData) {
 
             let defPath = rawData[i].materie[j]
 
-            let ora = {
+            let structOra = {
                 ora: defPath.ora,
                 durata: [defPath.da, defPath.a],
                 materia: defPath.descMat,
                 docente: defPath.descDoc
             }
 
-            orario.push(ora)
+            orario.push(structOra)
         }
 
 
 
-        let giorno = {
+        let structGiorno = {
             giorno: giornoStr[ giornoLett.indexOf( rawData[i].giorno ) ],
             orario: orario
         }
 
 
-        result.push(giorno)
+        result.push(structGiorno)
     }
 
 

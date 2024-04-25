@@ -22,6 +22,7 @@ module.exports = async function GetUserSession(CF, CU, PWD){
         "sVendorToken": VendorToken
     };
 
+    //  Endpoint per effettuare il login
     const url = 'https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/Login2?json=' + AxiosEncode(jsonCredenziali, 2);
     
 

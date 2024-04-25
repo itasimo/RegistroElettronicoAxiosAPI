@@ -8,20 +8,24 @@
  */
 
 module.exports = function parseCompiti(rawData) {
+
+    // Array che conterrà tutti i compiti
     var result = []
 
+
+    // La risposta di axios è un array di oggetti, prima ci sono i compiti e poi le verifiche quindi inizia da 0 e finisce all'indice della prima verifica
 
     for (
             let i = 0;
 
-            i < rawData.findIndex(obj => obj.tipo_nota == '6'); // Trova l'indice del prima verifica
+            i < rawData.findIndex(obj => obj.tipo_nota == '6'); // Trova l'indice del prima verifica, da lì in poi ci sono verifiche
 
             i++
 
         ) {
 
 
-        let compito = {
+        let struct = {
             materia: rawData[i].descMat,
             compito: rawData[i].descCompiti,
             giorno: [
@@ -34,7 +38,7 @@ module.exports = function parseCompiti(rawData) {
             ],
         }
 
-        result.push(compito)
+        result.push(struct)
 
     }
 

@@ -3,13 +3,17 @@
  * 
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
- * @returns {JSON} JSON contente tutti i compiti e altre informzioni riguardanti essi
+ * @returns {JSON} JSON contente:
+ *                  - richiesteDaAutorizzare: richieste di permessi da autorizzare; **+18**
+ *                  - richiesteNonAutorizzate: richieste di permessi non autorizzate; **+18**
+ *                  - permessiDaAutorizzare: permessi da autorizzare;
+ *                  - permessiAutorizzati: permessi autorizzati;
  * 
  */
 
-module.exports = function parseCompiti(rawData) {
+module.exports = function parsePermessi(rawData) {
 
-    const tipoLett = ['U', 'E', 'G']
+    const tipoLett = ['U', 'E', 'G']                                                    // Axios usa un formato di merda per i tipi di uscite, quindi li converto in qualcosa di leggibile
     const tipoStr = ['Uscita Anticipata', 'Entrata Posticipata', 'Uscita Didattica']
 
 
@@ -27,7 +31,7 @@ module.exports = function parseCompiti(rawData) {
 
         let defPath = rawData.richiesteDaAutorizzare[i]
 
-        let ReqDaAuth = {
+        let struct = {
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -47,7 +51,7 @@ module.exports = function parseCompiti(rawData) {
             }
         }
 
-        result.richiesteDaAutorizzare.push(ReqDaAuth);
+        result.richiesteDaAutorizzare.push(struct);
     }
 
 
@@ -58,7 +62,7 @@ module.exports = function parseCompiti(rawData) {
 
         let defPath = rawData.richiesteNonAutorizzate[i]
 
-        let ReqNonAuth = {
+        let struct = {
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -78,7 +82,7 @@ module.exports = function parseCompiti(rawData) {
             }
         }
 
-        result.richiesteNonAutorizzate.push(ReqNonAuth);
+        result.richiesteNonAutorizzate.push(struct);
 
     }
 
@@ -90,7 +94,7 @@ module.exports = function parseCompiti(rawData) {
 
         let defPath = rawData.permessiDaAutorizzare[i]
 
-        let PermDaAuth = {
+        let struct = {
             data:[
                defPath.dataInizio,
                defPath.dataFine
@@ -110,7 +114,7 @@ module.exports = function parseCompiti(rawData) {
             }
         }
 
-        result.permessiDaAutorizzare.push(PermDaAuth);
+        result.permessiDaAutorizzare.push(struct);
 
     }
 
@@ -122,7 +126,7 @@ module.exports = function parseCompiti(rawData) {
 
         let defPath = rawData.permessiAutorizzati[i]
 
-        let PermAuth = {
+        let struct = {
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -142,7 +146,7 @@ module.exports = function parseCompiti(rawData) {
             }
         }
 
-        result.permessiAutorizzati.push(PermAuth);
+        result.permessiAutorizzati.push(struct);
 
     }
 
