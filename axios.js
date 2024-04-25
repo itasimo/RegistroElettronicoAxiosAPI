@@ -12,7 +12,7 @@ const modules = {
 }
 
 const VendorToken = require('./utils/Axios/axios.json').VendorToken;
-let CodiceFiscale;
+let stoCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
 
 
 /**
@@ -71,7 +71,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -80,7 +80,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Verifiche = {                         // Uguale a Compiti, poiché vengono retituiti sia compiti che verifiche, l'ho messo per chiarezza
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -89,7 +89,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Voti = {
         Action: 'GET_VOTI_LIST_DETAIL',
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -98,7 +98,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Comunicazioni = {
         Action: 'GET_COMUNICAZIONI_MASTER',
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -107,7 +107,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Permessi = {
         Action: 'GET_AUTORIZZAZIONI_MASTER',
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -116,7 +116,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Orario = {
         Action: 'GET_ORARIO_MASTER',
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -125,7 +125,7 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
     const Argomenti = {
         Action: 'GET_ARGOMENTI_MASTER',
         StudentInfo: {
-            CodiceFiscale: CodiceFiscale,
+            CodiceFiscale: stoCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -188,14 +188,14 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
 
 /**
  * Funzione per effettuare il login all'API di Axios
- * @param {String} paramCodiceFiscale Codice Fiscale della Scuola
- * @param {String} paramCodiceUtente Codice dell' Utente
- * @param {String} paramPassword Password dell'utente
+ * @param {String} CodiceFiscale Codice Fiscale della Scuola
+ * @param {String} CodiceUtente Codice dell' Utente
+ * @param {String} Password Password dell'utente
  * 
  * @returns {String} SessionID necessario per effettuare le chiamate all'API
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Login = async function(paramCodiceFiscale, paramCodiceUtente, paramPassword) {
-    CodiceFiscale = paramCodiceFiscale
-    return await modules.GetUserSession(paramCodiceFiscale, paramCodiceUtente, paramPassword)
+module.exports.RegistroElettronicoAxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, Password) {
+    stoCodiceFiscale = CodiceFiscale
+    return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 }
