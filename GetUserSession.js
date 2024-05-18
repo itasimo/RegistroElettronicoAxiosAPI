@@ -40,5 +40,9 @@ module.exports = async function GetUserSession(CF, CU, PWD){
 		    .then((result) => studenteInfo = AxiosDecode(result))
 		    .catch((error) => console.error(error));
 
+    if(studenteInfo.errormessage){
+        throw new Error(`\n    Axios ha risposto con un errore: "${studenteInfo.errormessage}"\n\n`);
+    }
+
     return studenteInfo.response.usersession;
 };

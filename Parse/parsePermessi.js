@@ -42,8 +42,8 @@ module.exports = function parsePermessi(rawData) {
             motivo: defPath.motivo,
             note: defPath.note,
             diClasse: defPath.classe == "True" ? true : false,
-            calcolato: defPath.calcolo == "True" ? true : false,
-            giustificato: defPath.giustificato == "True" ? true : false,
+            calcolata: defPath.calcolo == "True" ? true : false,
+            giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
                 autorizzatoDa: defPath.utenteAutorizzazione,
@@ -73,8 +73,8 @@ module.exports = function parsePermessi(rawData) {
             motivo: defPath.motivo,
             note: defPath.note,
             diClasse: defPath.classe == "True" ? true : false,
-            calcolato: defPath.calcolo == "True" ? true : false,
-            giustificato: defPath.giustificato == "True" ? true : false,
+            calcolata: defPath.calcolo == "True" ? true : false,
+            giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
                 autorizzatoDa: defPath.utenteAutorizzazione,
@@ -105,8 +105,8 @@ module.exports = function parsePermessi(rawData) {
             motivo:defPath.motivo,
             note:defPath.note,
             diClasse:defPath.classe == "True" ? true : false,
-            calcolato:defPath.calcolo == "True" ? true : false,
-            giustificato:defPath.giustificato == "True" ? true : false,
+            calcolata:defPath.calcolo == "True" ? true : false,
+            giustificata:defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa:defPath.utenteInserimento,
                 autorizzatoDa:defPath.utenteAutorizzazione,
@@ -137,8 +137,8 @@ module.exports = function parsePermessi(rawData) {
             motivo: defPath.motivo,
             note: defPath.note,
             diClasse: defPath.classe == "True" ? true : false,
-            calcolato: defPath.calcolo == "True" ? true : false,
-            giustificato: defPath.giustificato == "True" ? true : false,
+            calcolata: defPath.calcolo == "True" ? true : false,
+            giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
                 autorizzatoDa: defPath.utenteAutorizzazione,

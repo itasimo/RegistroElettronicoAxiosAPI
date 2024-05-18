@@ -7,6 +7,8 @@ const modules = {
     parsePermessi: require("./Parse/parsePermessi.js"),
     parseOrario: require("./Parse/parseOrario.js"),
     parseArgomenti: require("./Parse/parseArgomenti.js"),
+    parseAssenze: require("./Parse/parseAssenze.js"),
+
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
 }
@@ -66,7 +68,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
  * @returns {JSON} JSON contenete la risposta
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azione) {
+module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azione) {
 
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
@@ -131,6 +133,15 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
         },
         Application: "FAM"
     }
+    const Assenze = {
+        Action: 'GET_ASSENZE_MASTER',
+        StudentInfo: {
+            CodiceFiscale: stoCodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
 
     Azione = Azione.toLowerCase()
 
@@ -176,6 +187,12 @@ module.exports.RegistroElettronicoAxiosAPI_Call = async function(SessionId, Azio
             var ArgomentiRaw = JSON.parse(await AxiosAPI(Argomenti.Action, Argomenti.StudentInfo, Argomenti.Application))[0].argomenti
 
             return  modules.parseArgomenti(ArgomentiRaw)
+
+        case 'assenze':
+                
+                var AssenzeRaw = JSON.parse(await AxiosAPI(Assenze.Action, Assenze.StudentInfo, Assenze.Application))
+    
+                return  modules.parseAssenze(AssenzeRaw)
 
         default:
             throw new Error("Azione non supportata")
