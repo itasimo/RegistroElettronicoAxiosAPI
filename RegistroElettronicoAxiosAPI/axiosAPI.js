@@ -33,7 +33,6 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 
     const myHeaders = new Headers();
     myHeaders.append("X-Requested-With", "com.axiositalia.re.students");
-    myHeaders.append("Cookie", "ASP.NET_usersession=YOUR_ASPNET_SESSION_ID_HERE");
     
     const requestOptions = {
             method: "GET",

@@ -2,10 +2,21 @@ const AxiosEncode = require('./utils/Axios/encode');
 const AxiosDecode = require('./utils/Axios/decode');
 const VendorToken = require('./utils/Axios/axios.json').VendorToken;
 
-module.exports = async function toSessionID(CF, usersession){
-    const requestParam = await GetRequestParam(CF, usersession)
+/**
+ * 
+ * Coverts the usersession (mobile APP) to the sessionId cookie (Web version)
+ * 
+ * For more info about the covertion check the related documentation in the ./docs folder
+ * 
+ * @param {String} CF 
+ * @param {String} usersession 
+ * @returns {Object} - Object containing the name and value of the session cookie
+ */
 
-    let cookie;
+module.exports = async function toSessionID(CF, usersession){
+    const requestParam = await GetRequestParam(CF, usersession) // Get the request parameters url, action and parameters
+
+    let cookie; // The sessionID cookie stored as a object {name: 'name', value: 'value'}
 
 
 
@@ -31,16 +42,16 @@ module.exports = async function toSessionID(CF, usersession){
     
     const urlencoded = new URLSearchParams();
     urlencoded.append("parameters", requestParam.parameters);
-    urlencoded.append("action", requestParam.action);
+    urlencoded.append("action", requestParam.action); // The action is the url to send the request (SSO)
 
     const requestOptions = {
     				method: "POST",
     				headers: myHeaders,
     				body: urlencoded,
-    				redirect: "manual"
+    				redirect: "manual" // The response will be a 302 redirect to the dashboard
     };
 
-    await fetch(requestParam.url, requestOptions)
+    await fetch(requestParam.url, requestOptions) // Endpoint: https://registrofamiglie.axioscloud.it/Pages/SD/SD_Login.aspx
     				.then((response) => cookie = response.headers.get('set-cookie'))
     				.catch((error) => console.error(error));
 
