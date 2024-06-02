@@ -23,14 +23,13 @@ module.exports = function parseNote(rawData) {
         for (let i = 0; i < rawData[quadrimestre].note.length; i++) {                   // Per ogni nota
 
             let defPath = rawData[quadrimestre].note[i];
-            console.log(JSON.stringify(defPath));
 
             note.push({
                 data: defPath.data,
                 tipo: tipoStr[ tipoLett.indexOf( defPath.tipo ) ],
-                tipoNota: '',
+                tipoNota: new RegExp("<b>(.*?)<\/b>", "gm").exec(defPath.descNota)[1], // Estrae il tipo di nota, prende il testo tra <b> e </b> cioè il gruppo matchato dal regex
                 docente: defPath.descDoc,
-                nota: defPath.descNota,
+                nota: defPath.descNota.split('</span>&nbsp;')[1].trim(),               // Estrae la nota, prende il testo dopo </span>&nbsp; e toglie gli spazi iniziali e finali
                 letta: defPath.isLetta == 'True' ? true : false,
                 lettaDa: defPath.vistatoUtente,
                 lettaIl: defPath.vistatoData.split(' '),
