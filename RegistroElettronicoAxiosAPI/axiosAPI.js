@@ -23,7 +23,7 @@ let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volt
  * Codice generato da Postman (https://www.postman.com/)
  * 
  * @param {String} Action Azione da eseguire
- * @param {String} Cookies Cookies contenti SessionID e altri eventuali dati
+ * @param {String} Cookies Cookies contenti usersession e altri eventuali dati
  * @param {String} body Corpo della chiamata contenente informazioni sul formato della risposta
  * @returns JSON non analizzato contenete la risposta
  */
@@ -33,7 +33,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 
     const myHeaders = new Headers();
     myHeaders.append("X-Requested-With", "com.axiositalia.re.students");
-    myHeaders.append("Cookie", "ASP.NET_SessionId=YOUR_ASPNET_SESSION_ID_HERE");
+    myHeaders.append("Cookie", "ASP.NET_usersession=YOUR_ASPNET_SESSION_ID_HERE");
     
     const requestOptions = {
             method: "GET",
@@ -61,7 +61,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 
 /**
  * Funzione per effettuare chiamate all'API di Axios
- * @param {String} SessionId SessionID dell'utente
+ * @param {String} usersession usersession dell'utente
  * @param {String} Azione Azione che si vuole effettuare:
  *                          - **"Compiti"**: contiene tutti i compiti pubblicati fino al momento della chiamata e informazioni riguardanti: materia, data di consegna, compito, professore;
  *                          - **"Verifiche"**: contiene tutte le verifiche pubblicate fino al momento della chiamata e informazioni riguardanti: materia, data della verifica, argomenti della verifica, professore;
@@ -69,13 +69,13 @@ async function AxiosAPI(Action, StudentInfo, Application) {
  * @returns {JSON} JSON contenete la risposta
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azione) {
+module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azione) {
 
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -84,7 +84,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -93,7 +93,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_VOTI_LIST_DETAIL',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -102,7 +102,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_COMUNICAZIONI_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -111,7 +111,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_AUTORIZZAZIONI_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -120,7 +120,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_ORARIO_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -129,7 +129,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_ARGOMENTI_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -138,7 +138,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_ASSENZE_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -147,7 +147,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
         Action: 'GET_NOTE_MASTER',
         StudentInfo: {
             CodiceFiscale: sCodiceFiscale,
-            SessionGuid: SessionId,
+            SessionGuid: usersession,
             VendorToken: VendorToken
         },
         Application: "FAM"
@@ -225,7 +225,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
  * @param {String} CodiceUtente Codice dell' Utente
  * @param {String} Password Password dell'utente
  * 
- * @returns {String} SessionID necessario per effettuare le chiamate all'API
+ * @returns {String} usersession necessario per effettuare le chiamate all'API
  */
 
 module.exports.RegistroElettronicoAxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, Password) {
