@@ -23,18 +23,16 @@ module.exports = function parseComunicazioni(rawData) {
 
             let defPath = rawData[i].allegati[j]
 
-            let structAllegato = {
+            allegatiCircolare.push({
                 nome: defPath.sourceName,
                 desc: defPath.desc,
                 downloadLink: defPath.URL
-            }
-
-            allegatiCircolare.push(structAllegato)
+            })
         }
 
 
 
-        var struct = {
+        result.push({
             data: rawData[i].data,
             titolo: rawData[i].titolo,
             testo: rawData[i].desc.replace(/\<(.*?)\>/gm, ''),   // Estrae il testo dal codice HTML
@@ -44,9 +42,7 @@ module.exports = function parseComunicazioni(rawData) {
             allegati: allegatiCircolare,
             prevedeRisposta: rawData[i].tipo_risposta == "0"? false : true,
             opzioniRisposta: rawData[i].opzioni.split('|'),
-        }
-
-        result.push(struct)
+        })
     }
 
     return result;

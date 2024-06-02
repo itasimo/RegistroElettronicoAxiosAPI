@@ -13,8 +13,8 @@
 
 module.exports = function parsePermessi(rawData) {
 
-    const tipoLett = ['U', 'E', 'G']                                                    // Axios usa un formato di merda per i tipi di uscite, quindi li converto in qualcosa di leggibile
-    const tipoStr = ['Uscita Anticipata', 'Entrata Posticipata', 'Uscita Didattica']
+    const tipoLett = ['A', 'U', 'E', 'G', 'D']                                                    // Axios usa un formato di merda per i tipi di uscite, quindi li converto in qualcosa di leggibile
+    const tipoStr = ['Assenza', 'Uscita Anticipata', 'Entrata Posticipata', 'Uscita Didattica', 'DaD (Didattica a distanza)']
 
 
     let result = {
@@ -31,7 +31,7 @@ module.exports = function parsePermessi(rawData) {
 
         let defPath = rawData.richiesteDaAutorizzare[i]
 
-        let struct = {
+        result.richiesteDaAutorizzare.push({
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -46,12 +46,10 @@ module.exports = function parsePermessi(rawData) {
             giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
-                autorizzatoDa: defPath.utenteAutorizzazione,
-                autorizzatoIl: defPath.dataAutorizzazione
+                rispostoDa: defPath.utenteAutorizzazione,
+                rispostoIl: defPath.dataAutorizzazione.split(" ")
             }
-        }
-
-        result.richiesteDaAutorizzare.push(struct);
+        });
     }
 
 
@@ -62,7 +60,7 @@ module.exports = function parsePermessi(rawData) {
 
         let defPath = rawData.richiesteNonAutorizzate[i]
 
-        let struct = {
+        result.richiesteNonAutorizzate.push({
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -77,12 +75,10 @@ module.exports = function parsePermessi(rawData) {
             giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
-                autorizzatoDa: defPath.utenteAutorizzazione,
-                autorizzatoIl: defPath.dataAutorizzazione
+                rispostoDa: defPath.utenteAutorizzazione,
+                rispostoIl: defPath.dataAutorizzazione.split(" ")
             }
-        }
-
-        result.richiesteNonAutorizzate.push(struct);
+        });
 
     }
 
@@ -94,7 +90,7 @@ module.exports = function parsePermessi(rawData) {
 
         let defPath = rawData.permessiDaAutorizzare[i]
 
-        let struct = {
+        result.permessiDaAutorizzare.push({
             data:[
                defPath.dataInizio,
                defPath.dataFine
@@ -108,13 +104,11 @@ module.exports = function parsePermessi(rawData) {
             calcolata:defPath.calcolo == "True" ? true : false,
             giustificata:defPath.giustificato == "True" ? true : false,
             info: {
-                inseritoDa:defPath.utenteInserimento,
-                autorizzatoDa:defPath.utenteAutorizzazione,
-                autorizzatoIl:defPath.dataAutorizzazione
+                inseritoDa: defPath.utenteInserimento,
+                rispostoDa: defPath.utenteAutorizzazione,
+                rispostoIl: defPath.dataAutorizzazione.split(" ")
             }
-        }
-
-        result.permessiDaAutorizzare.push(struct);
+        });
 
     }
 
@@ -126,7 +120,7 @@ module.exports = function parsePermessi(rawData) {
 
         let defPath = rawData.permessiAutorizzati[i]
 
-        let struct = {
+        result.permessiAutorizzati.push({
             data:[
                 defPath.dataInizio,
                 defPath.dataFine
@@ -141,12 +135,10 @@ module.exports = function parsePermessi(rawData) {
             giustificata: defPath.giustificato == "True" ? true : false,
             info: {
                 inseritoDa: defPath.utenteInserimento,
-                autorizzatoDa: defPath.utenteAutorizzazione,
-                autorizzatoIl: defPath.dataAutorizzazione
+                rispostoDa: defPath.utenteAutorizzazione,
+                rispostoIl: defPath.dataAutorizzazione.split(" ")
             }
-        }
-
-        result.permessiAutorizzati.push(struct);
+        });
 
     }
 

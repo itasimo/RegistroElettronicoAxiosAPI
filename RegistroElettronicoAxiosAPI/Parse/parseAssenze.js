@@ -8,13 +8,12 @@
  */
 
 module.exports = function parseAssenze(rawData) {
-
     
-    const tipoLett = ['A', 'U', 'R']                                                        // Axios usa un formato di merda per segnare assenze/ritardi/..., quindi li converto in qualcosa di leggibile
-    const tipoStr = ['Assenza', 'Uscita anticipata', 'Ritardo']
+    const tipoLett = ['T', 'A', 'U', 'R', 'E']                                                 // Axios usa un formato di merda per segnare assenze/ritardi/..., quindi li converto in qualcosa di leggibile
+    const tipoStr = ['Tutte', 'Assenza', 'Uscita anticipata', 'Ritardo', 'Rientri']
 
-    const giustNum = ['0', '1', '2']                                                        // Axios usa un formato di merda per segnare da chi è giustificata l'assenza, quindi li converto in qualcosa di leggibile
-    const giustStr = ['', 'Genitore', 'Docente']
+    const giustNum = ['1', '2']                                                        // Axios usa un formato di merda per segnare da chi è giustificata l'assenza, quindi li converto in qualcosa di leggibile
+    const giustStr = ['Genitore/Tutore', 'Docente']
 
     let result = [];
 
@@ -25,7 +24,7 @@ module.exports = function parseAssenze(rawData) {
 
             let defPath = rawData[quadrimestre].assenze[assenza];
 
-            let assenzaJSON = {
+            assenze.push({
                 data: defPath.data,
                 tipo: tipoStr[ tipoLett.indexOf( defPath.tipo ) ],
                 ora: defPath.oralez ? defPath.oralez :'',                                   // Se è presente ora di lezione e orario (caso di ritardo o uscita anticipata) li metto altrimenti (caso di assenze) li lascio vuoti
@@ -36,18 +35,15 @@ module.exports = function parseAssenze(rawData) {
                 giustificata: defPath.tipogiust == '0' ? false : true,                      // Se non è giustificata allora tipogiust è 0
                 giustificataDa: giustStr[ giustNum.indexOf( defPath.tipogiust ) ],
                 giustficataData: defPath.datagiust,
-            }
-
-            assenze.push(assenzaJSON)
+            })
         }
 
 
-        let quadrimestreJSON = {
+        result.push({
             "quadrimestre": rawData[quadrimestre].descFrazione,
             "assenze": assenze
-        }
+        })
 
-        result.push(quadrimestreJSON)
     }
 
     return result;

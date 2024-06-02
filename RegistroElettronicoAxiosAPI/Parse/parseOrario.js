@@ -23,14 +23,12 @@ module.exports = function parseOrario(rawData) {
 
             let defPath = rawData[i].materie[j]
 
-            let structOra = {
+            orario.push({
                 ora: defPath.ora,
                 durata: [defPath.da, defPath.a],
                 materia: defPath.descMat,
                 docente: defPath.descDoc
-            }
-
-            orario.push(structOra)
+            })
         }
 
 

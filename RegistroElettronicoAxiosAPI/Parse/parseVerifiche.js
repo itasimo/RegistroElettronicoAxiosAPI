@@ -23,7 +23,7 @@ module.exports = function parseVerifiche(rawData) {
         ) {
 
 
-            let struct = {
+            result.push({
                 materia: rawData[i].descMat,
                 verifica: rawData[i].descCompiti.split('</b>')[1].trim(),
                 giorno: [
@@ -34,9 +34,7 @@ module.exports = function parseVerifiche(rawData) {
                     rawData[i].data_pubblicazione.split(' ')[0],
                     rawData[i].data_pubblicazione.split(' ')[1]
                 ],
-            }
-    
-            result.push(struct)
+            })
     
         }
     

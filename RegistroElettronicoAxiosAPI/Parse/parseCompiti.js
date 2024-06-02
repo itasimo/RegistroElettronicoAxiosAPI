@@ -25,7 +25,7 @@ module.exports = function parseCompiti(rawData) {
         ) {
 
 
-        let struct = {
+        result.push({
             materia: rawData[i].descMat,
             compito: rawData[i].descCompiti,
             giorno: [
@@ -36,9 +36,7 @@ module.exports = function parseCompiti(rawData) {
                 rawData[i].data_pubblicazione.split(' ')[0],
                 rawData[i].data_pubblicazione.split(' ')[1]
             ],
-        }
-
-        result.push(struct)
+        })
 
     }
 

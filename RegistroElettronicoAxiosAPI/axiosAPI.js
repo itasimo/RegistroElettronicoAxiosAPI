@@ -8,13 +8,14 @@ const modules = {
     parseOrario: require("./Parse/parseOrario.js"),
     parseArgomenti: require("./Parse/parseArgomenti.js"),
     parseAssenze: require("./Parse/parseAssenze.js"),
+    parseNote: require("./Parse/parseNote.js"),
 
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
 }
 
 const VendorToken = require('./utils/Axios/axios.json').VendorToken;
-let stoCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
+let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
 
 
 /**
@@ -73,7 +74,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -82,7 +83,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Verifiche = {                         // Uguale a Compiti, poiché vengono retituiti sia compiti che verifiche, l'ho messo per chiarezza
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -91,7 +92,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Voti = {
         Action: 'GET_VOTI_LIST_DETAIL',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -100,7 +101,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Comunicazioni = {
         Action: 'GET_COMUNICAZIONI_MASTER',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -109,7 +110,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Permessi = {
         Action: 'GET_AUTORIZZAZIONI_MASTER',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -118,7 +119,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Orario = {
         Action: 'GET_ORARIO_MASTER',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -127,7 +128,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Argomenti = {
         Action: 'GET_ARGOMENTI_MASTER',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -136,7 +137,16 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     const Assenze = {
         Action: 'GET_ASSENZE_MASTER',
         StudentInfo: {
-            CodiceFiscale: stoCodiceFiscale,
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: SessionId,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
+    const Note = {
+        Action: 'GET_NOTE_MASTER',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
             SessionGuid: SessionId,
             VendorToken: VendorToken
         },
@@ -194,6 +204,12 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
     
                 return  modules.parseAssenze(AssenzeRaw)
 
+        case 'note':
+                
+                var NoteRaw = JSON.parse(await AxiosAPI(Note.Action, Note.StudentInfo, Note.Application))
+    
+                return  modules.parseNote(NoteRaw)
+
         default:
             throw new Error("Azione non supportata")
     }
@@ -213,6 +229,6 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(SessionId, Azion
  */
 
 module.exports.RegistroElettronicoAxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, Password) {
-    stoCodiceFiscale = CodiceFiscale
+    sCodiceFiscale = CodiceFiscale
     return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 }

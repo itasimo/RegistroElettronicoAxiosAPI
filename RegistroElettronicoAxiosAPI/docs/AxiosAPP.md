@@ -43,43 +43,19 @@ D'ora in poi l'API userà sempre questo endpoint.
 
 Se si preferisce usare l'API della versione web del registro rispetto alla versione dell'APP si può convertire il parametro `usersession` nel parametro `s` che andrà alla fine dell'endpoint della richiesta (Guarda il documento rispettivo).
 
-Uno dei parametri utlizzati nella richiesta è `alunnoId`, questo parametro non viene restituito dal login, ma da qualsiasi altra richiesta, se è necessario fare solo la conversione è consigliabile eseguire una richiesta con i seguenti parametri, se invece si devono fare già altre richieste prima è consigliabile prendere il parametro dal lì.
-I parametri necessari per la richiesta delle informazioni dello studente (da cui prenderemo il parametro `idAlunno`) sono:
-
-(endpoint[^1])
-
-```json
-{
-    "sCodiceFiscale":"{{CodiceFiscale}}",
-    "sSessionGuid":"{{usersession}}",
-    "sCommandJSON":{
-        "sApplication":"FAM",
-        "sService":"GET_STUDENTI",
-        "data":{
-            "appName":"ALU_APP"
-        }
-    },
-    "sVendorToken":"{{vendorAlu}}"
-}
-```
-
-Dalla risposta prendiamo il parametro `idAlunno` che poi mettermo nella richiesta per la conversione sotto la voce `alunnoId`.
-
 Dunque la richiesta per convertire da `usersession` al parametro `s` deve essere fatta all'endpoint[^1] con i parametri seguenti:
 
 ```json
 {
-    "sCodiceFiscale":"{{CodiceFiscale}}",
-    "sSessionGuid":"{{usersession}}",
-    "sCommandJSON":{
-        "sApplication":"FAM",
-        "sService":"GET_URL_WEB",
-        "data":{
-            "alunnoId":"{{idAlunno}}"
-        }
-    },
-    "sVendorToken":"{{vendorAlu}}"
+	"sCodiceFiscale":"YOUR_CODICE_FISCALE_HERE",
+	"sSessionGuid":"f341d8ac-51e2-48fe-9c68-5763156f9b97",
+	"sCommandJSON":{
+		"sApplication":"FAM",
+		"sService":"GET_URL_WEB"
+	},
+	"sVendorToken":"5ed95c58-fbc2-4db8-92cb-7e1e73ba2065"
 }
+
 ```
 
 Sono poi da estrarre dalla risposta i parametri `action`, `parameters` e `url`.
