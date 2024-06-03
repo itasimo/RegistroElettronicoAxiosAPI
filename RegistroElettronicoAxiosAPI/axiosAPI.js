@@ -1,5 +1,6 @@
 const modules = {
     GetUserSession: require("./GetUserSession.js"),
+    toSessionID: require("./toSessionID.js"),
     parseCompiti: require("./Parse/parseCompiti.js"),
     parseVoti: require("./Parse/parseVoti.js"),
     parseVerifiche: require("./Parse/parseVerifiche.js"),
@@ -56,6 +57,29 @@ async function AxiosAPI(Action, StudentInfo, Application) {
             .catch(error => console.log('error', error));
 
     return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
+}
+
+
+async function AxiosAPI_WEB(Action, SessionID) {
+    // https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=
+
+    cookie_sessionID = await modules.toSessionID(sCodiceFiscale, SessionID)
+
+    console.log(cookie_sessionID, cookie_sessionID.name + "=" + cookie_sessionID.value);
+
+    const myHeaders = new Headers();
+    myHeaders.append("Cookie", cookie_sessionID.name + "=" + cookie_sessionID.value);
+
+    const requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow"
+    };
+
+    fetch("https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=" + Action, requestOptions)
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.error(error));
 }
 
 /**
@@ -151,6 +175,10 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
         },
         Application: "FAM"
     }
+    const h = {
+        Action: 'FAMILY_COMUNICAZIONI',
+        SessionID: usersession
+    }
 
     Azione = Azione.toLowerCase()
 
@@ -208,6 +236,10 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
                 var NoteRaw = JSON.parse(await AxiosAPI(Note.Action, Note.StudentInfo, Note.Application))
     
                 return  modules.parseNote(NoteRaw)
+
+        case 'j':
+            var j = await AxiosAPI_WEB(h.Action, h.SessionID)
+            return j
 
         default:
             throw new Error("Azione non supportata")

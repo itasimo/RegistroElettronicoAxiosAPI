@@ -28,10 +28,7 @@ module.exports = function parseCompiti(rawData) {
         result.push({
             materia: rawData[i].descMat,
             compito: rawData[i].descCompiti,
-            giorno: [
-                rawData[i].data.split(' ')[0],
-                rawData[i].data.split(' ')[1]
-            ],
+            perGiorno: rawData[i].data.split(' ')[0],
             pubblicato: [
                 rawData[i].data_pubblicazione.split(' ')[0],
                 rawData[i].data_pubblicazione.split(' ')[1]

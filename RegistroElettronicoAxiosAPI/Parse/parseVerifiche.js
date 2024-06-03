@@ -26,10 +26,7 @@ module.exports = function parseVerifiche(rawData) {
             result.push({
                 materia: rawData[i].descMat,
                 verifica: rawData[i].descCompiti.split('</b>')[1].trim(),
-                giorno: [
-                    rawData[i].data.split(' ')[0],
-                    rawData[i].data.split(' ')[1]
-                ],
+                perGiorno: rawData[i].data.split(' ')[0],
                 pubblicato: [
                     rawData[i].data_pubblicazione.split(' ')[0],
                     rawData[i].data_pubblicazione.split(' ')[1]
