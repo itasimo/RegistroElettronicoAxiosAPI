@@ -13,10 +13,15 @@ const VendorToken = require('./utils/Axios/axios.json').VendorToken;
  * @returns {Object} - Object containing the name and value of the session cookie
  */
 
+let G_requestParam;
+
 module.exports = async function toSessionID(CF, usersession){
-    const requestParam = await GetRequestParam(CF, usersession) // Get the request parameters url, action and parameters
+    await GetRequestParam(CF, usersession);
+    
+    console.log(G_requestParam);
 
     let cookie; // The sessionID cookie stored as a object {name: 'name', value: 'value'}
+    let location; // The location of the redirect ?s parameter
 
 
 
@@ -41,8 +46,10 @@ module.exports = async function toSessionID(CF, usersession){
     
     
     const urlencoded = new URLSearchParams();
-    urlencoded.append("parameters", requestParam.parameters);
-    urlencoded.append("action", requestParam.action); // The action is the url to send the request (SSO)
+    urlencoded.append("parameters", G_requestParam.parameters);
+    urlencoded.append("action", G_requestParam.action); // The action is the url to send the request (SSO)
+
+    console.log(urlencoded.toString());
 
     const requestOptions = {
     				method: "POST",
@@ -51,18 +58,25 @@ module.exports = async function toSessionID(CF, usersession){
     				redirect: "manual" // The response will be a 302 redirect to the dashboard
     };
 
-    await fetch(requestParam.url, requestOptions) // Endpoint: https://registrofamiglie.axioscloud.it/Pages/SD/SD_Login.aspx
-    				.then((response) => cookie = response.headers.get('set-cookie'))
+    await fetch(G_requestParam.url, requestOptions) // Endpoint: https://registrofamiglie.axioscloud.it/Pages/SD/SD_Login.aspx
+    				.then((response) => {
+                        cookie = response.headers.get('set-cookie');
+                        location = response.headers.get('location');
+                    })
     				.catch((error) => console.error(error));
 
     return {
-        name: cookie.split(';')[0].split('=')[0],
-        value: cookie.split(';')[0].split('=')[1]
-    }
+        s: location.split('?s=')[1],
+        cookie: {
+            name: cookie.split(';')[0].split('=')[0],
+            value: cookie.split(';')[0].split('=')[1]
+        }
+    };
 }
 
 
 async function GetRequestParam(CF, usersession){
+    console.log('Getting request parameters');
 
     let requestParam;
 
@@ -90,5 +104,5 @@ async function GetRequestParam(CF, usersession){
         .then((result) => requestParam = AxiosDecode(result).response)
         .catch((error) => console.error(error));
 
-    return requestParam;
+    G_requestParam = requestParam;
 }
