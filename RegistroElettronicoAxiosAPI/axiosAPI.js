@@ -71,7 +71,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 */
 
 async function AxiosAPI_WEB(Action, usersession) {
-    var raw_JSON                                                                              // Risposta grezza dell'API di axios
+    var raw_HTML                                                                              // Risposta grezza dell'API di axios
 
     WEB_requestParemeters = await modules.toSessionID(sCodiceFiscale, usersession)                 // Converti il usersession nel cookie SessionID per la chiamata WEB
 
@@ -107,10 +107,10 @@ async function AxiosAPI_WEB(Action, usersession) {
 
     await fetch(`https://registrofamiglie.axioscloud.it/Pages/SD/SD_Dashboard.aspx?s=${WEB_requestParemeters.s}&Action=${Action}`, requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        .then((result) => raw_HTML = result)
         .catch((error) => console.error(error));
 
-    return JSON.stringify(modules.AxiosDecode(raw_JSON).html) // Restituisce la risposta senza codice o messaggio di errore
+    return raw_HTML // Restituisce la risposta senza codice o messaggio di errore
 }
 
 /**
