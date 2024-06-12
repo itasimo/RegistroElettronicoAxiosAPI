@@ -10,6 +10,8 @@ const modules = {
     parseArgomenti: require("./Parse/parseArgomenti.js"),
     parseAssenze: require("./Parse/parseAssenze.js"),
     parseNote: require("./Parse/parseNote.js"),
+    parseCurriculum: require("./Parse/parseCurriculum.js"),
+    parsePagella: require("./Parse/parsePagella.js"),
 
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
@@ -71,9 +73,9 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 */
 
 async function AxiosAPI_WEB(Action, usersession) {
-    var raw_HTML                                                                              // Risposta grezza dell'API di axios
+    var raw_HTML                                                                                    // Risposta grezza dell'API di axios
 
-    WEB_requestParemeters = await modules.toSessionID(sCodiceFiscale, usersession)                 // Converti il usersession nel cookie SessionID per la chiamata WEB
+    WEB_requestParemeters = await modules.toSessionID(sCodiceFiscale, usersession)                  // Converti il usersession nel cookie SessionID per la chiamata WEB
 
     console.log("");
     console.log(WEB_requestParemeters.s);
@@ -82,33 +84,34 @@ async function AxiosAPI_WEB(Action, usersession) {
     console.log("");
 
     const myHeaders = new Headers();
-    myHeaders.append("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7");
+    myHeaders.append("accept", "application/json, text/javascript, */*; q=0.01");
     myHeaders.append("accept-encoding", "gzip, deflate, br, zstd");
     myHeaders.append("accept-language", "en-GB,en-US;q=0.9,en;q=0.8");
-    myHeaders.append("cache-control", "max-age=0");
     myHeaders.append("connection", "keep-alive");
+    myHeaders.append("content-type", "application/json; charset=utf-8");
     myHeaders.append("cookie", WEB_requestParemeters.cookie.name + "=" + WEB_requestParemeters.cookie.value);
     myHeaders.append("host", "registrofamiglie.axioscloud.it");
+    myHeaders.append("referer", "https://registrofamiglie.axioscloud.it/Pages/SD/SD_Dashboard.aspx?s=" + WEB_requestParemeters.s);
+    myHeaders.append("rvt", "Q0I4NDQzOTA1ODhENDVBNUI2N0UxMDdBN0M3MTIzMEY=");
     myHeaders.append("sec-ch-ua", "\"Android WebView\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"");
     myHeaders.append("sec-ch-ua-mobile", "?1");
     myHeaders.append("sec-ch-ua-platform", "\"Android\"");
-    myHeaders.append("sec-fetch-dest", "document");
-    myHeaders.append("sec-fetch-mode", "navigate");
-    myHeaders.append("sec-fetch-site", "cross-site");
-    myHeaders.append("upgrade-insecure-requests", "1");
-    myHeaders.append("user-agent", "Mozilla/5.0 (Linux; Android 13; 2201117SY Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/125.0.6422.148 Mobile Safari/537.36");
-    myHeaders.append("x-requested-with", "com.axiositalia.re.students");
-
+    myHeaders.append("sec-fetch-dest", "empty");
+    myHeaders.append("sec-fetch-mode", "cors");
+    myHeaders.append("sec-fetch-site", "same-origin");
+    myHeaders.append("user-agent", "Mozilla/5.0 (Linux; Android 13; 2201117SY Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/125.0.6422.165 Mobile Safari/537.36");
+    myHeaders.append("x-requested-with", "XMLHttpRequest");
+    
     const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
+                    method: "GET",
+                    headers: myHeaders,
+                    redirect: "follow"
     };
-
-    await fetch(`https://registrofamiglie.axioscloud.it/Pages/SD/SD_Dashboard.aspx?s=${WEB_requestParemeters.s}&Action=${Action}`, requestOptions)
-        .then((response) => response.text())
-        .then((result) => raw_HTML = result)
-        .catch((error) => console.error(error));
+    
+    await fetch("https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=" + Action, requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => console.log(result))
+                    .catch((error) => console.error(error));
 
     return raw_HTML // Restituisce la risposta senza codice o messaggio di errore
 }
@@ -206,67 +209,98 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
         },
         Application: "FAM"
     }
+    const Curriculum = {
+        Action: 'GET_CURRICULUM_MASTER',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
+    const Pagella = {
+        Action: 'GET_PAGELLA_MASTER',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
     const h = {
         Action: 'FAMILY_COMUNICAZIONI',
         SessionGuid: usersession
     }
 
-    Azione = Azione.toLowerCase()
+    Azione = Azione.toLowerCase().replace(/\s/g, '') // Rimuove gli spazi e mette tutto in minuscolo
 
     switch (Azione) {
         case 'compiti':
             
             var compitiRaw = JSON.parse(await AxiosAPI(Compiti.Action, Compiti.StudentInfo, Compiti.Application))[0].compiti
 
-            return  modules.parseCompiti(compitiRaw)
+            return modules.parseCompiti(compitiRaw);
 
         case 'voti':
 
             var VotiRaw = JSON.parse(await AxiosAPI(Voti.Action, Voti.StudentInfo, Voti.Application))       // Restituisce i voti del 1° e del 2° quadrimestre
 
-            return  modules.parseVoti(VotiRaw)
+            return modules.parseVoti(VotiRaw);
 
         case 'verifiche':
 
             var verificheRaw = JSON.parse(await AxiosAPI(Verifiche.Action, Verifiche.StudentInfo, Verifiche.Application))[0].compiti
 
-            return  modules.parseVerifiche(verificheRaw)
+            return modules.parseVerifiche(verificheRaw);
 
         case 'comunicazioni':
 
             var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0].comunicazioni  // Restituisce le comunicazioni del quadrimestre corrente
 
-            return  modules.parseComunicazioni(comunicazioniRaw)
+            return modules.parseComunicazioni(comunicazioniRaw);
         
         case 'permessi':
 
             var PermessiRaw = JSON.parse(await AxiosAPI(Permessi.Action, Permessi.StudentInfo, Permessi.Application))[0]
 
-            return  modules.parsePermessi(PermessiRaw)
+            return modules.parsePermessi(PermessiRaw);
 
         case 'orario':
 
             var OrarioRaw = JSON.parse(await AxiosAPI(Orario.Action, Orario.StudentInfo, Orario.Application))[0].orario
 
-            return  modules.parseOrario(OrarioRaw)
+            return modules.parseOrario(OrarioRaw);
         
         case 'argomenti':
 
             var ArgomentiRaw = JSON.parse(await AxiosAPI(Argomenti.Action, Argomenti.StudentInfo, Argomenti.Application))[0].argomenti
 
-            return  modules.parseArgomenti(ArgomentiRaw)
+            return modules.parseArgomenti(ArgomentiRaw);
 
         case 'assenze':
                 
-                var AssenzeRaw = JSON.parse(await AxiosAPI(Assenze.Action, Assenze.StudentInfo, Assenze.Application))
+            var AssenzeRaw = JSON.parse(await AxiosAPI(Assenze.Action, Assenze.StudentInfo, Assenze.Application))
     
-                return  modules.parseAssenze(AssenzeRaw)
+            return modules.parseAssenze(AssenzeRaw);
 
         case 'note':
                 
-                var NoteRaw = JSON.parse(await AxiosAPI(Note.Action, Note.StudentInfo, Note.Application))
+            var NoteRaw = JSON.parse(await AxiosAPI(Note.Action, Note.StudentInfo, Note.Application))
     
-                return  modules.parseNote(NoteRaw)
+            return modules.parseNote(NoteRaw);
+
+        case 'curriculum':
+
+            var CurriculumRaw = JSON.parse(await AxiosAPI(Curriculum.Action, Curriculum.StudentInfo, Curriculum.Application))[0].curriculum
+
+            return modules.parseCurriculum(CurriculumRaw);
+        
+        case 'pagella':
+
+            var PagellaRaw = JSON.parse(await AxiosAPI(Pagella.Action, Pagella.StudentInfo, Pagella.Application))
+
+            return modules.parsePagella(PagellaRaw);
+
 
         case 'j':
             return await AxiosAPI_WEB(h.Action, h.SessionGuid)
