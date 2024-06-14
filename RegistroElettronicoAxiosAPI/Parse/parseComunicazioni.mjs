@@ -1,6 +1,6 @@
 /**
  * 
- * 
+ * #### Comunicazioni (quadrimestre corrente)
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
  * @returns {JSON} JSON contente tutte le comunicazioni compresi i link ai file allegati

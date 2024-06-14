@@ -1,9 +1,9 @@
 /**
  * 
- * 
+ * #### Orario
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
- * @returns {JSON} JSON contente tutte le verifiche e altre informzioni riguardanti essi
+ * @returns {JSON} JSON contente tutti gli orari delle lezioni divisi per giorno (se inseriti dai docenti)
  * 
  */
 

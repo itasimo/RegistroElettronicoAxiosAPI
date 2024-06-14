@@ -1,6 +1,6 @@
 /**
  * 
- * 
+ * #### Voti
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
  * @returns {JSON} JSON contente tutti i voti e altre informzioni riguardanti essi
