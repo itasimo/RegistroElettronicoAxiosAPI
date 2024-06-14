@@ -65,7 +65,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
 
 
 /**
- * Funzione per effettuare chiamate all'API di Axios (WEB)
+ * Funzione per effettuare chiamate all'API di Axios (WEB) **[WORK IN PROGRESS]**
  * @param {String} Action Azione da eseguire
  * @param {String} usersession usersession dell'utente (MOBILE) (Verrà convertito nel cookie SessionID per la chiamata WEB)
  * @returns JSON non analizzato contenete la risposta

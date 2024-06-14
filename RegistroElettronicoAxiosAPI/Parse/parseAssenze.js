@@ -1,9 +1,9 @@
 /**
  * 
- * 
+ * #### Assenze
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
- * @returns {JSON} JSON contente tutti gli argomenti ragguppati per giorno
+ * @returns {JSON} JSON contente tutti le assenze divise per quadrimestre
  * 
  */
 
