@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseAssenze(rawData) {
+export default function parseAssenze(rawData) {
     
     const tipoLett = ['T', 'A', 'U', 'R', 'E']                                                 // Axios usa un formato di merda per segnare assenze/ritardi/..., quindi li converto in qualcosa di leggibile
     const tipoStr = ['Tutte', 'Assenza', 'Uscita anticipata', 'Ritardo', 'Rientri']

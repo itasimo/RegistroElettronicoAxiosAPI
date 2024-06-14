@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseNote(rawData) {
+export default function parseNote(rawData) {
 
     const tipoLett = ['C', 'S']                                                         // Axios usa un formato di merda per segnare note/ritardi/..., quindi li converto in qualcosa di leggibile
 

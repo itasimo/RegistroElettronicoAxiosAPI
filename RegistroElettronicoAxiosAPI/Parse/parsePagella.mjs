@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parsePagella(rawData) {
+export default function parsePagella(rawData) {
 
     let result = []
 

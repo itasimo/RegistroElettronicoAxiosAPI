@@ -1,5 +1,6 @@
-const rc4 = require('./rc4');
-const rc4key = require('./axios.json').rc4key.new;
+import rc4 from './rc4.mjs';
+import AxiosJSON from './axios.json' assert { type: 'json' };
+const rc4key = AxiosJSON.rc4key.new;
 
 /**
  * 
@@ -7,7 +8,7 @@ const rc4key = require('./axios.json').rc4key.new;
  * @param {Number} num  Numero di volte che si vuole codificare con Url Encoding
  * @returns Encoded string
  */
-module.exports = function AxiosEncode(json, num = 1) {
+export default function AxiosEncode(json, num = 1) {
 
     let encoded = rc4(rc4key, JSON.stringify(json));
 

@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseCompiti(rawData) {
+export default function parseCompiti(rawData) {
 
     // Array che conterrà tutti i compiti
     var result = []

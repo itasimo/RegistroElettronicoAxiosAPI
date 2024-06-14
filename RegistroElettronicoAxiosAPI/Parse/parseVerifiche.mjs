@@ -7,9 +7,9 @@
  * 
  */
 
-module.exports = function parseVerifiche(rawData) {
+export default function parseVerifiche(rawData) {
+    
     var result = []
-
 
     // La risposta di axios è un array di oggetti, prima ci sono i compiti e poi le verifiche quindi inizia dalla prima verifica saltando la prima parte composta solo da compiti
 

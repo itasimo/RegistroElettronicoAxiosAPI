@@ -9,7 +9,7 @@
 
 
 
-module.exports = function parseVoti(rawData) {
+export default function parseVoti(rawData) {
 
     var result = []
 

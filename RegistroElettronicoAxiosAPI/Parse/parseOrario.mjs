@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseOrario(rawData) {
+export default function parseOrario(rawData) {
 
     let result = []
 

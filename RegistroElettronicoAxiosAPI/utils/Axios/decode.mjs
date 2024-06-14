@@ -1,5 +1,6 @@
-const rc4 = require('./rc4');
-const rc4key = require('./axios.json').rc4key.new;
+import rc4 from './rc4.mjs';
+import AxiosJSON from './axios.json' assert { type: 'json' };
+const rc4key = AxiosJSON.rc4key.new;
 
 /**
  * 
@@ -7,7 +8,7 @@ const rc4key = require('./axios.json').rc4key.new;
  * @param {Boolean} jsdec  Il valore è un JSON?
  * @returns JSON contente il valore decodificato
  */
-module.exports = function AxiosDecode(value, jsdec = true) {
+export default function AxiosDecode(value, jsdec = true) {
 
     value = jsdec ? JSON.parse(value) : value;
     let newresp;

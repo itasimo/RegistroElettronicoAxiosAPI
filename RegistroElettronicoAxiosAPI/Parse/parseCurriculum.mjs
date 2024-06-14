@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseCurriculum(rawData) {
+export default function parseCurriculum(rawData) {
 
     let result = []
 

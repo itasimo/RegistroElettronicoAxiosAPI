@@ -11,7 +11,7 @@
  * 
  */
 
-module.exports = function parsePermessi(rawData) {
+export default function parsePermessi(rawData) {
 
     const tipoLett = ['A', 'U', 'E', 'G', 'D']                                                    // Axios usa un formato di merda per i tipi di uscite, quindi li converto in qualcosa di leggibile
     const tipoStr = ['Assenza', 'Uscita Anticipata', 'Entrata Posticipata', 'Uscita Didattica', 'DaD (Didattica a distanza)']

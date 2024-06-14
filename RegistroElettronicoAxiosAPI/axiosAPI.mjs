@@ -16,24 +16,25 @@ const modules = {
     AxiosDecode
 };
 
-import GetUserSession from "./GetUserSession.js";
-import toSessionID from "./toSessionID.js";
-import parseCompiti from "./Parse/parseCompiti.js";
-import parseVoti from "./Parse/parseVoti.js";
-import parseVerifiche from "./Parse/parseVerifiche.js";
-import parseComunicazioni from "./Parse/parseComunicazioni.js";
-import parsePermessi from "./Parse/parsePermessi.js";
-import parseOrario from "./Parse/parseOrario.js";
-import parseArgomenti from "./Parse/parseArgomenti.js";
-import parseAssenze from "./Parse/parseAssenze.js";
-import parseNote from "./Parse/parseNote.js";
-import parseCurriculum from "./Parse/parseCurriculum.js";
-import parsePagella from "./Parse/parsePagella.js";
-import AxiosEncode from './utils/Axios/encode.js';
-import AxiosDecode from './utils/Axios/decode.js';
-import VendorToken from './utils/Axios/axios.json' assert { type: 'json' };
-let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
+import GetUserSession from "./GetUserSession.mjs";
+import toSessionID from "./toSessionID.mjs";
+import parseCompiti from "./Parse/parseCompiti.mjs";
+import parseVoti from "./Parse/parseVoti.mjs";
+import parseVerifiche from "./Parse/parseVerifiche.mjs";
+import parseComunicazioni from "./Parse/parseComunicazioni.mjs";
+import parsePermessi from "./Parse/parsePermessi.mjs";
+import parseOrario from "./Parse/parseOrario.mjs";
+import parseArgomenti from "./Parse/parseArgomenti.mjs";
+import parseAssenze from "./Parse/parseAssenze.mjs";
+import parseNote from "./Parse/parseNote.mjs";
+import parseCurriculum from "./Parse/parseCurriculum.mjs";
+import parsePagella from "./Parse/parsePagella.mjs";
+import AxiosEncode from './utils/Axios/encode.mjs';
+import AxiosDecode from './utils/Axios/decode.mjs';
+import AxiosJSON from './utils/Axios/axios.json' assert { type: 'json' };
 
+const VendorToken = AxiosJSON.VendorToken;
+let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
 
 /**
  * 
@@ -59,7 +60,7 @@ async function AxiosAPI(Action, StudentInfo, Application) {
             redirect: "follow"
     };
 
-    requestInfo = {
+    const requestInfo = {
         sCodiceFiscale: StudentInfo.CodiceFiscale,
         sSessionGuid: StudentInfo.SessionGuid,
         sCommandJSON: {
@@ -140,7 +141,7 @@ async function AxiosAPI_WEB(Action, usersession) {
  * @returns {JSON} JSON contenete la risposta
  */
 
-async function RegistroElettronicoAxiosAPI_Get(usersession, Azione) {
+export async function RegistroElettronicoAxiosAPI_Get(usersession, Azione) {
 
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
@@ -337,9 +338,7 @@ async function RegistroElettronicoAxiosAPI_Get(usersession, Azione) {
  * @returns {String} usersession necessario per effettuare le chiamate all'API
  */
 
-async function RegistroElettronicoAxiosAPI_Login(CodiceFiscale, CodiceUtente, Password) {
+export async function RegistroElettronicoAxiosAPI_Login(CodiceFiscale, CodiceUtente, Password) {
     sCodiceFiscale = CodiceFiscale
     return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 }
-
-export default {RegistroElettronicoAxiosAPI_Get, RegistroElettronicoAxiosAPI_Login}

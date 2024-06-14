@@ -9,7 +9,7 @@
 
 
 
-module.exports = function parseComunicazioni(rawData) {
+export default function parseComunicazioni(rawData) {
 
     const tipoNum = ['1', '4', '5']
     const tipoStr = ['Circolare', 'Scuola/famiglia', 'Comunicazione']

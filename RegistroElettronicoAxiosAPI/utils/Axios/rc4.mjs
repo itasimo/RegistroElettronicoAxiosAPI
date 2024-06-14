@@ -5,7 +5,7 @@
  * @returns rc4 encrypted string
  */
 
-module.exports = function rc4(key, str) {
+export default function rc4(key, str) {
     var s = [], j = 0, x, res = '';
     for (var i = 0; i < 256; i++) {
         s[i] = i;

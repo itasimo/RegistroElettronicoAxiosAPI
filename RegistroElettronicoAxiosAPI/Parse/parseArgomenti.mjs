@@ -7,7 +7,7 @@
  * 
  */
 
-module.exports = function parseArgomenti(rawData) {
+export default function parseArgomenti(rawData) {
 
     let result = []
 

@@ -1,6 +1,7 @@
-const AxiosEncode = require('./utils/Axios/encode');
-const AxiosDecode = require('./utils/Axios/decode');
-const VendorToken = require('./utils/Axios/axios.json').VendorToken;
+import AxiosEncode from './utils/Axios/encode.mjs';
+import AxiosDecode from './utils/Axios/decode.mjs';
+import AxiosJSON from './utils/Axios/axios.json' assert { type: 'json' };
+const VendorToken = AxiosJSON.VendorToken;
 
 /**
  * 
@@ -15,7 +16,7 @@ const VendorToken = require('./utils/Axios/axios.json').VendorToken;
 
 let G_requestParam;
 
-module.exports = async function toSessionID(CF, usersession){
+export default async function toSessionID(CF, usersession){
     await GetRequestParam(CF, usersession);
     
     console.log(G_requestParam);

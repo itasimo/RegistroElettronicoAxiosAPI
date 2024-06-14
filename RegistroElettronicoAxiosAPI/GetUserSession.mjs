@@ -1,6 +1,7 @@
-const AxiosEncode = require('./utils/Axios/encode');
-const AxiosDecode = require('./utils/Axios/decode');
-const VendorToken = require('./utils/Axios/axios.json').VendorToken;
+import AxiosEncode from './utils/Axios/encode.mjs';
+import AxiosDecode from './utils/Axios/decode.mjs';
+import AxiosJSON from './utils/Axios/axios.json' assert { type: 'json' };
+const VendorToken = AxiosJSON.VendorToken;
 
 /**
  * 
@@ -9,7 +10,7 @@ const VendorToken = require('./utils/Axios/axios.json').VendorToken;
  * @param {String} PWD  Password
  * @returns 
  */
-module.exports = async function GetUserSession(CF, CU, PWD){
+export default async function GetUserSession(CF, CU, PWD){
 
     let studenteInfo = {};
 
