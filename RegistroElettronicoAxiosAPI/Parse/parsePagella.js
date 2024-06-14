@@ -9,8 +9,6 @@
 
 module.exports = function parsePagella(rawData) {
 
-    console.log(rawData);
-
     let result = []
 
     for (let i = 0; i < rawData.length; i++) {                      // Per ogni quadrimestre (2)
@@ -24,7 +22,15 @@ module.exports = function parsePagella(rawData) {
             const materiaData = {
                 materia: defPath[j].descMat,
                 voto: defPath[j].mediaVoti,                          // Non è la media dei voti, ma il voto finale
-                recupero: defPath[j].tipoRecupero,                   // TODO: Da testare
+                debito: defPath[j].schedaCarenza ? {                 // Se c'è un debito
+                    motivo: defPath[j].schedaCarenza.motivo,                        // Motivo del debito
+                    argomenti: defPath[j].schedaCarenza.rilevate,                   // Argomenti su cui si ha il debito
+                    modRecupero: defPath[j].schedaCarenza.modalitaRecupero,         // Modalità di recupero
+                    tipoVerifica: defPath[j].schedaCarenza.verifica,                // Tipo della verifica di recupero
+                    dataVerifica: defPath[j].schedaCarenza.dataVerifica,            // Data della verifica di recupero
+                    argVerifica: defPath[j].schedaCarenza.verificaArgomenti,        // Argomenti della verifica di recupero
+                    giudizioVerifica: defPath[j].schedaCarenza.verificaGiudizio     // Giudizio della verifica di recupero
+                } : {},
                 giudizio: defPath[j].giudizio,
                 assenze: Number(defPath[j].assenze)
             }
