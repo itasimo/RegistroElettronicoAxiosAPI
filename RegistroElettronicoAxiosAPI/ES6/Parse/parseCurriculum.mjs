@@ -17,10 +17,10 @@ export default function parseCurriculum(rawData) {
             scuola: rawData[i].descScuola,
             indirizzo: rawData[i].descCorso,
             annoScolastico: rawData[i].annoScolastico.split('/'),
-            classe: rawData[i].classe,
+            classe: rawData[i].classe.toString(),
             sezione: rawData[i].sezione,
             esito: rawData[i].descEsito,
-            crediti: rawData[i].credito == '' ? 0 : rawData[i].credito
+            crediti: rawData[i].credito == '' ? 0 : Number(rawData[i].credito)
         }
 
         result.push(currData)

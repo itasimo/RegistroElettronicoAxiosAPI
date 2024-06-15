@@ -43,7 +43,7 @@ export default function parsePagella(rawData) {
             quadrimestre: rawData[i].descFrazione,
             media: Math.floor( (voti.reduce((a, b) => a + b, 0) / voti.length) * 100) / 100,        // Media dei voti arrotondata a 2 decimali
             esito: rawData[i].esito,
-            giudizio: rawData[i].giudizio,
+            giudizio: rawData[i].giudizio.replace(/\<(.*?)\>/gm, ''),                               // Rimuove i tag HTML
             materie: materie
         })
         

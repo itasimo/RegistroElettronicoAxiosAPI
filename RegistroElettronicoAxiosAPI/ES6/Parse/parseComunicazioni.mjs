@@ -12,7 +12,7 @@
 export default function parseComunicazioni(rawData) {
 
     const tipoNum = ['1', '4', '5']
-    const tipoStr = ['Circolare', 'Scuola/famiglia', 'Comunicazione']
+    const tipoStr = ['Circolare', 'Scuola/Famiglia', 'Comunicazione']
     var result = []
 
     for (let i = 0; i < rawData.length; i++) {

@@ -24,7 +24,7 @@ module.exports = function parseVoti(rawData) {
 
             result.push({
                 materia: defPath.descMat,
-                tipoVoto: tipoVotoDesc[ tipoVotoLettere.indexOf( defPath.tipo ) ], // Converte la lettera in un tipo di voto leggibile
+                tipo: tipoVotoDesc[ tipoVotoLettere.indexOf( defPath.tipo ) ], // Converte la lettera in un tipo di voto leggibile
                 voto: defPath.voto,
                 peso: defPath.peso,
                 data: defPath.data,

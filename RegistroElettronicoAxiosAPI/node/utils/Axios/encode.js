@@ -13,7 +13,7 @@ module.exports = function AxiosEncode(json, num = 1) {
 
     encoded = btoa(encoded);
 
-    for (let i = 0; i < num; i++) encoded = encodeURIComponent(encoded);
+    for (let i = 0; i < num; i++) {encoded = encodeURIComponent(encoded)};
 
     return encoded;
 }
