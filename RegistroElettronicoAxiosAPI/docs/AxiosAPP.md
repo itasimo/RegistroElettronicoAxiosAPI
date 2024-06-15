@@ -196,7 +196,7 @@ La struttura è divisa in 2 array il primo più interno contiene tutti gli argom
             ...
         ]
     }
-}
+]
 ```
 Le assenze possono essere di vari tipi:
 * Tutte
@@ -258,6 +258,7 @@ Il link per il download del/degli allegati è one-time. Le comunicazioni posso e
 > **Disclaimer**: La richiesta per la risposta a una circolare è supportata dall'API nativa di Axios ma non da questa riscrittura.
 
 In caso la circolare preveda una risposta l'array `opzioniRisposta` si popolerà con le opzioni. Per inviare la risposta bisogna fare una richiesta POST all'endpoint:
+
 ```http
 POST https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand
 ```
