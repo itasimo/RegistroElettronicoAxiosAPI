@@ -17,7 +17,7 @@ const modules = {
     AxiosDecode: require('./utils/Axios/decode.js')
 }
 
-const VendorToken = require('./utils/Axios/axios.json').VendorToken;
+const VendorToken = require('../AxiosJSON/axios.json').VendorToken;
 let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
 
 

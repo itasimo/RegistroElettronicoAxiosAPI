@@ -1,5 +1,5 @@
 const rc4 = require('./rc4');
-const rc4key = require('./axios.json').rc4key.new;
+const rc4key = require('../../../AxiosJSON/axios.json').rc4key.new;
 
 /**
  * 

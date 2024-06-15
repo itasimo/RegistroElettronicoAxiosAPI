@@ -31,7 +31,7 @@ import parseCurriculum from "./Parse/parseCurriculum.mjs";
 import parsePagella from "./Parse/parsePagella.mjs";
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
-import AxiosJSON from './utils/Axios/axios.json' assert { type: 'json' };
+import AxiosJSON from '../AxiosJSON/axios.json' assert { type: 'json' };
 
 const VendorToken = AxiosJSON.VendorToken;
 let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione

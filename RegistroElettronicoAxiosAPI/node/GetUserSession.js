@@ -1,6 +1,6 @@
 const AxiosEncode = require('./utils/Axios/encode');
 const AxiosDecode = require('./utils/Axios/decode');
-const VendorToken = require('./utils/Axios/axios.json').VendorToken;
+const VendorToken = require('../AxiosJSON/axios.json').VendorToken;
 
 /**
  * 
