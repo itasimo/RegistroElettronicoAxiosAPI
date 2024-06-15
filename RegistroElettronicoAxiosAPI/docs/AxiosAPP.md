@@ -258,9 +258,8 @@ Il link per il download del/degli allegati è one-time. Le comunicazioni posso e
 > **Disclaimer**: La richiesta per la risposta a una circolare è supportata dall'API nativa di Axios ma non da questa riscrittura.
 
 In caso la circolare preveda una risposta l'array `opzioniRisposta` si popolerà con le opzioni. Per inviare la risposta bisogna fare una richiesta POST all'endpoint:
-```
-POST
-https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand
+```http
+POST https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand
 ```
 Il body della richiesta sarà:
 ```json
