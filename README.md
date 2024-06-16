@@ -575,8 +575,10 @@ I voti hanno diversi tipi:
             "data": "20/05/2024",
             "tipo": "Argomento",
             "subTipo": "",
-            "ora": "",
-            "oraLezione": "1",
+            "ora": [
+                "1",
+                ""
+            ],
             "titolo": "",
             "sottoTitolo": "ITALIANO",
             "descrizione": "Promessi sposi cap. 19"
@@ -585,8 +587,10 @@ I voti hanno diversi tipi:
             "data": "20/05/2024",
             "tipo": "Assenza",
             "subTipo": "Uscita anticipata",
-            "ora": "12:20:00",
-            "oraLezione": "5",
+            "ora": [
+                "5",                        // Ora lezione
+                "12:20:00"                  // Ora tempo
+            ],
             "titolo": "",
             "sottoTitolo": "",
             "descrizione": ""

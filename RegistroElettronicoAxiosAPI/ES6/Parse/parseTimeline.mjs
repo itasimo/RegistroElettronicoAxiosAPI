@@ -35,8 +35,10 @@ export default function parseTimeline(rawData) {
             data: defPath[i].data,
             tipo: tipoStr[ tipoLett.indexOf( defPath[i].type ) ],
             subTipo: sottoTipo,
-            ora: defPath[i].ora,
-            oraLezione: defPath[i].oralez,
+            ora: [
+                defPath[i].oralez,
+                defPath[i].ora
+            ],
             titolo: defPath[i].desc.title,
             sottoTitolo: defPath[i].desc.subtitle,
             descrizione: defPath[i].desc.notes,
