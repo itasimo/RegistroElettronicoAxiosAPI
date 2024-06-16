@@ -12,6 +12,7 @@ const modules = {
     parseNote: require("./Parse/parseNote.js"),
     parseCurriculum: require("./Parse/parseCurriculum.js"),
     parsePagella: require("./Parse/parsePagella.js"),
+    parseTimeline: require("./Parse/parseTimeline.js"),
 
     AxiosEncode: require('./utils/Axios/encode.js'),
     AxiosDecode: require('./utils/Axios/decode.js')
@@ -33,7 +34,7 @@ let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volt
  * @returns JSON non analizzato contenete la risposta
  */
 
-async function AxiosAPI(Action, StudentInfo, Application) {
+async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
     var raw_JSON
 
     const myHeaders = new Headers();
@@ -45,12 +46,13 @@ async function AxiosAPI(Action, StudentInfo, Application) {
             redirect: "follow"
     };
 
-    requestInfo = {
+    const requestInfo = {
         sCodiceFiscale: StudentInfo.CodiceFiscale,
         sSessionGuid: StudentInfo.SessionGuid,
         sCommandJSON: {
             sApplication: Application,
-            sService: Action
+            sService: Action,
+            data: AddedData
         },
         sVendorToken: StudentInfo.VendorToken
     }
@@ -301,7 +303,6 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
 
             return modules.parsePagella(PagellaRaw);
 
-
         case 'j':
             return await AxiosAPI_WEB(h.Action, h.SessionGuid)
 
@@ -311,8 +312,25 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
 }
 
 
+module.exports.RegistroElettronicoAxiosAPI_Get_Timeline = async function(usersession, data) {
 
+    const Timeline = {
+        Action: 'GET_TIMELINE',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        data: {
+            dataGiorno: data
+        },
+        Application: "FAM"
+    }
 
+    var TimelineRaw = JSON.parse(await AxiosAPI(Timeline.Action, Timeline.StudentInfo, Timeline.Application, Timeline.data))[0]
+
+    return modules.parseTimeline(TimelineRaw)
+}
 
 /**
  * Funzione per effettuare il login all'API di Axios
