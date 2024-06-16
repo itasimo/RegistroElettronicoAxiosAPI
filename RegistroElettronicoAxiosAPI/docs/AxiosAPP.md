@@ -109,24 +109,79 @@ D'ora in poi l'API userà sempre questo endpoint.
 
 ### Dall'app al sito: `usersession`
 
-Se si preferisce usare l'API della versione web del registro rispetto alla versione dell'APP si può convertire il parametro `usersession` nel parametro `s` che andrà alla fine dell'endpoint della richiesta (Guarda il documento rispettivo).
+Se si preferisce usare l'API della versione web del registro rispetto alla versione dell'APP si può convertire il parametro `usersession` nel cookie `SessionId` che andrà alla fine dell'endpoint della richiesta ([Guarda il documento rispettivo](./toSessionID.md)).
 
-Dunque la richiesta per convertire da `usersession` al parametro `s` deve essere fatta all'endpoint[^1] con i parametri seguenti:
+Dunque la richiesta per convertire da `usersession` al cookie `SessionId` deve essere fatta all'endpoint[^1] con i parametri seguenti:
 
 ```json
 {
-    "sCodiceFiscale":"80185250588",
-    "sSessionGuid":"f341d8ac-51e2-48fe-9c68-5763156f9b97",
+    "sCodiceFiscale":"{{CodiceFiscale}}",
+    "sSessionGuid":"{{usersession}}",
     "sCommandJSON":{
         "sApplication":"FAM",
         "sService":"GET_URL_WEB"
     },
-    "sVendorToken":"5ed95c58-fbc2-4db8-92cb-7e1e73ba2065"
+    "sVendorToken":"{{vendorAlu}}"
 }
 
 ```
 
 Sono poi da estrarre dalla risposta i parametri `action`, `parameters` e `url`.
+
+## Richieste
+Dopo questa piccola intro su come funziona l'API nativa che spero non dovrete mai toccare è il momento di parlare sul come fare le richieste usando questa riscrittura. Siccome l'API ha 2 versioni: Node per applicazioni locali e ES6 per applicazioni web; il modo in cui si fanno le richieste cambia anche se di poco.
+
+#### Node
+In `index.js`
+```js
+const api = require('./RegistroElettronicoAxiosAPI/node/axiosAPI');
+```
+
+#### ES6
+In `index.mjs`
+```js
+import * as api from './RegistroElettronicoAxiosAPI/ES6/axiosAPI.mjs';
+```
+
+La prima richiesta da fare è quella del login che avrà come valore di ritorno il parametro `usersession` necessario per le richieste a venire.
+
+```js
+(async() => {
+
+    // Login
+    const usersession = await api.RE_AxiosAPI_Login('CodiceFiscale', 'username', 'Password');
+
+})()
+```
+Per fare qualsiasi tipo di richiesta `GET` all'API è usata sempre la stessa funzione di base che viene modificata in caso di dati addizionali.
+
+```js
+(async() => {
+
+    // Login
+    const usersession = await api.RE_AxiosAPI_Login('CodiceFiscale', 'username', 'Password');
+
+    // Get
+    const data = await api.RE_AxiosAPI_Get(usersession, 'Azione');
+
+})()
+```
+
+Nel caso della richiesta `Timeline` c'è una modifica alla funzione poiché la richiesta chiede anche di specificare una data che sarà la data in cui si sono svolti gli eventi.
+
+```js
+(async() => {
+
+    // Login
+    const usersession = await api.RE_AxiosAPI_Login('CodiceFiscale', 'username', 'Password');
+
+    // Get Timeline
+    const data = await api.RE_AxiosAPI_Get_Timeline(usersession, 'gg/mm/aaaa');
+
+})()
+```
+
+La lista di azioni supportate dall'API si può trovare nel documento [README.md](../../README.md)
 
 ## Risposte
 Le risposte dell'API di axios sono abbastanza confusionarie dal punto di vista di: nomi (che appaiono non coerenti tra di loro), ripetizioni (dati ripetuti più volte) e dati che appaiono solo in casi specifici.
@@ -492,6 +547,47 @@ I voti hanno diversi tipi:
 * Orale
 * Pratico
 * Unico
+
+### Timeline
+
+```json
+{
+    "oggi": [
+        {
+            "data": "20/05/2024",
+            "tipo": "Argomento",
+            "subTipo": "",
+            "ora": "",
+            "oraLezione": "1",
+            "titolo": "",
+            "sottoTitolo": "ITALIANO",
+            "descrizione": "Promessi sposi cap. 19"
+        },
+        {
+            "data": "20/05/2024",
+            "tipo": "Assenza",
+            "subTipo": "Uscita anticipata",
+            "ora": "12:20:00",
+            "oraLezione": "5",
+            "titolo": "",
+            "sottoTitolo": "",
+            "descrizione": ""
+        },
+        ...
+    ],
+    "dati": {
+        "media": "7,62",
+        "assenzeTot": "1",
+        "assenzeDaGiust": "0",
+        "ritardiTot": "3",
+        "ritardiDaGiust": "1",
+        "usciteTot": "22",
+        "usciteDaGiust": "0"
+    }
+}
+```
+Il parametro `tipo` specifica il tipo di evento mentre il parametro `subTipo` è usato solo nei casi in cui l'evento sia `"Assenza"` o `"Voto"`, esso serve a specificare rispettivamente il tipo si assenza (guarda i tipi di assenza nella sezione della risposta per le assenze) e tipo di voto (guarda i tipi di voto nella sezione della risposta per i voti)
+
 
 ## Conclusione
 Speriamo di aver fatto risparmiare dei neuroni a chi si voglia usare l'API di axios. Vi ripeto che in caso di domande di non esitate a [contattarmi](mailto:ita.simo013+axiosAPI@gmail.com).

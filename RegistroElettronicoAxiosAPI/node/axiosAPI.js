@@ -131,7 +131,7 @@ async function AxiosAPI_WEB(Action, usersession) {
  * @returns {JSON} JSON contenete la risposta
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azione) {
+module.exports.RE_AxiosAPI_Get = async function(usersession, Azione) {
 
     const Compiti = {
         Action: 'GET_COMPITI_MASTER',           // Restituisce tutti i compiti e verifiche pubblicati fino al momento della chiamata
@@ -324,7 +324,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
  * @returns 
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Get_Timeline = async function(usersession, data) {
+module.exports.RE_AxiosAPI_Get_Timeline = async function(usersession, data) {
 
     const Timeline = {
         Action: 'GET_TIMELINE',
@@ -353,7 +353,7 @@ module.exports.RegistroElettronicoAxiosAPI_Get_Timeline = async function(userses
  * @returns {String} usersession necessario per effettuare le chiamate all'API
  */
 
-module.exports.RegistroElettronicoAxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, Password) {
+module.exports.RE_AxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, Password) {
     sCodiceFiscale = CodiceFiscale
     return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 }
