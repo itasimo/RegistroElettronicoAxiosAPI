@@ -12,6 +12,7 @@ const modules = {
     parseNote,
     parseCurriculum,
     parsePagella,
+    parseTimeline,
     AxiosEncode,
     AxiosDecode
 };
@@ -29,6 +30,7 @@ import parseAssenze from "./Parse/parseAssenze.mjs";
 import parseNote from "./Parse/parseNote.mjs";
 import parseCurriculum from "./Parse/parseCurriculum.mjs";
 import parsePagella from "./Parse/parsePagella.mjs";
+import parseTimeline from "./Parse/parseTimeline.mjs";
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
 import AxiosJSON from '../AxiosJSON/axios.json' assert { type: 'json' };
@@ -42,13 +44,14 @@ let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volt
  * 
  * Funzione per effettuare chiamate all'API di Axios (APP MOBILE)
  * 
- * @param {String} Action Azione da eseguire
- * @param {String} Cookies Cookies contenti usersession e altri eventuali dati
- * @param {String} body Corpo della chiamata contenente informazioni sul formato della risposta
- * @returns JSON non analizzato contenete la risposta
+ * @param {String} Action       Azione da eseguire
+ * @param {JSON} StudentInfo    Informazioni dello studente (Codice Fiscale (Scuola), SessionGuid, VendorToken)
+ * @param {String} Application  Applicazione (FAM)
+ * @param {JSON} AddedData      Dati aggiuntivi da passare all'API (Opzionale)
+ * @returns 
  */
 
-async function AxiosAPI(Action, StudentInfo, Application) {
+async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
     var raw_JSON
 
     const myHeaders = new Headers();
@@ -65,7 +68,8 @@ async function AxiosAPI(Action, StudentInfo, Application) {
         sSessionGuid: StudentInfo.SessionGuid,
         sCommandJSON: {
             sApplication: Application,
-            sService: Action
+            sService: Action,
+            data: AddedData
         },
         sVendorToken: StudentInfo.VendorToken
     }
@@ -326,6 +330,34 @@ export async function RegistroElettronicoAxiosAPI_Get(usersession, Azione) {
 }
 
 
+/**
+ * 
+ * ### Timeline
+ * 
+ * @param {String} usersession Variabile di sessione dell'utente
+ * @param {String} data Data in formato "gg/mm/aaaa" per la quale si vuole ottenere la timeline degli eventi
+ * @returns 
+ */
+
+export async function RegistroElettronicoAxiosAPI_Get_Timeline(usersession, data) {
+
+    const Timeline = {
+        Action: 'GET_TIMELINE',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        data: {
+            dataGiorno: data
+        },
+        Application: "FAM"
+    }
+
+    var TimelineRaw = JSON.parse(await AxiosAPI(Timeline.Action, Timeline.StudentInfo, Timeline.Application, Timeline.data))[0]
+
+    return modules.parseTimeline(TimelineRaw)
+}
 
 
 

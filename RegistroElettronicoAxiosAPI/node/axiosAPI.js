@@ -22,16 +22,18 @@ const VendorToken = require('../AxiosJSON/axios.json').VendorToken;
 let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volta nella funzione
 
 
+
 /**
  * 
  * Codice generato da Postman (https://www.postman.com/)
  * 
  * Funzione per effettuare chiamate all'API di Axios (APP MOBILE)
  * 
- * @param {String} Action Azione da eseguire
- * @param {String} Cookies Cookies contenti usersession e altri eventuali dati
- * @param {String} body Corpo della chiamata contenente informazioni sul formato della risposta
- * @returns JSON non analizzato contenete la risposta
+ * @param {String} Action       Azione da eseguire
+ * @param {JSON} StudentInfo    Informazioni dello studente (Codice Fiscale (Scuola), SessionGuid, VendorToken)
+ * @param {String} Application  Applicazione (FAM)
+ * @param {JSON} AddedData      Dati aggiuntivi da passare all'API (Opzionale)
+ * @returns 
  */
 
 async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
@@ -64,6 +66,7 @@ async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
 
     return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
 }
+
 
 
 /**
@@ -311,6 +314,15 @@ module.exports.RegistroElettronicoAxiosAPI_Get = async function(usersession, Azi
     }
 }
 
+
+/**
+ * 
+ * ### Timeline
+ * 
+ * @param {String} usersession Variabile di sessione dell'utente
+ * @param {String} data Data in formato "gg/mm/aaaa" per la quale si vuole ottenere la timeline degli eventi
+ * @returns 
+ */
 
 module.exports.RegistroElettronicoAxiosAPI_Get_Timeline = async function(usersession, data) {
 
