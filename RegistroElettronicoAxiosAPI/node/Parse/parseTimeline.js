@@ -10,13 +10,16 @@
 module.exports = function parseTimeline(rawData) {
 
     const tipoLett = ['C', 'L', 'M', 'N', 'A', 'V'] 
-    const tipoStr = ['Comunicazione', 'Argomento', 'Compito', 'Nota Disciplinare', 'Assenza', 'Voto'];
+    const tipoStr = ['Comunicazione', 'Argomento', 'Compito', 'Nota', 'Assenza', 'Voto'];
 
     const sottoTipoAssenzaLett = ['T', 'A', 'U', 'R', 'E']
     const sottoTipoAssenzaStr = ['Tutte', 'Assenza', 'Uscita anticipata', 'Ritardo', 'Rientri']
 
     const sottoTipoVotoLett = ['T', 'S', 'G', 'O', 'P', 'A']                              
     const sottoTipoVotoStr = ['Tutti', 'Scritto', 'Grafico', 'Orale', 'Pratico', 'Unico']
+
+    const sottoTipoNotaLett = ['C', 'S']
+    const sottoTipoNotaStr = ['Classe', 'Studente']
 
     let result = []
 
@@ -29,6 +32,8 @@ module.exports = function parseTimeline(rawData) {
             sottoTipo = sottoTipoAssenzaStr[ sottoTipoAssenzaLett.indexOf( defPath[i].subType ) ]
         } else if (defPath[i].type == 'V') {
             sottoTipo = sottoTipoVotoStr[ sottoTipoVotoLett.indexOf( defPath[i].subType ) ]
+        } else if (defPath[i].type == 'N') {
+            sottoTipo = sottoTipoNotaStr[ sottoTipoNotaLett.indexOf( defPath[i].subType ) ]
         }
 
         const currEvento = {
@@ -39,8 +44,8 @@ module.exports = function parseTimeline(rawData) {
                 defPath[i].oralez,
                 defPath[i].ora
             ],
-            titolo: defPath[i].desc.title,
-            sottoTitolo: defPath[i].desc.subtitle,
+            titolo: defPath[i].type == 'N' ? new RegExp("<b>(.*?)<\/b>", "gm").exec(defPath[i].desc.subtitle)[1] : defPath[i].desc.title,   // In caso di nota estrae il tipo di nota, prende il testo tra <b> e </b> cioè il gruppo matchato dal regex
+            sottoTitolo: defPath[i].type == 'N' ? defPath[i].desc.subtitle.split('</span>&nbsp;')[1].trim() : defPath[i].desc.subtitle,     // In caso di nota estrae la nota, prende il testo dopo </span>&nbsp; e toglie gli spazi iniziali e finali
             descrizione: defPath[i].desc.notes,
         }
 

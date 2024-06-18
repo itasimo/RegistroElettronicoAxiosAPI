@@ -608,7 +608,7 @@ I voti hanno diversi tipi:
     }
 }
 ```
-Il parametro `tipo` specifica il tipo di evento mentre il parametro `subTipo` è usato solo nei casi in cui l'evento sia `"Assenza"` o `"Voto"`, esso serve a specificare rispettivamente il tipo si assenza (guarda i tipi di assenza nella sezione della risposta per le assenze) e tipo di voto (guarda i tipi di voto nella sezione della risposta per i voti)
+Il parametro `tipo` specifica il tipo di evento mentre il parametro `subTipo` è usato solo nei casi in cui l'evento sia `"Assenza"`, `"Voto"` o `"Nota"`, esso serve a specificare rispettivamente il tipo si assenza (guarda i tipi di assenza nella sezione della risposta per le assenze), tipo di voto (guarda i tipi di voto nella sezione della risposta per i voti) e il tipo di nota (guarda i tipi di nota nella sezione della risposta per le note).
 
 
 ## Conclusione
