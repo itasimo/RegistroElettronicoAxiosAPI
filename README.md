@@ -1,6 +1,6 @@
 # Axios API
 
-Parto dicendo che questa è una riscrittura dell'API nativa di Axios con lo scopo di facilitare la richiesta di informazioni.
+Parto dicendo che questa è un wrapper dell'API nativa di Axios con lo scopo di facilitare la richiesta di informazioni.
 Per portare a termine questo progetto abbiamo dovuto decompilare le applicazioni Axios, [intercettare le richieste](https://github.com/httptoolkit) e perdere tanti neuroni nel processo. Quindi spero di riassumere tutto in questo documento, in caso di domande non esitate a [contattarmi](mailto:ita.simo013+axiosAPI@gmail.com)
 
 ## Python
