@@ -1,5 +1,5 @@
 import rc4 from './rc4.mjs';
-import AxiosJSON from '../../../AxiosJSON/axios.json' assert { type: 'json' };
+import AxiosJSON from '../../../AxiosJSON/axios.json' with { type: 'json' };
 const rc4key = AxiosJSON.rc4key.new;
 
 /**

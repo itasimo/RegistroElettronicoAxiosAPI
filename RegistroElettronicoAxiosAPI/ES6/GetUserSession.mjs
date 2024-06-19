@@ -1,6 +1,6 @@
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
-import AxiosJSON from '../AxiosJSON/axios.json' assert { type: 'json' };
+import AxiosJSON from '../AxiosJSON/axios.json' with { type: 'json' };
 const VendorToken = AxiosJSON.VendorToken;
 
 /**
