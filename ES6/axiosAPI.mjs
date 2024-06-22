@@ -34,7 +34,7 @@ import parseTimeline from "./Parse/parseTimeline.mjs";
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
 
-const AxiosJSON_URL = "https://raw.githubusercontent.com/Itasimo/RegistroElettronicoAxiosAPI/main/RegistroElettronicoAxiosAPI/AxiosJSON/axios.json";
+const AxiosJSON_URL = "https://raw.githubusercontent.com/Itasimo/RegistroElettronicoAxiosAPI/main/AxiosJSON/axios.json";
 let AxiosJSON;
 await fetch(AxiosJSON_URL).then(response => response.json()).then(data => AxiosJSON = data)
 
