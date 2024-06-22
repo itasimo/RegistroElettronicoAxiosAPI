@@ -1,6 +1,9 @@
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
-import AxiosJSON from '../AxiosJSON/axios.json' with { type: 'json' };
+
+const AxiosJSON_URL = "https://raw.githubusercontent.com/Itasimo/RegistroElettronicoAxiosAPI/main/RegistroElettronicoAxiosAPI/AxiosJSON/axios.json";
+let AxiosJSON;
+await fetch(AxiosJSON_URL).then(response => response.json()).then(data => AxiosJSON = data)
 const VendorToken = AxiosJSON.VendorToken;
 
 /**

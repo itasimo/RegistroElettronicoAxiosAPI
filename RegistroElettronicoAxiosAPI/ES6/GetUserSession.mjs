@@ -1,6 +1,9 @@
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
-import AxiosJSON from '../AxiosJSON/axios.json' with { type: 'json' };
+
+const AxiosJSON_URL = "https://raw.githubusercontent.com/Itasimo/RegistroElettronicoAxiosAPI/main/RegistroElettronicoAxiosAPI/AxiosJSON/axios.json";
+let AxiosJSON;
+await fetch(AxiosJSON_URL).then(response => response.json()).then(data => AxiosJSON = data)
 const VendorToken = AxiosJSON.VendorToken;
 
 /**
@@ -39,7 +42,7 @@ export default async function GetUserSession(CF, CU, PWD){
     await fetch(url, requestOptions)
 		    .then((response) => response.text())
 		    .then((result) => studenteInfo = AxiosDecode(result))
-		    .catch((error) => console.error(error));
+		    .catch((error) => {throw new Error(`Errore di connessione`)});
 
     if(studenteInfo.errormessage){
         throw new Error(`\n    Axios ha risposto con un errore: "${studenteInfo.errormessage}"\n\n`);
