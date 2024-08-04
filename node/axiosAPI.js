@@ -78,47 +78,41 @@ async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
 */
 
 async function AxiosAPI_WEB(Action, usersession) {
-    var raw_HTML                                                                                    // Risposta grezza dell'API di axios
+    let HTML_raw                                                                              // Salvo la risposta grezza dell'API di Axios in HTML
 
-    WEB_requestParemeters = await modules.toSessionID(sCodiceFiscale, usersession)                  // Converti il usersession nel cookie SessionID per la chiamata WEB
-
-    console.log("");
-    console.log(WEB_requestParemeters.s);
-
-    console.log(WEB_requestParemeters.cookie.name + "=" + WEB_requestParemeters.cookie.value);
-    console.log("");
+    const SessionID = await modules.toSessionID(sCodiceFiscale, usersession)                  // Converti il usersession nel cookie SessionID per la chiamata WEB
 
     const myHeaders = new Headers();
-    myHeaders.append("accept", "application/json, text/javascript, */*; q=0.01");
+    myHeaders.append("accept", "text/html, */*; q=0.01");
     myHeaders.append("accept-encoding", "gzip, deflate, br, zstd");
     myHeaders.append("accept-language", "en-GB,en-US;q=0.9,en;q=0.8");
     myHeaders.append("connection", "keep-alive");
     myHeaders.append("content-type", "application/json; charset=utf-8");
-    myHeaders.append("cookie", WEB_requestParemeters.cookie.name + "=" + WEB_requestParemeters.cookie.value);
-    myHeaders.append("host", "registrofamiglie.axioscloud.it");
-    myHeaders.append("referer", "https://registrofamiglie.axioscloud.it/Pages/SD/SD_Dashboard.aspx?s=" + WEB_requestParemeters.s);
-    myHeaders.append("rvt", "Q0I4NDQzOTA1ODhENDVBNUI2N0UxMDdBN0M3MTIzMEY=");
-    myHeaders.append("sec-ch-ua", "\"Android WebView\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"");
+    myHeaders.append("host", "scuoladigitale.axioscloud.it");
+    myHeaders.append("referer", "https://scuoladigitale.axioscloud.it/");
+    myHeaders.append("rvt", "Rjc3MEI1RTMwNkJDNjNBMTM3Q0EwQzQ3OEY0NkMxRTU=");
+    myHeaders.append("sec-ch-ua", "\"Not)A;Brand\";v=\"99\", \"Android WebView\";v=\"127\", \"Chromium\";v=\"127\"");
     myHeaders.append("sec-ch-ua-mobile", "?1");
     myHeaders.append("sec-ch-ua-platform", "\"Android\"");
     myHeaders.append("sec-fetch-dest", "empty");
     myHeaders.append("sec-fetch-mode", "cors");
     myHeaders.append("sec-fetch-site", "same-origin");
-    myHeaders.append("user-agent", "Mozilla/5.0 (Linux; Android 13; 2201117SY Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/125.0.6422.165 Mobile Safari/537.36");
+    myHeaders.append("user-agent", "Mozilla/5.0 (Linux; Android 13; 2201117SY Build/TP1A.220624.014; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/127.0.6533.64 Mobile Safari/537.36");
     myHeaders.append("x-requested-with", "XMLHttpRequest");
-    
-    const requestOptions = {
-                    method: "GET",
-                    headers: myHeaders,
-                    redirect: "follow"
-    };
-    
-    await fetch("https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=" + Action, requestOptions)
-                    .then((response) => response.text())
-                    .then((result) => console.log(result))
-                    .catch((error) => console.error(error));
+    myHeaders.append("Cookie", `ASP.NET_SessionId=${SessionID}`); // Aggiungi il cookie SessionID alla richiesta
 
-    return raw_HTML // Restituisce la risposta senza codice o messaggio di errore
+    const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+    };
+
+    await fetch(`https://scuoladigitale.axioscloud.it/Pages/SD/SD_Ajax_Get.aspx?Action=${Action}&Others=undefined`, requestOptions)
+            .then((response) => response.text())
+            .then((result) => HTML_raw = result)
+            .catch((error) => console.error(error));
+
+    return HTML_raw;
 }
 
 /**
@@ -232,8 +226,8 @@ module.exports.RE_AxiosAPI_Get = async function(usersession, Azione) {
         },
         Application: "FAM"
     }
-    const h = {
-        Action: 'FAMILY_COMUNICAZIONI',
+    const WEB_Profile = {
+        Action: 'ProfileRead',
         SessionGuid: usersession
     }
 
@@ -306,8 +300,8 @@ module.exports.RE_AxiosAPI_Get = async function(usersession, Azione) {
 
             return modules.parsePagella(PagellaRaw);
 
-        case 'j':
-            return await AxiosAPI_WEB(h.Action, h.SessionGuid)
+        case 'profile':
+            return await AxiosAPI_WEB(WEB_Profile.Action, WEB_Profile.SessionGuid)
 
         default:
             throw new Error("Azione non supportata")

@@ -3,7 +3,7 @@ import AxiosDecode from './utils/Axios/decode.mjs';
 
 const AxiosJSON_URL = "https://raw.githubusercontent.com/Itasimo/RegistroElettronicoAxiosAPI/main/AxiosJSON/axios.json";
 let AxiosJSON;
-await fetch(AxiosJSON_URL).then(response => response.json()).then(data => AxiosJSON = data)
+await fetch(AxiosJSON_URL).then(response => response.json()).then(data => AxiosJSON = data).catch((error) => {throw new Error(`Errore di connessione`)});
 const VendorToken = AxiosJSON.VendorToken;
 
 /**
