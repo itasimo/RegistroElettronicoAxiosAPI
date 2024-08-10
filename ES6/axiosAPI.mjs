@@ -80,7 +80,7 @@ async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
     await fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/RetrieveDataInformation?json=" + modules.AxiosEncode(requestInfo), requestOptions) //Endpoint
             .then(response => response.text())
             .then(result => raw_JSON  = result)
-            .catch(error => console.log('error', error));
+            .catch(error => {throw new Error(`Errore di connessione`)});
 
     return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
 }
@@ -127,7 +127,7 @@ async function AxiosAPI_WEB(Action, usersession) {
     await fetch(`https://scuoladigitale.axioscloud.it/Pages/SD/SD_Ajax_Get.aspx?Action=${Action}&Others=undefined`, requestOptions)
             .then((response) => response.text())
             .then((result) => HTML_raw = result)
-            .catch((error) => console.error(error));
+            .catch((error) => {throw new Error(`Errore di connessione`)});
 
     return HTML_raw;
 }
