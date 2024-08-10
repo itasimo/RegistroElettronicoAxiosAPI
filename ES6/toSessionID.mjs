@@ -99,6 +99,7 @@ async function CovertToCookie_rf(params) {
     myHeaders.append("upgrade-insecure-requests", "1");
     myHeaders.append("user-agent", "Mozilla/5.0 (Linux; Android 7.1.1; ONEPLUS A5000 Build/NMF26X; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/119.0.6045.193 Safari/537.36");
     myHeaders.append("x-requested-with", "com.axiositalia.re.students");
+
     
     const urlencoded = new URLSearchParams();
     urlencoded.append("parameters", params.parameters);
@@ -106,9 +107,10 @@ async function CovertToCookie_rf(params) {
 
     const requestOptions = {
         method: "POST",
-        headers: myHeaders,
+        // headers: myHeaders,
         body: urlencoded,
-        redirect: "manual" // The response will be a 302 redirect to the dashboard
+        redirect: "manual", // The response will be a 302 redirect to the dashboard
+        mode: "no-cors"
     };
 
     let cookies;
@@ -116,6 +118,7 @@ async function CovertToCookie_rf(params) {
     await fetch(params.url, requestOptions)
             .then((response) => cookies = response.headers.get('set-cookie'))
             .catch((error) => console.error(error));
+            
 
 
     const cookie = cookies.split('ASP.NET_SessionId=')[2].split(';')[0]; // Get the ultimate ASP.NET_SessionId (registrofamiglie.axioscloud.it)
@@ -147,7 +150,6 @@ async function GetRequestPrams_sd(RegistroFamiglie_cookie) {
     myHeaders.append("sec-ch-ua-platform", "\"Android\"");
     myHeaders.append("origin", "https://registrofamiglie.axioscloud.it");
     myHeaders.append("sec-fetch-site", "same-origin");
-    myHeaders.append("sec-fetch-mode", "cors");
     myHeaders.append("sec-fetch-dest", "empty");
     myHeaders.append("accept-encoding", "gzip, deflate, br, zstd");
     myHeaders.append("accept-language", "en-GB,en-US;q=0.9,en;q=0.8");
