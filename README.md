@@ -306,6 +306,7 @@ Restituisce solo la comunicazioni del quadrimestre corrente (come nell'APP), ver
         "titolo": "Circolare n. 240 Assemblea di Istituto",
         "testo": "Si allega la circolare n. 240",
         "id": "275924",
+        "idAlunno":"{{IdAlunno}}",
         "tipo": "Scuola/famiglia",
         "letta": true,
         "allegati": [
