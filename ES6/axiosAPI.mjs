@@ -271,9 +271,9 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
 
         case 'comunicazioni':
 
-            var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0].comunicazioni  // Restituisce le comunicazioni del quadrimestre corrente
-
-            return modules.parseComunicazioni(comunicazioniRaw);
+            var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0]  // Restituisce le comunicazioni del quadrimestre corrente
+        
+            return modules.parseComunicazioni(comunicazioniRaw.comunicazioni, comunicazioniRaw.idAlunno);
         
         case 'permessi':
 

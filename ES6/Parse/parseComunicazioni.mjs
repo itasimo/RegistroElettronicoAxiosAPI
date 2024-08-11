@@ -3,13 +3,14 @@
  * #### Comunicazioni (quadrimestre corrente)
  * 
  * @param {String} rawData - JSON preso dalla chiamata all'API di Axios
+ * @param {String} alunnoID - ID dell'alunno necessario per richieste di conferma di lettura o risposta
  * @returns {JSON} JSON contente tutte le comunicazioni compresi i link ai file allegati
  * 
  */
 
 
 
-export default function parseComunicazioni(rawData) {
+export default function parseComunicazioni(rawData, alunnoID) {
 
     const tipoNum = ['1', '4', '5']
     const tipoStr = ['Circolare', 'Scuola/Famiglia', 'Comunicazione']
@@ -37,6 +38,7 @@ export default function parseComunicazioni(rawData) {
             titolo: rawData[i].titolo,
             testo: rawData[i].desc.replace(/\<(.*?)\>/gm, ''),   // Estrae il testo dal codice HTML
             id: rawData[i].id,
+            idAlunno: alunnoID,
             tipo: tipoStr[ tipoNum.indexOf( rawData[i].tipo ) ], // Converte la lettera in un tipo di voto leggibile
             letta: rawData[i].letta == "S"? true : false,
             allegati: allegatiCircolare,
