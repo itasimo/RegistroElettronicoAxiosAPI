@@ -55,7 +55,6 @@ let sCodiceFiscale; // Salvo il codice fiscale per non doverlo passare ogni volt
  */
 
 async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
-    var raw_JSON
 
     const myHeaders = new Headers();
     myHeaders.append("X-Requested-With", "com.axiositalia.re.students");
@@ -77,13 +76,58 @@ async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
         sVendorToken: StudentInfo.VendorToken
     }
 
+    var raw_JSON;
+
     await fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/RetrieveDataInformation?json=" + modules.AxiosEncode(requestInfo), requestOptions) //Endpoint
             .then(response => response.text())
             .then(result => raw_JSON  = result)
-            .catch(error => {throw new Error(`Errore di connessione`)});
+            .catch(error => console.log('error', error));
 
     return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
 }
+
+
+
+
+
+
+
+/**
+ * Funzione per effettuare richieste POST all'API di Axios
+ * @param {String} requestBody Richiesta da inviare all'API
+ * @returns JSON non analizzato contenete la risposta
+ * 
+ */
+
+async function AxiosPOST(requestBody) {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+        JsonRequest: requestBody
+    });
+
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
+
+    var raw_JSON;
+
+    await fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand", requestOptions)
+        .then(response => response.text())
+        .then(result => raw_JSON  = result)
+        .catch(error => console.log('error', error));
+
+    return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
+}
+
+
+
+
+
 
 
 /**
@@ -127,10 +171,47 @@ async function AxiosAPI_WEB(Action, usersession) {
     await fetch(`https://scuoladigitale.axioscloud.it/Pages/SD/SD_Ajax_Get.aspx?Action=${Action}&Others=undefined`, requestOptions)
             .then((response) => response.text())
             .then((result) => HTML_raw = result)
-            .catch((error) => {throw new Error(`Errore di connessione`)});
+            .catch((error) => console.error(error));
 
     return HTML_raw;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Funzione per effettuare il login all'API di Axios
+ * @param {String} CodiceFiscale Codice Fiscale della Scuola
+ * @param {String} CodiceUtente Codice dell' Utente
+ * @param {String} Password Password dell'utente
+ * 
+ * @returns {String} usersession necessario per effettuare le chiamate all'API
+ */
+
+export async function RE_AxiosAPI_Login(CodiceFiscale, CodiceUtente, Password) {
+    sCodiceFiscale = CodiceFiscale
+    return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
+}
+
+
+
+
+
+
 
 /**
  * Funzione per effettuare chiamate all'API di Axios
@@ -272,7 +353,7 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
         case 'comunicazioni':
 
             var comunicazioniRaw = JSON.parse(await AxiosAPI(Comunicazioni.Action, Comunicazioni.StudentInfo, Comunicazioni.Application))[0]  // Restituisce le comunicazioni del quadrimestre corrente
-        
+
             return modules.parseComunicazioni(comunicazioniRaw.comunicazioni, comunicazioniRaw.idAlunno);
         
         case 'permessi':
@@ -326,6 +407,51 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
 }
 
 
+
+
+
+
+
+/**
+ * 
+ * Funzione per segnare una comunicazione come letta
+ * 
+ * @param {String} usersession usersession dell'utente
+ * @param {String} comunicazioneID ID della comunicazione
+ * @param {String} idAlunno ID dell'alunno
+ * @returns Stato richiesta
+ * 
+ */
+export async function RE_AxiosAPI_Comunicazioni_Read(usersession, comunicazioneID, idAlunno) {
+    const Comunicazioni = {
+        sCodiceFiscale: sCodiceFiscale,
+        sSessionGuid: usersession,
+        sCommandJSON: {
+            sApplication: "FAM",
+            sService: "APP_PROCESS_QUEUE",
+            sModule: "COMUNICAZIONI_READ",
+            data: {
+                comunicazioneId: comunicazioneID,
+                alunnoId: idAlunno
+            }
+        },
+        sVendorToken: VendorToken
+    }
+
+    const requestBody = modules.AxiosEncode(Comunicazioni, 0)
+    
+    const response = await AxiosPOST(requestBody)
+
+    return response == 'null' ? "Comunicazione già letta" : response
+
+}
+
+
+
+
+
+
+
 /**
  * 
  * ### Timeline
@@ -353,20 +479,4 @@ export async function RE_AxiosAPI_Get_Timeline(usersession, data) {
     var TimelineRaw = JSON.parse(await AxiosAPI(Timeline.Action, Timeline.StudentInfo, Timeline.Application, Timeline.data))[0]
 
     return modules.parseTimeline(TimelineRaw)
-}
-
-
-
-/**
- * Funzione per effettuare il login all'API di Axios
- * @param {String} CodiceFiscale Codice Fiscale della Scuola
- * @param {String} CodiceUtente Codice dell' Utente
- * @param {String} Password Password dell'utente
- * 
- * @returns {String} usersession necessario per effettuare le chiamate all'API
- */
-
-export async function RE_AxiosAPI_Login(CodiceFiscale, CodiceUtente, Password) {
-    sCodiceFiscale = CodiceFiscale
-    return await modules.GetUserSession(CodiceFiscale, CodiceUtente, Password)
 }

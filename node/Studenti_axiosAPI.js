@@ -1,5 +1,3 @@
-const { default: AxiosEncode } = require("../ES6/utils/Axios/encode.mjs");
-
 const modules = {
     GetUserSession: require("./GetUserSession.js"),
     toSessionID: require("./toSessionID.js"),
@@ -100,12 +98,12 @@ async function AxiosPOST(requestBody) {
 
     var raw_JSON;
 
-    fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand", requestOptions)
+    await fetch("https://wsalu.axioscloud.it/webservice/AxiosCloud_Ws_Rest.svc/ExecuteCommand", requestOptions)
         .then(response => response.text())
         .then(result => raw_JSON  = result)
         .catch(error => console.log('error', error));
 
-    return JSON.stringify(modules.AxiosDecode(raw_JSON).response)
+    return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
 }
 
 
@@ -422,9 +420,11 @@ module.exports.RE_AxiosAPI_Comunicazioni_Read = async function(usersession, comu
         sVendorToken: VendorToken
     }
 
-    const requestBody = AxiosEncode(JSON.stringify(Comunicazioni))
+    const requestBody = modules.AxiosEncode(Comunicazioni, 0)
+    
+    const response = await AxiosPOST(requestBody)
 
-    return AxiosPOST(requestBody)
+    return response == 'null' ? "Comunicazione già letta" : response
 
 }
 
