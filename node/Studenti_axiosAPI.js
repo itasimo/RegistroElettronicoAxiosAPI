@@ -109,9 +109,7 @@ async function AxiosPOST(requestBody) {
 
     const finalJSON = modules.AxiosDecode(raw_JSON)
 
-    if(finalJSON.errorcode == -1) throw new Error(`\n    Axios ha risposto con un errore: "${finalJSON.errormessage}"\n\n`)
-    
-    return JSON.stringify(finalJSON.response) // Restituisce la risposta senza codice o messaggio di errore
+    return finalJSON // Restituisce la risposta con codice o messaggio di errore
 }
 
 
@@ -436,18 +434,23 @@ module.exports.RE_AxiosAPI_Post = async function(usersession, Action, data) {
         sVendorToken: VendorToken
     }
 
+    let response;
 
     switch (Action) {
         case 'comunicazioni_leggi':
             var requestBody = modules.AxiosEncode(Comunicazioni_Read, 0)
-            const response = await AxiosPOST(requestBody)
+            response = JSON.stringify(await AxiosPOST(requestBody).response)
 
             return response == 'null' ? "Comunicazione già letta" : response
 
         case 'comunicazioni_rispondi':
             var requestBody = modules.AxiosEncode(Comunicazioni_Reply, 0)
 
-            return await AxiosPOST(requestBody)
+            response = await AxiosPOST(requestBody)
+
+            if (response.errorcode == -1) throw new Error(`\n    Axios ha risposto con un errore: "${response.errormessage}"\n\n`)
+
+            return response
 
         default:
             throw new Error("Azione non supportata")
