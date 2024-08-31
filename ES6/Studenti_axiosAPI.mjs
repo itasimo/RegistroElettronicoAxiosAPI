@@ -417,32 +417,34 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
  * Funzione per segnare una comunicazione come letta
  * 
  * @param {String} usersession usersession dell'utente
- * @param {String} comunicazioneID ID della comunicazione
- * @param {String} idAlunno ID dell'alunno
+ * @param {String} Action ID della comunicazione
+ * @param {JSON} data ID dell'alunno
  * @returns Stato richiesta
  * 
  */
-export async function RE_AxiosAPI_Comunicazioni_Read(usersession, comunicazioneID, idAlunno) {
-    const Comunicazioni = {
+export async function RE_AxiosAPI_Post(usersession, Action, data) {
+    const Comunicazioni_Read = {
         sCodiceFiscale: sCodiceFiscale,
         sSessionGuid: usersession,
         sCommandJSON: {
             sApplication: "FAM",
             sService: "APP_PROCESS_QUEUE",
             sModule: "COMUNICAZIONI_READ",
-            data: {
-                comunicazioneId: comunicazioneID,
-                alunnoId: idAlunno
-            }
+            data: data
         },
         sVendorToken: VendorToken
     }
 
-    const requestBody = modules.AxiosEncode(Comunicazioni, 0)
-    
-    const response = await AxiosPOST(requestBody)
+    switch (Action) {
+        case 'comunicazioni_leggi':
+            var requestBody = modules.AxiosEncode(Comunicazioni_Read, 0)
+            const response = await AxiosPOST(requestBody)
 
-    return response == 'null' ? "Comunicazione già letta" : response
+            return response == 'null' ? "Comunicazione già letta" : response
+
+        default:
+            throw new Error("Azione non supportata")
+    }
 
 }
 
