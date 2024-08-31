@@ -65,7 +65,11 @@ async function AxiosAPI(Action, StudentInfo, Application, AddedData = {}) {
             .then(result => raw_JSON  = result)
             .catch(error => console.log('error', error));
 
-    return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
+    const finalJSON = modules.AxiosDecode(raw_JSON)
+
+    if(finalJSON.errorcode == -1) throw new Error(`\n    Axios ha risposto con un errore: "${finalJSON.errormessage}"\n\n`)
+    
+    return JSON.stringify(finalJSON.response) // Restituisce la risposta senza codice o messaggio di errore
 }
 
 
@@ -103,7 +107,11 @@ async function AxiosPOST(requestBody) {
         .then(result => raw_JSON  = result)
         .catch(error => console.log('error', error));
 
-    return JSON.stringify(modules.AxiosDecode(raw_JSON).response) // Restituisce la risposta senza codice o messaggio di errore
+    const finalJSON = modules.AxiosDecode(raw_JSON)
+
+    if(finalJSON.errorcode == -1) throw new Error(`\n    Axios ha risposto con un errore: "${finalJSON.errormessage}"\n\n`)
+    
+    return JSON.stringify(finalJSON.response) // Restituisce la risposta senza codice o messaggio di errore
 }
 
 
@@ -416,6 +424,18 @@ module.exports.RE_AxiosAPI_Post = async function(usersession, Action, data) {
         },
         sVendorToken: VendorToken
     }
+    const Comunicazioni_Reply = {
+        sCodiceFiscale: sCodiceFiscale,
+        sSessionGuid: usersession,
+        sCommandJSON: {
+            sApplication: "FAM",
+            sService: "APP_PROCESS_QUEUE",
+            sModule: "COMUNICAZIONI_RISPOSTA",
+            data: data
+        },
+        sVendorToken: VendorToken
+    }
+
 
     switch (Action) {
         case 'comunicazioni_leggi':
@@ -423,6 +443,11 @@ module.exports.RE_AxiosAPI_Post = async function(usersession, Action, data) {
             const response = await AxiosPOST(requestBody)
 
             return response == 'null' ? "Comunicazione già letta" : response
+
+        case 'comunicazioni_rispondi':
+            var requestBody = modules.AxiosEncode(Comunicazioni_Reply, 0)
+
+            return await AxiosPOST(requestBody)
 
         default:
             throw new Error("Azione non supportata")
