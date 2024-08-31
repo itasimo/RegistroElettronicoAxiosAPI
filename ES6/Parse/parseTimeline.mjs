@@ -28,18 +28,26 @@ export default function parseTimeline(rawData) {
     for (let i = 0; i < defPath.length; i++) {
 
         let sottoTipo = ''
-        if (defPath[i].type == 'A') {
-            sottoTipo = sottoTipoAssenzaStr[ sottoTipoAssenzaLett.indexOf( defPath[i].subType ) ]
-        } else if (defPath[i].type == 'V') {
-            sottoTipo = sottoTipoVotoStr[ sottoTipoVotoLett.indexOf( defPath[i].subType ) ]
-        } else if (defPath[i].type == 'N') {
-            sottoTipo = sottoTipoNotaStr[ sottoTipoNotaLett.indexOf( defPath[i].subType ) ]
+
+        switch (defPath[i].type) {
+            case 'A':
+                sottoTipo = sottoTipoAssenzaStr[ sottoTipoAssenzaLett.indexOf( defPath[i].subType ) ]
+                break;
+        
+            case 'V':
+                sottoTipo = sottoTipoVotoStr[ sottoTipoVotoLett.indexOf( defPath[i].subType ) ]
+                break;
+
+            case 'N':
+                sottoTipo = sottoTipoNotaStr[ sottoTipoNotaLett.indexOf( defPath[i].subType ) ]
+                break;
         }
 
         const currEvento = {
             data: defPath[i].data,
             tipo: tipoStr[ tipoLett.indexOf( defPath[i].type ) ],
             subTipo: sottoTipo,
+            id: defPath[i].id,
             ora: [
                 defPath[i].oralez,
                 defPath[i].ora
