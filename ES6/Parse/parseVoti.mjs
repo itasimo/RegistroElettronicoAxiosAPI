@@ -23,6 +23,7 @@ export default function parseVoti(rawData) {
             let defPath = rawData[i].voti[j]
 
             result.push({
+                id: defPath.idVoto,
                 materia: defPath.descMat,
                 tipo: tipoVotoDesc[ tipoVotoLettere.indexOf( defPath.tipo ) ], // Converte la lettera in un tipo di voto leggibile
                 voto: defPath.voto,

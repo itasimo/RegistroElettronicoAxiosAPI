@@ -25,6 +25,7 @@ module.exports = function parseAssenze(rawData) {
             let defPath = rawData[quadrimestre].assenze[assenza];
 
             assenze.push({
+                id: defPath.id,
                 data: defPath.data,
                 tipo: tipoStr[ tipoLett.indexOf( defPath.tipo ) ],
                 ora: defPath.oralez ? defPath.oralez :'',                                   // Se è presente ora di lezione e orario (caso di ritardo o uscita anticipata) li metto altrimenti (caso di assenze) li lascio vuoti

@@ -26,6 +26,7 @@ module.exports = function parseCompiti(rawData) {
 
 
         result.push({
+            id: rawData[i].idCompito,
             materia: rawData[i].descMat,
             compito: rawData[i].descCompiti,
             perGiorno: rawData[i].data.split(' ')[0],

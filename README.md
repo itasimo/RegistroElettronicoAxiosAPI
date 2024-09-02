@@ -237,6 +237,7 @@ La struttura è divisa in 2 array il primo più interno contiene tutti gli argom
         "quadrimestre": "PRIMO QUADRIMESTRE",
         "assenze": [
             {
+                "id": "18384670",
                 "data": "19/01/2024",
                 "tipo": "Uscita anticipata",
                 "ora": "5",
@@ -283,6 +284,7 @@ Le assenze possono essere di vari tipi:
 ```json
 [
     {
+        "id": "35272312",
         "materia": "FISICA",
         "compito": "Studiare da pag. 269 a 274",
         "perGiorno": "01/02/2024",
@@ -302,6 +304,7 @@ Restituisce solo la comunicazioni del quadrimestre corrente (come nell'APP), ver
 ```json
 [
     {
+        "id": "",
         "data": "31/01/2024",
         "titolo": "Circolare n. 240 Assemblea di Istituto",
         "testo": "Si allega la circolare n. 240",
@@ -566,6 +569,7 @@ La struttura è uguale per tutti e quattro gli array. Il tipo può essere:
 ```json
 [
     {
+        "id": "61006056",
         "materia": "SCIENZE MOTORIE",
         "tipoVoto": "Pratico",
         "voto": "7",
