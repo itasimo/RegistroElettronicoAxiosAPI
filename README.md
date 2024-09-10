@@ -209,6 +209,7 @@ Abbiamo quindi riformattato la struttura delle risposte.
 [
     [
         {
+            "id": "35667147",
             "materia": "ITALIANO",
             "argomento": "Analisi del periodo",
             "ore": [

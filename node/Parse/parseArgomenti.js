@@ -22,6 +22,7 @@ module.exports = function parseArgomenti(rawData) {
         let currData = rawData[i].data.split(' ')[0];
 
         let struct = {
+            id: rawData[i].idArgomento,
             materia: rawData[i].descMat,
             argomento: rawData[i].descArgomenti,
             ore: rawData[i].oreLezione.split('-'),
