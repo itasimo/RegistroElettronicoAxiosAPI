@@ -18,7 +18,7 @@ export default function parseCompiti(rawData) {
     for (
             let i = 0;
 
-            i < rawData.findIndex(obj => obj.tipo_nota == '6'); // Trova l'indice del prima verifica, da lì in poi ci sono verifiche
+            i < (rawData.findIndex(obj => obj.tipo_nota == '6') === -1 ? rawData.length : rawData.findIndex(obj => obj.tipo_nota == '6')); // Trova l'indice del prima verifica, da lì in poi ci sono verifiche
 
             i++
 
