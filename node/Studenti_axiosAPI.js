@@ -208,6 +208,7 @@ module.exports.RE_AxiosAPI_Login = async function(CodiceFiscale, CodiceUtente, P
  *                          - **"Compiti"**: contiene tutti i compiti pubblicati fino al momento della chiamata e informazioni riguardanti: materia, data di consegna, compito, professore;
  *                          - **"Verifiche"**: contiene tutte le verifiche pubblicate fino al momento della chiamata e informazioni riguardanti: materia, data della verifica, argomenti della verifica, professore;
  *                          - **"Voti"**: contiene tutti i voti pubblicati fino al momento della chiamata e informazioni riguardanti: materia, tipo di voto, voto, data, eventuali commenti, professore;
+ * 							- **Comunicazioni**: contiene tutte le comunicazioni del quadrimestre corrente pubblicate fino al momento della chiamata e informazioni riguardati: 
  * @returns {JSON} JSON contenete la risposta
  */
 

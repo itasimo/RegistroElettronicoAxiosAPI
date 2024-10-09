@@ -51,5 +51,7 @@ module.exports = function parseArgomenti(rawData) {
 
     }
 
+    result.push(group); // Aggiungo l'ultimo gruppo
+
     return result;
 }
