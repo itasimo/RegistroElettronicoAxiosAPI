@@ -44,7 +44,11 @@ export default function parsePagella(rawData) {
             media: Math.floor( (voti.reduce((a, b) => a + b, 0) / voti.length) * 100) / 100,        // Media dei voti arrotondata a 2 decimali
             esito: rawData[i].esito,
             giudizio: rawData[i].giudizio.replace(/\<(.*?)\>/gm, ''),                               // Rimuove i tag HTML
-            materie: materie
+            materie: materie,
+            dataVisualizzazione: rawData[i].dataVisualizzazione,
+            URL: rawData[i].URL,
+            letta: rawData[i].letta === 'S' ? true : false,
+            visibile: rawData[i].visibile === 'true' ? true : false
         })
         
     }
