@@ -495,14 +495,18 @@ Le note possono essere di due tipi: `"Classe"` o `"Studente"`
         "giudizio": "L'alunno è stato AMMESSO ALLA CLASSE SUCCESSIVA",
         "materie": [
             {
-                "materia": "FISICA",
+                "materia": "SCIENZE MOTORIE",
                 "voto": 7,
                 "debito": {},
                 "giudizio": "",
-                "assenze": 2
+                "assenze": 0
             },
             ...
-        ]
+        ],
+        "dataVisualizzazione": "**/**/****",
+        "URL": "",
+        "letta": false,
+        "visibile": true
     }
 ]
 ```
