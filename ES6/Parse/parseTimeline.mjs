@@ -41,6 +41,13 @@ export default function parseTimeline(rawData) {
             case 'N':
                 sottoTipo = sottoTipoNotaStr[ sottoTipoNotaLett.indexOf( defPath[i].subType ) ]
                 break;
+                
+            case 'M':
+                const VerificaRegex = /\<b\>Verifica\<\/b\>/gm
+                const isVerifica = VerificaRegex.test(defPath[i].desc.notes)
+
+                sottoTipo = isVerifica ? 'Verifica' : ''
+                defPath[i].desc.notes = isVerifica ? defPath[i].desc.notes.replace(VerificaRegex, '').trim() : defPath[i].desc.notes
         }
 
         const currEvento = {
