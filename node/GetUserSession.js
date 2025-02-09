@@ -44,5 +44,19 @@ module.exports = async function GetUserSession(CF, CU, PWD){
         throw new Error(`\n    Axios ha risposto con un errore: "${studenteInfo.errormessage}"\n\n`);
     }
 
-    return studenteInfo.response.usersession;
+    return {
+        usersession: studenteInfo.response.usersession,
+        studente: {
+            nome: toTitleCase(studenteInfo.response.nome),
+            cognome: toTitleCase(studenteInfo.response.cognome),
+            dataNascita: studenteInfo.response.dataNascita,
+            QRCode: studenteInfo.response.sQR,
+            idAlunno: studenteInfo.response.idAlunno,
+            pin: {
+                SD: studenteInfo.response.userPinSd,
+                RE: studenteInfo.response.userPinRe
+            }
+        },
+        attivo: studenteInfo.response.utenteAttivo,
+    };
 };

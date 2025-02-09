@@ -8,6 +8,23 @@ const VendorToken = AxiosJSON.VendorToken;
 
 /**
  * 
+ * https://stackoverflow.com/a/196991
+ * 
+ * Converts a string to title case.
+ * Each word in the string will have its first letter capitalized and the rest in lowercase.
+ *
+ * @param {string} str - The string to be converted to title case.
+ * @returns {string} - The converted title case string.
+ */
+function toTitleCase(str) {
+    return str.replace(
+      /\w\S*/g,
+      text => text.charAt(0).toUpperCase() + text.substring(1).toLowerCase()
+    );
+}
+
+/**
+ * 
  * @param {String} CF   Codice Fiscale della scuola
  * @param {String} CU   Codice Utente
  * @param {String} PWD  Password
@@ -48,5 +65,20 @@ export default async function GetUserSession(CF, CU, PWD){
         throw new Error(`\n    Axios ha risposto con un errore: "${studenteInfo.errormessage}"\n\n`);
     }
 
-    return studenteInfo.response.usersession;
+
+    return {
+        usersession: studenteInfo.response.usersession,
+        studente: {
+            nome: toTitleCase(studenteInfo.response.nome),
+            cognome: toTitleCase(studenteInfo.response.cognome),
+            dataNascita: studenteInfo.response.dataNascita,
+            QRCode: studenteInfo.response.sQR,
+            idAlunno: studenteInfo.response.idAlunno,
+            pin: {
+                SD: studenteInfo.response.userPinSd,
+                RE: studenteInfo.response.userPinRe
+            }
+        },
+        attivo: studenteInfo.response.utenteAttivo,
+    };
 };
