@@ -12,6 +12,7 @@ const modules = {
     parseNote,
     parseCurriculum,
     parsePagella,
+    parseStudente,
     parseTimeline,
     AxiosEncode,
     AxiosDecode
@@ -31,6 +32,7 @@ import parseNote from "./Parse/parseNote.mjs";
 import parseCurriculum from "./Parse/parseCurriculum.mjs";
 import parsePagella from "./Parse/parsePagella.mjs";
 import parseTimeline from "./Parse/parseTimeline.mjs";
+import parseStudente from "./Parse/parseStudente.mjs";
 import AxiosEncode from './utils/Axios/encode.mjs';
 import AxiosDecode from './utils/Axios/decode.mjs';
 
@@ -330,6 +332,15 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
         },
         Application: "FAM"
     }
+    const Studente = {
+        Action: 'GET_STUDENTI',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
     const WEB_Profile = {
         Action: 'ProfileRead',
         SessionGuid: usersession
@@ -403,6 +414,12 @@ export async function RE_AxiosAPI_Get(usersession, Azione) {
             var PagellaRaw = JSON.parse(await AxiosAPI(Pagella.Action, Pagella.StudentInfo, Pagella.Application))
 
             return modules.parsePagella(PagellaRaw);
+
+        case 'studente':
+
+            var studenteRaw = JSON.parse(await AxiosAPI(Studente.Action, Studente.StudentInfo, Studente.Application))[0]
+
+            return modules.parseStudente(studenteRaw);
 
         case 'profile':
             return await AxiosAPI_WEB(WEB_Profile.Action, WEB_Profile.SessionGuid)

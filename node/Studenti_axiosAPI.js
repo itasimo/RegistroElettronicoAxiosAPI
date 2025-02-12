@@ -12,6 +12,7 @@ const modules = {
     parseNote: require("./Parse/parseNote.js"),
     parseCurriculum: require("./Parse/parseCurriculum.js"),
     parsePagella: require("./Parse/parsePagella.js"),
+    parseStudente: require("./Parse/parseStudente.js"),
     parseTimeline: require("./Parse/parseTimeline.js"),
 
     AxiosEncode: require('./utils/Axios/encode.js'),
@@ -313,6 +314,15 @@ module.exports.RE_AxiosAPI_Get = async function(usersession, Azione) {
         },
         Application: "FAM"
     }
+    const Studente = {
+        Action: 'GET_STUDENTI',
+        StudentInfo: {
+            CodiceFiscale: sCodiceFiscale,
+            SessionGuid: usersession,
+            VendorToken: VendorToken
+        },
+        Application: "FAM"
+    }
     const WEB_Profile = {
         Action: 'ProfileRead',
         SessionGuid: usersession
@@ -386,6 +396,12 @@ module.exports.RE_AxiosAPI_Get = async function(usersession, Azione) {
             var PagellaRaw = JSON.parse(await AxiosAPI(Pagella.Action, Pagella.StudentInfo, Pagella.Application))
 
             return modules.parsePagella(PagellaRaw);
+
+        case 'studente':
+
+            var studenteRaw = JSON.parse(await AxiosAPI(Studente.Action, Studente.StudentInfo, Studente.Application))[0]
+
+            return modules.parseStudente(studenteRaw);
 
         case 'profile':
             return await AxiosAPI_WEB(WEB_Profile.Action, WEB_Profile.SessionGuid)

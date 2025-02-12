@@ -594,6 +594,28 @@ I voti hanno diversi tipi:
 * Pratico
 * Unico
 
+### Studente
+
+Ritorna informazioni sullo studente e varie flag
+```json
+{
+    "idAlunno": "1234567",
+    "id": "8901234",
+    "cognome": "MARCO",
+    "nome": "ROSSI",
+    "sesso": "M",
+    "dataNascita": "1/01/2000",
+    "avatar": "",
+    "idPlesso": "1234",
+    "security": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+    "flagGiustifica": false,
+    "flagInvalsi": false,
+    "flagDocumenti": true,
+    "flagPagoScuola": true,
+    "flagConsiglioOrientamento": false
+}
+```
+
 ### Timeline
 
 ```json
