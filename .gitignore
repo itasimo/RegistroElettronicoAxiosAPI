@@ -1,7 +1,9 @@
 node_modules/
 .vscode/
 dist/
-coverage/ # Coverage reports from test runs (JEST)
-tests/samples/ # Real data from the raw API should not be committed (privacy reasons). Used for creating test cases with mock data.
+# Coverage reports from test runs (JEST)
+coverage/
+# Real data from the raw API should not be committed (privacy reasons). Used for creating test cases with mock data.
+tests/samples/ 
 *.log
 .DS_Store
