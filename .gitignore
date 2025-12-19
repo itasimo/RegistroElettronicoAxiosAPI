@@ -1,5 +1,7 @@
+node_modules/
 .vscode/
-index.mjs
-index.js
-data.json
-k.md
+dist/
+coverage/ # Coverage reports from test runs (JEST)
+tests/samples/ # Real data from the raw API should not be committed (privacy reasons). Used for creating test cases with mock data.
+*.log
+.DS_Store
