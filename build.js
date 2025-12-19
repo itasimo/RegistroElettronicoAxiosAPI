@@ -31,20 +31,23 @@ const aliasPlugin = {
 };
 
 const isWatch = process.argv.includes('--watch');
+const isMinify = process.argv.includes('--minify');
 
 const buildOptions = {
   entryPoints: ['src/index.js'],
   bundle: true,
   platform: 'node',
-  outfile: 'dist/index.js',
+  outfile: isMinify ? 'dist/index.min.js' : 'dist/index.js',
   plugins: [aliasPlugin],
+  minify: isMinify,
   format: 'esm'
 };
 
 if (isWatch) {
   const ctx = await esbuild.context(buildOptions);
   await ctx.watch();
-  console.log('Watching for changes...');
+  console.log(`Watching for changes...${isMinify ? ' (minified)' : ''}`);
 } else {
   await esbuild.build(buildOptions);
+  console.log(`Build completed: ${buildOptions.outfile}`);
 }

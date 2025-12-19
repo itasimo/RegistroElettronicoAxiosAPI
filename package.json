@@ -1,21 +1,25 @@
 {
-  "name": "registro-elettronico-axios-api",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "node build.js",
-    "build:watch": "node build.js --watch",
-    "dev": "node --watch dist/index.js",
-    "start": "node dist/index.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "esbuild": "^0.20.0",
-    "jest": "^29.7.0"
-  }
+    "name": "registro-elettronico-axios-api",
+    "author": "itasimo",
+    "version": "1.0.1",
+    "description": "",
+    "type": "module",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "node build.js",
+        "build:min": "node build.js --minify",
+        "build:watch": "node build.js --watch",
+        "build:min:watch": "node build.js --watch --minify",
+        "dev": "node --watch dist/index.js",
+        "dev:min": "node --watch dist/index.min.js",
+        "start": "node dist/index.js",
+        "start:min": "node dist/index.min.js",
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    },
+    "keywords": [],
+    "license": "AGPL-3.0",
+    "devDependencies": {
+        "esbuild": "^0.20.0",
+        "jest": "^29.7.0"
+    }
 }

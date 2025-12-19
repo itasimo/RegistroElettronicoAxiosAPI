@@ -1,6 +1,7 @@
 import AxiosClient from './AxiosClient.js';
-import { encode } from '@/utils/';
-import * as parsers from '@/parsing/';
+import { encode } from '@/utils';
+import * as parsers from '@/parsing';
+import packageInfo from '@/../package.json' with { type: 'json' };
 
 /**
  * Main API class for Axios interactions
@@ -10,6 +11,7 @@ export default class AxiosAPI {
         this.client = new AxiosClient();
         this.codiceFiscale = null;
         this.usersession = null;
+        this.apiVersion = packageInfo.version;
     }
 
     /**
@@ -24,6 +26,70 @@ export default class AxiosAPI {
         this.codiceFiscale = codiceFiscale;
         this.usersession = result.usersession;
         return result;
+    }
+
+    /**
+     * Checks if the user is logged in
+     * @returns {Boolean} True if logged in, false otherwise
+     */
+    get isLoggedIn() {
+        return this.usersession !== null;
+    }
+
+    /**
+     * Gets the school fiscal code
+     * @returns {String|null} The fiscal code or null if not set
+     */
+    get getCodiceFiscale() {
+        return this.codiceFiscale;
+    }
+
+    /**
+     * Gets the user session identifier
+     * @returns {String|null} The user session or null if not logged in
+     */
+    get getUserSession() {
+        return this.usersession;
+    }
+
+    /**
+     * Gets the vendor token from the client
+     * @returns {String} The vendor token
+     */
+    get getVendorToken() {
+        return this.client.vendorToken;
+    }
+
+    /**
+     * Gets the base URL from the client
+     * @returns {String} The base URL
+     */
+    get getBaseURL() {
+        return this.client.baseURL;
+    }
+
+    /**
+     * Gets the API version
+     * @returns {String} The API version
+     */
+    get getAPIVersion() {
+        return this.apiVersion;
+    }
+
+    /**
+     * Gets the Axios client instance
+     * @returns {AxiosClient} The client instance
+     */
+    get getClient() {
+        return this.client;
+    }
+
+    /**
+     * Gets the API instance (self-reference)
+     * @returns {AxiosAPI} The API instance
+     */
+    get getAPIInstance() {
+        return this;
     }
 
     /**
@@ -49,7 +115,7 @@ export default class AxiosAPI {
      * @returns {Object} Parsed response data
      */
     async get(azione, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession) {
+        if (!this.codiceFiscale || !this.usersession || usersession === null) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -111,7 +177,7 @@ export default class AxiosAPI {
      * @returns {Object} Parsed timeline data
      */
     async getTimeline(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession) {
+        if (!this.codiceFiscale || !this.usersession || usersession === null) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -134,7 +200,7 @@ export default class AxiosAPI {
      * @returns {String} Response status
      */
     async segnaComunicazioneLetta(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession) {
+        if (!this.codiceFiscale || !this.usersession || usersession === null) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -164,7 +230,7 @@ export default class AxiosAPI {
      * @returns {Object} Response from server
      */
     async rispondiComunicazione(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession) {
+        if (!this.codiceFiscale || !this.usersession || usersession === null) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
