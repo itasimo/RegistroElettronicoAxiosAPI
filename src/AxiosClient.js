@@ -1,4 +1,4 @@
-import { encode, decode, toTitleCase } from '../utils';
+import { encode, decode, toTitleCase } from '@/utils';
 import { VendorToken } from '@/configs';
 
 /**
