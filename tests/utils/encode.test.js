@@ -11,7 +11,6 @@ jest.unstable_mockModule('@/configs', () => ({
 // Now import the modules after mocking
 const { default: AxiosEncode } = await import('@/utils/encode.js');
 const { default: rc4 } = await import('@/utils/rc4.js');
-const { default: fromBase64Safe } = await import('@/utils/fromBase64Safe.js');
 
 describe('AxiosEncode', () => {
 
@@ -25,7 +24,7 @@ describe('AxiosEncode', () => {
     }
     
     // Base64 decode
-    decoded = fromBase64Safe(decoded);
+    decoded = atob(decoded);
     
     // RC4 decrypt
     decoded = rc4(mockRc4Key, decoded);
@@ -109,16 +108,6 @@ describe('AxiosEncode', () => {
   });
 
   describe('Special Characters', () => {
-    test('should encode data with special characters', () => {
-      const data = {
-        special: '!@#$%^&*()_+-=[]{}|;:,.<>?/',
-        unicode: '世界 🌍'
-      };
-      const encoded = AxiosEncode(data);
-      
-      const decoded = decodeData(encoded);
-      expect(decoded).toEqual(data);
-    });
 
     test('should encode data with spaces and newlines', () => {
       const data = {

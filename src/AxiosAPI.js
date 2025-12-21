@@ -80,7 +80,7 @@ export default class AxiosAPI {
      * Gets the Axios client instance
      * @returns {AxiosClient} The client instance
      */
-    get getClient() {
+    get getClientInstance() {
         return this.client;
     }
 
@@ -98,7 +98,7 @@ export default class AxiosAPI {
      * @returns {Object} Student info object
      */
     getStudentInfo(usersession = null) {
-        if (!this.codiceFiscale || !this.usersession) {
+        if (!(this.codiceFiscale && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         return {
@@ -115,7 +115,7 @@ export default class AxiosAPI {
      * @returns {Object} Parsed response data
      */
     async get(azione, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession || usersession === null) {
+        if (!(this.codiceFiscale && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -177,7 +177,7 @@ export default class AxiosAPI {
      * @returns {Object} Parsed timeline data
      */
     async getTimeline(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession || usersession === null) {
+        if (!(this.codiceFiscale && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -200,7 +200,7 @@ export default class AxiosAPI {
      * @returns {String} Response status
      */
     async segnaComunicazioneLetta(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession || usersession === null) {
+        if (!(this.codiceFiscale && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
@@ -230,7 +230,7 @@ export default class AxiosAPI {
      * @returns {Object} Response from server
      */
     async rispondiComunicazione(data, usersession = null) {
-        if (!this.codiceFiscale || !this.usersession || usersession === null) {
+        if (!(this.codiceFiscale && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
