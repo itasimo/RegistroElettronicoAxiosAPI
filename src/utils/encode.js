@@ -1,6 +1,5 @@
 import rc4 from './rc4.js';
 import { rc4key } from '@/configs';
-import toBase64Safe from './toBase64Safe.js';
 
 /**
  * 
@@ -12,7 +11,7 @@ export default function AxiosEncode(json, num = 1) {
 
     let encoded = rc4(rc4key.new, JSON.stringify(json));
 
-    encoded = toBase64Safe(encoded);
+    encoded = btoa(encoded);
 
     for (let i = 0; i < num; i++) {encoded = encodeURIComponent(encoded)};
 

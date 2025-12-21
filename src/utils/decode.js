@@ -1,6 +1,5 @@
 import rc4 from './rc4.js';
 import { rc4key } from '@/configs';
-import fromBase64Safe from './fromBase64Safe.js';
 
 /**
  * 
@@ -23,7 +22,7 @@ export default function AxiosDecode(value, jsdec = true) {
         }
     }
 
-    let decoded = rc4(rc4key.new, fromBase64Safe(value));
+    let decoded = rc4(rc4key.new, atob(value));
 
     decoded = JSON.parse(decoded);
 
