@@ -1,17 +1,23 @@
-import AxiosClient from './AxiosClient.js';
-import { encode } from '@/utils';
-import * as parsers from '@/parsing';
-import packageInfo from '@/../package.json' with { type: 'json' };
+import AxiosClient from "./AxiosClient.js";
+import AxiosWEB from "./AxiosWEB.js";
+import { encode } from "@/utils";
+import * as parsers from "@/parsing";
+import packageInfo from "@/../package.json" with { type: "json" };
 
 /**
  * Main API class for Axios interactions
  */
 export default class AxiosAPI {
     constructor() {
-        this.client = new AxiosClient();
-        this.codiceFiscale = null;
-        this.usersession = null;
         this.apiVersion = packageInfo.version;
+        this.client = new AxiosClient();
+        // pass a bound reference to the private #handleNoLogin so AxiosWEB can invoke it
+        this.web = new AxiosWEB(this, this.#handleNoLogin.bind(this));
+        this.codiceFiscale = null;
+        this.usersession = null; // User session identifier (APP)
+        this.studentInfo = null; // Full student info object
+        this.pin = null; // Student PIN
+        this.isAccountActive = null; // Active account info
     }
 
     /**
@@ -22,9 +28,17 @@ export default class AxiosAPI {
      * @returns {Object} Login response with user session and student info
      */
     async login(codiceFiscale, codiceUtente, password) {
-        const result = await this.client.login(codiceFiscale, codiceUtente, password);
+        const result = await this.client.login(
+            codiceFiscale,
+            codiceUtente,
+            password
+        );
         this.codiceFiscale = codiceFiscale;
         this.usersession = result.usersession;
+        this.studentInfo = result.studente;
+        this.pin = result.studente.pin;
+        this.isAccountActive = result.utenteAttivo;
+
         return result;
     }
 
@@ -53,11 +67,43 @@ export default class AxiosAPI {
     }
 
     /**
+     * Gets the web session ID
+     * @returns {String|null} The web session ID or null if not set
+     */
+    get getSessionID() {
+        return this.web.sessionID;
+    }
+
+    /**
      * Gets the vendor token from the client
      * @returns {String} The vendor token
      */
     get getVendorToken() {
         return this.client.vendorToken;
+    }
+
+    /**
+     * Gets the student PIN
+     * @returns {Object|null} The student PIN object
+     */
+    get getPIN() {
+        return this.pin;
+    }
+
+    /**
+     * Gets the account active status
+     * @returns {Boolean|null} True if active, false if not, null if unknown
+     */
+    get getIsAccountActive() {
+        return this.isAccountActive;
+    }
+
+    /**
+     * Gets the student information
+     * @returns {Object|null} The student information object
+     */
+    get getStudentInfo() {
+        return this.studentInfo;
     }
 
     /**
@@ -85,6 +131,14 @@ export default class AxiosAPI {
     }
 
     /**
+     * Gets the AxiosWEB instance
+     * @returns {AxiosWEB} The web instance
+     */
+    get getWebInstance() {
+        return this.web;
+    }
+
+    /**
      * Gets the API instance (self-reference)
      * @returns {AxiosAPI} The API instance
      */
@@ -93,16 +147,33 @@ export default class AxiosAPI {
     }
 
     /**
-     * Creates student info object for API requests
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {Object} Student info object
+     * Gets the student info along with session details
+     * @returns {Object|null} The student info with session details
      */
-    getStudentInfo(usersession = null) {
-        if (!(this.codiceFiscale && (usersession || this.usersession))) {
+    get getSessionInfo() {
+        if (!this.isLoggedIn) {
+            return null;
+        }
+        return {
+            ...this.studentInfo,
+            vendorToken: this.client.vendorToken,
+            codiceFiscale: this.codiceFiscale,
+            usersession: this.usersession,
+            utenteAttivo: this.isAccountActive,
+        };
+    }
+
+    /**
+     * Constructs student info for requests
+     * @param {String} usersession - Optional usersession (uses stored if not provided)
+     * @returns {Object} Student info object for requests
+     */
+    #getStudentSessionData(codiceFiscale = null, usersession = null) {
+        if (!(codiceFiscale || this.codiceFiscale) && (usersession || this.usersession)) {
             this.#handleNoLogin();
         }
         return {
-            CodiceFiscale: this.codiceFiscale,
+            CodiceFiscale: codiceFiscale || this.codiceFiscale,
             SessionGuid: usersession || this.usersession,
             VendorToken: this.client.vendorToken
         };
@@ -114,30 +185,70 @@ export default class AxiosAPI {
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Parsed response data
      */
-    async get(azione, usersession = null) {
-        if (!(this.codiceFiscale && (usersession || this.usersession))) {
+    async get(azione, codiceFiscale = null, usersession = null) {
+        if (!(codiceFiscale || this.codiceFiscale) && (usersession || this.usersession)) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
-        const studentInfo = this.getStudentInfo(session);
-        
+        const codiceFiscaleFinal = codiceFiscale || this.codiceFiscale;
+        const studentSessionData = this.#getStudentSessionData(codiceFiscaleFinal, session);
+
         // Action configuration map
         const actions = {
-            compiti: { action: 'GET_COMPITI_MASTER', parser: parsers.parseCompiti, path: '[0].compiti' },
-            verifiche: { action: 'GET_COMPITI_MASTER', parser: parsers.parseVerifiche, path: '[0].compiti' },
-            voti: { action: 'GET_VOTI_LIST_DETAIL', parser: parsers.parseVoti },
-            comunicazioni: { action: 'GET_COMUNICAZIONI_MASTER', parser: parsers.parseComunicazioni, path: '[0]', customParse: true },
-            permessi: { action: 'GET_AUTORIZZAZIONI_MASTER', parser: parsers.parsePermessi, path: '[0]' },
-            orario: { action: 'GET_ORARIO_MASTER', parser: parsers.parseOrario, path: '[0].orario' },
-            argomenti: { action: 'GET_ARGOMENTI_MASTER', parser: parsers.parseArgomenti, path: '[0].argomenti' },
-            assenze: { action: 'GET_ASSENZE_MASTER', parser: parsers.parseAssenze },
-            note: { action: 'GET_NOTE_MASTER', parser: parsers.parseNote },
-            curriculum: { action: 'GET_CURRICULUM_MASTER', parser: parsers.parseCurriculum, path: '[0].curriculum' },
-            pagella: { action: 'GET_PAGELLA_MASTER', parser: parsers.parsePagella },
-            studente: { action: 'GET_STUDENTI', parser: parsers.parseStudente, path: '[0]' }
+            compiti: {
+                action: "GET_COMPITI_MASTER",
+                parser: parsers.parseCompiti,
+                path: "[0].compiti",
+            },
+            verifiche: {
+                action: "GET_COMPITI_MASTER",
+                parser: parsers.parseVerifiche,
+                path: "[0].compiti",
+            },
+            voti: { action: "GET_VOTI_LIST_DETAIL", parser: parsers.parseVoti },
+            comunicazioni: {
+                action: "GET_COMUNICAZIONI_MASTER",
+                parser: parsers.parseComunicazioni,
+                path: "[0]",
+                customParse: true,
+            },
+            permessi: {
+                action: "GET_AUTORIZZAZIONI_MASTER",
+                parser: parsers.parsePermessi,
+                path: "[0]",
+            },
+            orario: {
+                action: "GET_ORARIO_MASTER",
+                parser: parsers.parseOrario,
+                path: "[0].orario",
+            },
+            argomenti: {
+                action: "GET_ARGOMENTI_MASTER",
+                parser: parsers.parseArgomenti,
+                path: "[0].argomenti",
+            },
+            assenze: {
+                action: "GET_ASSENZE_MASTER",
+                parser: parsers.parseAssenze,
+            },
+            note: { action: "GET_NOTE_MASTER", parser: parsers.parseNote },
+            curriculum: {
+                action: "GET_CURRICULUM_MASTER",
+                parser: parsers.parseCurriculum,
+                path: "[0].curriculum",
+            },
+            pagella: {
+                action: "GET_PAGELLA_MASTER",
+                parser: parsers.parsePagella,
+            },
+            studente: {
+                action: "GET_STUDENTI",
+                parser: parsers.parseStudente,
+                path: "[0]",
+            },
         };
 
-        const normalizedAction = azione.toLowerCase().replace(/\s/g, '');
+        const normalizedAction = azione.toLowerCase().replace(/\s/g, "");
         const config = actions[normalizedAction];
 
         if (!config) {
@@ -145,14 +256,18 @@ export default class AxiosAPI {
         }
 
         // Fetch raw data
-        const rawData = await this.client.get(config.action, studentInfo, "FAM");
-        
+        const rawData = await this.client.get(
+            config.action,
+            studentSessionData,
+            "FAM"
+        );
+
         // Extract data using path if provided
         let data = rawData;
         if (config.path) {
             const pathParts = config.path.match(/\[(\d+)\]|\.(\w+)/g);
             for (const part of pathParts) {
-                if (part.startsWith('[')) {
+                if (part.startsWith("[")) {
                     const index = parseInt(part.slice(1, -1));
                     data = data[index];
                 } else {
@@ -162,7 +277,7 @@ export default class AxiosAPI {
         }
 
         // Handle special parsing case for comunicazioni
-        if (config.customParse && normalizedAction === 'comunicazioni') {
+        if (config.customParse && normalizedAction === "comunicazioni") {
             const fullData = rawData[0];
             return config.parser(fullData.comunicazioni, fullData.idAlunno);
         }
@@ -176,16 +291,17 @@ export default class AxiosAPI {
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Parsed timeline data
      */
-    async getTimeline(data, usersession = null) {
-        if (!(this.codiceFiscale && (usersession || this.usersession))) {
+    async getTimeline(data, codiceFiscale = null, usersession = null) {
+        if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
-        const studentInfo = this.getStudentInfo(session);
-        
+        const codiceFiscaleFinal = codiceFiscale || this.codiceFiscale;
+        const studentSessionData = this.#getStudentSessionData(codiceFiscaleFinal, session);
+
         const rawData = await this.client.get(
-            'GET_TIMELINE',
-            studentInfo,
+            "GET_TIMELINE",
+            studentSessionData,
             "FAM",
             { dataGiorno: data }
         );
@@ -199,28 +315,31 @@ export default class AxiosAPI {
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {String} Response status
      */
-    async segnaComunicazioneLetta(data, usersession = null) {
-        if (!(this.codiceFiscale && (usersession || this.usersession))) {
+    async segnaComunicazioneLetta(data, codiceFiscale = null, usersession = null) {
+        if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
-        
+        const codiceFiscaleFinal = codiceFiscale || this.codiceFiscale;
+
         const requestData = {
-            sCodiceFiscale: this.codiceFiscale,
+            sCodiceFiscale: codiceFiscaleFinal,
             sSessionGuid: session,
             sCommandJSON: {
                 sApplication: "FAM",
                 sService: "APP_PROCESS_QUEUE",
                 sModule: "COMUNICAZIONI_READ",
-                data: data
+                data: data,
             },
-            sVendorToken: this.client.vendorToken
+            sVendorToken: this.client.vendorToken,
         };
 
         const requestBody = encode(requestData, 0);
         const response = await this.client.post(requestBody);
 
-        return response.response === null ? "Comunicazione già letta" : JSON.stringify(response.response);
+        return response.response === null
+            ? "Comunicazione già letta"
+            : JSON.stringify(response.response);
     }
 
     /**
@@ -229,29 +348,32 @@ export default class AxiosAPI {
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Response from server
      */
-    async rispondiComunicazione(data, usersession = null) {
-        if (!(this.codiceFiscale && (usersession || this.usersession))) {
+    async rispondiComunicazione(data, codiceFiscale = null, usersession = null) {
+        if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
             this.#handleNoLogin();
         }
         const session = usersession || this.usersession;
-        
+        const codiceFiscaleFinal = codiceFiscale || this.codiceFiscale;
+
         const requestData = {
-            sCodiceFiscale: this.codiceFiscale,
+            sCodiceFiscale: codiceFiscaleFinal,
             sSessionGuid: session,
             sCommandJSON: {
                 sApplication: "FAM",
                 sService: "APP_PROCESS_QUEUE",
                 sModule: "COMUNICAZIONI_RISPOSTA",
-                data: data
+                data: data,
             },
-            sVendorToken: this.client.vendorToken
+            sVendorToken: this.client.vendorToken,
         };
 
         const requestBody = encode(requestData, 0);
         const response = await this.client.post(requestBody);
 
         if (response.errorcode == -1) {
-            throw new Error(`Axios ha risposto con un errore: "${response.errormessage}"`);
+            throw new Error(
+                `Axios ha risposto con un errore: "${response.errormessage}"`
+            );
         }
 
         return response;
