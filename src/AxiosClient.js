@@ -124,7 +124,7 @@ export default class AxiosClient {
                     RE: studenteInfo.response.userPinRe
                 }
             },
-            attivo: studenteInfo.response.utenteAttivo,
+            utenteAttivo: studenteInfo.response.utenteAttivo,
         };
     }
 }
