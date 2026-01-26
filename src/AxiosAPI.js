@@ -13,7 +13,7 @@ export default class AxiosAPI {
         this.client = new AxiosClient();
         // pass a bound reference to the private #handleNoLogin so AxiosWEB can invoke it
         this.web = new AxiosWEB(this, this.#handleNoLogin.bind(this));
-        this.codiceFiscale = null;
+        this.codiceFiscale = null; // School fiscal code
         this.usersession = null; // User session identifier (APP)
         this.studentInfo = null; // Full student info object
         this.pin = null; // Student PIN
@@ -64,14 +64,6 @@ export default class AxiosAPI {
      */
     get getUserSession() {
         return this.usersession;
-    }
-
-    /**
-     * Gets the web session ID
-     * @returns {String|null} The web session ID or null if not set
-     */
-    get getSessionID() {
-        return this.web.sessionID;
     }
 
     /**
@@ -165,6 +157,7 @@ export default class AxiosAPI {
 
     /**
      * Constructs student info for requests
+     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Student info object for requests
      */
@@ -182,6 +175,7 @@ export default class AxiosAPI {
     /**
      * Retrieves data based on action type
      * @param {String} azione - Action to perform
+     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Parsed response data
      */
@@ -282,12 +276,13 @@ export default class AxiosAPI {
             return config.parser(fullData.comunicazioni, fullData.idAlunno);
         }
 
-        return config.parser(data);
+        return config.parser ? config.parser(data) : data;
     }
 
     /**
      * Retrieves timeline for a specific date
      * @param {String} data - Date in format "dd/mm/yyyy"
+     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Parsed timeline data
      */
@@ -312,6 +307,7 @@ export default class AxiosAPI {
     /**
      * Marks a communication as read
      * @param {Object} data - Communication data (id, idAlunno)
+     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {String} Response status
      */
@@ -345,6 +341,7 @@ export default class AxiosAPI {
     /**
      * Replies to a communication
      * @param {Object} data - Communication reply data
+     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
      * @param {String} usersession - Optional usersession (uses stored if not provided)
      * @returns {Object} Response from server
      */
