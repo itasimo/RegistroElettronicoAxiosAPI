@@ -23,7 +23,8 @@ export default function parseVoti(jsonData) {
                 
                 // Grade value - remove HTML markup (e.g., "<span class='label'>8</span>" => "8")
                 // The WEB API wraps grades in HTML for styling; we extract just the numeric/text value
-                voto: [...item.voto.matchAll(/>([^<\s]+)</g)].pop()[1],
+                // Se voto è vuoto, matchAll non trova nulla e pop() restituisce undefined, quindi usiamo ?. per sicurezza
+                voto: [...item.voto.matchAll(/>([^<\s]+)</g)].pop()?.[1] ?? null,
                 
                 // Grade weight/significance - not available in WEB API (only in mobile API)
                 // Marked as null to maintain compatibility with mobile parser output
@@ -47,15 +48,17 @@ export default function parseVoti(jsonData) {
                     vistoDa: decodeHtmlEntities(item.comandi
                         .split('<br>')[0]           // Get first part before line break
                         .replace('<small>', '')     // Remove opening HTML tag
-                        .trim()),                    // Remove whitespace
+                        .trim())                    // Remove whitespace
+                        || null,                     // Default to null if not present
                     
                     // Timestamp when the grade was viewed/confirmed
                     // Extracted from HTML-formatted string after first <br>
                     // Example: "<small>Abatino Tiziana<br>23/01/2026 23:31:35</small>" => "23/01/2026 23:31:35"
                     vistoIl: item.comandi
                         .split('<br>')[1]          // Get second part after line break
-                        .replace('</small>', '')    // Remove closing HTML tag
+                        ?.replace('</small>', '')    // Remove closing HTML tag
                         .trim()                     // Remove whitespace
+                        ?? null,                     // Default to null if not present
                 }
             });
         }

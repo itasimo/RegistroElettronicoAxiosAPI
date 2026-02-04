@@ -1,4 +1,4 @@
-import toWEBSession from "./toWEBSession";
+import {toWEBSession, fetchDashboardLoad} from "./toWEBSession";
 import {
     htmlParser,
     innerText,
@@ -15,6 +15,7 @@ import getRowsFromTable from "./getRowsFromTable";
 
 export {
     toWEBSession,
+    fetchDashboardLoad,
     htmlParser,
     querySelectorAll,
     querySelector,

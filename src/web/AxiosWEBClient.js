@@ -1,12 +1,5 @@
-import {
-    toWEBSession,
-    handleFileDownload,
-    htmlParser,
-    querySelector,
-    querySelectorAll,
-} from "./utils";
-import { parseVoti } from "@/web/parsing";
-
+import { toWEBSession, handleFileDownload, fetchDashboardLoad } from "./utils";
+import ActionSpecialHandlers from "./ActionSpecialHandlers";
 /**
  * Client for making HTTP requests to Axios API
  */
@@ -15,6 +8,109 @@ export default class AxiosWEBClient {
         this.baseURL =
             "https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx";
         this.axiosWEB = axiosWEB;
+        this.ActionSpecialHandlers = new ActionSpecialHandlers(this);
+    }
+
+    async toWEBSession(codiceFiscale, usersession) {
+        return await toWEBSession(codiceFiscale, usersession);
+    }
+
+    /**
+     * Imposta l'anno scolastico (ambiente di lavoro) per la sessione corrente.
+     *
+     * Effettua una richiesta POST all'API di Axios per cambiare l'anno scolastico attivo.
+     * Il formato richiesto è "YYYY/YYYY" (es. "2024/2025") dove il secondo anno deve essere
+     * consecutivo al primo. Valida il formato prima di inviare la richiesta.
+     *
+     * @async
+     * @param {string} enviroment - Anno scolastico nel formato "YYYY/YYYY" (es. "2024/2025")
+     * @returns {Promise<boolean>} Ritorna true se l'ambiente è stato impostato correttamente
+     * @throws {Error} Se il formato dell'anno scolastico non è valido
+     * @throws {Error} Se la risposta di Axios indica un errore
+     * @throws {Error} Se il parsing della risposta JSON fallisce
+     * @throws {Error} Se la verifica dell'ambiente impostato fallisce
+     * @example
+     * // Imposta l'anno scolastico 2024/2025
+     * await api.web.setEnvironment("2024/2025");
+     */
+    async setEnvironment(enviroment) {
+        // Valida il formato dell'anno scolastico
+        // Deve essere nel formato "YYYY/YYYY" con anni consecutivi (es. "2024/2025")
+        const parts = enviroment.split("/");
+        if (
+            parts.length !== 2 ||
+            !/^\d{4}$/.test(parts[0]) ||
+            !/^\d{4}$/.test(parts[1]) ||
+            parseInt(parts[1]) !== parseInt(parts[0]) + 1
+        ) {
+            throw new Error(
+                `Invalid environment format. Expected YYYY/YYYY (e.g., "2024/2025"), got "${enviroment}"`,
+            );
+        }
+
+        // Recupera le proprietà di sessione per l'autenticazione
+        const { sessionID, axToken, redirectUrl } =
+            this.axiosWEB.getSessionProps;
+
+        // Costruisce gli header della richiesta con l'autenticazione
+        const headers = new Headers({
+            accept: "application/json, text/javascript, */*; q=0.01",
+            cookie: `ASP.NET_SessionId=${sessionID}`, // Cookie di sessione per l'autenticazione
+            referer: redirectUrl, // Referer richiesto da Axios
+            RVT: axToken, // Token RVT nell'header
+            "x-requested-with": "XMLHttpRequest", // Identifica come richiesta AJAX
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+        });
+
+        // Estrae solo il primo anno per la richiesta (es. "2024" da "2024/2025")
+        const enviromentReq = enviroment.split("/")[0];
+
+        const requestOptions = {
+            method: "POST",
+            headers: headers,
+            redirect: "follow",
+            // Formato del body richiesto dall'API Axios: JSON stringificato (non form-encoded!)
+            body: JSON.stringify({ TEXTanno_scolastico: enviromentReq }),
+        };
+
+        // Aggiunge timestamp per prevenire il caching
+        const url = `https://registrofamiglie.axioscloud.it/Pages/COMMON/COMMON_Ajax_Post.aspx?Action=IMPOSTAZIONI_AMBIENTE_LAVORO_MODAL_UPDATE&_=${Date.now()}`;
+
+        // Esegue la richiesta POST
+        const response = await fetch(url, requestOptions);
+        const responseText = await response.text();
+
+        // Parsa e valida la risposta JSON
+        let finalJSON;
+        try {
+            finalJSON = JSON.parse(responseText);
+            // Verifica se ci sono errori nell'API (errorcode != "0" indica un errore)
+            if (finalJSON.errorcode != "0") {
+                throw new Error(
+                    `Axios ha risposto con un errore: "${finalJSON.errormsg}"`,
+                );
+            }
+        } catch (error) {
+            throw new Error(
+                `Failed to parse Axios response: ${error.message}; Raw response: ${responseText}`,
+            );
+        }
+
+        // Decodifica il JSON Base64 contenuto nella risposta
+        const decodedJson = atob(finalJSON.json);
+
+        // Verifica che l'ambiente sia stato effettivamente impostato correttamente
+        // confrontando la risposta con il valore atteso
+        if (decodedJson !== `{"annoscolastico":"${enviroment}"}`) {
+            throw new Error(
+                `Failed to set environment to "${enviroment}", got "${decodedJson}" instead`,
+            );
+        }
+
+        // Ricarica lo stato della dashboard per aggiornare la sessione
+        await fetchDashboardLoad(sessionID, redirectUrl, axToken);
+
+        return true;
     }
 
     /**
@@ -26,14 +122,16 @@ export default class AxiosWEBClient {
      *
      * @async
      * @param {string} action - The Axios API action to perform (e.g., "FAMILY_VOTI")
-     * @param {Object} sessionData - Session authentication data
-     * @param {string} sessionData.sessionID - ASP.NET_SessionId cookie value
-     * @param {string} sessionData.axToken - RVT token for authentication
-     * @param {string} sessionData.redirectUrl - Referer URL for the request
-     * @returns {Promise<string>} The HTML content extracted from the response
+     * @param {boolean} [rawResponse=false] - If true, returns raw HTML string instead of parsing JSON
+     * @param {string|null} [urlOverride=null] - If provided, overrides the default URL for the request
+     * @returns {Promise<string|Object>} The HTML content extracted from the response or raw HTML string
      * @throws {Error} If the response indicates an Axios error or JSON parsing fails
      */
-    async get(action, { sessionID, axToken, redirectUrl }) {
+    async get(action, rawResponse = false, urlOverride = null) {
+        // Retrieve session properties for authentication
+        const { sessionID, axToken, redirectUrl } =
+            this.axiosWEB.getSessionProps;
+
         // Construct request headers with session authentication
         const headers = new Headers({
             accept: "application/json, text/javascript, */*; q=0.01",
@@ -53,16 +151,22 @@ export default class AxiosWEBClient {
 
         // Add timestamp to prevent caching
         const timestamp = Date.now();
-        const url = `https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=${action}&_=${timestamp}`;
+        const url =
+            urlOverride ||
+            `https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=${action}&_=${timestamp}`;
 
         // Execute the GET request
         const response = await fetch(url, requestOptions);
-        const rawJSON = await response.text();
+        const responseText = await response.text();
+
+        if (rawResponse) {
+            return responseText;
+        }
 
         // Parse and validate the JSON response
         let finalJSON;
         try {
-            finalJSON = JSON.parse(rawJSON);
+            finalJSON = JSON.parse(responseText);
             // Check for Axios API errors (errorcode != "0" indicates an error)
             if (finalJSON.errorcode != "0") {
                 throw new Error(
@@ -71,7 +175,7 @@ export default class AxiosWEBClient {
             }
         } catch (error) {
             throw new Error(
-                `Failed to parse Axios response: ${error.message}; Raw response: ${rawJSON}`,
+                `Failed to parse Axios response: ${error.message}; Raw response: ${responseText}`,
             );
         }
 
@@ -94,20 +198,23 @@ export default class AxiosWEBClient {
      * @async
      * @param {string} action - The Axios API action to perform (e.g., "FAMILY_VOTI_ELENCO_LISTA")
      * @param {Object|string} body - Request body (object for form data, string for JSON)
-     * @param {Object} sessionData - Session authentication data
-     * @param {string} sessionData.sessionID - ASP.NET_SessionId cookie value
-     * @param {string} sessionData.axToken - RVT token for authentication
-     * @param {string} sessionData.redirectUrl - Referer URL for the request
      * @param {boolean} [urlEncodeBody=true] - If true, URL-encodes body as form data; if false, sends body as-is
-     * @returns {Promise<Object>} The parsed JSON response object
+     * @param {boolean} [rawResponse=false] - If true, returns raw HTML string instead of parsing JSON
+     * @param {string|null} [urlOverride=null] - If provided, overrides the default URL for the request
+     * @returns {Promise<Object|string>} The parsed JSON response object or raw HTML string
      * @throws {Error} If the response indicates an Axios error or JSON parsing fails
      */
     async post(
         action,
-        { sessionID, axToken, redirectUrl },
         body,
         urlEncodeBody = false,
+        rawResponse = false,
+        urlOverride = null,
     ) {
+        // Retrieve session properties for authentication
+        const { sessionID, axToken, redirectUrl } =
+            this.axiosWEB.getSessionProps;
+
         // Construct request headers with session authentication
         const headers = new Headers({
             accept: "application/json, text/javascript, */*; q=0.01",
@@ -130,11 +237,17 @@ export default class AxiosWEBClient {
 
         // Add timestamp to prevent caching
         const timestamp = Date.now();
-        const url = `https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=${action}&_=${timestamp}`;
+        const url =
+            urlOverride ||
+            `https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=${action}&_=${timestamp}`;
 
         // Execute the POST request
         const response = await fetch(url, requestOptions);
-        const rawJSON = await response.text();
+        const responseText = await response.text();
+
+        if (rawResponse) {
+            return responseText;
+        }
 
         let finalJSON;
 
@@ -144,7 +257,7 @@ export default class AxiosWEBClient {
         // 2. DataTables response: {"draw": 2, "recordsTotal": 10, "data": [...]}
         // 3. Plain text error: "Errore [-1] - Error message"
         try {
-            finalJSON = JSON.parse(rawJSON);
+            finalJSON = JSON.parse(responseText);
 
             // Check if it's a normal response with an errorcode property
             // If errorcode exists and is not "0", it indicates an Axios error
@@ -158,9 +271,9 @@ export default class AxiosWEBClient {
             }
         } catch (error) {
             // Handle plain text error responses (start with "Errore")
-            if (rawJSON.startsWith("Errore")) {
+            if (responseText.startsWith("Errore")) {
                 throw new Error(
-                    `Axios ha risposto con un errore: "${rawJSON}"`,
+                    `Axios ha risposto con un errore: "${responseText}"`,
                 );
             }
             // Re-throw if it's already a handled Axios error
@@ -169,115 +282,12 @@ export default class AxiosWEBClient {
             }
             // Otherwise, it's a JSON parsing error or unexpected response
             throw new Error(
-                `Failed to parse Axios response: ${error.message}; Raw response: ${rawJSON}`,
+                `Failed to parse Axios response: ${error.message}; Raw response: ${responseText}`,
             );
         }
 
         // Return the parsed JSON response (works for both HTML-wrapped and DataTables responses)
         return finalJSON;
-    }
-
-    /**
-     * Fetches grades (voti) from Axios WEB with special handling for quadrimestres.
-     *
-     * The Axios WEB interface requires a two-step process for fetching grades:
-     * 1. Fetch the main FAMILY_VOTI page to extract quadrimestre tokens
-     * 2. For each quadrimestre, fetch the page to extract the "frazione" hidden value
-     * 3. Use the frazione value to fetch the actual grade data via FAMILY_VOTI_ELENCO_LISTA
-     *
-     * This is a DataTables endpoint that returns structured JSON with grade information.
-     *
-     * @async
-     * @param {Object} params - Session parameters
-     * @param {string} params.sessionID - ASP.NET_SessionId cookie for authentication
-     * @param {string} params.axToken - RVT token for authenticated requests
-     * @param {string} params.redirectUrl - Referer URL for request headers
-     * @returns {Promise<Object>} Parsed voti data organized by quadrimestre with grade details
-     * @throws {Error} If any HTTP request fails or parsing encounters errors
-     */
-    async getVoti({ sessionID, axToken, redirectUrl }) {
-        // STEP 1: Fetch the main voti page to extract quadrimestre tokens
-        // This returns HTML containing a select element with quadrimestre options
-        const pageHtml = await this.get("FAMILY_VOTI", {
-            sessionID,
-            axToken,
-            redirectUrl,
-        });
-
-        // Parse the HTML to locate the quadrimestre selector dropdown
-        const root = htmlParser(pageHtml);
-        const selectElement = querySelector(root, "#fiFrazId");
-        const options = selectElement
-            ? querySelectorAll(selectElement, "option")
-            : [];
-
-        // Extract quadrimestre tokens: maps readable name to base64 token
-        // Example: "PRIMO QUADRIMESTRE (09/09/2025 - 25/01/2026)" => "u/iOj+d3tAw="
-        const quadrimestriTokens = {};
-        for (const option of options) {
-            const value = option.getAttribute("value");
-            const text = option.textContent.trim();
-            quadrimestriTokens[text] = value;
-        }
-
-        // STEP 2 & 3: For each quadrimestre, fetch the grades
-        const toBeParsed = {};
-
-        for (const [quadrimestre, token] of Object.entries(
-            quadrimestriTokens,
-        )) {
-            // STEP 2a: Fetch the quadrimestre-specific page using the token
-            // This POST request returns HTML containing hidden input fields with the "frazione" value
-            // The body must be sent as JSON string, not URL-encoded form data
-            const votiListHtml = await this.post(
-                "FAMILY_VOTI",
-                {
-                    sessionID,
-                    axToken,
-                    redirectUrl,
-                },
-                JSON.stringify({ iFrazId: token }),
-            );
-
-            // Parse the returned HTML to extract the "frazione" hidden input value
-            // This value is required for the next DataTables request
-            const votiRoot = htmlParser(votiListHtml.html);
-            const hiddenInput = querySelector(votiRoot, "input#frazione");
-            const frazioneValue = hiddenInput
-                ? hiddenInput.getAttribute("value")
-                : null;
-
-            // STEP 3: Fetch the actual grades using the frazione value
-            // This DataTables endpoint returns JSON with grades structured as {draw, recordsTotal, data: [...]}
-            // The data array contains individual grade records with metadata
-            const votiListRawHtml = await this.post(
-                "FAMILY_VOTI_ELENCO_LISTA",
-                {
-                    sessionID,
-                    axToken,
-                    redirectUrl,
-                },
-                JSON.stringify({
-                    draw: 2, // DataTables draw counter
-                    columns: {}, // Column definitions (empty for server-side filtering)
-                    order: [], // Sort order (empty for default)
-                    start: 0, // Pagination start
-                    length: -1, // Fetch all records (-1 = no limit)
-                    search: { value: "", regex: false }, // Search filter (empty = no filter)
-                    iMatId: "", // Subject ID filter (empty = all)
-                    frazione: frazioneValue, // Quadrimestre identifier
-                }),
-            );
-
-            // Store the raw response for this quadrimestre to be parsed later
-            toBeParsed[quadrimestre] = votiListRawHtml;
-        }
-
-        // STEP 4: Parse the collected raw voti data using the dedicated parser
-        // The parseVoti function transforms the raw DataTables responses into structured grade objects
-        const parsedVoti = parseVoti(toBeParsed);
-
-        return parsedVoti;
     }
 
     /**
@@ -314,9 +324,5 @@ export default class AxiosWEBClient {
         // Delegate to the shared handleFileDownload utility
         // This will return a download URL (string) or a file buffer, depending on options.returnBuffer
         return await handleFileDownload(attributes, baseUrl, mergedOptions);
-    }
-
-    async toWEBSession(codiceFiscale, usersession) {
-        return await toWEBSession(codiceFiscale, usersession);
     }
 }

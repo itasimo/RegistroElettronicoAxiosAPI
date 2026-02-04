@@ -66,7 +66,7 @@ function parseRichieste_Unauthorized(root) {
             // 3 11:00
             // Visita medica
             // Come da regolamento non è consentito l'ingresso posticipato oltre 1 ora dall'inizio delle lezioni
-            // DE SANTIS PATRIZIA - 29/10/2025 12:58:24"
+            // MARCO ROSSI - 29/10/2025 12:58:24"
 
             let i = 0;
             const dataInizio = cells[i++].textContent.trim();
@@ -155,7 +155,7 @@ function parsePermessi_Authorized(root) {
             // sì
             // sì
             // no
-            // DACCO' ANTONELLA - 22/10/2025 23:13:12
+            // MARIO BIANCHI - 22/10/2025 23:13:12
 
             let i = 0;
             const dataInizio = cells[i++].textContent.trim();
@@ -192,9 +192,9 @@ function parsePermessi_Authorized(root) {
             const giustificato = cells[i++].textContent.trim() === "sì";
             const diClasse = cells[i++].textContent.trim() === "sì";
 
-            const autorizzatoRaw = cells[i++].textContent.trim();
-            const autorizzatoDa = autorizzatoRaw.split(" - ")[0];
-            const autorizzatoData = autorizzatoRaw.split(" - ")[1];
+            const autorizzatoRaw = cells[i++].textContent.trim() || null
+            const autorizzatoDa = autorizzatoRaw ? autorizzatoRaw.split(" - ")[0] : null;
+            const autorizzatoData = autorizzatoRaw ? autorizzatoRaw.split(" - ")[1] : null;
 
             results.push({
                 data: [
@@ -212,7 +212,7 @@ function parsePermessi_Authorized(root) {
                 info: {
                     inseritoDa: inseritoDa,
                     rispostoDa: autorizzatoDa,
-                    rispostoIl: splitDateTime(autorizzatoData)
+                    rispostoIl: autorizzatoData ? splitDateTime(autorizzatoData) : null
                 }
             });
         }
