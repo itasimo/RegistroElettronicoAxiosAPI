@@ -26,7 +26,8 @@ export default function parsePagella(rawData) {
                     tipoVerifica: item.schedaCarenza.verifica, // Tipo della verifica di recupero
                     dataVerifica: item.schedaCarenza.dataVerifica, // Data della verifica di recupero
                     argVerifica: item.schedaCarenza.verificaArgomenti, // Argomenti della verifica di recupero
-                    giudizioVerifica: item.schedaCarenza.verificaGiudizio // Giudizio della verifica di recupero
+                    giudizioVerifica: item.schedaCarenza.verificaGiudizio, // Giudizio della verifica di recupero
+                    esitoRecupero: null // Non implementato nella API Mobile (DISPONIBILE NELL'API WEB) 
                 } : {},
                 giudizio: item.giudizio,
                 assenze: Number(item.assenze)
@@ -40,6 +41,7 @@ export default function parsePagella(rawData) {
             quadrimestre: quadrimestre.descFrazione,
             media: Math.floor((voti.reduce((a, b) => a + b, 0) / voti.length) * 100) / 100, // Media dei voti arrotondata a 2 decimali
             esito: quadrimestre.esito,
+            crediti: quadrimestre.crediti || null, // TODO: verificare se è corretto
             giudizio: removeHtmlTags(quadrimestre.giudizio), // Rimuove i tag HTML
             materie: materie,
             dataVisualizzazione: quadrimestre.dataVisualizzazione,

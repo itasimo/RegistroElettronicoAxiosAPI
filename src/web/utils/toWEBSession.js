@@ -11,7 +11,7 @@ import extractCookie from "./extractCookie";
  * @param {string} usersession - User session identifier (APP)
  * @returns {Promise<Object>} Session data including sessionID (WEB session cookie), axToken (RVT), redirectUrl
  */
-export default async function toWEBSession(codiceFiscale, usersession) {
+async function toWEBSession(codiceFiscale, usersession) {
     // Step 1: Get SSO parameters from mobile backend
     const registroFamiglieParams = await getRegistroFamiglieParameters(
         codiceFiscale,
@@ -199,3 +199,6 @@ async function fetchDashboardLoad(
         throw error;
     }
 }
+
+export default toWEBSession;
+export { toWEBSession, fetchDashboardLoad };

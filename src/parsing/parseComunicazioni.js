@@ -1,4 +1,4 @@
-import { convertLookup, removeHtmlTags } from "@/utils";
+import { convertLookup, removeHtmlTags, toBool } from "@/utils";
 
 /**
  * Parsea i dati delle comunicazioni in una struttura più comoda
@@ -8,8 +8,8 @@ import { convertLookup, removeHtmlTags } from "@/utils";
  */
 export default function parseComunicazioni(rawData, alunnoID) {
 
-    const tipoNum = ['1', '4', '5'];
-    const tipoStr = ['Circolare', 'Scuola/Famiglia', 'Comunicazione'];
+    const tipoNum = ['1', '2', '3', '4', '5'];
+    const tipoStr = ['Scuola/Famiglia', 'Avviso', 'Modulistica', 'Circolare', 'Comunicazione'];
     const result = [];
 
     for (const item of rawData) {
@@ -28,14 +28,22 @@ export default function parseComunicazioni(rawData, alunnoID) {
         result.push({
             data: item.data,
             titolo: item.titolo,
+            autore: item.ownerName,
             testo: removeHtmlTags(item.desc), // Estrae il testo dal codice HTML
             id: item.id,
             idAlunno: alunnoID,
             tipo: convertLookup(item.tipo, tipoNum, tipoStr), // Converte la lettera in un tipo di voto leggibile
-            letta: item.letta == "S",
+            letta: toBool(item.letta, "S"),
+            obbligatoria: toBool(item.flgObbl, "S"),
+            pin: item.pin,
+            modificabile: toBool(item.modificabile, "1"),
             allegati: allegatiCircolare,
-            prevedeRisposta: item.tipo_risposta != "0",
-            opzioniRisposta: item.opzioni.split('|'),
+            risposta: {
+                prevedeRisposta: toBool(item.tipo_risposta, "1"),
+                opzioniRisposta: item.opzioni.split('|'),
+                isRisposta: toBool(item.risposta, 1),
+                rispostaTesto: item.risposta_testo || null,
+            }
         });
     }
 
