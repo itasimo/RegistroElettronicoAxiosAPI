@@ -1,4 +1,4 @@
-import { convertLookup } from "@/utils";
+import { convertLookup, commonConvertLookups } from "@/utils";
 import { dataset, getRowsFromTable, htmlParser, querySelector } from "../utils";
 
 export default async function parsePagella(
@@ -311,34 +311,6 @@ async function fetchSchedaCarenza(webclient, action, schedaId) {
 
     // Converti la data da formato "28/febbraio/2025" a "28/02/2025"
     if (dataVerifica) {
-        const mesiStr = [
-            "gennaio",
-            "febbraio",
-            "marzo",
-            "aprile",
-            "maggio",
-            "giugno",
-            "luglio",
-            "agosto",
-            "settembre",
-            "ottobre",
-            "novembre",
-            "dicembre",
-        ];
-        const mesiNum = [
-            "01",
-            "02",
-            "03",
-            "04",
-            "05",
-            "06",
-            "07",
-            "08",
-            "09",
-            "10",
-            "11",
-            "12",
-        ];
 
         // Estrai le parti della data (giorno/mese/anno)
         const dateParts = dataVerifica.split("/");
@@ -348,7 +320,7 @@ async function fetchSchedaCarenza(webclient, action, schedaId) {
             const anno = dateParts[2];
 
             // Converti il nome del mese in numero
-            const meseNum = convertLookup(meseNome, mesiStr, mesiNum);
+            const meseNum = convertLookup(meseNome, commonConvertLookups.mesi.mesiStr, commonConvertLookups.mesi.mesiNum);
             if (meseNum) {
                 dataVerifica = `${giorno}/${meseNum}/${anno}`;
             }

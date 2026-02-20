@@ -12,6 +12,7 @@ import parseNote from "./parseNote";
 import parsePagella from "./parsePagella";
 import parseComunicazioni from "./parseComunicazioni";
 import parseLibri from "./parseLibri";
+import parseOrario from "./parseOrario";
 export {
     parseAnagrafico,
     parseDeleghe,
@@ -26,5 +27,6 @@ export {
     parseNote,
     parsePagella,
     parseComunicazioni,
-    parseLibri
+    parseLibri,
+    parseOrario
 };
