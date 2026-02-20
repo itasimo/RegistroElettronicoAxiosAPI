@@ -30,6 +30,7 @@ export default function parseComunicazioni(rawData, alunnoID) {
             titolo: item.titolo,
             autore: item.ownerName,
             testo: removeHtmlTags(item.desc), // Estrae il testo dal codice HTML
+            intId: null, // Non implementato nella API Mobile (DISPONIBILE NELL'API WEB)
             id: item.id,
             idAlunno: alunnoID,
             tipo: convertLookup(item.tipo, tipoNum, tipoStr), // Converte la lettera in un tipo di voto leggibile
@@ -43,7 +44,8 @@ export default function parseComunicazioni(rawData, alunnoID) {
                 opzioniRisposta: item.opzioni.split('|'),
                 isRisposta: toBool(item.risposta, 1),
                 rispostaTesto: item.risposta_testo || null,
-            }
+            },
+            annullata: null // Non implementato nella API Mobile (DISPONIBILE NELL'API WEB)
         });
     }
 

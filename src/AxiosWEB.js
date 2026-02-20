@@ -11,6 +11,7 @@ import {
     parseVerifiche,
     parseNote,
     parseLibri,
+    parseOrario,
 } from "@/web/parsing";
 
 export default class AxiosWEB {
@@ -32,40 +33,40 @@ export default class AxiosWEB {
     }
 
     /**
-     * Checks if the the usersession was converted to sessionID
-     * @returns {Boolean} True if logged in, false otherwise
+     * Verifica se la usersession è stata convertita in sessionID
+     * @returns {Boolean} True se loggato, false altrimenti
      */
     get isWebLoggedIn() {
         return this.sessionID !== null;
     }
 
     /**
-     * Gets the web session ID
-     * @returns {String|null} The web session ID or null if not set
+     * Ottiene l'ID della sessione web
+     * @returns {String|null} L'ID della sessione web o null se non impostato
      */
     get getSessionID() {
         return this.sessionID;
     }
 
     /**
-     * Gets the AXToken (RVT) for web requests
-     * @returns {String|null} The AXToken or null if not set
+     * Ottiene l'AXToken (RVT) per le richieste web
+     * @returns {String|null} L'AXToken o null se non impostato
      */
     get getAxToken() {
         return this.axToken;
     }
 
     /**
-     * Gets the redirect URL after session conversion
-     * @returns {String|null} The redirect URL or null if not set
+     * Ottiene l'URL di reindirizzamento dopo la conversione della sessione
+     * @returns {String|null} L'URL di reindirizzamento o null se non impostato
      */
     get getRedirectUrl() {
         return this.redirectUrl;
     }
 
     /**
-     * Gets all session properties
-     * @returns {Object} Object containing sessionID, axToken, and redirectUrl
+     * Ottiene tutte le proprietà della sessione
+     * @returns {Object} Oggetto contenente sessionID, axToken e redirectUrl
      */
     get getSessionProps() {
         return {
@@ -76,8 +77,8 @@ export default class AxiosWEB {
     }
 
     /**
-     * Converts usersession to ASP.NET_SessionId for web version
-     * @returns {String} The session ID for web
+     * Converte usersession in ASP.NET_SessionId per la versione web
+     * @returns {String} L'ID della sessione per il web
      */
     async toWEBSession(codiceFiscale = null, usersession = null) {
         if (
@@ -105,12 +106,15 @@ export default class AxiosWEB {
     }
 
     /**
-     * Sets the environment (school year) for web requests
-     * @param {String} environment - The school year to set (e.g., "2024/2025")
-     * @returns {Boolean} True if the environment was set successfully
-     * @throws {Error} If not logged in to web session
-     * @example 
-     * // Set the school year to 2024/2025
+     * Imposta l'ambiente (anno scolastico) per le richieste web
+     * @param {String} environment - L'anno scolastico da impostare (es. "2024/2025")
+     * @returns {Boolean} True se l'ambiente è stato impostato con successo
+     * @throws {Error} Se non loggato nella sessione web
+     * @example
+     * const api = new AxiosAPI();
+     * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
+     * await api.web.toWEBSession();
+     * // Impostare l'anno scolastico a 2024/2025
      * await api.web.setEnvironment("2024/2025");
      */
     async setEnvironment(environment) {
@@ -120,7 +124,55 @@ export default class AxiosWEB {
         return this.webclient.setEnvironment(environment);
     }
 
-    async get(azione,  { sessionID, axToken, redirectUrl }= {}) {
+    /**
+     * Esegue una richiesta per una specifica azione nella sessione web
+     * @param {String} azione - L'azione da eseguire (es. "orario", "compiti", "voti")
+     * @param {Object} [options] - Opzioni aggiuntive per la richiesta per richieste con sessioni custom (opzionale se già loggato nella sessione web)
+     * @param {String} [options.sessionID] - ID della sessione web (se non già impostato)
+     * @param {String} [options.axToken] - AXToken per le richieste web (se non già impostato)
+     * @param {String} [options.redirectUrl] - URL di reindirizzamento (se non già impostato)
+     * @returns {Object} I dati restituiti dalla richiesta, eventualmente parsati
+     * @throws {Error} Se l'azione non è supportata o se non loggato nella sessione web
+     * 
+     * @description
+     * Azioni supportate:
+     * - comunicazioni (⚠️ WARNING: tempo di esecuzione ~0.32s per comunicazione)
+     * - anagrafico
+     * - curriculum
+     * - documenti
+     * - orario
+     * - assenze
+     * - argomenti
+     * - compiti
+     * - verifiche
+     * - note
+     * - voti
+     * - pagella
+     * - libri
+     * 
+     * Azioni non supportate:
+     * - deleghe (in attesa di contributo esterno)
+     * - permessi (parser incompleto)
+     * - colloqui (riservata ai genitori/tutori)
+     * - pagoscuola (in attesa di parser)
+     * - collabora (non ancora supportata)
+     * - sportello_digitale (non ancora supportata)
+     * - sportello_didattico (in attesa di parser)
+     * - corsi_e_laboratori (non dovrebbe essere accessibile agli studenti)
+     * - comUnica (in attesa di contributo esterno)
+     * 
+     * @example
+     * const api = new AxiosAPI();
+     * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
+     * await api.web.toWEBSession();
+     * // Ottenere l'orario delle lezioni
+     * const orario = await api.web.get("orario");
+     * // Ottenere i compiti assegnati
+     * const compiti = await api.web.get("compiti");
+     * // Ottenere i voti
+     * const voti = await api.web.get("voti");
+     */
+    async get(azione,  { sessionID, axToken, redirectUrl } = {}) {
         if (!this.isWebLoggedIn && !(sessionID && axToken && redirectUrl)) {
             this.#handleNoWEBSession();
         }
@@ -128,8 +180,8 @@ export default class AxiosWEB {
         const specialHandler = this.webclient.ActionSpecialHandlers;
 
         const actions = {
-            comunicazioni: { // TODO: implementare il parser per comunicazioni
-                disabled: true, // Disabilitata in attesa di finire il parser
+            comunicazioni: { // TODO; aggiungere warning nel JsDoc per il tempo di esecuzione dell'azione (137 comunicazioni in 44 secondi = 0.32s a comunicaizione)
+                disabled: false,
                 action: null,
                 parser: specialHandler.getComunicazioni.bind(specialHandler), // Use bound method to maintain webclient context
                 post: false,
@@ -168,10 +220,10 @@ export default class AxiosWEB {
                 specialHandler: false,
                 body: null,
             },
-            orario: {  // TODO: implementare il parser per orario
+            orario: {
                 disabled: false,
                 action: "FAMILY_ORARIO",
-                parser: null,
+                parser: parseOrario,
                 post: false,
                 specialHandler: false,
                 body: null,
@@ -264,7 +316,7 @@ export default class AxiosWEB {
                 specialHandler: true,
                 body: null,
             },
-            pagelle: {
+            pagella: {
                 disabled: false,
                 action: null,
                 parser: specialHandler.getPagelle.bind(specialHandler), // Use bound method to maintain webclient context

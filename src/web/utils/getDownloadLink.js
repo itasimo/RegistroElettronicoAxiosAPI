@@ -151,6 +151,7 @@ function resolveRelativeUrl(base, relative) {
  * @param {Object} options - Additional options
  * @param {boolean} options.returnBuffer - If true, returns file buffer, otherwise returns download URL
  * @param {Object} options.headers - Custom headers to include in requests
+ * @param {string} options.suppressErrorLogging - If true, suppresses error logging to console
  * @returns {Promise<string|Buffer>} Download URL or file buffer
  */
 export default async function handleFileDownload(attributes, currentUrl, options = {}) {
@@ -158,12 +159,13 @@ export default async function handleFileDownload(attributes, currentUrl, options
         dataRoot,
         dataFolder,
         dataFilename,
-        dataSourceFilename
+        dataSourceFilename,
     } = attributes;
 
     const {
         returnBuffer = false,
-        headers = {}
+        headers = {},
+        suppressErrorLogging = false
     } = options;
 
     if (!dataRoot || !dataFolder || !dataFilename) {
@@ -172,16 +174,18 @@ export default async function handleFileDownload(attributes, currentUrl, options
     if (!currentUrl) {
         throw new Error('currentUrl is required');
     }
+    // Include any additional attributes that are not the required strandard ones
     const params = {
         dataRoot,
         dataFolder,
         dataFilename,
-        dataSourceFilename: dataSourceFilename || ""
+        dataSourceFilename,
+        ...attributes
     };
     if (returnBuffer) {
-        return await downloadFile(params, currentUrl, headers);
+        return await downloadFile(params, currentUrl, headers, suppressErrorLogging);
     } else {
-        return await getDownloadLink(params, currentUrl, headers);
+        return await getDownloadLink(params, currentUrl, headers, suppressErrorLogging);
     }
 }
 
@@ -194,10 +198,11 @@ export default async function handleFileDownload(attributes, currentUrl, options
  * @param {string} params.dataSourceFilename - The original source filename
  * @param {string} baseUrl - Base URL for the requests (e.g., "https://registrofamiglie.axioscloud.it")
  * @param {Object} headers - Optional headers to include in requests
+ * @param {boolean} suppressErrorLogging - If true, suppresses error logging to console
  * @returns {Promise<string>} The final download URL
  */
 // --- Internal: getDownloadLink ---
-async function getDownloadLink(params, currentUrl, headers = {}) {
+async function getDownloadLink(params, currentUrl, headers = {}, suppressErrorLogging = false) {
     const {
         dataRoot,
         dataFolder,
@@ -213,13 +218,15 @@ async function getDownloadLink(params, currentUrl, headers = {}) {
     // Process the source filename
     let processedSourceFilename = processSourceFilename(dataSourceFilename || "");
 
-    // Create the request payload
+    // Create the request payload with all attributes
+    // Include any additional attributes that are not the required strandard ones
     const payload = {
         url: "../../Handlers/SD_UploadDownloadHandler.aspx",
         root: dataRoot,
         folder: dataFolder,
         filename: dataFilename,
-        SourceFileName: processedSourceFilename
+        SourceFileName: processedSourceFilename,
+        ...params
     };
 
     // Stringify and Base64 encode the payload
@@ -252,12 +259,21 @@ async function getDownloadLink(params, currentUrl, headers = {}) {
             throw new Error(data.errormsg || 'Error from server');
         }
         if (!data.json) {
-            throw new Error('No download URL received from server');
+            if (!suppressErrorLogging) {
+                console.error('No download URL received from server:', data, params);
+            }
+            return null;
+        }
+        const isExternal = /^https?:\/\//i.test(data.json);
+        if (isExternal) {
+            return data.json; // Already an absolute URL
         }
         const absoluteUrl = resolveRelativeUrl(currentUrl, data.json);
         return absoluteUrl;
     } catch (error) {
-        console.error('Error getting download URL:', error);
+        if (!suppressErrorLogging) {
+            console.error('Error getting download URL:', error);
+        }
         throw error;
     }
 }
@@ -271,13 +287,14 @@ async function getDownloadLink(params, currentUrl, headers = {}) {
  * @param {string} params.dataSourceFilename - The original source filename
  * @param {string} baseUrl - Base URL for the requests
  * @param {Object} headers - Optional headers to include in requests
+ * @param {boolean} suppressErrorLogging - If true, suppresses error logging to console
  * @returns {Promise<Buffer>} The downloaded file as Buffer
  */
 // --- Internal: downloadFile ---
-async function downloadFile(params, currentUrl, headers = {}) {
+async function downloadFile(params, currentUrl, headers = {}, suppressErrorLogging = false) {
     try {
         // First get the download URL
-        const downloadUrl = await getDownloadLink(params, currentUrl, headers);
+        const downloadUrl = await getDownloadLink(params, currentUrl, headers, suppressErrorLogging);
 
         // Extract base URL for referer
         const baseUrl = getBaseUrl(currentUrl);
@@ -300,7 +317,9 @@ async function downloadFile(params, currentUrl, headers = {}) {
         return await response.buffer();
 
     } catch (error) {
-        console.error('Error downloading file:', error);
+        if (!suppressErrorLogging) {
+            console.error('Error downloading file:', error);
+        }
         throw error;
     }
 }

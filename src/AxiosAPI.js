@@ -5,7 +5,7 @@ import * as parsers from "@/parsing";
 import packageInfo from "@/../package.json" with { type: "json" };
 
 /**
- * Main API class for Axios interactions
+ * Classe API principale per le interazioni con Axios
  */
 export default class AxiosAPI {
     constructor() {
@@ -21,11 +21,11 @@ export default class AxiosAPI {
     }
 
     /**
-     * Performs login and stores session
-     * @param {String} codiceFiscale - School fiscal code
-     * @param {String} codiceUtente - User code
-     * @param {String} password - User password
-     * @returns {Object} Login response with user session and student info
+     * Esegue il login e memorizza la sessione
+     * @param {String} codiceFiscale - Codice fiscale della scuola
+     * @param {String} codiceUtente - Codice utente
+     * @param {String} password - Password dell'utente
+     * @returns {Object} Risposta di login con sessione utente e informazioni dello studente
      */
     async login(codiceFiscale, codiceUtente, password) {
         const result = await this.client.login(
@@ -43,104 +43,104 @@ export default class AxiosAPI {
     }
 
     /**
-     * Checks if the user is logged in
-     * @returns {Boolean} True if logged in, false otherwise
+     * Verifica se l'utente è loggato
+     * @returns {Boolean} True se loggato, false altrimenti
      */
     get isLoggedIn() {
         return this.usersession !== null;
     }
 
     /**
-     * Gets the school fiscal code
-     * @returns {String|null} The fiscal code or null if not set
+     * Ottiene il codice fiscale della scuola
+     * @returns {String|null} Il codice fiscale o null se non impostato
      */
     get getCodiceFiscale() {
         return this.codiceFiscale;
     }
 
     /**
-     * Gets the user session identifier
-     * @returns {String|null} The user session or null if not logged in
+     * Ottiene l'identificatore della sessione utente
+     * @returns {String|null} La sessione utente o null se non loggato
      */
     get getUserSession() {
         return this.usersession;
     }
 
     /**
-     * Gets the vendor token from the client
-     * @returns {String} The vendor token
+     * Ottiene il token del fornitore dal client
+     * @returns {String} Il token del fornitore
      */
     get getVendorToken() {
         return this.client.vendorToken;
     }
 
     /**
-     * Gets the student PIN
-     * @returns {Object|null} The student PIN object
+     * Ottiene il PIN dello studente
+     * @returns {Object|null} L'oggetto PIN dello studente
      */
     get getPIN() {
         return this.pin;
     }
 
     /**
-     * Gets the account active status
-     * @returns {Boolean|null} True if active, false if not, null if unknown
+     * Ottiene lo stato di attivazione dell'account
+     * @returns {Boolean|null} True se attivo, false se no, null se sconosciuto
      */
     get getIsAccountActive() {
         return this.isAccountActive;
     }
 
     /**
-     * Gets the student information
-     * @returns {Object|null} The student information object
+     * Ottiene le informazioni dello studente
+     * @returns {Object|null} L'oggetto informazioni dello studente
      */
     get getStudentInfo() {
         return this.studentInfo;
     }
 
     /**
-     * Gets the base URL from the client
-     * @returns {String} The base URL
+     * Ottiene l'URL base dal client
+     * @returns {String} L'URL base
      */
     get getBaseURL() {
         return this.client.baseURL;
     }
 
     /**
-     * Gets the API version
-     * @returns {String} The API version
+     * Ottiene la versione dell'API
+     * @returns {String} La versione dell'API
      */
     get getAPIVersion() {
         return this.apiVersion;
     }
 
     /**
-     * Gets the Axios client instance
-     * @returns {AxiosClient} The client instance
+     * Ottiene l'istanza del client Axios
+     * @returns {AxiosClient} L'istanza del client
      */
     get getClientInstance() {
         return this.client;
     }
 
     /**
-     * Gets the AxiosWEB instance
-     * @returns {AxiosWEB} The web instance
+     * Ottiene l'istanza di AxiosWEB
+     * @returns {AxiosWEB} L'istanza web
      */
     get getWebInstance() {
         return this.web;
     }
 
     /**
-     * Gets the API instance (self-reference)
-     * @returns {AxiosAPI} The API instance
+     * Ottiene l'istanza dell'API (autoreferenza)
+     * @returns {AxiosAPI} L'istanza dell'API
      */
     get getAPIInstance() {
         return this;
     }
 
     /**
-     * Gets the student info along with session details
-     * @returns {Object|null} The student info with session details
+     * Ottiene le informazioni dello studente insieme ai dettagli della sessione
+     * @returns {Object|null} Le informazioni dello studente con i dettagli della sessione
      */
     get getSessionInfo() {
         if (!this.isLoggedIn) {
@@ -156,10 +156,10 @@ export default class AxiosAPI {
     }
 
     /**
-     * Constructs student info for requests
-     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {Object} Student info object for requests
+     * Costruisce le informazioni dello studente per le richieste
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {Object} Oggetto informazioni dello studente per le richieste
      */
     #getStudentSessionData(codiceFiscale = null, usersession = null) {
         if (!(codiceFiscale || this.codiceFiscale) && (usersession || this.usersession)) {
@@ -173,11 +173,46 @@ export default class AxiosAPI {
     }
 
     /**
-     * Retrieves data based on action type
-     * @param {String} azione - Action to perform
-     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {Object} Parsed response data
+     * Recupera i dati in base al tipo di azione
+     * @param {String} azione - Azione da eseguire
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {Object} Dati di risposta analizzati
+     * 
+     * @description
+     * Azioni supportate:
+     * - compiti (Mobile/WEB)
+     * - verifiche (Mobile/WEB)
+     * - voti (Mobile/WEB)
+     * - comunicazioni (Mobile/WEB)
+     * - orario (Mobile/WEB)
+     * - argomenti (Mobile/WEB)
+     * - assenze (Mobile/WEB)
+     * - note (Mobile/WEB)
+     * - curriculum (Mobile/WEB)
+     * - pagella (Mobile/WEB)
+     * - permessi (Mobile)
+     * - studente (Mobile)
+     * 
+     * Azioni disponibili solo in WEB:
+     * - anagrafico (WEB)
+     * - documenti (WEB)
+     * - libri (WEB)
+     * 
+     * Azioni non supportate:
+     * - deleghe (WEB, non supportata) - in attesa di contributo esterno
+     * - colloqui (WEB, non supportata) - riservata ai genitori/tutori
+     * - pagoscuola (WEB, non supportata) - in attesa di parser
+     * - collabora (WEB, non supportata) - non ancora supportata
+     * - sportello_digitale (WEB, non supportata) - non ancora supportata
+     * - sportello_didattico (WEB, non supportata) - in attesa di parser
+     * - corsi_e_laboratori (WEB, non supportata) - non dovrebbe essere accessibile agli studenti
+     * - comUnica (WEB, non supportata) - in attesa di contributo esterno
+     * 
+     * @example
+     * const api = new AxiosAPI();
+     * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
+     * const compiti = await api.get('compiti');
      */
     async get(azione, codiceFiscale = null, usersession = null) {
         if (!(codiceFiscale || this.codiceFiscale) && (usersession || this.usersession)) {
@@ -199,7 +234,10 @@ export default class AxiosAPI {
                 parser: parsers.parseVerifiche,
                 path: "[0].compiti",
             },
-            voti: { action: "GET_VOTI_LIST_DETAIL", parser: parsers.parseVoti },
+            voti: {
+                action: "GET_VOTI_LIST_DETAIL",
+                parser: parsers.parseVoti
+            },
             comunicazioni: {
                 action: "GET_COMUNICAZIONI_MASTER",
                 parser: parsers.parseComunicazioni,
@@ -225,7 +263,10 @@ export default class AxiosAPI {
                 action: "GET_ASSENZE_MASTER",
                 parser: parsers.parseAssenze,
             },
-            note: { action: "GET_NOTE_MASTER", parser: parsers.parseNote },
+            note: {
+                action: "GET_NOTE_MASTER", 
+                parser: parsers.parseNote
+            },
             curriculum: {
                 action: "GET_CURRICULUM_MASTER",
                 parser: parsers.parseCurriculum,
@@ -280,11 +321,11 @@ export default class AxiosAPI {
     }
 
     /**
-     * Retrieves timeline for a specific date
-     * @param {String} data - Date in format "dd/mm/yyyy"
-     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {Object} Parsed timeline data
+     * Recupera la timeline per una data specifica
+     * @param {String} data - Data in formato "dd/mm/yyyy"
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {Object} Dati della timeline analizzati
      */
     async getTimeline(data, codiceFiscale = null, usersession = null) {
         if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
@@ -305,11 +346,11 @@ export default class AxiosAPI {
     }
 
     /**
-     * Marks a communication as read
-     * @param {Object} data - Communication data (id, idAlunno)
-     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {String} Response status
+     * Segna una comunicazione come letta
+     * @param {Object} data - Dati della comunicazione (id, idAlunno)
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {String} Stato della risposta
      */
     async segnaComunicazioneLetta(data, codiceFiscale = null, usersession = null) {
         if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
@@ -339,11 +380,11 @@ export default class AxiosAPI {
     }
 
     /**
-     * Replies to a communication
-     * @param {Object} data - Communication reply data
-     * @param {String} codiceFiscale - Optional fiscal code (uses stored if not provided)
-     * @param {String} usersession - Optional usersession (uses stored if not provided)
-     * @returns {Object} Response from server
+     * Risponde a una comunicazione
+     * @param {Object} data - Dati della risposta della comunicazione
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {Object} Risposta dal server
      */
     async rispondiComunicazione(data, codiceFiscale = null, usersession = null) {
         if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {

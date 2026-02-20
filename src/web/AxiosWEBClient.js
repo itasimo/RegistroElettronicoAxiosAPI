@@ -292,13 +292,32 @@ export default class AxiosWEBClient {
 
     /**
      * Download a file or get its download URL, injecting session headers automatically.
+     * Wraps the main handleFileDownload utility and adds session authentication headers.
      *
-     * @param {Object} attributes - Attributes from the element (dataRoot, dataFolder, dataFilename, dataSourceFilename, ...)
-     * @param {string} baseUrl - The Axios base URL (e.g. https://registrofamiglie.axioscloud.it)
-     * @param {Object} [options={}] - Additional options for the download
+     * @param {Object} attributes - Attributes from the element
+     * @param {string} attributes.dataRoot - The root ID
+     * @param {string} attributes.dataFolder - The folder path
+     * @param {string} attributes.dataFilename - The filename
+     * @param {string} attributes.dataSourceFilename - The original source filename
+     * @param {string} baseUrl - Current URL for the requests (the URL at which the element was found)
+     * @param {Object} [options={}] - Additional options
      * @param {boolean} [options.returnBuffer=false] - If true, returns file buffer, otherwise returns download URL
-     * @param {Object} [options.headers={}] - Custom headers to include in requests (merged with session headers)
+     * @param {Object} [options.headers={}] - Custom headers to include in requests (will be merged with session headers)
      * @returns {Promise<string|Buffer>} Download URL or file buffer
+     * 
+     * @description
+     * Internal payload structure sent to the server:
+     * 
+     * ```javascript
+     * const payload = {
+     *     url: "../../Handlers/SD_UploadDownloadHandler.aspx",
+     *     root: dataRoot,
+     *     folder: dataFolder,
+     *     filename: dataFilename,
+     *     SourceFileName: processedSourceFilename,
+     *     ...params
+     * };
+     * ```
      */
     async handleFileDownload(attributes, baseUrl, options = {}) {
         // Get session properties (sessionID, axToken, redirectUrl)
