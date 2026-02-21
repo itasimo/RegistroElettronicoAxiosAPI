@@ -1,15 +1,39 @@
-import { htmlParser, querySelector, querySelectorAll, dataset } from "./utils";
-import { parseVoti, parsePagella, parseComunicazioni } from "@/web/parsing";
+import { htmlParser, querySelector, querySelectorAll } from "./utils";
+import {
+    parseVoti,
+    parsePagella,
+    parseComunicazioni,
+    parseTimeline,
+} from "@/web/parsing";
 
 export default class ActionSpecialHandlers {
     constructor(webclient) {
         this.webclient = webclient;
     }
 
-    async getVoti() {
+    /**
+     * [INTERNAL] Fetches and parses grades (voti) for all quadrimestri
+     *
+     * Multi-step process:
+     * 1. Fetches main voti page to extract available quadrimestre tokens
+     * 2. For each quadrimestre, fetches the specific page and extracts the "frazione" value
+     * 3. Uses DataTables endpoint to fetch all grades for that quadrimestre
+     * 4. Parses all collected raw data using parseVoti()
+     *
+     * @private
+     * @async
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
+     * @returns {Promise<Object>} Parsed grades object organized by quadrimestre with individual grade records
+     */
+    async getVoti(customSession = null) {
         // STEP 1: Fetch the main voti page to extract quadrimestre tokens
         // This returns HTML containing a select element with quadrimestre options
-        const pageHtml = await this.webclient.get("FAMILY_VOTI");
+        const pageHtml = await this.webclient.get(
+            "FAMILY_VOTI",
+            false,
+            null,
+            customSession,
+        );
 
         // Parse the HTML to locate the quadrimestre selector dropdown
         const root = htmlParser(pageHtml);
@@ -48,6 +72,10 @@ export default class ActionSpecialHandlers {
             const votiListHtml = await this.webclient.post(
                 "FAMILY_VOTI",
                 JSON.stringify({ iFrazId: token }),
+                false,
+                false,
+                null,
+                customSession,
             );
 
             // Parse the returned HTML to extract the "frazione" hidden input value
@@ -73,6 +101,10 @@ export default class ActionSpecialHandlers {
                     iMatId: "", // Subject ID filter (empty = all)
                     frazione: frazioneValue, // Quadrimestre identifier
                 }),
+                false,
+                false,
+                null,
+                customSession,
             );
 
             // Store the raw response for this quadrimestre to be parsed later
@@ -86,10 +118,33 @@ export default class ActionSpecialHandlers {
         return parsedVoti;
     }
 
-    async getPagelle() {
+    /**
+     * [INTERNAL] Fetches and parses school report cards (pagelle) for all quadrimestri
+     *
+     * Multi-step process:
+     * 1. Fetches main pagella page to extract available quadrimestre tokens
+     * 2. For each quadrimestre, attempts to fetch the specific page
+     * 3. Handles both available (with grades data) and unavailable (with error message) responses
+     * 4. Parses all collected responses using parsePagella()
+     *
+     * Response types handled:
+     * - Error response: {"errorcode":"0", "errormsg":"...", "html":"..."} - pagella not yet available
+     * - DataTables response: {"draw": X, "recordsTotal": Y, "data": [...]} - pagella available with grades
+     *
+     * @private
+     * @async
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
+     * @returns {Promise<Object>} Parsed pagelle object with grade records and availability status per quadrimestre
+     */
+    async getPagelle(customSession = null) {
         // STEP 1: Fetch the main pagella page to extract quadrimestre tokens
         // This returns HTML containing a select element with quadrimestre options
-        const pageHtml = await this.webclient.get("FAMILY_PAGELLA");
+        const pageHtml = await this.webclient.get(
+            "FAMILY_PAGELLA",
+            false,
+            null,
+            customSession,
+        );
 
         // Parse the HTML to locate the quadrimestre selector dropdown
         const root = htmlParser(pageHtml);
@@ -130,30 +185,41 @@ export default class ActionSpecialHandlers {
             const pagellaPage = await this.webclient.post(
                 "FAMILY_PAGELLA",
                 JSON.stringify({ iFrazId: token }),
+                false,
+                false,
+                null,
+                customSession,
             );
 
             result.push(pagellaPage);
         }
 
-        const parsedPagella = parsePagella(result, quadrimestriTokens, this.webclient);
+        const parsedPagella = parsePagella(
+            result,
+            quadrimestriTokens,
+            this.webclient,
+        );
 
         return parsedPagella;
     }
 
     /**
-     * Recupera tutte le comunicazioni (circolari) dalla bacheca del registro elettronico.
-     * 
+     * [INTERNAL] Recupera tutte le comunicazioni (circolari) dalla bacheca del registro elettronico.
+     *
      * Il processo si articola in tre fasi principali:
      * 1. FIRST STAGE: Recupero di tutte le pagine HTML della bacheca con paginazione automatica
      * 2. SECOND STAGE: Combinazione delle pagine HTML ed estrazione degli ID delle comunicazioni
      * 3. THIRD STAGE: Recupero dei dettagli completi per ogni comunicazione tramite il suo ID
-     * 
+     *
+     * @private
+     * @async
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
      * @returns {Promise<Array>} Array di comunicazioni parsate con tutti i dettagli
-     * 
+     *
      * @description
      * Struttura URL per il recupero delle pagine:
      * https://registrofamiglie.axioscloud.it/Pages/SD/SD_Ajax_Get.aspx?Action=BACHECA_CIRCOLARE&Others=1|{page}||||0|
-     * 
+     *
      * Componenti del parametro "Others" (separati da |):
      * - 1: Flag fisso (uguale per tutte le richieste)
      * - {page}: Numero della pagina (1, 2, 3, ...)
@@ -162,16 +228,16 @@ export default class ActionSpecialHandlers {
      * - : (vuoto)
      * - 0: Flag circolari (0=tutte, 1=solo attive)
      * - : Filtro mittente
-     * 
+     *
      * Struttura URL per il recupero dei dettagli:
      * https://registrofamiglie.axioscloud.it/Pages/SD/SD_Ajax_Get.aspx?Action=BACHECA_VISUALIZZA_CIRCOLARE&Others={id}||MHx8fHw=|
-     * 
+     *
      * Componenti del parametro "Others":
      * - {id}: ID della circolare
      * - : Comment ID (undefined per ora)
      * - MHx8fHw=: Base64 di "0||||" (selezione bacheca)
      * - : Classe (vuoto per ora)
-     * 
+     *
      * @example
      * Implementazione lato client originale (paginazione):
      * ```javascript
@@ -193,7 +259,7 @@ export default class ActionSpecialHandlers {
      * });
      * ```
      */
-    async getComunicazioni() {
+    async getComunicazioni(customSession = null) {
         // ========================================
         // FIRST STAGE: Recupero pagine HTML
         // ========================================
@@ -226,7 +292,12 @@ export default class ActionSpecialHandlers {
             // - null                : Nessuna azione standard (URL personalizzato)
             // - true                : rawResponse = true, ritorna l'HTML grezzo senza parsing
             // - url                 : urlOverride, usa l'URL personalizzato invece di uno standard
-            const pageHtml = await this.webclient.get(null, true, url);
+            const pageHtml = await this.webclient.get(
+                null,
+                true,
+                url,
+                customSession,
+            );
 
             // Memorizza la risposta HTML della pagina corrente
             htmlResponses.push(pageHtml);
@@ -267,35 +338,39 @@ export default class ActionSpecialHandlers {
             // Estrai gli elementi <li> dalle pagine successive (pagine 2, 3, ..., ultima)
             for (let i = 1; i < htmlResponses.length; i++) {
                 const pageHtml = htmlResponses[i];
-                
+
                 // Trova gli elementi <li> (item delle circolari) - iniziano con "<li class=' forcedFontSize mt-comment'"
                 // Dobbiamo estrarre tutti gli <li> ma saltare la sezione "Carica più"
                 const loadMorePattern = /<div class='next-page-bacheche'>/;
-                
+
                 // Trova dove inizia la sezione "Carica più"
                 const loadMoreMatch = pageHtml.match(loadMorePattern);
-                const loadMoreIndex = loadMoreMatch ? pageHtml.indexOf(loadMoreMatch[0]) : pageHtml.length;
-                
+                const loadMoreIndex = loadMoreMatch
+                    ? pageHtml.indexOf(loadMoreMatch[0])
+                    : pageHtml.length;
+
                 // Estrai solo gli elementi <li> prima della sezione "Carica più"
                 const pageContent = pageHtml.substring(0, loadMoreIndex);
-                
+
                 // Trova l'ultimo punto di inserimento nella prima pagina (prima del pulsante "Carica più")
-                const insertionPoint = combinedHtml.lastIndexOf('<div class=\'next-page-bacheche\'>');
-                
+                const insertionPoint = combinedHtml.lastIndexOf(
+                    "<div class='next-page-bacheche'>",
+                );
+
                 if (insertionPoint !== -1) {
                     // Inserisci gli elementi della pagina corrente prima della sezione "Carica più"
-                    combinedHtml = 
+                    combinedHtml =
                         combinedHtml.substring(0, insertionPoint) +
                         pageContent +
                         combinedHtml.substring(insertionPoint);
                 }
             }
-            
+
             // Rimuovi il pulsante "Carica più" dal documento finale combinato
             // poiché abbiamo già caricato tutte le pagine
             combinedHtml = combinedHtml.replace(
                 /<div class='next-page-bacheche'>[\s\S]*?<\/div>/,
-                ''
+                "",
             );
         }
 
@@ -304,7 +379,7 @@ export default class ActionSpecialHandlers {
         const allPostIds = [];
         const postIdPattern = /data-post-id=['"](\d+)['"]/g;
         let match;
-        
+
         while ((match = postIdPattern.exec(combinedHtml)) !== null) {
             allPostIds.push(match[1]);
         }
@@ -317,12 +392,12 @@ export default class ActionSpecialHandlers {
         // ========================================
         // THIRD STAGE: Recupero dettagli comunicazioni
         // ========================================
-        
-        /* 
+
+        /*
          * ===== IMPLEMENTAZIONE LATO CLIENT ORIGINALE (JavaScript vanilla) =====
-         * 
+         *
          * Gestisce i click sulle azioni dei post (modifica, commenta, condividi):
-         * 
+         *
          * $(".modifica-commenta-condividi-post")
          *     .unbind("click")
          *     .click(function (event) {
@@ -330,7 +405,7 @@ export default class ActionSpecialHandlers {
          *         var clickedElement = this;
          *         var postData = {};
          *         postData.lett = $(this).attr("data-lett"); // Stato di lettura
-         *         
+         *
          *         // Estrai i parametri dell'azione dagli attributi data
          *         var action = $(this).attr("data-action");
          *         var circolareId = $(this).attr("data-post-id");
@@ -338,16 +413,16 @@ export default class ActionSpecialHandlers {
          *         var commentId = $(this).attr("data-commento-id");
          *         var selectedBoard = $("#selezione-bacheca").attr("value");
          *         var selectedClassSubject = $("#selezione-classe-materia").attr("value");
-         *         
+         *
          *         // Gestione logica di selezione
          *         if (selectedClassSubject != null && selectedClassSubject !== "") {
          *             selectedBoard = selectedClassSubject;
          *         }
          *         if (selectedBoard == null) { selectedBoard = ""; }
          *         if (classe == null) { classe = ""; }
-         *         
+         *
          *         var jsonData = JSON.stringify(postData);
-         *         
+         *
          *         if (action != null) {
          *             // Costruisci l'URL della richiesta con i parametri
          *             var requestUrl = $(this).attr("data-href") +
@@ -357,7 +432,7 @@ export default class ActionSpecialHandlers {
          *                 "|" + commentId +                          // sempre undefined per ora
          *                 "|" + Base64.encode(selectedBoard) +       // sempre MHx8fHw= (o unencoded: 0||||)
          *                 "|" + classe;                              // sempre vuoto per ora
-         *             
+         *
          *             AJX.ajaxDo(requestUrl, {
          *                 timeout: 120000,                           // 2 minuti
          *                 type: "POST",
@@ -396,6 +471,7 @@ export default class ActionSpecialHandlers {
                 false,
                 true,
                 url,
+                customSession,
             );
 
             comunicazioniResult.push({ id, detailsResponse });
@@ -405,8 +481,101 @@ export default class ActionSpecialHandlers {
         // PARSING FINALE
         // ========================================
         // Parsa le comunicazioni usando la funzione dedicata
-        const parsedComunicazioni = await parseComunicazioni(comunicazioniResult, this.webclient);
+        const parsedComunicazioni = await parseComunicazioni(
+            comunicazioniResult,
+            this.webclient,
+        );
 
         return parsedComunicazioni;
+    }
+
+    /**
+     * [INTERNAL] Fetches and parses timeline data for a specific date
+     *
+     * Converts the input date to DD/MM/YYYY format and makes a GET request to the Axios API
+     * to fetch the timeline HTML for that date, then parses it using parseTimeline().
+     *
+     * @private
+     * @async
+     * @param {Date|string|Object} data - The date for which to fetch timeline. Can be:
+     *   - Date object
+     *   - ISO string (e.g., "2026-02-21T10:30:00.000Z")
+     *   - Object with date property: {date: new Date()}
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
+     * @returns {Promise<Object>} Parsed timeline object with events and data statistics
+     * 
+     * @example
+     * Implementazione lato client originale (non fa mai questa richiesta ma è presente nel source code, ci torna utile sennò per prendere una data nel passato dovremmo fare mille richieste):
+     * ```javascript
+     * $(document).ready(function() {
+     *     if (jQuery().datetimepicker) {
+     *         $("#dpToday").datetimepicker({
+     *             locale: "it",
+     *             format: "DD/MM/YYYY",
+     *             useCurrent: false,
+     *             showTodayButton: true,
+     *             ignoreReadonly: true,
+     *             calendarWeeks: true,
+     *             minDate: moment(startDate, "DD/MM/YYYY"),
+     *             maxDate: moment(endDate, "DD/MM/YYYY"),
+     *             widgetParent: ".tm-date-right"
+     *         }).on("dp.change", function() {
+     *             var dateChangeUrl = "../../Pages/APP/APP_Ajax_Get.aspx?Action=FAMILY_CHANGE_DATA&Others=" + $("#dpToday").val();
+     *                 
+     *             AJX.ajaxDo(dateChangeUrl, {
+     *                 timeout: 120000,
+     *                 cache: false,
+     *                 async: true,
+     *                 loadingText: APP.loadingText,
+     *                 successCallBack: function(response) {
+     *                     if (response.errorcode !== "0") {
+     *                         var errorObj = {};
+     *                         errorObj.responseText = response.errormsg;
+     *                         APP.returnError(JSON.stringify(errorObj));
+     *                     } else {
+     *                         $("#content-timeline").html(response.html);
+     *                     }
+     *                 },
+     *                 errorCallBack: APP.returnError,
+     *                 type: "GET",
+     *                 dataType: "json"
+     *             });
+     *         });
+     * 
+     *         $(".tm-icon").unbind("click").click(function() {
+     *             $("#dpToday").data("DateTimePicker").toggle();
+     *         });
+     *     }
+     * });
+     * ```
+     */
+    async handleTimeline(data, customSession = null) {
+        // Convert data to ISO string if it's an object with a date property
+        const dateString =
+            typeof data === "object" && data.date
+                ? new Date(data.date).toISOString()
+                : data;
+
+        // Convert date into DD/MM/YYYY format required by the API
+        const dateObj = new Date(dateString);
+        const formattedDate = `${String(dateObj.getDate()).padStart(2, "0")}/${String(
+            dateObj.getMonth() + 1,
+        ).padStart(2, "0")}/${dateObj.getFullYear()}`;
+
+        // Construct the URL for fetching timeline data for the specified date
+        const url = `https://registrofamiglie.axioscloud.it/Pages/APP/APP_Ajax_Get.aspx?Action=FAMILY_CHANGE_DATA&Others=${formattedDate}&_=${Date.now()}`;
+
+        // Make POST request to retrieve timeline data for the specified date
+        const htmlResponse = await this.webclient.get(
+            null,
+            null,
+            url,
+            customSession,
+        );
+
+        // Parse the HTML response to extract timeline information
+        const parsedTimeline = parseTimeline(htmlResponse, formattedDate);
+
+        return parsedTimeline;
     }
 }

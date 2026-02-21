@@ -24,6 +24,7 @@ export default class AxiosWEBClient {
      *
      * @async
      * @param {string} enviroment - Anno scolastico nel formato "YYYY/YYYY" (es. "2024/2025")
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
      * @returns {Promise<boolean>} Ritorna true se l'ambiente è stato impostato correttamente
      * @throws {Error} Se il formato dell'anno scolastico non è valido
      * @throws {Error} Se la risposta di Axios indica un errore
@@ -33,7 +34,7 @@ export default class AxiosWEBClient {
      * // Imposta l'anno scolastico 2024/2025
      * await api.web.setEnvironment("2024/2025");
      */
-    async setEnvironment(enviroment) {
+    async setEnvironment(enviroment, customSession = null) {
         // Valida il formato dell'anno scolastico
         // Deve essere nel formato "YYYY/YYYY" con anni consecutivi (es. "2024/2025")
         const parts = enviroment.split("/");
@@ -50,7 +51,7 @@ export default class AxiosWEBClient {
 
         // Recupera le proprietà di sessione per l'autenticazione
         const { sessionID, axToken, redirectUrl } =
-            this.axiosWEB.getSessionProps;
+            customSession || this.axiosWEB.getSessionProps;
 
         // Costruisce gli header della richiesta con l'autenticazione
         const headers = new Headers({
@@ -124,13 +125,19 @@ export default class AxiosWEBClient {
      * @param {string} action - The Axios API action to perform (e.g., "FAMILY_VOTI")
      * @param {boolean} [rawResponse=false] - If true, returns raw HTML string instead of parsing JSON
      * @param {string|null} [urlOverride=null] - If provided, overrides the default URL for the request
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
      * @returns {Promise<string|Object>} The HTML content extracted from the response or raw HTML string
      * @throws {Error} If the response indicates an Axios error or JSON parsing fails
      */
-    async get(action, rawResponse = false, urlOverride = null) {
+    async get(
+        action,
+        rawResponse = false,
+        urlOverride = null,
+        customSession = null,
+    ) {
         // Retrieve session properties for authentication
         const { sessionID, axToken, redirectUrl } =
-            this.axiosWEB.getSessionProps;
+            customSession || this.axiosWEB.getSessionProps;
 
         // Construct request headers with session authentication
         const headers = new Headers({
@@ -167,13 +174,29 @@ export default class AxiosWEBClient {
         let finalJSON;
         try {
             finalJSON = JSON.parse(responseText);
-            // Check for Axios API errors (errorcode != "0" indicates an error)
-            if (finalJSON.errorcode != "0") {
+
+            // Check if it's a normal response with an errorcode property
+            // If errorcode exists and is not "0", it indicates an Axios error
+            if (
+                finalJSON.errorcode !== undefined &&
+                finalJSON.errorcode != "0"
+            ) {
                 throw new Error(
                     `Axios ha risposto con un errore: "${finalJSON.errormsg}"`,
                 );
             }
         } catch (error) {
+            // Handle plain text error responses (start with "Errore")
+            if (responseText.startsWith("Errore")) {
+                throw new Error(
+                    `Axios ha risposto con un errore: "${responseText}"`,
+                );
+            }
+            // Re-throw if it's already a handled Axios error
+            if (error.message.includes("Axios ha risposto con un errore")) {
+                throw error;
+            }
+            // Otherwise, it's a JSON parsing error or unexpected response
             throw new Error(
                 `Failed to parse Axios response: ${error.message}; Raw response: ${responseText}`,
             );
@@ -201,6 +224,7 @@ export default class AxiosWEBClient {
      * @param {boolean} [urlEncodeBody=true] - If true, URL-encodes body as form data; if false, sends body as-is
      * @param {boolean} [rawResponse=false] - If true, returns raw HTML string instead of parsing JSON
      * @param {string|null} [urlOverride=null] - If provided, overrides the default URL for the request
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
      * @returns {Promise<Object|string>} The parsed JSON response object or raw HTML string
      * @throws {Error} If the response indicates an Axios error or JSON parsing fails
      */
@@ -210,10 +234,11 @@ export default class AxiosWEBClient {
         urlEncodeBody = false,
         rawResponse = false,
         urlOverride = null,
+        customSession = null,
     ) {
         // Retrieve session properties for authentication
         const { sessionID, axToken, redirectUrl } =
-            this.axiosWEB.getSessionProps;
+            customSession || this.axiosWEB.getSessionProps;
 
         // Construct request headers with session authentication
         const headers = new Headers({
@@ -304,10 +329,10 @@ export default class AxiosWEBClient {
      * @param {boolean} [options.returnBuffer=false] - If true, returns file buffer, otherwise returns download URL
      * @param {Object} [options.headers={}] - Custom headers to include in requests (will be merged with session headers)
      * @returns {Promise<string|Buffer>} Download URL or file buffer
-     * 
+     *
      * @description
      * Internal payload structure sent to the server:
-     * 
+     *
      * ```javascript
      * const payload = {
      *     url: "../../Handlers/SD_UploadDownloadHandler.aspx",

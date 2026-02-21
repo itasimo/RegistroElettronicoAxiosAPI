@@ -108,6 +108,10 @@ export default class AxiosWEB {
     /**
      * Imposta l'ambiente (anno scolastico) per le richieste web
      * @param {String} environment - L'anno scolastico da impostare (es. "2024/2025")
+     * @param {Object} [options] - Opzioni aggiuntive per la richiesta con sessione custom (opzionale se già loggato nella sessione web)
+     * @param {String} [options.sessionID] - ID della sessione web (se non già impostato)
+     * @param {String} [options.axToken] - AXToken per le richieste web (se non già impostato)
+     * @param {String} [options.redirectUrl] - URL di reindirizzamento (se non già impostato)
      * @returns {Boolean} True se l'ambiente è stato impostato con successo
      * @throws {Error} Se non loggato nella sessione web
      * @example
@@ -117,11 +121,15 @@ export default class AxiosWEB {
      * // Impostare l'anno scolastico a 2024/2025
      * await api.web.setEnvironment("2024/2025");
      */
-    async setEnvironment(environment) {
-        if (!this.isWebLoggedIn) {
+    async setEnvironment(
+        environment,
+        { sessionID, axToken, redirectUrl } = {},
+    ) {
+        if (!this.isWebLoggedIn && !(sessionID && axToken && redirectUrl)) {
             this.#handleNoWEBSession();
         }
-        return this.webclient.setEnvironment(environment);
+        const customSessionParams = { sessionID, axToken, redirectUrl };
+        return this.webclient.setEnvironment(environment, customSessionParams);
     }
 
     /**
@@ -133,7 +141,7 @@ export default class AxiosWEB {
      * @param {String} [options.redirectUrl] - URL di reindirizzamento (se non già impostato)
      * @returns {Object} I dati restituiti dalla richiesta, eventualmente parsati
      * @throws {Error} Se l'azione non è supportata o se non loggato nella sessione web
-     * 
+     *
      * @description
      * Azioni supportate:
      * - comunicazioni (⚠️ WARNING: tempo di esecuzione ~0.32s per comunicazione)
@@ -149,7 +157,7 @@ export default class AxiosWEB {
      * - voti
      * - pagella
      * - libri
-     * 
+     *
      * Azioni non supportate:
      * - deleghe (in attesa di contributo esterno)
      * - permessi (parser incompleto)
@@ -160,7 +168,7 @@ export default class AxiosWEB {
      * - sportello_didattico (in attesa di parser)
      * - corsi_e_laboratori (non dovrebbe essere accessibile agli studenti)
      * - comUnica (in attesa di contributo esterno)
-     * 
+     *
      * @example
      * const api = new AxiosAPI();
      * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
@@ -172,18 +180,23 @@ export default class AxiosWEB {
      * // Ottenere i voti
      * const voti = await api.web.get("voti");
      */
-    async get(azione,  { sessionID, axToken, redirectUrl } = {}) {
+    async get(azione, { sessionID, axToken, redirectUrl } = {}) {
         if (!this.isWebLoggedIn && !(sessionID && axToken && redirectUrl)) {
             this.#handleNoWEBSession();
         }
 
         const specialHandler = this.webclient.ActionSpecialHandlers;
+        const customSessionParams = { sessionID, axToken, redirectUrl };
 
         const actions = {
-            comunicazioni: { // TODO; aggiungere warning nel JsDoc per il tempo di esecuzione dell'azione (137 comunicazioni in 44 secondi = 0.32s a comunicaizione)
+            comunicazioni: {
+                // TODO; aggiungere warning nel JsDoc per il tempo di esecuzione dell'azione (137 comunicazioni in 44 secondi = 0.32s a comunicaizione)
                 disabled: false,
                 action: null,
-                parser: specialHandler.getComunicazioni.bind(specialHandler), // Use bound method to maintain webclient context
+                parser: specialHandler.getComunicazioni.bind(
+                    specialHandler,
+                    customSessionParams,
+                ), // Pass custom session params
                 post: false,
                 specialHandler: true,
                 body: null,
@@ -282,7 +295,7 @@ export default class AxiosWEB {
                 parser: parseVerifiche,
                 post: true,
                 specialHandler: false,
-                body:  JSON.stringify({
+                body: JSON.stringify({
                     draw: 2,
                     columns: {},
                     order: [],
@@ -311,7 +324,10 @@ export default class AxiosWEB {
             voti: {
                 disabled: false,
                 action: null,
-                parser: specialHandler.getVoti.bind(specialHandler), // Use bound method to maintain webclient context
+                parser: specialHandler.getVoti.bind(
+                    specialHandler,
+                    customSessionParams,
+                ), // Pass custom session params
                 post: false,
                 specialHandler: true,
                 body: null,
@@ -319,7 +335,10 @@ export default class AxiosWEB {
             pagella: {
                 disabled: false,
                 action: null,
-                parser: specialHandler.getPagelle.bind(specialHandler), // Use bound method to maintain webclient context
+                parser: specialHandler.getPagelle.bind(
+                    specialHandler,
+                    customSessionParams,
+                ), // Pass custom session params
                 post: false,
                 specialHandler: true,
                 body: null,
@@ -364,7 +383,7 @@ export default class AxiosWEB {
                 specialHandler: false,
                 body: null,
             },
-            corsi_e_laboratori: {// Sezione riservata ai professori chissà perchè visibile dagli studenti
+            corsi_e_laboratori: { // Sezione riservata ai professori chissà perchè visibile dagli studenti
                 disabled: true, // Disabilitata PERMANENTEMENTE in quanto non dovrebbe essere accessibile dagli studenti
                 action: "CORSI_E_LABORATORI",
                 parser: null,
@@ -404,9 +423,21 @@ export default class AxiosWEB {
 
         // Make the request
         const method = config.post ? "post" : "get";
-        const args = config.post
-            ? [config.action, config.body]
-            : [config.action];
+        let args;
+        if (config.post) {
+            // For POST: action, body, urlEncodeBody, rawResponse, urlOverride, customSession
+            args = [
+                config.action,
+                config.body,
+                false,
+                false,
+                null,
+                customSessionParams,
+            ];
+        } else {
+            // For GET: action, rawResponse, urlOverride, customSession
+            args = [config.action, false, null, customSessionParams];
+        }
 
         const responseHTML = await this.webclient[method](...args);
 
@@ -415,8 +446,70 @@ export default class AxiosWEB {
             : responseHTML;
     }
 
-    async getTimeline() {
 
+    /**
+     * Recupera la timeline di eventi della giornata scolastica per una data specifica
+     *
+     * Esegue una richiesta per ottenere tutti gli eventi della giornata (verifiche, compiti, assenze, ritardi, uscite, ecc.)
+     * dalla data indicata. I dati vengono estratti dall'HTML della timeline e parsati in un formato strutturato.
+     *
+     * @async
+     * @param {Date|string} data - La data per cui recuperare la timeline. Può essere:
+     *   - Un oggetto Date
+     *   - Una stringa in formato ISO (es. "2026-02-21T10:30:00.000Z")
+     *   - Un oggetto con proprietà date (es. {date: new Date()})
+     * @param {Object} [customSessionParams={}] - Parametri di sessione custom per richieste con sessione manuale (opzionale se già loggato nella sessione web)
+     * @param {string} [customSessionParams.sessionID] - ID della sessione web (se non già impostato)
+     * @param {string} [customSessionParams.axToken] - AXToken per le richieste web (se non già impostato)
+     * @param {string} [customSessionParams.redirectUrl] - URL di reindirizzamento (se non già impostato)
+     * @returns {Promise<Object>} Un oggetto contenente:
+     *   - `eventi`: Array di eventi della giornata, ogni evento contiene:
+     *     - `data`: Data formattata DD/MM/YYYY
+     *     - `tipo`: Tipo di evento ("Verifica", "Compito", "Assente", "Ritardo", "Uscita anticipata", ecc.)
+     *     - `titolo`: Titolo/descrizione breve dell'evento
+     *     - `descrizione`: Descrizione completa dell'evento
+     *     - `ora`: Array [numeroLezione, orario] (solo per ritardi e uscite anticipate)
+     *     - `subTipo`, `sottoTitolo`, `id`: null (non disponibili nell'API web)
+     *   - `dati`: Statistiche della giornata (attualmente non disponibili nell'API web)
+     * @throws {Error} Se non loggato nella sessione web e nessun parametro di sessione fornito
+     * @example
+     * const api = new AxiosAPI();
+     * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
+     * await api.web.toWEBSession();
+     * 
+     * // Ottenere la timeline di oggi
+     * const timelineOggi = await api.web.getTimeline(new Date());
+     * 
+     * // Ottenere la timeline di una data specifica
+     * const timeline20260221 = await api.web.getTimeline("2026-02-21");
+     * 
+     * // Con sessione custom
+     * const timeline = await api.web.getTimeline(new Date(), {
+     *     sessionID: customSessionID,
+     *     axToken: customToken,
+     *     redirectUrl: customUrl
+     * });
+     */
+    async getTimeline(data, customSessionParams = {}) {
+        if (
+            !this.isWebLoggedIn &&
+            !(
+                customSessionParams.sessionID &&
+                customSessionParams.axToken &&
+                customSessionParams.redirectUrl
+            )
+        ) {
+            this.#handleNoWEBSession();
+        }
+
+        const { sessionID, axToken, redirectUrl } =
+            this.getSessionProps || customSessionParams;
+
+        return this.webclient.ActionSpecialHandlers.handleTimeline(data, {
+            sessionID,
+            axToken,
+            redirectUrl,
+        });
     }
 
     #handleNoWEBSession() {

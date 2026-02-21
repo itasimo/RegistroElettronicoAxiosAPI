@@ -13,7 +13,7 @@ export default function parseTimeline(rawData) {
 
     // Mapping per i sotto-tipi di assenze
     const sottoTipoAssenzaLett = ['T', 'A', 'U', 'R', 'E'];
-    const sottoTipoAssenzaStr = ['Tutte', 'Assenza', 'Uscita anticipata', 'Ritardo', 'Rientri'];
+    const sottoTipoAssenzaStr = ['Tutte', 'Assenza', 'Uscita anticipata', 'Ritardo', 'Rientro'];
 
     // Mapping per i sotto-tipi di voti
     const sottoTipoVotoLett = ['T', 'S', 'G', 'O', 'P', 'A'];
@@ -74,7 +74,7 @@ export default function parseTimeline(rawData) {
     }
 
     return {
-        oggi: result, // Array di eventi di oggi
+        eventi: result, // Array di eventi di oggi
         dati: { // Statistiche generali
             media: rawData.media_a, // Media voti
             assenzeTot: rawData.totali.assenze_totali,
