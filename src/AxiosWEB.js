@@ -351,12 +351,15 @@ export default class AxiosWEB {
                 specialHandler: false,
                 body: null,
             },
-            pagoscuola: { // TODO: implementare il parser per pagoscuola (aspetto che mi arrivi un pagamento reale per vedere il formato)
-                disabled: true, // Disabilitata in attesa di fare il parser
+            pagoscuola: {
+                disabled: false,
                 action: "FAMILY_PAGOSCUOLA",
-                parser: null,
+                parser: specialHandler.getPagoscuola.bind(
+                    specialHandler,
+                    customSessionParams,
+                ), // Pass custom session params,
                 post: false,
-                specialHandler: false,
+                specialHandler: true,
                 body: null,
             },
             collabora: { // la sezione "Collabora" non è ancora supportata.

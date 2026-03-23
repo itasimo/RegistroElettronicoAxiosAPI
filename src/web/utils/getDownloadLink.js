@@ -168,9 +168,6 @@ export default async function handleFileDownload(attributes, currentUrl, options
         suppressErrorLogging = false
     } = options;
 
-    if (!dataRoot || !dataFolder || !dataFilename) {
-        throw new Error('Missing required parameters: dataRoot, dataFolder, and dataFilename are required');
-    }
     if (!currentUrl) {
         throw new Error('currentUrl is required');
     }
@@ -323,7 +320,6 @@ async function downloadFile(params, currentUrl, headers = {}, suppressErrorLoggi
         throw error;
     }
 }
-
 
 
 export {

@@ -51,7 +51,7 @@ export default class AxiosWEBClient {
 
         // Recupera le proprietà di sessione per l'autenticazione
         const { sessionID, axToken, redirectUrl } =
-            customSession || this.axiosWEB.getSessionProps;
+            (customSession?.sessionID ? customSession : this.axiosWEB.getSessionProps);
 
         // Costruisce gli header della richiesta con l'autenticazione
         const headers = new Headers({
@@ -137,7 +137,7 @@ export default class AxiosWEBClient {
     ) {
         // Retrieve session properties for authentication
         const { sessionID, axToken, redirectUrl } =
-            customSession || this.axiosWEB.getSessionProps;
+            (customSession?.sessionID ? customSession : this.axiosWEB.getSessionProps);
 
         // Construct request headers with session authentication
         const headers = new Headers({
@@ -238,7 +238,7 @@ export default class AxiosWEBClient {
     ) {
         // Retrieve session properties for authentication
         const { sessionID, axToken, redirectUrl } =
-            customSession || this.axiosWEB.getSessionProps;
+            (customSession?.sessionID ? customSession : this.axiosWEB.getSessionProps);
 
         // Construct request headers with session authentication
         const headers = new Headers({
