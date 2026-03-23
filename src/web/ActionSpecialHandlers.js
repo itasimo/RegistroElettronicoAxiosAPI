@@ -4,6 +4,7 @@ import {
     parsePagella,
     parseComunicazioni,
     parseTimeline,
+    parsePagoscuola
 } from "@/web/parsing";
 
 export default class ActionSpecialHandlers {
@@ -487,6 +488,40 @@ export default class ActionSpecialHandlers {
         );
 
         return parsedComunicazioni;
+    }
+
+    /**
+     * [INTERNAL] Recupera e parse tutte le informazioni relative a Pagoscuola, inclusi i pagamenti effettuati e i dettagli associati.
+     *
+     * Il processo si articola in due fasi principali:
+     * 1. Recupero della pagina principale di Pagoscuola per estrarre gli eventi liberali
+     * 2. Esecuzione di una richiesta POST all'endpoint AJAX specifico per Pagoscuola per ottenere i dati di tutti i pagamenti, siccome il default è mostrare solo quelli non pagati
+     * 
+     * @param {Object} [customSession=null] - Custom session properties {sessionID, axToken, redirectUrl}
+     * @returns {Promise<Object>} Parsed pagoscuola object with payment records and details
+     */
+    async getPagoscuola(customSession = null) {
+
+        const pageHtml = await this.webclient.get(
+            "FAMILY_PAGOSCUOLA",
+            false,
+            null,
+            customSession,
+        );
+
+        const url = 'https://registrofamiglie.axioscloud.it/Pages/COMMON_PAGOSCUOLA/COMMON_PAGOSCUOLA_Ajax_Get.aspx?action=PAGAMENTI'
+        const response = await this.webclient.post(
+            null,
+            JSON.stringify({ fsStatoPag: "" }),
+            false,
+            true,
+            url,
+            customSession,
+        );
+
+        const parsedPagoscuola = parsePagoscuola(pageHtml, JSON.parse(response).json, this.webclient);
+
+        return parsedPagoscuola;
     }
 
     /**
