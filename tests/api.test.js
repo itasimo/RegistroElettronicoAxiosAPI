@@ -1,9 +1,5 @@
 import AxiosAPI from "../dist/index.js";
 
-const CODICE_FISCALE = "YOUR_CODICE_FISCALE_HERE";
-const CODICE_UTENTE = "YOUR_CODICE_UTENTE_HERE";
-const PASSWORD = "YOUR_OLD_PASSWORD_HERE";
-
 // API version will be read from the instance at runtime
 
 describe("AxiosAPI", () => {
