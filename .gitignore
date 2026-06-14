@@ -5,5 +5,11 @@ dist/
 coverage/
 # Real data from the raw API should not be committed (privacy reasons). Used for creating test cases with mock data.
 tests/samples/ 
+tests/debug.js
+# Research for the original API implementation
+dev/
+# Temporary files
+*.tmp
 *.log
+# macOS system files
 .DS_Store

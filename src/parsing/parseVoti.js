@@ -24,7 +24,11 @@ export default function parseVoti(rawData) {
                 peso: item.peso,
                 data: item.data,
                 commento: item.commento,
-                professore: item.docente
+                info : {
+                    professore: item.docente,
+                    vistoDa: null, // Non implementato nell'API di Axios Mobile (DISPONIBILE NELL'API WEB)
+                    vistoIl: null, // Non implementato nell'API di Axios Mobile (DISPONIBILE NELL'API WEB)
+                }
             });
         }
     }

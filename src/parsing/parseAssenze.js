@@ -31,9 +31,16 @@ export default function parseAssenze(rawData) {
                 giustificabile: toBool(assenza.giustificabile, '1'), // Converte "1"/"0" in true/false
                 giustificata: !toBool(assenza.tipogiust, '0'), // Se non è giustificata allora tipogiust è 0
                 giustificataDa: convertLookup(assenza.tipogiust, giustNum, giustStr),
-                giustficataData: assenza.datagiust,
+                giustificataData: assenza.datagiust,
             });
         }
+
+        // Sorto le assenze per data ascendente
+        assenze.sort((a, b) => {
+            const dateA = new Date(a.data.split('/').reverse().join('-'));
+            const dateB = new Date(b.data.split('/').reverse().join('-'));
+            return dateA - dateB;
+        });
 
         result.push({
             quadrimestre: quadrimestre.descFrazione,

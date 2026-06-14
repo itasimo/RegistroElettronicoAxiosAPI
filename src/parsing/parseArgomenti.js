@@ -23,6 +23,7 @@ export default function parseArgomenti(rawData) {
             ore: item.oreLezione.split("-"), // Prendo le ore di lezione e le splitto in un array in caso una lezione copra più ore (es: "4-5" => ["4","5"])
             giorno: currentDate, // giorno in cui è stato trattato l'argomento
             pubblicato: [publishedDate, publishedTime], // data e ora di pubblicazione dell'argomento
+            inseritoDa: null, // Non implementato nella API Mobile (DISPONIBILE NELL'API WEB)
         };
 
         // Siccome axios ritorna i dati di merda (uno dopo l'altro senza raggruppamento) devo fare un controllo per vedere se la data è cambiata in modo da raggruppare gli argomenti per giorno
