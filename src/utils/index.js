@@ -1,4 +1,4 @@
-import convertLookup from "./convertLookup.js";
+import convertLookup, {commonConvertLookups} from "./convertLookup.js";
 import toBool from "./toBool.js";
 import splitDateTime from "./splitDateTime.js";
 import removeSeconds from "./removeSeconds.js";
@@ -10,6 +10,7 @@ import encode from "./encode.js";
 
 export {
     convertLookup,
+    commonConvertLookups,
     toBool,
     splitDateTime,
     removeSeconds,
@@ -22,6 +23,7 @@ export {
 
 export default {
     convertLookup,
+    commonConvertLookups,
     toBool,
     splitDateTime,
     removeSeconds,
