@@ -190,7 +190,6 @@ export default class AxiosWEB {
 
         const actions = {
             comunicazioni: {
-                // TODO; aggiungere warning nel JsDoc per il tempo di esecuzione dell'azione (137 comunicazioni in 44 secondi = 0.32s a comunicaizione)
                 disabled: false,
                 action: null,
                 parser: specialHandler.getComunicazioni.bind(
@@ -249,7 +248,7 @@ export default class AxiosWEB {
                 specialHandler: false,
                 body: null,
             },
-            permessi: { // FIXME: il parser dei permessi è incompleto (chidere ad Azzurli di fare un permesso per vedere il formato quando è in attesa di autorizzazione e mandare una richiesta a caso un sabato per vedere il formato delle richieste in attesa di autorizzazione)
+            permessi: { // FIXME: il parser dei permessi è incompleto (chidere alla segreteria di fare un permesso per vedere il formato quando è in attesa di autorizzazione e mandare una richiesta a caso un sabato per vedere il formato delle richieste in attesa di autorizzazione)
                 disabled: true, // Disabilitata in attesa di finire il parser
                 action: "FAMILY_PERMESSI_AUTORIZZATI",
                 parser: parsePermessi,
