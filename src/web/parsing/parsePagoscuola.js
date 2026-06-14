@@ -83,6 +83,7 @@ export default async function parsePagoscuola(
             descrizione: cells[2].textContent.trim() || null,
             scadenza: cells[3].textContent.trim() || null,
             importo: cells[4].childNodes[0]?.textContent.trim() || null,
+            pagato: !cells[4].childNodes[2].textContent.trim().includes("Non pagato") || false,
             stato: cells[4].childNodes[2].textContent.trim() || null,
             dataSincronizzazioneSidi:
                 cells[5].childNodes[0]?.textContent.trim() || null,
