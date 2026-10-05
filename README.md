@@ -161,6 +161,26 @@ const timeline = await api.getTimeline('01/02/2024');
 
 > L'istanza `api` conserva le informazioni della sessione internamente dopo il login, quindi non è necessario passare `codiceFiscale` e `usersession` a ogni chiamata.
 
+### Mobile - scrittura
+
+Oltre alle letture, l'API espone un metodo di scrittura che corrisponde alla richiesta mobile `APP_PROCESS_DIRECT` / `PERMESSO_INSERT`:
+
+```js
+const esito = await api.inserisciPermesso({
+    tipo: "U",            // "E" entrata posticipata, "U" uscita anticipata, "A" assenza
+    data: "07/10/2026",   // "dd/mm/yyyy" oppure "yyyy-mm-dd"
+    orario: "12:30",      // solo per "E" e "U" (per "A" viene forzato a vuoto)
+    ora: "2",             // solo per "E" e "U" (per "A" viene forzato a vuoto)
+    motivo: "Uscita anticipata"
+});
+```
+
+- `tipo`, `data` e la sessione sono obbligatori; `orario`, `ora` e `motivo` sono opzionali.
+- `idAlunno` e `pin` vengono presi dalla sessione; se mancanti l'API recupera l'alunno con `get('studente')`.
+- Gli errori di Axios (`errorcode` / `errormessage`) vengono lanciati come eccezioni.
+
+> **Attenzione**: si tratta di una richiesta di **scrittura** verso il registro. Verificare sempre di riferirsi alla scuola giusta prima di usarla.
+
 ### Azioni Supportate
 
 Mobile (tramite `api.get`):

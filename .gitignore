@@ -3,6 +3,8 @@ node_modules/
 dist/
 # Coverage reports from test runs (JEST)
 coverage/
+# API tests contain real credentials; they must stay local
+tests/api.test.js
 # Real data from the raw API should not be committed (privacy reasons). Used for creating test cases with mock data.
 tests/samples/ 
 tests/debug.js

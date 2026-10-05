@@ -1,5 +1,4 @@
 
-
 // --- Cross-platform fetch (browser or Node.js) ---
 function getFetch() {
     if (typeof fetch === 'function') return fetch;
@@ -10,7 +9,7 @@ function getFetch() {
         throw new Error('No fetch implementation found. Please use Node 18+ or install node-fetch.');
     }
 }
-const _fetch = getFetch();
+const _fetch = () => getFetch();
 
 // --- Base64 utility ---
 const Base64 = {
@@ -100,6 +99,44 @@ const Base64 = {
     }
 };
 
+// --- Constants ---
+const DEFAULT_USER_AGENT = "Mozilla/5.0 (Linux; Android 15; 23122PCD1G Build/AQ3A.240912.001; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/143.0.7499.115 Mobile Safari/537.36";
+
+// --- Helper: mergeHeaders (lower-cases keys, skips empty values) ---
+function mergeHeaders(...sources) {
+    const merged = {};
+    for (const source of sources) {
+        if (!source) continue;
+        for (const key of Object.keys(source)) {
+            const value = source[key];
+            if (value === null || value === undefined || value === "") continue;
+            merged[key.toLowerCase()] = value;
+        }
+    }
+    return merged;
+}
+
+// --- Helper: readResponseBody (short snippet for error messages) ---
+async function readResponseBody(response) {
+    try {
+        return (await response.text()).slice(0, 400);
+    } catch (e) {
+        return "";
+    }
+}
+
+// --- Helper: assertWebSession (downloads need a converted WEB session) ---
+function assertWebSession(headers) {
+    const cookie = headers["cookie"];
+    const match = typeof cookie === "string" ? cookie.match(/ASP\.NET_SessionId=([^;]*)/) : null;
+    const sessionId = match ? match[1].trim() : "";
+    if (!sessionId || sessionId === "null" || sessionId === "undefined" || sessionId === "0") {
+        throw new Error(
+            "No valid web session available for downloads. Call api.web.toWEBSession() first."
+        );
+    }
+}
+
 // --- Helper: processSourceFilename ---
 function processSourceFilename(sourceFilename) {
     if (!sourceFilename) return "";
@@ -119,7 +156,8 @@ function processSourceFilename(sourceFilename) {
 // --- Helper: getBaseUrl ---
 function getBaseUrl(url) {
     try {
-        return new URL(url).origin;
+        const origin = new URL(url).origin;
+        return origin && origin !== "null" ? origin : null;
     } catch (e) {
         return null;
     }
@@ -136,6 +174,21 @@ function resolveRelativeUrl(base, relative) {
             return u.origin + relative;
         }
         return base.replace(/\/[^/]*$/, '/') + relative;
+    }
+}
+
+// --- Helper: fetchWithTimeout (AbortController-based, falls back if unsupported) ---
+async function fetchWithTimeout(url, options, timeout) {
+    const supported = typeof timeout === "number" && timeout > 0 && typeof AbortController === "function";
+    if (!supported) {
+        return await _fetch()(url, options);
+    }
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeout);
+    try {
+        return await _fetch()(url, { ...options, signal: controller.signal });
+    } finally {
+        clearTimeout(timer);
     }
 }
 
@@ -193,7 +246,6 @@ export default async function handleFileDownload(attributes, currentUrl, options
  * @param {string} params.dataFolder - The folder path
  * @param {string} params.dataFilename - The filename
  * @param {string} params.dataSourceFilename - The original source filename
- * @param {string} baseUrl - Base URL for the requests (e.g., "https://registrofamiglie.axioscloud.it")
  * @param {Object} headers - Optional headers to include in requests
  * @param {boolean} suppressErrorLogging - If true, suppresses error logging to console
  * @returns {Promise<string>} The final download URL
@@ -211,6 +263,17 @@ async function getDownloadLink(params, currentUrl, headers = {}, suppressErrorLo
     if (!baseUrl) {
         throw new Error('Invalid currentUrl provided');
     }
+
+    const requestHeaders = mergeHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        'Accept': 'application/json, text/javascript, */*; q=0.01',
+        'X-Requested-With': 'XMLHttpRequest',
+        'Referer': `${baseUrl}/Pages/SD/SD_Dashboard.aspx`,
+        'Origin': baseUrl,
+        'User-Agent': DEFAULT_USER_AGENT
+    }, headers);
+
+    assertWebSession(requestHeaders);
 
     // Process the source filename
     let processedSourceFilename = processSourceFilename(dataSourceFilename || "");
@@ -232,47 +295,55 @@ async function getDownloadLink(params, currentUrl, headers = {}, suppressErrorLo
 
     // Make the first request to get the download URL
     const firstRequestUrl = `${baseUrl}/Pages/COMMON/COMMON_Ajax_Get.aspx?action=DOWNLOAD_PREPARE_URL`;
-    const defaultHeaders = {
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        'Accept': 'application/json, text/javascript, */*; q=0.01',
-        'X-Requested-With': 'XMLHttpRequest',
-        'Referer': `${baseUrl}/Pages/SD/SD_Dashboard.aspx`,
-        'Origin': baseUrl,
-        ...headers
-    };
+    const timeout = 960000; // 16 minutes timeout as in original code
+    let lastError = null;
 
-    try {
-        const response = await _fetch(firstRequestUrl, {
-            method: 'POST',
-            headers: defaultHeaders,
-            body: encodedPayload,
-            timeout: 960000 // 16 minutes timeout as in original code
-        });
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        if (data.errorcode === -1) {
-            throw new Error(data.errormsg || 'Error from server');
-        }
-        if (!data.json) {
-            if (!suppressErrorLogging) {
-                console.error('No download URL received from server:', data, params);
+    for (let attempt = 0; attempt < 2; attempt++) {
+        try {
+            const response = await fetchWithTimeout(firstRequestUrl, {
+                method: 'POST',
+                headers: requestHeaders,
+                body: encodedPayload,
+                timeout
+            }, timeout);
+            if (!response.ok) {
+                const detail = await readResponseBody(response);
+                throw Object.assign(
+                    new Error(`HTTP error! status: ${response.status} (${firstRequestUrl})${detail ? ` - ${detail}` : ""}`),
+                    { status: response.status, retryable: response.status >= 500 }
+                );
             }
-            return null;
+            const data = await response.json();
+            if (data.errorcode === -1) {
+                throw Object.assign(
+                    new Error(data.errormsg || 'Error from server'),
+                    { retryable: false }
+                );
+            }
+            if (!data.json) {
+                if (!suppressErrorLogging) {
+                    console.error("No download URL received from server:", data, params);
+                }
+                return null;
+            }
+            const isExternal = /^https?:\/\//i.test(data.json);
+            if (isExternal) {
+                return data.json; // Already an absolute URL
+            }
+            const absoluteUrl = resolveRelativeUrl(currentUrl, data.json);
+            return absoluteUrl;
+        } catch (error) {
+            lastError = error;
+            const retryable = error && (error.retryable || !error.status) && attempt === 0;
+            if (!retryable) break;
+            await new Promise((resolve) => setTimeout(resolve, 400));
         }
-        const isExternal = /^https?:\/\//i.test(data.json);
-        if (isExternal) {
-            return data.json; // Already an absolute URL
-        }
-        const absoluteUrl = resolveRelativeUrl(currentUrl, data.json);
-        return absoluteUrl;
-    } catch (error) {
-        if (!suppressErrorLogging) {
-            console.error('Error getting download URL:', error);
-        }
-        throw error;
     }
+
+    if (!suppressErrorLogging) {
+        console.error('Error getting download URL:', lastError);
+    }
+    throw lastError;
 }
 
 /**
@@ -282,7 +353,6 @@ async function getDownloadLink(params, currentUrl, headers = {}, suppressErrorLo
  * @param {string} params.dataFolder - The folder path
  * @param {string} params.dataFilename - The filename
  * @param {string} params.dataSourceFilename - The original source filename
- * @param {string} baseUrl - Base URL for the requests
  * @param {Object} headers - Optional headers to include in requests
  * @param {boolean} suppressErrorLogging - If true, suppresses error logging to console
  * @returns {Promise<Buffer>} The downloaded file as Buffer
@@ -292,26 +362,33 @@ async function downloadFile(params, currentUrl, headers = {}, suppressErrorLoggi
     try {
         // First get the download URL
         const downloadUrl = await getDownloadLink(params, currentUrl, headers, suppressErrorLogging);
+        if (!downloadUrl) {
+            return null;
+        }
 
         // Extract base URL for referer
         const baseUrl = getBaseUrl(currentUrl);
 
         // Make the actual download request
-        const response = await _fetch(downloadUrl, {
+        const response = await _fetch()(downloadUrl, {
             method: 'GET',
-            headers: {
+            headers: mergeHeaders({
                 'Accept': 'application/pdf,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Referer': `${baseUrl}/Pages/SD/SD_Dashboard.aspx`,
-                ...headers
-            }
+                'Referer': `${baseUrl}/Pages/SD/SD_Dashboard.aspx`
+            }, headers)
         });
 
         if (!response.ok) {
-            throw new Error(`Download failed! status: ${response.status}`);
+            const detail = await readResponseBody(response);
+            throw new Error(`Download failed! status: ${response.status}${detail ? ` - ${detail}` : ""}`);
         }
 
-        // Return the file as Buffer
-        return await response.buffer();
+        // Return the file as Buffer (node-fetch) or a Buffer/ArrayBuffer built from it
+        if (typeof response.buffer === "function") {
+            return await response.buffer();
+        }
+        const arrayBuffer = await response.arrayBuffer();
+        return typeof Buffer !== "undefined" ? Buffer.from(arrayBuffer) : arrayBuffer;
 
     } catch (error) {
         if (!suppressErrorLogging) {

@@ -417,6 +417,135 @@ export default class AxiosAPI {
         return response;
     }
 
+    /**
+     * Inserisce un permesso (entrata, uscita o assenza)
+     * @param {Object} permesso - Dati del permesso da inserire
+     * @param {String} permesso.tipo - Tipo di permesso: "E" (entrata posticipata), "U" (uscita anticipata), "A" (assenza)
+     * @param {String} permesso.data - Data del permesso in formato "dd/mm/yyyy" o "yyyy-mm-dd"
+     * @param {String} [permesso.orario] - Orario "HH:MM" del permesso, solo per "E" e "U" (per "A" viene forzato a vuoto)
+     * @param {String|Number} [permesso.ora] - Ore del permesso, solo per "E" e "U" (per "A" viene forzato a vuoto)
+     * @param {String} [permesso.motivo] - Motivo del permesso
+     * @param {String|Number} [permesso.idAlunno] - ID dell'alunno (usa quello della sessione se non fornito)
+     * @param {String} [permesso.pin] - PIN dell'alunno (usa quello RE della sessione se non fornito)
+     * @param {String} codiceFiscale - Codice fiscale opzionale (usa quello memorizzato se non fornito)
+     * @param {String} usersession - Usersession opzionale (usa quella memorizzata se non fornita)
+     * @returns {Object} Risposta di Axios: `{ response: "success", result: { fiId } }`
+     *
+     * @description
+     * Tipi supportati:
+     * - E: entrata posticipata (ritardo)
+     * - U: uscita anticipata
+     * - A: assenza (orario e ora vengono ignorati)
+     *
+     * @example
+     * const api = new AxiosAPI();
+     * await api.login(CODICE_FISCALE, CODICE_UTENTE, PASSWORD);
+     * const esito = await api.inserisciPermesso({
+     *     tipo: "E",
+     *     data: "07/10/2026",
+     *     orario: "08:30",
+     *     ora: "1",
+     *     motivo: "Visita medica"
+     * });
+     */
+    async inserisciPermesso(permesso, codiceFiscale = null, usersession = null) {
+        if (!((codiceFiscale || this.codiceFiscale) && (usersession || this.usersession))) {
+            this.#handleNoLogin();
+        }
+        const session = usersession || this.usersession;
+        const codiceFiscaleFinal = codiceFiscale || this.codiceFiscale;
+
+        const tipo = String(permesso.tipo || "").toUpperCase();
+        if (!["E", "U", "A"].includes(tipo)) {
+            throw new Error(
+                `Tipo di permesso non valido: "${permesso.tipo}" (usa "E" per l'entrata, "U" per l'uscita, "A" per l'assenza)`
+            );
+        }
+
+        const rawData = permesso.data ?? permesso.dataPermesso;
+        const dataPermesso = this.#toIsoDate(rawData);
+        if (!dataPermesso) {
+            throw new Error(
+                `Data del permesso non valida: "${rawData}" (usa il formato "dd/mm/yyyy" o "yyyy-mm-dd")`
+            );
+        }
+
+        const idAlunno = permesso.idAlunno ?? await this.#getIdAlunno(codiceFiscaleFinal, session);
+        const pin = permesso.pin ?? this.pin?.RE;
+        if (!idAlunno || !pin) {
+            throw new Error(
+                "Impossibile inserire il permesso: idAlunno o pin mancanti (effettuare il login o fornirli esplicitamente)."
+            );
+        }
+
+        const isAssenza = tipo === "A";
+        const requestData = {
+            sCodiceFiscale: codiceFiscaleFinal,
+            sSessionGuid: session,
+            sCommandJSON: {
+                sApplication: "FAM",
+                sService: "APP_PROCESS_DIRECT",
+                sModule: "PERMESSO_INSERT",
+                data: {
+                    idAlunno: String(idAlunno),
+                    pin: String(pin),
+                    dataPermesso,
+                    orario: isAssenza ? "" : String(permesso.orario ?? ""),
+                    ora: isAssenza ? "" : String(permesso.ora ?? ""),
+                    tipo,
+                    motivo: permesso.motivo ?? "",
+                },
+            },
+            sVendorToken: this.client.vendorToken,
+        };
+
+        const requestBody = encode(requestData, 0);
+        const response = await this.client.post(requestBody);
+
+        if (response.errormessage || (response.errorcode != null && response.errorcode !== 0)) {
+            throw new Error(
+                `Axios ha risposto con un errore: "${response.errormessage}"`
+            );
+        }
+
+        return response.response;
+    }
+
+    /**
+     * Ottiene l'idAlunno dalla sessione, recuperandolo dal parser dello studente se non è ancora noto
+     * @param {String} codiceFiscale - Codice fiscale da usare per la richiesta
+     * @param {String} usersession - Usersession da usare per la richiesta
+     * @returns {Promise<String|undefined>} idAlunno se disponibile
+     */
+    async #getIdAlunno(codiceFiscale, usersession) {
+        if (this.studentInfo?.idAlunno) {
+            return this.studentInfo.idAlunno;
+        }
+        const studente = await this.get("studente", codiceFiscale, usersession);
+        if (studente?.idAlunno) {
+            this.studentInfo = { ...this.studentInfo, idAlunno: studente.idAlunno };
+            return studente.idAlunno;
+        }
+    }
+
+    /**
+     * Converte una data "dd/mm/yyyy" in "yyyy-mm-dd", lasciando invariata una data già in ISO
+     * @param {String} data - Data da convertire
+     * @returns {String|null} Data in formato "yyyy-mm-dd" o null se il formato non è riconosciuto
+     */
+    #toIsoDate(data) {
+        if (typeof data !== "string") return null;
+        const slashMatch = data.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        if (slashMatch) {
+            const [, giorno, mese, anno] = slashMatch;
+            return `${anno}-${mese}-${giorno}`;
+        }
+        if (/^\d{4}-\d{2}-\d{2}$/.test(data)) {
+            return data;
+        }
+        return null;
+    }
+
     #handleNoLogin() {
         throw new Error("Effettuare il login prima di chiamare questo metodo.");
     }
